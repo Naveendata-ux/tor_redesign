@@ -1,0 +1,82 @@
+      <div id="home1" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
+       <form action = "{% url "search:searchposts"  %}" name = "" method= "">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card acik-renk-form">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group ">
+                                                <input type="text" class="form-control" id="search_input" name="location"
+                                                       value="{% if query %}{{ locations }}{% endif %}"
+                                                       autocomplete="off"
+                                                       placeholder="Enter Location to search"
+                                                       required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <div class="form-group ">
+                                                <input type="text" class="form-control" placeholder="Enter your tire related keywords to search">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="submit" class="btn pl-5 pr-5" style = "background-color:#e91e63;">Search</button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group ">
+                                                <select id="sel_year" class="form-control" type="number" name="year"
+                                                       value="{% if query %}{{ years }}{% endif %}"
+                                                       autocomplete="off"
+                                                       required>
+                                                    <option selected>Year</option>
+                                                    
+                                                    <option id="1975">1975</option>
+                                                    <option id="1974">1974</option>
+                                                    <option id="1973">1973</option>
+                                                    <option id="1972">1972</option>
+                                                    <option id="1971">1971</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group ">
+                                                <select id="sel_make" class="form-control" type="number" name="make"
+                                                           value="{% if query %}{{ years }}{% endif %}"
+                                                           autocomplete="off"
+                                                           required>
+                                                    <option selected>Make</option>
+                                                    <option value="Acura">Acura</option>
+                                                           <option value="Alfa Romeo">Alfa Romeo</option>
+                                                           <option value="Alpine">Alpine</option>
+                                                           
+                                                          
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group ">
+                                            <span id = "msg" style = "display:none;color:red;">No models found!</span>
+                                                <select id="sel_model" class="form-control">
+                                                  <option selected>Model</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group align-right">
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                </form>
+                </div>

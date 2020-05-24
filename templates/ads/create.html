@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <div class="page-header" style="background: url('{% static 'assets/img/banner1.jpg' %}');">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="breadcrumb-wrapper">
+                        <h2 class="product-title">Post you Ads</h2>
+                        <ol class="breadcrumb">
+                            <li><a href="{% url 'core:home' %}">Home /</a></li>
+                            <li class="current">Post you Ads</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="content" class="section-padding">
+        <div class="container">
+            <div class="row">
+                {% include 'includes/sidebar.html' %}
+
+                <div class="col-sm-12 col-md-8 col-lg-9">
+                    <div class="row page-content">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            {% if form.errors %}
+                                {% for error in form.non_field_errors %}
+                                    <div class="alert alert-danger alert-dismissable">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            <form action="create" method="post" enctype="multipart/form-data">
+                            <div class= "col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                {% csrf_token %}
+                                {{form|crispy}}
+                                        <label class="tg-fileuploadlabel" for="tg-photogallery">
+                                            <span>Drop files anywhere to upload</span>
+                                            <span>Or</span>
+                                            <span class="btn btn-common">Select Files</span>
+                                            <span>Maximum upload file size: 1MB</span>
+                                            <input id="tg-photogallery" required class="tg-fileinput" multiple
+                                                   type="file"
+                                                   accept="image/*"
+                                                   name="image">
+                                        </label>
+                                        
+                                    </div>
+                                    </div>
+                                    <button class="btn btn-common" type="submit">Post Ad</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+    <script type="text/javascript">
+        $('#summernote').summernote({
+            height: 250, // set editor height
+            minHeight: null, // set minimum height of editor
+            maxHeight: null, // set maximum height of editor
+            focus: false // set focus to editable area after initializing summernote
+        });
+    </script>
+
+{% endblock %}

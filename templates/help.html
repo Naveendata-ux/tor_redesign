@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Tires On Rent | Help&Support</title>
+    
+</head>
+
+<body>
+{%block content %}
+<style>
+h1, h2, h3, h4 {
+    font-size: 30px;
+    color: #eb4d63;
+    font-weight: 700;
+    font-family: roboto,sans-serif;
+}
+
+.box {
+    background: #f9f9f9;
+    color: #040404;
+    float: left;
+    margin: 0 0 30px;
+    padding: 30px 0;
+    text-align: center;
+    width: 100%;
+    webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -ms-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+}
+.box:hover {
+    background: #ffffff;
+    -webkit-box-shadow: 0 16px 20px 0 rgba(216,216,216,.75);
+    -moz-box-shadow: 0 16px 20px 0 rgba(216,216,216,.75);
+    box-shadow: 0 16px 20px 0 rgba(216,216,216,.75);
+}
+</style>
+<div class="page-header" style="background: url(assets/img/banner1.jpg);">
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+<div class="breadcrumb-wrapper">
+<h2 class="product-title">Features</h2>
+<ol class="breadcrumb">
+<li><a href="{% url 'core:home' %}">Home /</a></li>
+<li class="current">Features</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</br>
+ <div class="features-boxed">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">Features </h2>
+                <p class="text-center">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae.</p>
+            </div>
+            </br>
+            <div class="row justify-content-center features">
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fa fa-map-marker icon"></i>
+                        <h3 class="name">Works everywhere</h3>
+                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a class="learn-more" href="#">Learn more »</a></div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fa fa-clock-o icon"></i>
+                        <h3 class="name">Always available</h3>
+                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a class="learn-more" href="#">Learn more »</a></div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fa fa-list-alt icon"></i>
+                        <h3 class="name">Customizable </h3>
+                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a class="learn-more" href="#">Learn more »</a></div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fa fa-leaf icon"></i>
+                        <h3 class="name">Organic </h3>
+                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a class="learn-more" href="#">Learn more »</a></div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fa fa-plane icon"></i>
+                        <h3 class="name">Fast </h3>
+                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a class="learn-more" href="#">Learn more »</a></div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fa fa-phone icon"></i>
+                        <h3 class="name">Mobile-first</h3>
+                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a class="learn-more" href="#">Learn more »</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}  
+       
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/bs-init.js' %}"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js' %}"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'assets/js/-Filterable-Cards-.js' %}"></script>
+    <script src="{% static 'assets/js/Bootstrap-DataTables.js' %}"></script>
+    <script src="{% static 'assets/js/MUSA_form-wizard.js' %}"></script>
+</body>
+
+</html>

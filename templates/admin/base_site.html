@@ -1,0 +1,83 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ title }} | Tires on Rent {% endblock %}
+
+{% block extrahead %}
+
+<style>
+    .button,input[type=submit], input[type=button], .submit-row input, a.button {
+    background: #e91e63;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+}
+    .button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: #353232;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+}
+
+    .button:active, input[type=submit]:active, input[type=button]:active, .button:focus, input[type=submit]:focus, input[type=button]:focus, .button:hover, input[type=submit]:hover, input[type=button]:hover {
+    background: #e91e63;
+}
+
+  a:link, a:visited {
+    color: #080808;
+    text-decoration: none;
+}
+ #branding h1, #branding h1 a:link, #branding h1 a:visited {
+    color: #f3f1f1;
+    
+}
+ h1 {
+    margin: 0 0 20px;
+    font-weight: 300;
+    font-size: 25px;
+    color: #131111;
+}
+ 
+ body {
+  /* The image used */
+  background-image: url("/media/back9.png") !important;
+  /* Full height */
+  height: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+#header {
+    background-color: #353232;
+    color: white;
+}
+ .module h2, .module caption, .inline-group h2 {
+   font-size: 12px;
+   background-color:#e91e63 !important;
+ 
+ }
+ div.breadcrumbs {
+    background: #171616;
+    padding: 10px 40px;
+    border: none;
+    font-size: 14px;
+    color: #e6ecef;
+    text-align: left;
+}
+ 
+ 
+</style>
+
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">Tires on Rent</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
