@@ -6,7 +6,9 @@ from .models import *
 
 admin.site.register(User)
 class MyAdminSite(AdminSite):
+    #create_template = 'ad/create.html'
     site_header = 'Tires On Rent'
 
 admin_site = MyAdminSite(name='torca')
+
 

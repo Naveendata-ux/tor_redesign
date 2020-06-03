@@ -6,273 +6,160 @@ from django.utils.translation import pgettext_lazy
 from django.forms.widgets import CheckboxSelectMultiple, TextInput, Select
 
 
-class AdCreateForm(forms.ModelForm):
-    rent_choices = (
-      (1, 'Rent'),
-      (3, 'Rent to Own'),
-      (5, 'Buy Or Own'),
+class AdTypeSelectorForm(forms.ModelForm):
+    """Form that allows selecting product type."""
+
+    ad_type = forms.ModelChoiceField(
+        queryset=AdType.objects.all(),
+        label=pgettext_lazy("Ad type form label", "Ad type"),
+        widget=forms.RadioSelect,
+        empty_label=None,
     )
-    year_choices = (
-     ('2020', '2020'),
-     ('2019', '2019'),
-     ('2018', '2018'),
-     ('2017', '2017'),
-     ('2016', '2016'),
-     ('2015', '2015'),
-     ('2014', '2014'),
-     ('2013', '2013'),    
-     ('2012', '2012'),
-     ('2011', '2011'),
-     ('2010', '2010'),
-     ('2009', '2009'),
-     ('2008', '2008'),
-     ('2007', '2007'),
-     ('2006', '2006'),
-     ('2005', '2005'),
-     ('2004', '2004'),
-     ('2003', '2003'),
-     ('2002', '2002'),
-     ('2001', '2001'),
-     ('2000', '2000'),
-     ('1999', '1999'),
-     ('1998', '1998'),
-     ('1997', '1998'),
-     ('1996', '1996'),
-     ('1995', '1995'),
-     ('1994', '1994'),
-     ('1993', '1993'),
-     ('1992', '1992'),
-     ('1991', '1991'),
-     ('1990', '1990'),
-     ('1989', '1989'),
-     ('1988', '1988'),
-     ('1987', '1987'),
-     ('1986', '1986'),
-     ('1985', '1985'),
-     ('1984', '1984'),
-     ('1983', '1983'),
-     ('1982', '1982'),
-     ('1981', '1981'),
-     ('1980', '1980'),
-     ('1979', '1979'),
-     ('1978', '1978'),
-     ('1977', '1977'),
-     ('1976', '1976'),
-     ('1975', '1975'),
-     ('1974', '1974'),
-     ('1973', '1973'),
-     ('1972', '1972'),
-     ('1971', '1971'),
-    )
-    make_choices = (
-('Acura', 'Acura'), 	           
-('Alfa Romeo', 'Alfa Romeo'),	 
-('Alpine', 'Alpine'),	 
-('ARO', 'ARO'),	 
-('Aston Martin', 'Aston Martin'),	 
-('Audi', 'Audi'),	 
-('BAIC', 'BAIC'),	 
-('Baojun', 'Baojun'),	 
-('Beiqi', 'Beiqi'),	 
-('Beiqi Huansu', 'Beiqi Huansu'),	 
-('Beiqi Weiwang', 'Beiqi Weiwang'),	 
-('Bentley', 'Bentley'),
-('BMW', 'BMW'),
-('BMW Alpina', 'BMW Alpina'),	 
-('Borgward', 'Borgward'),	 
-('Bugatti', 'Bugatti'),	 
-('Buick', 'Buick'),	 
-('BYD',	'BYD'),
-('Cadillac', 'Cadillac'),	 
-('Changan', 'Changan'),	 
-('Changhe', 'Changhe'),	 
-('Chery', 'Chery'),	 
-('Chevrolet', 'Chevrolet'),	 
-('Chrysler', 'Chrysler'),	 
-('Ciimo', 'Ciimo'),	 
-('Citroën', 'Citroën'),	 
-('Cupra', 'Cupra'),	 
-('Dacia', 'Dacia'),	 
-('Daewoo', 'Daewoo'),	 
-('Daihatsu', 'Daihatsu'),	 
-('Datsun', 'Datsun'),	 
-('Denza', 'Denza'), 
-('Dodge', 'Dodge'),	 
-('Dongfeng', 'Dongfeng'),	 
-('DR', 'DR'),	 
-('DS', 'DS'),	 
-('Eagle', 'Eagle'),	 
-('Enovate', 'Enovate'),	 
-('Enranger', 'Enranger'),	 
-('Everus', 'Everus'),	 
-('FAW', 'FAW'),	 
-('FAW Audi', 'FAW Audi'),	 
-('FAW Mazda', 'FAW Mazda'),	 
-('FAW Toyota', 'FAW Toyota'),	 
-('FAW Volkswagen', 'FAW Volkswagen'),	 
-('Ferrari', 'Ferrari'),	 
-('Fiat', 'Fiat'),	 
-('Fisker', 'Fisker'),	 
-('Foday', 'Foday'),	 
-('Force', 'Force'),	 
-('Ford', 'Ford'),	 
-('Foton', 'Foton'),	 
-('GAC', 'GAC'),	 
-('GAC Fiat', 'GAC Fiat'),	 
-('GAC Honda', 'GAC Honda'),	 
-('GAC Toyota', 'GAC Toyota'),	 
-('GAZ', 'GAz'),	 
-('Geely', 'Geely'),	 
-('Genesis', 'Genesis'),	 
-('GEO', 'GEO'),	 
-('GMC',	'GMC'), 
-('Great Wall', 'Great Wall'),	 
-('Haima', 'Haima'),	 
-('Haval', 'Haval'),	 
-('Hawtai', 'Hawtai'),	 
-('Hindustan', 'Hindustan'),	 
-('Holden', 'Holden'),	 
-('Honda', 'Honda'),	 
-('Huanghai', 'Huanghai'),	 
-('Huasong', 'Huasong'),	 
-('Hummer', 'Hummer'),	 
-('Hyundai', 'Hyundai'),	 
-('Infiniti', 'Infiniti'),	 
-('Isuzu', 'Isuzu'),	 
-('Iveco', 'Iveco'),	 
-('JAC', 'JAC'),	 
-('Jaguar', 'Jaguar'),	 
-('Jeep', 'Jeep'),	 
-('Jetta', 'Jetta'), 
-('Jinbei', 'Jinbei'),	 
-('JMC', 'JMC'),	 
-('Karry', 'Karry'), 
-('Kia', 'Kia'),	 
-('Kinglong', 'Kinglong'),	 
-('LADA', 'LADA'),	 
-('Lamborghini', 'Lamborghini'),	 
-('Lancia', 'Lancia'),	 
-('Land Rover', 'Land Rover'),	 
-('Landwind', 'Landwind'),	 
-('LDV', 'LDV'),
-('LEVC', 'LEVC'),	 
-('Lexus', 'Lexus'),	 
-('Lifan', 'Lifan'),	 
-('Lincoln', 'Lincoln'),	 
-('Lotus', 'Lotus'),
-('Luxgen', 'Luxgen'),	 
-('Lynk&amp;Co',	'Lynk&amp;Co'), 
-('Mahindra', 'Mahindra'),	 
-('Maruti', 'Maruti'),	 
-('Maserati', 'Maserati'),	 
-('Maxus', 'Maxus'),	 
-('Maybach', 'Maybach'),	 
-('Mazda', 'Mazda'), 
-('McLaren', 'McLaren'),	 
-('Mercedes-Benz', 'Mercedes-Benz'),
-('Mercury', 'Mercury'),	 
-('MG', 'MG'),
-('MINI', 'MINI'),	 
-('Mitsubishi', 'Mitsubishi'),	 
-('Mosler', 'Mosler'),	 
-('Nio', 'Nio'),	 
-('Nissan', 'Nissan'),	 
-('Oldsmobile', 'Oldsmobile'),	 
-('Opel', 'Opel'),	 
-('Panoz', 'Panoz'),	 
-('Perodua', 'Perodua'),	 
-('Peugeot', 'Peugeot'),	 
-('Plymouth', 'Plymouth'),	 
-('Polaris',	'Polaris'), 
-('Pontiac', 'Pontiac'),	 
-('Porsche', 'Porsche'),	 
-('Proton', 'Proton'),	 
-('Qiantu', 'Qiantu'),	 
-('Qiteng', 'Qiteng'),	 
-('Qoros', 'Qoros'),	 
-('Ram', 'Ram'),	 
-('Ravon', 'Ravon'),	 
-('Red Flag', 'Red Flag'),	 
-('Rely', 'Rely'),	 
-('Renault', 'Renault'),	 
-('Renault Samsung', 'Renault Samsung'),	 
-('Riich', 'Riich'),	 
-('Roewe', 'Roewe'), 
-('Rolls-Royce', 'Rolls-Royce'),	 
-('Rover', 'Rover'),	 
-('Saab', 'Saab'),	 
-('Saturn', 'Saturn'),	 
-('Scion', 'Scion'),	 
-('Seat', 'Seat'),	 
-('Skoda', 'Skoda'),	 
-('Smart', 'Smart'),	 
-('Soueast', 'Soueast'),	 
-('SsangYong', 'SsangYong'),	 
-('Subaru', 'Subaru'),	 
-('Suzuki', 'Suzuki'),	 
-('TagAZ', 'TagAZ'),	 
-('Tata', 'Tata'),	 
-('Tesla', 'Tesla'),	 
-('Toyota', 'Toyota'),	 
-('UAZ', 'UAZ'),	 
-('Vauxhall', 'Vauxhall'),	 
-('VAZ', 'VAZ'),	 
-('Venucia', 'Venucia'),	 
-('Victory', 'Victory'),	 
-('Volkswagen', 'Volkswagen'),	 
-('Volvo', 'Volvo'),	 
-('Vortex', 'Vortex'),	 
-('Wey', 'Wey'),	 
-('Wuling', 'Wuling'),	 
-('XPeng', 'XPeng'),
-('Yema', 'Yema'),	 
-('ZAZ', 'ZAZ'),	 
-('Brilliance', 'Brilliance'),
-('Zotye','Zotye'),	 
-('Zotye Jiangnan', 'Zotye Jiangnan'),	 
-('ZX', 'ZX'),
-)
-    make = forms.ChoiceField(choices=make_choices,
+
+class AdTypeForm(forms.ModelForm):
+   
+   
+    ad_attributes = forms.ModelMultipleChoiceField(
+        queryset=Attribute.objects.none(),
         required=False,
-        label=pgettext_lazy("Product Make", "Make"), widget = Select(attrs={
-            'id': 'sel_make',}) 
+        label=pgettext_lazy(
+            "Ad type attributes", "Attributes common to all variants."
+        ),
     )
-    model = forms.ChoiceField(
-        required=False,
-        label=pgettext_lazy("Product Model", "Model"), widget = Select(attrs={
-            'id': 'sel_model',}) 
-    )
-    year = forms.ChoiceField(choices=year_choices,
-        required=False,
-        label=pgettext_lazy("Product Year", "Year"), widget = Select(attrs={
-            'id': 'sel_year',}) 
-    ) 
-    rent_type = forms.ChoiceField(choices=rent_choices,
-        required=False,
-        label=pgettext_lazy("Product Type", "rent_type"), 
-    )
+    
+
     class Meta:
-        model = Ad
-        exclude = ("user","year","make","model","rent_type")
+        model = AdType
+        exclude = []
+        
 
     def __init__(self, *args, **kwargs):
-        self.request = kwargs.pop("request", None)
-        super(AdCreateForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
+        #manager = get_extensions_manager()
+        ad_attrs_qs = Attribute.objects.all()
+       
+
+        if self.instance.pk:
+            ad_attrs_initial = (
+                self.instance.ad_attributes.all()
+            )
+            
+        else:
+            ad_attrs_initial = []
+            variant_attrs_initial = []
+
+        self.fields["ad_attributes"].queryset = ad_attrs_qs
+        self.fields["ad_attributes"].initial = ad_attrs_initial
+        
 
     def clean(self):
-        self._validate_unique = True
-        #self.validate_ad_images()
-        return self.cleaned_data
+        data = super().clean()
+        has_attributes = self.cleaned_data["has_attributes"]
+        ad_attr = set(self.cleaned_data.get("ad_attributes", []))
+        
+        if not has_attributes:
+            msg = pgettext_lazy(
+                "Ad type form error", "Ad variants are disabled."
+            )
+            self.add_error("variant_attributes", msg)
+        if ad_attr:
+            msg = pgettext_lazy(
+                "Ad type form error",
+                "A single attribute can't belong to both a ad " 
+            )
+            
+        if not self.instance.pk:
+            return data
 
-    def validate_ad_images(self):
-        images = self.request.FILES.getlist('image')
-        if images:
-            for image in images:
-                if image.size > 1 * 1024 * 1024:
-                    raise ValidationError("Image file too large ( > 1mb )")
-        else:
-            raise ValidationError("Couldn't read uploaded images")
+        
 
+    def save(self, *args, **kwargs):
+        instance = super().save(*args, **kwargs)
+        new_ad_attrs = self.cleaned_data.get("ad_attributes", [])
+        
+        #instance.ad_attributes.set(new_ad_attrs)
+        
+        return instance
+
+
+class AttributesMixin:
+    """Form mixin that dynamically adds attribute fields."""
+
+    available_attributes = Attribute.objects.none()
+
+    def prepare_fields_for_attributes(self):
+        initial_attrs = self.instance.attributes
+
+        for attribute in self.available_attributes:
+
+            attribute_rel = initial_attrs.filter(
+                assignment__attribute_id=attribute.pk
+            ).first()
+            initial = None if attribute_rel is None else attribute_rel.values.first()
+
+            field_defaults = {
+                "label": attribute.name,
+                "required": False,
+                "initial": initial,
+            }
+
+            if attribute.has_values():
+                field = ModelChoiceOrCreationField(
+                    queryset=attribute.values.all(), **field_defaults
+                )
+            else:
+                field = forms.CharField(**field_defaults)
+
+            self.fields[attribute.get_formfield_name()] = field
+
+    def iter_attribute_fields(self):
+        """In use in templates to retrieve the attributes input fields."""
+        for attr in self.available_attributes:
+            yield self[attr.get_formfield_name()]
+
+    def save_attributes(self):
+        assert self.instance.pk is not None, "The instance must be saved first"
+
+        for attr in self.available_attributes:
+            value = self.cleaned_data.pop(attr.get_formfield_name())
+
+            # Skip if no value was supplied for that attribute
+            if not value:
+                continue
+
+            # If the passed attribute value is a string, create the attribute value.
+            if not isinstance(value, AttributeValue):
+                value = AttributeValue.objects.create(
+                    attribute_id=attr.pk, name=value, slug=slugify(value)
+                )
+
+            associate_attribute_values_to_instance(self.instance, attr, value)
+
+
+
+
+class AttributeForm(forms.ModelForm):
+    class Meta:
+        model = Attribute
+        fields = ("name",)
+        
+        
+class AttributeValueForm(forms.ModelForm):
+    class Meta:
+        model = AttributeValue
+        fields = ["attribute", "name","value",]
+        
+
+    def save(self, commit=True):
+        return super().save(commit=commit)
+   
+
+class AdCreateForm(forms.ModelForm):
+    class Meta:
+        model = Ad
+        #exclude = ('tyre','wheels')
+        fields = ( 'title', 'description', 'price', 'location')
+        
 
 class AdUpdateForm(forms.ModelForm):
     class Meta:
@@ -303,3 +190,15 @@ class AdImageForm(forms.ModelForm):
     class Meta:
         model = AdImage
         fields = ("image",)
+
+class TyresForm(forms.ModelForm):
+    
+    class Meta:
+        model =Tyres
+        fields = ('Add_Title', 'Tire_Condition', 'On_Rims','Year','Make','Model','Width','Ratio','Diameter','Tyres_Available','Rent_Type','Seasonality')
+        
+class WheelsForm(forms.ModelForm):
+    class Meta:
+        model =Wheels
+        fields = ('Add_Title', 'Wheels_Brand','Width','Ratio','Diameter', 'Offer_Price', 'Seasonality')
+        

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.db.models import Q
-from core.models import Ad
+from core.models import Ad, Tyres
 
 def searchposts(request):
     if request.method == 'GET':
@@ -12,9 +12,10 @@ def searchposts(request):
         submitbutton= request.GET.get('submit')
 
         if location is not None:
-            lookups= (Q(location__icontains=location) | (Q(year__exact=year) | Q(make__exact=make)))
+            lookups= ((Q(Year__exact=year) | Q(Make__exact=make)))
 
-            results= Ad.objects.filter(lookups).distinct()
+            results= Tyres.objects.filter(lookups).distinct()
+            
 
             context={'results': results,
                      'submitbutton': submitbutton}

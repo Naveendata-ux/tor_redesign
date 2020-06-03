@@ -1,264 +1,127 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css'%}">
 
-<link rel="stylesheet" type="text/css" href="{% static 'assets/fonts/line-icons.css'%}">
-
-<link rel="stylesheet" type="text/css" href="{% static 'assets/css/slicknav.css'%}">
-
-<link rel="stylesheet" type="text/css" href="{% static 'assets/css/color-switcher.css'%}">
-
-<link rel="stylesheet" type="text/css" href="{% static 'assets/css/animate.css'%}">
-
-<link rel="stylesheet" type="text/css" href="{% static 'assets/css/owl.carousel.css'%}">
-
-<link rel="stylesheet" type="text/css" href="{% static 'assets/css/main.css'%}">
-
-<link rel="stylesheet" type="text/css" href="{% static 'assets/css/responsive.css'%}">
-
-
-<img src="/media/about.jpg" class="img-fluid" alt="Responsive image">
-<style>
-body {
-    background: #fff;
-    font-size: 14px;
-    font-weight: 400;
-    font-family: open sans,sans-serif;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-font-smoothing: subpixel-antialiased;
-    color: #000;
-    line-height: 25px;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    overflow-x: hidden;
-}
-</style>
+<!--<section id="about" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-xs-12">
+                <div class="about-wrapper">
+                    <h2 class="intro-title">How did it all start?</h2>
+                    <p class="intro-desc">Our story didn't come into life instantly. It has gone through a comprehensive thought process of several years before finally becoming what it is today. For an unknowingly long enough time, the founders of this company have been travelling around the beautiful states of Canada and trying to find a way to make people's lives easier and more convenient. The idea of a classified ads platform wasn't ignited until our months of observance had led us to an astonishing realization that many young drivers, students and underprivileged individuals did not bother changing the tires of their vehicle even if they were completely worn out or almost about to come out. One question led to another until we found out that many of these people are not financially powerful and have actually no choice but to stick to their old worn-out tires because they cannot buy new ones. We then decided to carry out a comprehensive research into the tires industry which was another shocking discovery that being able to afford all four brand new tires for a car isn't something a substantially large population of people can do. The most painful irony, however, is that while those in need of urgent replacement of their tires cannot buy new ones due to tight budgets, some wealthy citizens are not aware of these underprivileged individuals and they end up either throwing away their slightly-used tires or sell them away at a ridiculously low price to exploitative dealers, thinking that who would even care to buy a tire anyway. At this stage, we came up with the idea of connecting these car owners who had tires in good condition or extra wheels available to lease away with those people who couldn't afford new tires and would benefit substantially if they could get even these slightly-used tires. Nowadays, getting things on instalment and rent is a popular method to own something you cannot afford. So we thought why not incorporate this idea into an actual company which connects the car owners and tire seekers together? That's when our idea came into life and we started doing some serious work because we knew this would help thousands, if not millions, of people drive more safely with tires that are in a better condition. We understand how you feel. This is precisely why the idea of Tires On Rent (TOR) was born, a Canadian classified ads platform with the primary objective of making tire ownership affordable, convenient and easy for everyone.
+                    </p>
+                    <a href="#" class="btn btn-common btn-lg">Add Listing</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xs-12">
+                <img class="img-fluid" src="/media/assets/img/about.png" alt="">
+            </div>
+        </div>
+    </div>
+</section>-->
+<div class="page-header" style="background: url('/media/breadcrumbs4.jpg');">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="breadcrumb-wrapper">
+                    <ol class="breadcrumb">
+                        <li><a href="{% url 'core:home' %}">Home /</a></li>
+                        <li class="current">About Us</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="cols-md-12">
+        <img src="/media/about.jpg" class="img-fluid" alt="Responsive image" style="height:600px;width: 100%"/>
+    </div>
+</div>
 <section id="about" class="section-padding">
-<div class="container">
-<div class="row">
-<div class="col-md-12 col-lg-12 col-xs-12">
-<div class="about-wrapper">
-<h2 class="intro-title">How did it all start?</h2>
-<p class="intro-desc">
-Our story didn't come into life instantly. It has gone through a comprehensive thought process of several years before finally becoming what it is today. For an unknowingly long enough time, the founders of this company have been travelling around the beautiful states of Canada and trying to find a way to make people's lives easier and more convenient. The idea of a classified ads platform wasn't ignited until our months of observance had led us to an astonishing realization that many young drivers, students and underprivileged individuals did not bother changing the tires of their vehicle even if they were completely worn out or almost about to come out. 
-One question led to another until we found out that many of these people are not financially powerful and have actually no choice but to stick to their old worn-out tires because they cannot buy new ones. We then decided to carry out a comprehensive research into the tires industry which was another shocking discovery that being able to afford all four brand new tires for a car isn't something a substantially large population of people can do. 
-The most painful irony, however, is that while those in need of urgent replacement of their tires cannot buy new ones due to tight budgets, some wealthy citizens are not aware of these underprivileged individuals and they end up either throwing away their slightly-used tires or sell them away at a ridiculously low price to exploitative dealers, thinking that who would even care to buy a tire anyway. 
-At this stage, we came up with the idea of connecting these car owners who had tires in good condition or extra wheels available to lease away with those people who couldn't afford new tires and would benefit substantially if they could get even these slightly-used tires. Nowadays, getting things on instalment and rent is a popular method to own something you cannot afford. So we thought why not incorporate this idea into an actual company which connects the car owners and tire seekers together? That's when our idea came into life and we started doing some serious work because we knew this would help thousands, if not millions, of people drive more safely with tires that are in a better condition.
-We understand how you feel. This is precisely why the idea of Tires On Rent (TOR) was born, a Canadian classified ads platform with the primary objective of making tire ownership affordable, convenient and easy for everyone.
-</p>
-<a href="#" class="btn btn-common btn-lg">Get Started</a>
-</div>
-</div>
-<div class="col-md-6 col-lg-6 col-xs-12">
-<img class="img-fluid" src="{% static 'assets/img/about/about.png'%}" alt="">
-</div>
-</div>
-</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-xs-12">
+                <div class="about-wrapper">
+                    <h2 class="intro-title">How did it all start?</h2>
+                    <p class="intro-desc">
+                        Our story didn't come into life instantly. It has gone through a comprehensive thought process
+                        of several years before finally becoming what it is today. For an unknowingly long enough time,
+                        the founders of this company have been travelling around the beautiful states of Canada and
+                        trying to find a way to make people's lives easier and more convenient. The idea of a classified
+                        ads platform wasn't ignited until our months of observance had led us to an astonishing
+                        realization that many young drivers, students and underprivileged individuals did not bother
+                        changing the tires of their vehicle even if they were completely worn out or almost about to
+                        come out.
+                        One question led to another until we found out that many of these people are not financially
+                        powerful and have actually no choice but to stick to their old worn-out tires because they
+                        cannot buy new ones. We then decided to carry out a comprehensive research into the tires
+                        industry which was another shocking discovery that being able to afford all four brand new tires
+                        for a car isn't something a substantially large population of people can do.
+                        The most painful irony, however, is that while those in need of urgent replacement of their
+                        tires cannot buy new ones due to tight budgets, some wealthy citizens are not aware of these
+                        underprivileged individuals and they end up either throwing away their slightly-used tires or
+                        sell them away at a ridiculously low price to exploitative dealers, thinking that who would even
+                        care to buy a tire anyway.
+                        At this stage, we came up with the idea of connecting these car owners who had tires in good
+                        condition or extra wheels available to lease away with those people who couldn't afford new
+                        tires and would benefit substantially if they could get even these slightly-used tires.
+                        Nowadays, getting things on instalment and rent is a popular method to own something you cannot
+                        afford. So we thought why not incorporate this idea into an actual company which connects the
+                        car owners and tire seekers together? That's when our idea came into life and we started doing
+                        some serious work because we knew this would help thousands, if not millions, of people drive
+                        more safely with tires that are in a better condition.
+                        We understand how you feel. This is precisely why the idea of Tires On Rent (TOR) was born, a
+                        Canadian classified ads platform with the primary objective of making tire ownership affordable,
+                        convenient and easy for everyone.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
-
-<section id="about" class="section-padding">
-<div class="container">
-<div class="row">
-<div class="col-md-12 col-lg-12 col-xs-12">
-<div class="about-wrapper">
-<h2 class="intro-title">How does TOR help the owners?</h2>
-<p class="intro-desc">
-You might be wondering what's in it for you to give away your precious tires. No, you're not giving them away permanently, rather temporarily and that also in return for some decent cash. If you've just sold your car or got some extra tires laying around, why not take the advantage and generate some passive income by leasing them away?
-Not only will you be helping someone in need, you will also be compensated by a rental charge of your own choice. After all, it's better than letting those tires rot away in an isolated garage or giving them away at a ridiculously low price.
-At Tires On Rent, you can lease away all your unwanted tires, which are in a good condition, obviously, and generate income from several sources. You might as well buy some extra tires just for the sake of renting them away. It's money while you sleep, so why not?
-</p>
-<a href="#" class="btn btn-common btn-lg">Get Started</a>
-</div>
-</div>
-<div class="col-md-6 col-lg-6 col-xs-12">
-<img class="img-fluid" src="{% static 'assets/img/about/about.png'%}" alt="">
-</div>
-</div>
-</div>
-</section>
-
-<section id="about" class="section-padding">
-<div class="container">
-<div class="row">
-<div class="col-md-12 col-lg-12 col-xs-12">
-<div class="about-wrapper">
-<h2 class="intro-title">How does TOR help the tenants?</h2>
-<p class="intro-desc">
-You cannot prevent a tire from being worn out but you can definitely protect yourself and your family from being exposed to a deadly risk of driving on bad tires. The sole reason why Tires On Rent was found was to make life easier for those people who are on a tight budget and cannot afford to spend hefty amounts on new tires. So, if you fall into this category, you're at the right spot. Whether you need high quality tires on a short-term basis or for a long-term usage, TOR has got you covered with hundreds and thousands of listings from all buyers of all kinds of vehicles.
-So, rent tires, drive safe and do your wallet a favour!
-</p>
-<a href="#" class="btn btn-common btn-lg">Get Started</a>
-</div>
-</div>
-<div class="col-md-6 col-lg-6 col-xs-12">
-<img class="img-fluid" src="{% static 'assets/img/about/about.png'%}" alt="">
-</div>
-</div>
-</div>
-</section>
-
-<section id="about" class="section-padding">
-<div class="container">
-<div class="row">
-<div class="col-md-12 col-lg-12 col-xs-12">
-<div class="about-wrapper">
-<h2 class="intro-title">How does it work?</h2>
-<h5>Convenience is something that we all desire and that is why we have simplified the process of renting tires into mere 5 steps.</h5> 
-<p class="intro-desc">
-<ul>
-<li> <b>Post the advertisement</b></li>
-<li> <b>Promote the ad</b></li>
-<li> <b>Accept an offer</b></li>
-<li><b>Sign the rental agreement</b></li>
-<li><b> Receive payments</b></li>
- </ul>
- </br>
-</p>
-<p>No extra or hidden taxes or service charges are incurred. You get exactly what you have mentioned in the agreement. For customers, all they need to do is browse the hundreds and thousands of ads on our platform, select one which suits them the best, send an offer to the owner and drive around with their new tires. Isn't it easy? It is!</p>
-<a href="#" class="btn btn-common btn-lg">Get Started</a>
-</div>
-</div>
-<div class="col-md-6 col-lg-6 col-xs-12">
-<img class="img-fluid" src="{% static 'assets/img/about/about.png'%}" alt="">
-</div>
-</div>
-</div>
-</section>
-
-<section class="counter-section section-padding">
-<div class="container">
-<div class="row">
-
-<div class="col-md-3 col-sm-6 work-counter-widget">
-<div class="counter">
-<div class="icon"><i class="lni-layers"></i></div>
-<h2 class="counterUp">8325</h2>
-<p>Ad Posted</p>
-</div>
-</div>
-
-<div class="col-md-3 col-sm-6 work-counter-widget">
-<div class="counter">
-<div class="icon"><i class="lni-users"></i></div>
-<h2 class="counterUp">5487</h2>
-<p>Members</p>
-</div>
-</div>
-
-<div class="col-md-3 col-sm-6 work-counter-widget">
-<div class="counter">
-<div class="icon"><i class="lni-briefcase"></i></div>
-<h2 class="counterUp">2012</h2>
-<p>Premium Ads</p>
-</div>
-</div>
-
-<div class="col-md-3 col-sm-6 work-counter-widget">
-<div class="counter">
-<div class="icon"><i class="lni-map"></i></div>
-<h2 class="counterUp">200</h2>
-<p>Locations</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-
-
 
 <section class="testimonial section-padding">
-<div class="container">
-<div class="row">
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-<div id="testimonials" class="owl-carousel">
-<div class="item">
-<div class="img-thumb">
-<img src="{% static 'assets/img/testimonial/img1.png'%}" alt="">
-</div>
-<div class="testimonial-item">
-<div class="content">
-<p class="description">Eiusmod tempor incidiunt labore velit dolore magna aliqu sed eniminim veniam quis nostrud exercition eullamco laborisaa, Eiusmod tempor incidiunt labore velit dolore magna.</p>
-<div class="info-text">
-<h2><a href="#">Josh Rossi</a></h2>
-<h4><a href="#">CEO of Fiverr</a></h4>
- </div>
-</div>
-</div>
-</div>
-<div class="item">
-<div class="item">
-<div class="img-thumb">
-<img src="{% static 'assets/img/testimonial/img2.png'%}" alt="">
-</div>
-<div class="testimonial-item">
-<div class="content">
-<p class="description">Eiusmod tempor incidiunt labore velit dolore magna aliqu sed eniminim veniam quis nostrud exercition eullamco laborisaa, Eiusmod tempor incidiunt labore velit dolore magna.</p>
-<div class="info-text">
-<h2><a href="#">Priyanka</a></h2>
-<h4><a href="#">CEO of Dropbox</a></h4>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="item">
-<div class="item">
-<div class="img-thumb">
-<img src="{% static 'assets/img/testimonial/img3.png'%}" alt="">
-</div>
-<div class="testimonial-item">
-<div class="content">
-<p class="description">Eiusmod tempor incidiunt labore velit dolore magna aliqu sed eniminim veniam quis nostrud exercition eullamco laborisaa, Eiusmod tempor incidiunt labore velit dolore magna.</p>
-<div class="info-text">
-<h2><a href="#">Johnny Zeigler</a></h2>
-<h4><a href="#">CEO of Fiverr</a></h4>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="item">
-<div class="item">
-<div class="img-thumb">
-<img src="{% static 'assets/img/testimonial/img4.png'%}" alt="">
-</div>
-<div class="testimonial-item">
-<div class="content">
-<p class="description">Eiusmod tempor incidiunt labore velit dolore magna aliqu sed eniminim veniam quis nostrud exercition eullamco laborisaa, Eiusmod tempor incidiunt labore velit dolore magna.</p>
-<div class="info-text">
-<h2><a href="#">Josh Rossi</a></h2>
-<h4><a href="#">CEO of Fiverr</a></h4>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="item">
-<div class="item">
-<div class="img-thumb">
-<img src="{% static 'assets/img/testimonial/img5.png'%}" alt="">
-</div>
-<div class="testimonial-item">
-<div class="content">
-<p class="description">Eiusmod tempor incidiunt labore velit dolore magna aliqu sed eniminim veniam quis nostrud exercition eullamco laborisaa, Eiusmod tempor incidiunt labore velit dolore magna.</p>
-<div class="info-text">
-<h2><a href="#">Priyanka</a></h2>
-<h4><a href="#">CEO of Dropbox</a></h4>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div id="testimonials" class="owl-carousel">
+                    
+                    <div class="item">
+                        <div class="item">
+                        <div class="testimonial-item">
+                        <div class="content">
+                        <strong>Mission Statement</strong>
+                        <p class="description">To provide an innovative platform for vehicle owners, businesses and tire seekers to exchange services as an alternative to the conventional buying system.</p>
+                        <div class="info-text">
+                        
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        <div class="item">
+                        <div class="item">
+                        <div class="testimonial-item">
+                        <div class="content">
+                        <strong>Vision Statement</strong>
+                        <p class="description">To revolutionize the industry by providing affordable and convenient solutions for people to buy and rent vehicular products so that everyone can drive safely. </p>
+                        <div class="info-text">
+                        
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                                            
+                   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
-
 
 
 {% endblock %}

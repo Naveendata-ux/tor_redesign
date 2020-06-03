@@ -8,7 +8,7 @@
             <div class="breadcrumb-wrapper">
                <h2 class="product-title">Listings</h2>
                <ol class="breadcrumb">
-                  <li><a href="{% url 'core:home' %}">Home /</a></li>
+                  <li><a href="#">Home /</a></li>
                   <li class="current">Listings</li>
                </ol>
             </div>
@@ -32,11 +32,10 @@
                <div class="widget categories">
                   <h4 class="widget-title">All Categories</h4>
                   <ul class="categories-list">
-                     <li v-for="category in categories">
-                        <a href="#">
+                     <li v-for="category in categories" @click="filter(category)" style="cursor: pointer">
                         <i class="lni-control-panel"></i>
-                        [[ category.title ]] <span class="category-counter">([[ category.total_ads ]])</span>
-                        </a>
+                        [[ category.title ]]
+                        <span class="category-counter">([[ category.total_ads ]])</span>
                      </li>
                   </ul>
                </div>
@@ -51,7 +50,7 @@
          <div class="col-lg-9 col-md-12 col-xs-12 page-content">
             <div class="product-filter">
                <div class="short-name">
-                  <span>Showing (1 - 12 products of 7371 products)</span>
+                  <span>Showing all items</span>
                </div>
                <div class="Show-item">
                   <span>Show Items</span>
@@ -80,52 +79,116 @@
                <div class="tab-content">
                   <div id="grid-view" class="tab-pane fade active show">
                      <div class="row">
-                        {% for ad in results %}
-                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" v-for="ad in ads">
                            <div class="featured-box">
                               <figure>
                                  <div class="icon">
                                     <span class="bg-green"><i class="lni-heart"></i></span>
                                     <span><i class="lni-bookmark"></i></span>
                                  </div>
-                                 <a href="{% url 'ads:ad.details' ad.id %}">
-                                 <img class="img-fluid" style="width: 350px; max-height: 225px"
-                                    src="{{ ad.first_image_or_default }}" alt="">
+                                 <a href="#">
+                                 <img class="img-fluid"
+                                    :src="[[ ad.first_image_or_default ]]"
+                                    alt="">
                                  </a>
                               </figure>
                               <div class="feature-content">
                                  <h4>
-                                    <a href="{% url 'ads:ad.details' ad.id %}">{{ad.title}}</a>
+                                    <a :href="[[ ad.url ]]">[[ ad.title ]]</a>
                                  </h4>
                                  <div class="meta-tag">
                                     <span>
-                                    <a href="{% url 'ads:ad.details' ad.id %}"><i class="lni-user"></i> {{ ad.user.username }}</a>
+                                    <a href="#"><i class="lni-user"></i> [[ ad.user.username ]]</a>
                                     </span>
                                     <span>
-                                    <a href="{% url 'ads:ad.details' ad.id %}"><i class="lni-map-marker"></i>{{ ad.location }} </a>
+                                    <a href="#"><i class="lni-map-marker"></i> [[ ad.location ]]</a>
                                     </span>
                                     <span>
-                                    <a href="{% url 'ads:ad.details' ad.id %}"><i class="lni-tag"></i> {{ad.category.title }}</a>
+                                    <a href="#"><i class="lni-tag"></i> [[ ad.category.title ]]</a>
                                     </span>
                                  </div>
-                                 <p class="dsc">{{ ad.description }}</p>
+                                 <p class="dsc">[[ ad.description ]]</p>
                                  <div class="listing-bottom">
-                                    <h3 class="price float-left">${{ ad.price }}</h3>
-                                    <a href="{% url 'ads:ad.details' ad.id %}" class="btn btn-common float-right">View
+                                    <h3 class="price float-left">$[[ ad.price ]]</h3>
+                                    <a :href="[[ ad.url ]]" class="btn btn-common float-right">View
                                     Details</a>
                                  </div>
                               </div>
-                              {% endfor %}
                            </div>
                         </div>
                      </div>
                   </div>
-                  
+                  <div id="list-view" class="tab-pane fade">
+                     <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" v-for="ad in ads">
+                           <div class="featured-box">
+                              <figure>
+                                 <div class="icon">
+                                    <span class="bg-green"><i class="lni-heart"></i></span>
+                                    <span><i class="lni-bookmark"></i></span>
+                                 </div>
+                                 <a href="#">
+                                 <img class="img-fluid"
+                                    :src="[[ ad.first_image_or_default ]]"
+                                    alt="">
+                                 </a>
+                              </figure>
+                              <div class="feature-content">
+                                 <h4>
+                                    <a href="">[[ ad.title ]]</a>
+                                 </h4>
+                                 <div class="meta-tag">
+                                    <span>
+                                    <a href="#"><i class="lni-user"></i> [[ ad.user.username ]]</a>
+                                    </span>
+                                    <span>
+                                    <a href="#"><i class="lni-map-marker"></i> New York, US</a>
+                                    </span>
+                                    <span>
+                                    <a href="#"><i class="lni-tag"></i> [[ ad.category.title ]]</a>
+                                    </span>
+                                 </div>
+                                 <p class="dsc">[[ ad.description |safe|truncatechars:110 ]]</p>
+                                 <div class="listing-bottom">
+                                    <h3 class="price float-left">$[[ ad.price ]]</h3>
+                                    <a href="[[ ad.url ]]"
+                                       class="btn btn-common float-right">View Details</a>
+                                 </div>
+                              </div>
                            </div>
                         </div>
                      </div>
                   </div>
                </div>
+            </div>
+                                
+            <div class="pagination-bar">
+               
+                                       
+               <nav>
+                  
+                                              
+                  <ul class="pagination justify-content-center">
+                     
+                                                     
+                     <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                     
+                                                     
+                     <li class="page-item"><a class="page-link" href="#">2</a></li>
+                     
+                                                     
+                     <li class="page-item"><a class="page-link" href="#">3</a></li>
+                     
+                                                     
+                     <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                     
+                                                 
+                  </ul>
+                  
+                                          
+               </nav>
+               
+                                   
             </div>
             
          </div>
@@ -134,5 +197,46 @@
 </div>
 {% endblock %}
 {% block scripts %}
-
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script type='text/javascript'>
+   document.addEventListener('DOMContentLoaded', function () {
+       new Vue({
+           delimiters: ['[[', ']]'],
+           el: '#app',
+           data: {
+               categories: [],
+               ads: [],
+               domain: '{{ request.scheme }}://{{ request.META.HTTP_HOST }}'
+           },
+           created() {
+               // fetch categories
+               axios.get(`/api/categories/`)
+                   .then((res) => {
+                       this.categories = res.data;
+                   })
+                   .catch(err => {
+                       console.log(err);
+                   })
+               // fetch ads
+               this.get_ads();
+           },
+           methods: {
+               filter(category) {
+                   this.get_ads(category.id)
+               },
+               get_ads(id = '') {
+                   axios.get(`/api/ads/?category=${id}`)
+                       .then((res) => {
+                           console.log(res.data);
+                           this.ads = res.data;
+                       })
+                       .catch(err => {
+                           console.log(err);
+                       })
+               }
+           }
+       })
+   })
+</script>
 {% endblock %}

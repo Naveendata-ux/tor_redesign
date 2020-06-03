@@ -7,12 +7,18 @@ from django.utils.translation import gettext_lazy as _, pgettext_lazy
 from django_countries.fields import Country, CountryField
 from phonenumber_field.modelfields import PhoneNumber, PhoneNumberField
 from .validators import validate_possible_number
+#from django.db.models.manager import EmptyManager
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
 
 
 class PossiblePhoneNumberField(PhoneNumberField):
     """Less strict field for phone numbers written to database."""
 
     default_validators = [validate_possible_number]
+
+
 
 
 class AddressQueryset(models.QuerySet):
@@ -114,11 +120,37 @@ class User(AbstractUser):
     default_billing_address = models.ForeignKey(
         Address, related_name="+", null=True, blank=True, on_delete=models.SET_NULL
     )
-    phone = models.CharField(max_length=20, blank=True, verbose_name="Contact number")
-    image = models.ImageField(verbose_name="User image", upload_to="user_images")
+    phone_number = models.CharField(max_length=12, blank=True, verbose_name="Contact number")
+    profile_image = models.ImageField(verbose_name="User image", upload_to="user_images", blank=True)
+    #user_type = models.CharField(_('name'), max_length=150, unique=True)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["username"]
+    
+    #objects = GroupManager()
 
     def __unicode__(self):
         return self.email
+        
+   
+        
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        User.objects.create(user=instance)
+        
+class Questions(models.Model):
+    STUDENT_CHOICES = ((True, 'Yes'), (False, 'No'))
+    SENIOR_CHOICES = ((True, 'Yes'), (False, 'No'))
+    ERSM_CHOICES = ((True, 'Yes'), (False, 'No'))
+    is_student = models.BooleanField(choices=STUDENT_CHOICES)
+    is_senior_citizen = models.BooleanField(choices=SENIOR_CHOICES)
+    is_ersm = models.BooleanField(choices=ERSM_CHOICES) 
+    student = models.CharField(max_length=25, blank=True)
+    senior_age = models.SmallIntegerField()
+    student_id = models.ImageField(verbose_name="Student id", upload_to="student_uploads")
+    senior_citizen_id = models.ImageField(verbose_name="Senior id", upload_to="senior_uploads") 
+    ersm_yes_questions = models.CharField(max_length=125,)
+    ersm_no_questions = models.BooleanField()
+
+

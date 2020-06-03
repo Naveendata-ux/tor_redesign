@@ -1,0 +1,177 @@
+{% extends "users/dashboard.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="page-header" style="background: url('{% static 'assets/img/banner1.jpg' %}');">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="breadcrumb-wrapper">
+               <h2 class="product-title">Post you Ads</h2>
+               <ol class="breadcrumb">
+                  <li><a href="{% url 'core:home' %}">Home /</a></li>
+                  <li class="current">Post you Ads</li>
+               </ol>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div id="content" class="section-padding">
+   <div class="container">
+      <div class="row">
+         {% include 'includes/sidebar.html' %}
+         <div class="col-sm-12 col-md-8 col-lg-9">
+            <div class="row page-content">
+               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  {% if form.errors %}
+                  {% for error in form.non_field_errors %}
+                  <div class="alert alert-danger alert-dismissable">
+                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                     <strong>{{ error|escape }}</strong>
+                  </div>
+                  {% endfor %}
+                  {% endif %}
+                  <div class= "col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                     <h2>Post Your Ad</h2>
+                     <form enctype="multipart/form-data" action="{% url 'ads:tyresad' %}" method="POST" novalidate>
+                        {% csrf_token %}
+                        <div id="div_id_Add_Title" class="form-group">
+                           <label for="id_Add_Title" class=" requiredField">
+                           Add Title<span class="asteriskField">*</span> </label> 
+                           <div class=""> <input type="text" name="Add_Title" maxlength="100" class="textinput textInput form-control" required id="id_Add_Title"> </div>
+                        </div>
+                        <div id="div_id_Tire_Condition" class="form-group">
+                           <label for="id_Tire_Condition" class=" requiredField">
+                           Tire Condition<span class="asteriskField">*</span> </label> 
+                           <div class="">
+                              <select name="Tire_Condition" class="select form-control" required id="id_Tire_Condition">
+                                 <option value="" selected>---------</option>
+                                 <option value="New">New</option>
+                                 <option value="Used">Used</option>
+                              </select>
+                           </div>
+                        </div>
+                        <div id="div_id_On_Rims" class="form-group">
+                           <label for="id_On_Rims" class=" requiredField">
+                           On Rims<span class="asteriskField">*</span> </label> 
+                           <div class="">
+                              <select name="On_Rims" class="select form-control" required id="id_On_Rims">
+                                 <option value="" selected>---------</option>
+                                 <option value="Yes">Yes</option>
+                                 <option value="No">No</option>
+                              </select>
+                           </div>
+                        </div>
+                        <div id="div_id_Year" class="form-group">
+                           <label for="id_Year" class=" requiredField">
+                           Year<span class="asteriskField">*</span> </label> 
+                           <div class=""> <input type="number" name="Year" class="numberinput form-control" required id="id_Year"> </div>
+                        </div>
+                        <div id="div_id_Make" class="form-group">
+                           <label for="id_Make" class=" requiredField">
+                           Make<span class="asteriskField">*</span> </label> 
+                           <div class=""> <input type="text" name="Make" maxlength="250" class="textinput textInput form-control" required id="id_Make"> </div>
+                        </div>
+                        <div id="div_id_Model" class="form-group">
+                           <label for="id_Model" class=" requiredField">
+                           Model<span class="asteriskField">*</span> </label> 
+                           <div class=""> <input type="text" name="Model" maxlength="250" class="textinput textInput form-control" required id="id_Model"> </div>
+                        </div>
+                        <div id="div_id_Width" class="form-group">
+                           <label for="id_Width" class=" requiredField">
+                           Width<span class="asteriskField">*</span> </label> 
+                           <div class=""> <input type="number" name="Width" class="numberinput form-control" required id="id_Width"> </div>
+                        </div>
+                        <div id="div_id_Ratio" class="form-group">
+                           <label for="id_Ratio" class=" requiredField">
+                           Ratio<span class="asteriskField">*</span> </label> 
+                           <div class=""> <input type="number" name="Ratio" class="numberinput form-control" required id="id_Ratio"> </div>
+                        </div>
+                        <div id="div_id_Diameter" class="form-group">
+                           <label for="id_Diameter" class=" requiredField">
+                           Diameter<span class="asteriskField">*</span> </label> 
+                           <div class=""> <input type="number" name="Diameter" class="numberinput form-control" required id="id_Diameter"> </div>
+                        </div>
+                        <div id="div_id_Tyres_Available" class="form-group">
+                           <label for="id_Tyres_Available" class=" requiredField">
+                           Tyres Available<span class="asteriskField">*</span> </label> 
+                           <div class=""> <input type="number" name="Tyres_Available" class="numberinput form-control" required id="id_Tyres_Available"> </div>
+                        </div>
+                        <div id="div_id_Rent_Type" class="form-group">
+                           <label for="id_Rent_Type" class=" requiredField">
+                           Rent Type<span class="asteriskField">*</span> </label> 
+                           <div class="">
+                              <select name="Rent_Type" class="select form-control" required id="id_Rent_Type">
+                                 <option value="" selected>---------</option>
+                                 <option value="Buy">Buy</option>
+                                 <option value="Sell">Sell</option>
+                              </select>
+                           </div>
+                        </div>
+                        <div id="div_id_Seasonality" class="form-group">
+                           <label for="id_Seasonality" class=" requiredField">
+                           Seasonality<span class="asteriskField">*</span> </label> 
+                           <div class="">
+                              <select name="Seasonality" class="select form-control" required id="id_Seasonality">
+                                 <option value="" selected>---------</option>
+                                 <option value="Winter">Winter</option>
+                                 <option value="Summer">Summer</option>
+                                 <option value="All-Seasons">All-Seasons</option>
+                              </select>
+                           </div>
+                        </div>
+                        <div id="div_id_category" class="form-group">
+                           <label for="id_category" class=" requiredField">
+                           Category<span class="asteriskField">*</span> </label> 
+                           <div class="">
+                              <select name="category" class="select form-control" required id="id_category">
+                                 <option value="" selected>---------</option>
+                                 <option value="1">Tires</option>
+                                 <option value="2">Rims</option>
+                                 <option value="3">Services</option>
+                              </select>
+                           </div>
+                        </div>
+                        <div id="div_id_price" class="form-group">
+                           <label for="id_price" class=" requiredField">
+                           Ad price<span class="asteriskField">*</span> </label> 
+                           <div class=""> <input type="number" name="price" class="numberinput form-control" required id="id_price"> </div>
+                        </div>
+                        <div id="div_id_location" class="form-group">
+                           <label for="id_location" class="">
+                           Location
+                           </label> 
+                           <div class=""> <textarea name="location" cols="40" rows="10" class="textarea form-control" id="id_location">
+                              </textarea> 
+                           </div>
+                        </div>
+                        <div id="div_id_description" class="form-group">
+                           <label for="id_description" class=" requiredField">
+                           Ad description<span class="asteriskField">*</span> </label> 
+                           <div class=""> <textarea name="description" cols="40" rows="10" class="textarea form-control" required id="id_description">
+                              </textarea> 
+                           </div>
+                        </div>
+                        <!--  -->
+                        <!--  -->
+                        <label class="tg-fileuploadlabel" for="tg-photogallery">
+                        <span>Drop files anywhere to upload</span>
+                        <span>Or</span>
+                        <span class="btn btn-common">Select Files</span>
+                        <span>Maximum upload file size: 1MB</span>
+                        <input id="tg-photogallery" required class="tg-fileinput" multiple
+                           type="file"
+                           accept="image/*"
+                           name="image">
+                        </label>
+                        <input type="submit" name="" class="btn btn-common" value="POST AD">
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+</div>

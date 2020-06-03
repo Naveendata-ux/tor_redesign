@@ -2,136 +2,78 @@
 {% block content %}
 {% load static %}
 
-
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <style>
-    
-    -webkit-box-shadow: 0px 10px 13px -7px #000000, -5px -9px 6px -16px rgba(255,255,255,0); 
-     box-shadow: 0px 10px 13px -7px #000000, -5px -9px 6px -16px rgba(255,255,255,0);
-    
-    body {
-    background: #fff;
-    font-size: 14px;
-    font-weight: 400;
-    font-family: open sans,sans-serif;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-font-smoothing: subpixel-antialiased;
-    color: #191717;
-    line-height: 19px;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    overflow-x: hidden;
+     .btn-danger:hover {
+    color: #fff;
+    background-color: #827f80;
+    border-color: #929191;
 }
-
-    .custom-control {
-        position: relative;
-        min-height: 0.5rem;
-        padding-left: 2.5rem;
+.btn-danger {
+    color: #fff;
+    background-color: #989495;
+    border-color: #807e7f;
+}
+    /*This is for search buttons design*/
+    .tab-content{
+        background-color: #f8f8f8;
     }
-   .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-   color: #fff;
-   background-color: #eb4d63;
-   }
-   a {
-   color: #fefeff;
-   text-decoration: none;
-   background-color: transparent;
-   -webkit-text-decoration-skip: objects;
-   }
-   
+        .btn-squared-default
+    {
+        width: 100px !important;
+        height: 100px !important;
+        /*font-size: 10px;*/
+    }
+
+        .btn-squared-default:hover
+        {
+            border: 3px solid white;
+            font-weight: 800;
+        }
+
+    .btn-squared-default-plain
+    {
+        width: 180px !important;
+        height: 150px !important;
+        /*font-size: 10px;*/
+    }
+
+        .btn-squared-default-plain:hover
+        {
+            border: 0px solid white;
+            box-shadow: 5px 7px 7px 5px rgba(0, 0, 0, 0.19), 10px 12px 20px 10px rgba(0, 0, 0, 0.19);
+        }
+
+    /*square box*/
+    .displaystyle {
+        padding: 15px;
+        margin: 15px;
+        background-color: #FFFFFF;
+        margin-bottom: 10px;
+        box-shadow: 5px 7px 7px 5px rgba(0, 0, 0, 0.19), 10px 12px 20px 10px rgba(0, 0, 0, 0.19);
+    }
+
+    .displaystyle-danger>strong {
+        color: #d73814;
+    }
+</style>
+<style>
+
+
+
 hr.style1{
-	border-top: 1.5px solid #8c8b8b;
-}
-.features-blue {
-  color: #fff;
-  background: linear-gradient(135deg, #080808, #232525);
-  background-color: #184e8e;
-  padding-bottom: 30px;
+	border-top: 0.5px solid #000;
+    width: 75%;
 }
 
-@media (max-width:767px) {
-  .features-blue {
-    padding-bottom: 10px;
-  }
-}
-
-.features-blue p {
-  color: rgba(255,255,255,0.6);
-}
-
-.features-blue h2 {
-  font-weight: bold;
-  margin-bottom: 40px;
-  padding-top: 40px;
-  color: inherit;
-}
-
-@media (max-width:767px) {
-  .features-blue h2 {
-    margin-bottom: 25px;
-    padding-top: 25px;
-    font-size: 24px;
-  }
-}
-
-element.style {
-    position: relative;
-}
-
-.features-blue .intro {
-  font-size: 16px;
-  max-width: 500px;
-  margin: 0 auto 60px;
-}
-
-@media (max-width:767px) {
-  .features-blue .intro {
-    margin-bottom: 40px;
-  }
-}
-
-.features-blue .item {
-  min-height: 100px;
-  padding-left: 80px;
-  margin-bottom: 40px;
-}
-
-@media (max-width:767px) {
-  .features-blue .item {
-    min-height: 0;
-  }
-}
-
-.features-blue .item .name {
+.span {
+  font-style: inherit;
+  font-weight: inherit;
   font-size: 20px;
-  font-weight: bold;
-  margin-top: 0;
-  margin-bottom: 20px;
-  color: inherit;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
+  color:#003e6b;
 }
 
-.features-blue .item .description {
-  font-size: 15px;
-  margin-bottom: 0;
-}
-
-.features-blue .item .icon {
-  font-size: 40px;
-  color: #ffcc1e;
-  float: left;
-  margin-left: -65px;
-}
-
-
-:root {
-  --backgroundColor: rgba(246, 241, 209);
-  --colorShadeA: rgb(106, 163, 137);
-  --colorShadeB: rgb(121, 186, 156);
-  --colorShadeC: rgb(189, 189, 189);
-  --colorShadeD: rgb(187, 232, 211);
-  --colorShadeE: rgb(205, 255, 232);
-}
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
 * {
@@ -140,6 +82,28 @@ element.style {
 *::before, *::after {
   box-sizing: border-box;
 }
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+   color: #fff;
+   background-color:  #003e6b;
+   }
+
+.btn-danger {
+    color: #fff;
+    background-color: #003e6b;
+    border-color: #003e6b;
+}
+.btn {
+    font-size: 14px;
+    font-family: 'Proxima Nova Soft', 'Helvetica Neue', sans-serif;
+}
+.nav-tabs .nav-link {
+    color: white;
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+}
+
 
 button {
     position: relative;
@@ -200,16 +164,9 @@ button.big-button:active::before {
 
 }
 
-footer .footer-Content {
-    background-color: #101010;
-    padding: 60px 0;
-    color: #bfbfbf;
-}
-
-
-
 
 </style>
+
 
     <link rel="stylesheet" href="/media/assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="/media/assets/css/best-carousel-slide.css">
@@ -327,26 +284,25 @@ $(document).ready(function(){
 
         });
       </script>
-
     <section id="carousel">
         <div class="carousel slide" data-ride="carousel" id="carousel-1">
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
-                    <div class="jumbotron pulse animated hero-nature carousel-hero" style="background-image: url(&quot;/media/assets/img/shutterstock_701263555.jpg&quot;);">
+                    <div class="jumbotron pulse animated carousel-hero" style="background-image: url(&quot;/media/assets/img/tires.jpg&quot;);background-position: center;background-repeat: no-repeat; background-size: cover;">
                         <h1 class="hero-title" style="font-size: 30px;">BUY TIRES AND WHEELS ONLINE</h1>
                         <p class="hero-subtitle" style="font-size: 23px;"><strong>AT THE BEST PRICE</strong><br></p>
                         <p></p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="jumbotron pulse animated hero-photography carousel-hero" style="background-image: url(&quot;/media/assets/img/shutterstock_796499152.jpg&quot;);">
+                    <div class="jumbotron pulse animated carousel-hero" style="background-image: url(&quot;/media/assets/img/wheels.jpg&quot;);min-height:100%;background-position: center;background-repeat: no-repeat; background-size: cover;">
                         <h1 class="hero-title" style="font-size: 37px;">&nbsp; &nbsp;EXCLUSIVE OFFER&nbsp;</h1>
                         <p class="hero-subtitle" style="font-size: 28px;"><strong>ENJOY UPTO $60 OFF</strong><br></p>
                         <p></p>
                     </div>
                 </div>
                 <div class="carousel-item ">
-                    <div class="jumbotron pulse animated hero-technology carousel-hero" style="background-image: url(&quot;/media/assets/img/shutterstock_390074134.jpg&quot;);">
+                    <div class="jumbotron pulse animated carousel-hero" style="background-image: url(&quot;/media/assets/img/services.jpg&quot;);background-position: center;background-repeat: no-repeat; background-size: cover;">
                         <h1 class="hero-title" style="font-size: 36px;">&nbsp; &nbsp;BRAND NEW WHEELS&nbsp;</h1>
                         <p class="hero-subtitle" style="font-size: 28px;"><strong>STARTING AT $55</strong><br></p>
                         <p></a></p>
@@ -382,182 +338,329 @@ $(document).ready(function(){
                </ul>
                <div id="myTab1Content" class="tab-content">
                     <div id="home1" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
-                    
-                      <div class= "text-center">
-                        
-                        <button class="big-button" style="margin-right: 25px" id="size-icon"> Search by <br>Size</button>
-                        <button class="big-button" style="margin-right: 16px" id="vehicle-icon"> Search by <br>Vehicle</button>
-                        
-                        
-                       </div> 
-                       
-                        <form class="col-lg-8 offset-lg-2" action = "{% url "search:searchposts"  %}" name = "" method= "GET" id="size-form">
-                           <div class="custom-control custom-radio">
-                           
-                              <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="groupOfDefaultRadios">
-                              <label class="custom-control-label" for="defaultGroupExample1"><b>Summer/All Seasons</b></label>
-                            </div>
+                       <div class= "text-center">
+                          <!--
+                             <div class="row-cols-2">
+                             
+                                 <img src="/media/bysize1.png" style="height:100px;width:100px;">
+                                 <button class="btn btn-primary btn-lg" style="margin-right: 25px" id="size-icon"> Search by Size</button>
+                                 <img src="/media/byvehicle.png" style="height:100px;width:100px;">
+                                 <button class="big-button" style="margin-right: 16px" id="vehicle-icon"> Search by <br>Vehicle</button>
+                                 <img src="/media/bytire.png" style="height:100px;width:150px;">
+                             </div>
+                             
+                             <div class="row col-sm-12 displaystyle displaystyle-danger">
+                                  <strong>Style</strong> style danger- no border
+                             </div>
+                             -->
+                          <div class="row-cols-2">
+                             <a href="#" class="btn btn-squared-default-plain btn-danger" id="size-icon">
+                             <i class="fa fa-life-ring fa-5x"></i>
+                             <br/>
+                             <br/>
+                             <strong>SEARCH BY SIZE</strong>
+                             </a>
+                             <a href="#" class="btn btn-squared-default-plain btn-danger" id="vehicle-icon">
+                             <i class="fa fa-car fa-5x"></i>
+                             <br />
+                             <br />
+                             <strong class="text-white font-weight-bolder">SEARCH BY VEHICLE</strong>
+                             </a>
+                          </div>
+                       </div>
+                       <div class = "row" id="form-row">
+                          <div class="col-lg-12 text-center">
+                             <form action = "{% url "search:searchposts"  %}" name = "" method= "GET" id="size-form">
+                                 <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="groupOfDefaultRadios">
+                                    <label class="custom-control-label" for="defaultGroupExample1"><b>Summer/All Seasons</b></label>
+                                 </div>
+                                 <!-- Group of default radios - option 2 -->
+                                 <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="groupOfDefaultRadios" checked>
+                                    <label class="custom-control-label" for="defaultGroupExample2"><b>Winter</b></label>
+                                 </div>
+                                 <!-- Group of default radios - option 3 -->
+                                 <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultGroupExample3" name="groupOfDefaultRadios">
+                                    <label class="custom-control-label" for="defaultGroupExample3"><b>SnowFlake Certified</b></label>
+                                 </div>
+                                 <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultGroupExample4" name="groupOfDefaultRadios">
+                                    <label class="custom-control-label" for="defaultGroupExample4"><b>Trailer</b></label>
+                                 </div>
+                                 <br>
+                                 <hr class="style1">
+                                 <br>
 
-                            <!-- Group of default radios - option 2 -->
-                            <div class="custom-control custom-radio">
-                              <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="groupOfDefaultRadios" checked>
-                              <label class="custom-control-label" for="defaultGroupExample2"><b>Winter</b></label>
-                            </div>
+                              <div class="row">
+                                  <div class="col-lg-3">
+                                    <div class="form-group">
+                                       <select id="sel_year" class="form-control" type="number" name="year"
+                                                value="{% if query %}{{ year }}{% endif %}"
+                                                autocomplete="off" data-width="auto"
+                                                required>
+                                                <option selected>Select Year</option>
+                                                <option id="2020">2020</option>
+                                                <option id="2019">2019</option>
+                                                <option id="2018">2018</option>
+                                                <option id="2017">2017</option>
+                                                <option id="2016">2016</option>
+                                       </select>
+                                    </div>
+                                  </div>
+                                  <div class="col-lg-4">
+                                    <div class="form-group">
+                                      <select id="sel_make" class="form-control" type="number" name="make"
+                                             value="{% if query %}{{ year }}{% endif %}"
+                                             autocomplete="off"
+                                             required>
+                                             <option selected>Select Make</option>
+                                             <option value="Acura">Acura</option>
+                                             <option value="Alfa Romeo">Alfa Romeo</option>
+                                             <option value="Alpine">Alpine</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <span id = "msg" style = "display:none;color:red;">No models found!</span>
+                                          <select id="sel_model" class="form-control">
+                                             <option selected>Select Model</option>
+                                          </select>
+                                    </div>
+                                  </div>
+                                  <div class="col-lg-2">
+                                      <input type="submit" class="btn btn-common float-left" value="Search" />
+                                  </div>
 
-                            <!-- Group of default radios - option 3 -->
-                            <div class="custom-control custom-radio">
-                              <input type="radio" class="custom-control-input" id="defaultGroupExample3" name="groupOfDefaultRadios">
-                              <label class="custom-control-label" for="defaultGroupExample3"><b>SnowFlake Certified</b></label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                              <input type="radio" class="custom-control-input" id="defaultGroupExample4" name="groupOfDefaultRadios">
-                              <label class="custom-control-label" for="defaultGroupExample4"><b>Trailer</b></label>
-                            </div>
-                            <br>
-                            <hr class="style1">
-                            <br>
-                                               <div class= "text-center">
-                                               <div class= "form-inline">
-                                               <div class="input-group">
-                                                <div class="align-middle">
-                                                 <select id="sel_year" class="form-control" type="number" name="year"
-                                                    value="{% if query %}{{ year }}{% endif %}"
-                                                    autocomplete="off"
-                                                    required>
-                                                    <option selected>--------Year--------</option>
-                                                    <option id="2020">2020</option>
-                                                    <option id="2019">2019</option>
-                                                    <option id="2018">2018</option>
-                                                    <option id="2017">2017</option>
-                                                    <option id="2016">2016</option>
-                                                 </select>
-                                                </div>
-                                                 <select id="sel_make" class="form-control" type="number" name="make"
-                                                    value="{% if query %}{{ year }}{% endif %}"
-                                                    autocomplete="off"
-                                                    required>
-                                                    <option selected>------Make-------</option>
-                                                    <option value="Acura">Acura</option>
-                                                    <option value="Alfa Romeo">Alfa Romeo</option>
-                                                    <option value="Alpine">Alpine</option>
-                                                 </select>
-                                                 <span id = "msg" style = "display:none;color:red;">No models found!</span>
-                                                 <select id="sel_model" class="form-control">
-                                                    <option selected>------Model------</option>
-                                                 </select>
-                                                 
-                                                 <input type="submit" class="btn btn-warning" value="Search" />
-                                                 
-                                               </div>
-                                               </div>
-                                               </div>
-                        </form>
+                              </div>
+
+                             </form>
+                          </div>
+                       </div>
                     </div>
-                    
-
                     <div id="profile1" role="tabpanel" aria-labelledby="profile1-tab" class="tab-pane fade px-4 py-5">
-                    
                     </div>
                     <div id="contact1" role="tabpanel" aria-labelledby="contact1-tab" class="tab-pane fade px-4 py-5">
-                                </div>
-               </div>
+                    </div>
+                    </div>
+     
             <!-- End bordered tabs -->
          </div>
       </div>
    </div>
    </div>
 </section>
-
-
-<style>
-.index-howto-alt .howto-img {
-    width: 170px;
-}
-
-
-</style>
-        <div class="box-shadow">
-        <div class="features-blue" style="padding: 0px;">
-        
-        <div class="container">
-            <div class="intro">
-            
-                <h2 class="text-center">Features</h2>
-                <p class="text-center">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae. </p>
-            </div>
-            <div class="row features"><div class="col-sm-6 col-md-4 item"><i class="fa fa-map-marker icon"></i>
-    <h3 class="name">Works everywhere</h3>
-    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.</p>
-</div>
-                <div class="col-sm-6 col-md-4 item"><i class="fa fa-clock-o icon"></i>
-                    <h3 class="name">Always available</h3>
-                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.</p>
-                </div>
-                <div class="col-sm-6 col-md-4 item"><i class="fa fa-list-alt icon"></i>
-                    <h3 class="name">Customizable</h3>
-                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.</p>
-                </div>
-                <div class="col-sm-6 col-md-4 item"><i class="fa fa-leaf icon"></i>
-                    <h3 class="name">Organic</h3>
-                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.</p>
-                </div>
-                <div class="col-sm-6 col-md-4 item"><i class="fa fa-plane icon"></i>
-                    <h3 class="name">Fast</h3>
-                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.</p>
-                </div>
-                <div class="col-sm-6 col-md-4 item"><i class="fa fa-phone icon"></i>
-                    <h3 class="name">Mobile-first</h3>
-                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.</p>
+<section id="about" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-xs-12">
+                <div class="about-wrapper">
+                    <h2 class="intro-title">How does TOR help the owners?</h2>
+                    <p class="intro-desc">
+                        You might be wondering what's in it for you to give away your precious tires. No, you're not
+                        giving them away permanently, rather temporarily and that also in return for some decent cash.<span id="dots">...</span><span id="more">
+                        If you've just sold your car or got some extra tires laying around, why not take the advantage
+                        and generate some passive income by leasing them away?
+                        Not only will you be helping someone in need, you will also be compensated by a rental charge of
+                        your own choice. After all, it's better than letting those tires rot away in an isolated garage
+                        or giving them away at a ridiculously low price.
+                        At Tires On Rent, you can lease away all your unwanted tires, which are in a good condition,
+                        obviously, and generate income from several sources. You might as well buy some extra tires just
+                        for the sake of renting them away. It's money while you sleep, so why not?</span>
+                    </p>
+                    <button onclick="showmore()" id="myBtn" class="btn btn-common btn-md">Read more</button>
                 </div>
             </div>
-        </div>
         </div>
     </div>
-    </br>
-    <section class="index-howto-alt py-3">
-        <div class="container">
-            <h2 class="text-center mb-3">Simple Flow to sell your Tire/wheel</h2>
-            <hr class="divider" style="position:relative;">
-            <div class="psd-line pos-rel" style="position:relative;">
-            
-                <div class="row align-items-center">
-                
-                    <div class="col-12 col-sm-6 d-flex flex-row justify-content-center align-items-center intro-card-1 p-5"><img class="howto-img" src="{% static 'assets/img/1-02.png' %}">
-                        <h2 class="grey-text d-none">Üyelik Tipini Seçerek Kayıt Olun</h2>
-                    </div>
-                    <div class="col-12 col-sm-6 d-flex flex-column justify-content-center p-5 psd-left1">
-                        <p class="m-0 text-center text-sm-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mi nibh, tristique et sagittis in, aliquet id metus. In eleifend et dolor eget tincidunt.<br></p>
-                    </div>
-                </div>
-                <div class="row flex-column-reverse align-items-center flex-sm-row">
-                    <div class="col-12 col-sm-6 d-flex flex-column justify-content-center p-5 psd-right1">
-                        <p class="m-0 text-center text-sm-right">Etiam eget nulla ut elit placerat commodo. Etiam vestibulum consectetur quam eget pretium. Sed in suscipit augue. Nunc venenatis porttitor enim a hendrerit.&nbsp;<br></p>
-                    </div>
-                    <div class="col-12 col-sm-6 d-flex flex-row justify-content-center align-items-center intro-card-2 p-5"><img class="howto-img" src="{% static 'assets/img/1-01.png' %}">
-                        <h2 class="grey-text d-none">Neye İhtiyacınız Varsa Belirtin</h2>
-                    </div>
-                </div>
-                <div class="row align-items-center">
-                    <div class="col-12 col-sm-6 d-flex flex-row justify-content-center align-items-center intro-card-3 p-5"><img class="howto-img" src="{% static 'assets/img/1-04.png'%}">
-                        <h2 class="grey-text d-none">Size Uygun Teklifi Seçin</h2>
-                    </div>
-                    <div class="col-12 col-sm-6 d-flex flex-column justify-content-center p-5 psd-left2">
-                        <p class="m-0 text-center text-sm-left">Integer cursus tincidunt mauris, imperdiet bibendum augue dapibus tempor. Pellentesque rhoncus neque erat. Nam at metus urna. Nullam rhoncus odio eu sem fermentum dictum.<br></p>
-                    </div>
-                </div>
-                <div class="row flex-column-reverse align-items-center flex-sm-row">
-                    <div class="col-12 col-sm-6 d-flex flex-column justify-content-center p-5 psd-right2">
-                        <p class="m-0 text-center text-sm-right">Cras iaculis, eros sit amet congue tincidunt, justo magna iaculis urna, quis aliquet tortor ipsum et purus. Vivamus gravida tristique velit. Sed non mi at massa dignissim placerat.<br></p>
-                    </div>
-                    <div class="col-12 col-sm-6 d-flex flex-row justify-content-center align-items-center intro-card-4 p-5"><img class="howto-img" src="{% static 'assets/img/1-03.png' %}">
-                        <h2 class="grey-text d-none">Piyasa Analizi Yaptırın</h2>
-                    </div>
-                    </hr>
+</section>
+<script type="text/javascript">
+function showmore() {
+  var dots1 = document.getElementById("dots");
+  var moreText1 = document.getElementById("more");
+  var btnText1 = document.getElementById("myBtn");
+
+  if (dots1.style.display === "none") {
+    dots1.style.display = "inline";
+    btnText1.innerHTML = "Read more";
+    moreText1.style.display = "none";
+  } else {
+    dots1.style.display = "none";
+    btnText1.innerHTML = "Read less";
+    moreText1.style.display = "inline";
+  };
+</script>
+<style>
+    #more {display: none;}
+</style>
+<section id="about" class="">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-xs-12">
+                <div class="about-wrapper">
+                    <h2 class="intro-title">How does TOR help the tenants?</h2>
+                    <p class="intro-desc">
+                        You cannot prevent a tire from being worn out but you can definitely protect yourself and your
+                        family from being exposed to a deadly risk of driving on bad tires. <span id="dots1">...</span><span id="more1">The sole reason why Tires On
+                        Rent was found was to make life easier for those people who are on a tight budget and cannot
+                        afford to spend hefty amounts on new tires. So, if you fall into this category, you're at the
+                        right spot. Whether you need high quality tires on a short-term basis or for a long-term usage,
+                        TOR has got you covered with hundreds and thousands of listings from all buyers of all kinds of
+                        vehicles.
+                        So, rent tires, drive safe and do your wallet a favour!
+                    </span></p>
+                    <button onclick="myFunction1()" id="myBtn1" class="btn btn-common btn-md">Read more</button>
                 </div>
             </div>
+            <div class="col-md-6 col-lg-6 col-xs-12">
+                <img class="img-fluid" src="{% static 'assets/img/about/about.png'%}" alt="">
+            </div>
         </div>
-    </section>
+    </div>
+</section>
+<script>
+function myFunction1() {
+  var dots = document.getElementById("dots1");
+  var moreText = document.getElementById("more1");
+  var btnText = document.getElementById("myBtn1");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read more";
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Read less";
+    moreText.style.display = "inline";
+  }
+}
+</script>
+<script>
+// Wrap every letter in a span
+var textWrapper = document.querySelector('.ml6 .letters');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml6 .letter',
+    translateY: ["1.1em", 0],
+    translateZ: 0,
+    duration: 750,
+    delay: (el, i) => 50 * i
+  }).add({
+    targets: '.ml6',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
+</script>
+<style>
+    #more1 {display: none;}
+    .ml6 {
+  position: relative;
+  font-weight: 900;
+  font-size: 3.3em;
+}
+
+.ml6 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.2em;
+  padding-right: 0.05em;
+  padding-bottom: 0.1em;
+  overflow: hidden;
+  color:#003e6b;
+  font-size: 20px;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
+}
+
+.ml6 .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+</style>
+                        
+<section id="about" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-xs-12">
+                <div class="about-wrapper">
+                    <h2 class="intro-title">How does it work?</h2>
+                    <h5>Convenience is something that we all desire and that is why we have simplified the process of
+                        renting tires into mere 5 steps.</h5>
+                    
+                        
+                        <h4 class="ml6">
+                          <span class="text-wrapper">
+                            <span class="letters">Post the advertisement</span>
+                          </span>
+                        </h4>
+                        <h4 class="ml6">
+                          <span class="text-wrapper">
+                            <span class="letters">Promote the ad</span>
+                          </span>
+                        </h4>
+                        <h4 class="ml6">
+                          <span class="text-wrapper">
+                            <span class="letters">Accept an offer</span>
+                          </span>
+                        </h4>
+                        <h4 class="ml6">
+                          <span class="text-wrapper">
+                            <span class="letters">Sign the rental agreement</span>
+                          </span>
+                        </h4>
+                        <h4 class="ml6">
+                          <span class="text-wrapper">
+                            <span class="letters">Receive payments</span>
+                          </span>
+                        </h4>
+                        
+                    
+                    </br>
+                    </p>
+                    <p>No extra or hidden taxes or service charges are incurred. You get exactly what you have mentioned
+                        in the agreement. For customers, all they need to do is browse the hundreds and thousands of ads
+                        on our platform, select one which suits them the best, send an offer to the owner and drive
+                        around with their new tires. Isn't it easy? It is!</p>
+                    
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xs-12">
+                <img class="img-fluid" src="{% static 'assets/img/about/about.png'%}" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script>
+// Wrap every letter in a span
+var textWrapper = document.querySelector('.ml6 .letters');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml6 .letter',
+    translateY: ["1.1em", 0],
+    translateZ: 0,
+    duration: 750,
+    delay: (el, i) => 50 * i
+  }).add({
+    targets: '.ml6',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
+  
+</script>
+
+    
+    
 
 {% endblock %}
-{% block scripts %}
-{% endblock %}
+
