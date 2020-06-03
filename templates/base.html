@@ -22,10 +22,19 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'assets/css/owl.carousel.css' %} ">
 
-    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/main.css' %} ">
+    <link rel="stylesheet" type="text/css" href="/media/main.css ">
 
     <link rel="stylesheet" type="text/css" href="{% static 'assets/css/responsive.css' %} ">
-    
+    <style>
+    .page-header .breadcrumb-wrapper .breadcrumb {
+    font-size: 14px;
+    color: #eeeeef;
+    border-radius: 0;
+    background: 0 0;
+    padding: 5px 0;
+    z-index: 1;
+}
+    </style>
     <script type="text/javascript">
         $(document).ready(function(){
 
@@ -115,8 +124,51 @@
 
         });
       </script>
-    
+<style>
+    .navbar-brand img {
+    width: 100px;
+    }
+    .navbar-expand-lg .navbar-nav .nav-link {
+    font-size: 18px;
+    font-family: 'Proxima Nova Soft', 'Helvetica Neue', sans-serif;
+    color: #0056b3;
+    }
+    .btn {
+        font-size: 18px;
+        font-family: 'Proxima Nova Soft', 'Helvetica Neue', sans-serif;
+    }
+    p {
+        font-weight: 400;
+        color: black;
+        font-family: 'Proxima Nova Soft', 'Helvetica Neue', sans-serif;
+        margin: 0px;
+        font-size: 18px;
+    }
+    .intro-title {
+    font-size: 30px;
+    line-height: 36px;
+    margin-bottom: 20px;
+    }
+    a{
+        color:black;
+        font-family: 'Proxima Nova Soft', 'Helvetica Neue', sans-serif;
+        font-size: 18px;
+    }
+    .page-header{
+        padding: 25px 0 25px;
+        position: relative;
+        font-family: 'Proxima Nova Soft', 'Helvetica Neue', sans-serif;
+    }
+    .jumbotron {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #e9ecef;
+    border-radius: .3rem;
+    height: 600px;
+}
+</style>
 </head>
+
 <body>
 
 <header id="header-wrap">
@@ -130,7 +182,7 @@
  <!-- CSS Styles -->
     <link href="https://fonts.googleapis.com/css?family=Telex" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'subscriptions/styles.css' %}">
-    {% block subscriptions_styles %}{% endblock %}
+    {% block 0 %}{% endblock %}
 
 
 
@@ -160,16 +212,11 @@
                     <div class="widget">
                         <h3 class="block-title">Quick Link</h3>
                         <ul class="menu">
-                            <li><a href="#">- About Us</a></li>
+                            <li><a href="{% url 'core:home' %}">- Home</a></li>
+                            <li><a href="{% url 'core:about' %}">- About Us</a></li>
+                            <li><a href="{% url 'core:contact' %}">- Contact</a></li>
+                            <li><a href="{% url 'core:faqs' %}">- FAQ's</a></li>
                             <li><a href="#">- Blog</a></li>
-                            <li><a href="#">- Events</a></li>
-                            <li><a href="#">- Shop</a></li>
-                            <li><a href="#">- FAQ's</a></li>
-                            <li><a href="#">- About Us</a></li>
-                            <li><a href="#">- Blog</a></li>
-                            <li><a href="#">- Events</a></li>
-                            <li><a href="#">- Shop</a></li>
-                            <li><a href="#">- FAQ's</a></li>
                         </ul>
                     </div>
                 </div>
@@ -205,7 +252,6 @@
             </div>
         </div>
     </div>
-
 </footer>
 
 
@@ -213,10 +259,12 @@
     <i class="lni-chevron-up"></i>
 </a>
 
-<div id="preloader">
+<!--<div id="preloader">
+    <div class="loader" id="loader-1"></div>
+</div>-->
+<div id="preloader" style="display: none;">
     <div class="loader" id="loader-1"></div>
 </div>
-
 
 <script src="{% static 'assets/js/jquery-min.js' %} "></script>
 <script src="{% static 'assets/js/popper.min.js' %} "></script>

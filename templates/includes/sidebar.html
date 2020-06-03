@@ -5,9 +5,12 @@
         <div class="sidebar-box">
             <div class="user">
                 <figure>
-                    <a href="#">
-                        <img class="img-fluid" src="{% static 'assets/img/avatar.png' %}" alt="">
-                    </a>
+                    
+                    {% if user.profile_image %}
+                      <img class="img-fluid" src="{{ user.profile_image.url }}" width="240px">
+                  {% else %}
+                      <img class="img-fluid" src="{% static 'assets/img/avatar.png' %}" width="240px">
+                  {% endif %}
                 </figure>
                 <div class="usercontent">
                     <h3>Hello {{ request.user.username }}!</h3>

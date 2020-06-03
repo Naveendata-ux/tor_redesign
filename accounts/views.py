@@ -6,6 +6,8 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, FormView, RedirectView
 from .forms import *
 from django.template.response import TemplateResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import TemplateView, CreateView
 
 
 class RegisterView(CreateView):
@@ -17,7 +19,8 @@ class RegisterView(CreateView):
     extra_context = {
         'title': 'Register'
     }
-
+    
+        
     def dispatch(self, request, *args, **kwargs):
         if self.request.user.is_authenticated:
             return HttpResponseRedirect(self.get_success_url())
@@ -36,6 +39,7 @@ class RegisterView(CreateView):
         if user_form.is_valid():
             user = user_form.save(commit=False)
             password = user_form.cleaned_data.get("password1")
+            group = user_form.cleaned_data.get("groups")
             user.set_password(password)
             user.save()
             return redirect('accounts:login')
@@ -78,16 +82,72 @@ class LoginView(FormView):
     def form_invalid(self, form):
         return self.render_to_response(self.get_context_data(form=form))
         
-def Profileupdate(request):
-    form = ProfileUpdate(request.POST or None)
-    if form.is_valid():
-       password = form.cleaned_data.get("password")
-       email = form.cleaned_data.get("email")
-       first_name = form.cleaned_data.get("first_name")
-       phone_number = form.cleaned_data.get("phone_number")
-       user = auth.authenticate(request=request, user_type=user_type, first_name=first_name, email=email, phone_number=phone_number, password=password)
-    ctx = {"form": form}
-    return TemplateResponse(request, "users/profile.html", ctx)
+
+class ProfileView(LoginRequiredMixin, TemplateView):
+    template_name = 'users/profile.html'
+    
+class InsuranceInfoView(LoginRequiredMixin, TemplateView):
+    questions_form = QuestionsForm
+    template_name = 'users/profile-update.html'
+    
+    def post(self, request):
+
+        post_data = request.POST or None
+        file_data = request.FILES or None
+        
+        questions_form = QuestionsForm(post_data, file_data)
+        
+        if questions_form.is_valid() :
+            questions_form.save()
+            messages.error(request, 'Your profile is updated successfully!')
+            return HttpResponseRedirect(reverse_lazy('accounts:profile'))
+
+        context = self.get_context_data(
+                                        
+                                        questions_form=questions_form,
+                                    )
+
+        return self.render_to_response(context)     
+
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)
+
+
+class ProfileUpdateView(LoginRequiredMixin, TemplateView):
+    user_form = UserForm
+    profile_form = ProfileForm
+    address_form = AddressForm
+    template_name = 'users/profile-update.html'
+
+    def post(self, request):
+
+        post_data = request.POST or None
+        file_data = request.FILES or None
+
+        user_form = UserForm(post_data, instance=request.user)
+        profile_form = ProfileForm(post_data, file_data, instance=request.user)
+        address_form = AddressForm(post_data, file_data, instance=request.user)
+        
+        if user_form.is_valid() and profile_form.is_valid() and address_form.is_valid() :
+            user_form.save()
+            profile_form.save()
+            address_form.save()
+            
+            messages.error(request, 'Your profile is updated successfully!')
+            return HttpResponseRedirect(reverse_lazy('accounts:profile'))
+
+        context = self.get_context_data(
+                                        user_form=user_form,
+                                        profile_form=profile_form,
+                                        address_form=address_form,
+                                        
+                                    )
+
+        return self.render_to_response(context)     
+
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)
+
 
 class LogoutView(RedirectView):
     """

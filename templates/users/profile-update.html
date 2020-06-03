@@ -1,0 +1,230 @@
+{% extends "users/dashboard.html" %}
+{% load static %}
+{% load crispy_forms_tags %} 
+{% block content %}
+<style>
+   #app {
+   background: #fff;
+   border-radius: 4px;
+   padding: 20px;
+   transition: all 0.2s;
+   }
+   li {
+   margin: 8px 0;
+   }
+   h2 {
+   font-weight: bold;
+   margin-bottom: 15px;
+   }
+   del {
+   color: rgba(0, 0, 0, 0.3);
+   }
+</style>
+<style>
+body {
+    background: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-font-smoothing: subpixel-antialiased;
+    color: #000;
+    line-height: 25px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    overflow-x: hidden;
+}
+h1, h2, h3, h4 {
+    font-size: 27px;
+    color: #003e6b;
+    text-align: center;
+    font-weight: 700;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
+}
+</style>
+<script type="text/javascript">
+   function yesnoCheck() {
+       if (document.getElementById('yesCheck').checked) {
+           document.getElementById('ifYes').style.display = 'block';
+       }
+       else document.getElementById('ifYes').style.display = 'none';
+   
+   }
+   
+</script>
+<script type="text/javascript">
+   function yesnoCheck2() {
+       if (document.getElementById('yesCheck2').checked) {
+           document.getElementById('ifYes2').style.display = 'block';
+       }
+       else document.getElementById('ifYes2').style.display = 'none';
+   
+   }
+   
+</script>
+<script type="text/javascript">
+   function yesnoCheck3() {
+       if (document.getElementById('yesCheck3').checked) {
+           document.getElementById('ifYes3').style.display = 'block';
+       }
+       else document.getElementById('ifYes3').style.display = 'none';
+   
+   }
+   
+</script>
+<!-- Begin Page Content -->
+<div class="page-header" style="background: url('{% static 'assets/img/banner1.jpg' %}');">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="breadcrumb-wrapper">
+               <h2 class="product-title">Profile Update</h2>
+               <ol class="breadcrumb">
+                  <li><a href="{% url 'core:home' %}">Home /</a></li>
+                  <li class="current">Profile Update</li>
+               </ol>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- Begin Page Content -->
+<div id="content" class="section-padding">
+   <div class="container">
+      <div class="row">
+         {% include 'includes/sidebar.html' %}
+         <!-- Page Heading -->
+        
+         <div class="col-sm-12 col-md-8 col-lg-9">
+            <div class="row page-content">
+               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <form method="post" action="{% url 'accounts:profile-update' %}" enctype="multipart/form-data">
+                     <div class="container-fluid">
+                        {% csrf_token %}
+                        {{user_form | crispy}}
+                        {{profile_form | crispy}}
+                        {{address_form | crispy}}
+                     </div>
+                     <button type="submit" class="btn btn-common">Update</button>
+                  </form>
+               </div>
+            </div>
+         </div>
+      
+      </div>
+      </br>
+      <div class="card">
+        <div class ="card-body">
+         <div class="col-sm-12 col-md-8 col-lg-9">
+            <div class="row page-content">
+               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                     <form method="post" action="{% url 'accounts:insurance-info' %}" enctype="multipart/form-data">
+                  <h4 style="color:#003e6b;" ><strong>Insurance Info </strong></h4>
+                  <div class="container">
+                     <div id="div_id_is_student" class="form-group">
+                        <label for="id_is_student_0" class=" requiredField">
+                        Are you student<span class="asteriskField">*</span> </label> 
+                        <div class="">
+                           Yes <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck"> No <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck"><br>
+                        </div>
+                     </div>
+                  </div>
+                  <div id="ifYes" style="display:none">
+                     <div id="div_id_student" class="form-group">
+                        <label for="id_student" class=" requiredField">
+                        Student ID<span class="asteriskField">*</span> </label> 
+                        <div class=""> <input type="text" name="student" class="textinput textInput form-control" required id="id_student"> </div>
+                     </div>
+                     <div id="div_id_student_id" class="form-group">
+                        <label for="id_student_id" class=" requiredField">
+                        Student id<span class="asteriskField">*</span> </label> 
+                        <div class=""> <input type="file" name="student_id" accept="image/*" class="clearablefileinput form-control-file" required id="id_student_id"> </div>
+                     </div>
+                  </div>
+                  <div id="div_id_is_senior_citizen" class="form-group">
+                     <label for="id_is_senior_citizen_0" class=" requiredField">
+                     Are you Senior Citizen<span class="asteriskField">*</span> </label> 
+                     <div class="">
+                        Yes <input type="radio" onclick="javascript:yesnoCheck2();" name="yesno2" id="yesCheck2"> No <input type="radio" onclick="javascript:yesnoCheck2();" name="yesno2" id="noCheck2"><br>
+                     </div>
+                  </div>
+            </div>
+            <div id="ifYes2" style="display:none">
+            <div id="div_id_senior" class="form-group">
+            <label for="id_senior" class=" requiredField">
+            Senior Citizen Age<span class="asteriskField">*</span> </label> 
+            <div class=""> <input type="text" name="senior" class="textinput textInput form-control" required id="id_senior"> </div>
+            </div>
+            <div id="div_id_senior_id" class="form-group">
+            <label for="id_senior_id" class=" requiredField">
+            Senior id<span class="asteriskField">*</span> </label> 
+            <div class=""> <input type="file" name="senior_id" accept="image/*" class="clearablefileinput form-control-file" required id="id_senior_id"> </div>
+            </div>
+            </div>
+            <div id="div_id_is_ersm" class="form-group">
+            <label for="id_is_ersm_0" class=" requiredField">
+            Do you have Emergency Roadside Service Membership ?<span class="asteriskField">*</span> </label> 
+            <div class="">
+            Yes <input type="radio" onclick="javascript:yesnoCheck3();" name="yesno3" id="yesCheck3"> No <input type="radio" onclick="javascript:yesnoCheck3();" name="yesno3" id="noCheck3"><br> 
+            </div>
+            </div>
+         </div>
+         <div id="ifYes3" style="display:none">
+         <div id="div_id_ersm_yes_questions" class="form-group">
+         <label for="id_ersm_yes_questions_0" class=" requiredField">
+         Which service provider?<span class="asteriskField">*</span> </label> 
+         <div class="">
+         <div class="form-check"> <input type="radio" class="form-check-input" name="ersm_yes_questions" id="id_ersm_yes_questions_1" value="CAA" > <label for="id_ersm_yes_questions_1" class="form-check-label">
+         CAA
+         </label> 
+         </div>
+         <div class="form-check"> <input type="radio" class="form-check-input" name="ersm_yes_questions" id="id_ersm_yes_questions_2" value="CandianTire" > <label for="id_ersm_yes_questions_2" class="form-check-label">
+         CandianTire
+         </label> 
+         </div>
+         <div class="form-check"> <input type="radio" class="form-check-input" name="ersm_yes_questions" id="id_ersm_yes_questions_3" value="others" > <label for="id_ersm_yes_questions_3" class="form-check-label">
+         Others
+         </label>
+         </div> 
+         </div>
+         </div>
+         </div>
+         <div id="ifYes3" style="display:none">
+         <div id="div_id_ersm_no_questions" class="form-group">
+         <label for="id_ersm_no_questions_0" class=" requiredField">
+         Would you be interested in ERS?<span class="asteriskField">*</span> </label> 
+         <div class="">
+         <div class="form-check"> <input type="radio" class="form-check-input" name="ersm_no_questions" id="id_ersm_no_questions_1" value="True" > <label for="id_ersm_no_questions_1" class="form-check-label">
+         Yes
+         </label> 
+         </div>
+         <div class="form-check"> <input type="radio" class="form-check-input" name="ersm_no_questions" id="id_ersm_no_questions_2" value="False" > <label for="id_ersm_no_questions_2" class="form-check-label">
+         No
+         </label> 
+         </div>
+         </div>
+         </div>
+         </div>
+         <button type="submit" class="btn btn-common">Update</button>
+         </form>
+               </div>
+            </div>
+         </div>
+      </div>
+      
+               
+      </div>
+   </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script type='text/javascript'></script>
+<!-- /.container-fluid -->
+{% endblock content %}
