@@ -20,11 +20,11 @@ def searchposts(request):
             context={'results': results,
                      'submitbutton': submitbutton}
 
-            return render(request, 'search/results.html', context)
+            return render(request, 'listings.html', context)
 
         else:
-            return render(request, 'search/results.html')
+            return render(request, 'listings.html')
 
     else:
-        return render(request, 'search/results.html')
+        return render(request, 'listings.html')
 

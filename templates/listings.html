@@ -77,12 +77,12 @@
                   </li>
                </ul>
             </div>
-            {% if results %}
+            
             <div class="adds-wrapper">
                <div class="tab-content">
                   <div id="grid-view" class="tab-pane fade active show">
                      <div class="row">
-                     {% for ad in results %}
+                     
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" v-for="ad in ads">
                            <div class="featured-box">
                               <figure>
@@ -118,12 +118,12 @@
                                     Details</a>
                                  </div>
                               </div>
-                          {% endfor %}
+                          
                            </div>
                         </div>
                      </div>
                   </div>
-                 {% endif %}
+                 
                   <div id="list-view" class="tab-pane fade">
                      <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" v-for="ad in ads">
