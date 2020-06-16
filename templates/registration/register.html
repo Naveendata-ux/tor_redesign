@@ -1,7 +1,23 @@
 {% extends 'base.html' %}
-
+{%load crispy_forms_tags%}
 {% block content %}
-
+<style>
+   body {
+    background: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    font-family: open sans, sans-serif;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-font-smoothing: subpixel-antialiased;
+    color: #000;
+    line-height: 16px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    overflow-x: hidden;
+}
+</style>
     <div class="page-header" style="background: url(assets/img/banner1.jpg);">
         <div class="container">
             <div class="row">
@@ -27,54 +43,13 @@
                         <h3>
                             Register
                         </h3>
-                        {% if form.errors %}
-                            {% for field in form %}
-                                {% for error in field.errors %}
-                                    <div class="alert alert-danger alert-dismissable">
-                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                        <strong>{{ error|escape }}</strong>
-                                    </div>
-                                {% endfor %}
-                            {% endfor %}
-                            {% for error in form.non_field_errors %}
-                                <div class="alert alert-danger alert-dismissable">
-                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                    <strong>{{ error|escape }}</strong>
-                                </div>
-                            {% endfor %}
-                        {% endif %}
-                        <form class="login-form" method="post">
+                        
+                        <form action="{% url 'accounts:register' %}"class="login-form" method="post">
                             {% csrf_token %}
-                            <div class="form-group">
-                                <div class="input-icon">
-                                    <i class="lni-user"></i>
-                                    <input type="text" id="Name" class="form-control" name="username"
-                                           placeholder="Username">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-icon">
-                                    <i class="lni-envelope"></i>
-                                    <input type="text" id="sender-email" class="form-control" name="email"
-                                           placeholder="Email Address">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-icon">
-                                    <i class="lni-lock"></i>
-                                    <input type="password" name="password1" class="form-control" placeholder="Password">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-icon">
-                                    <i class="lni-lock"></i>
-                                    <input type="password" name="password2" class="form-control"
-                                           placeholder="Retype Password">
-                                </div>
-                            </div>
+                            {{form|crispy}}
                             <div class="form-group mb-3">
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" required class="custom-control-input" id="checkedall">
+                                    <input type="checkbox"  class="custom-control-input" id="checkedall">
                                     <label class="custom-control-label" for="checkedall">By registering, you accept our
                                         Terms & Conditions</label>
                                 </div>
