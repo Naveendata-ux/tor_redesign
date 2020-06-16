@@ -9,45 +9,26 @@ from django.template.response import TemplateResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView, CreateView
 
+def signup(request):
+    registered = False
 
-class RegisterView(CreateView):
-    model = User
-    form_class = UserRegistrationForm
-    template_name = 'accounts/register.html'
-    success_url = '/'
-
-    extra_context = {
-        'title': 'Register'
-    }
-    
-        
-    def dispatch(self, request, *args, **kwargs):
-        if self.request.user.is_authenticated:
-            return HttpResponseRedirect(self.get_success_url())
-        return super().dispatch(self.request, *args, **kwargs)
-
-    def get_success_url(self):
-        return self.success_url
-
-    def post(self, request, *args, **kwargs):
-        if User.objects.filter(email=request.POST['email']).exists():
-            messages.warning(request, 'This email is already taken')
-            return redirect('accounts:register')
-
-        user_form = UserRegistrationForm(data=request.POST)
-
-        if user_form.is_valid():
-            user = user_form.save(commit=False)
-            password = user_form.cleaned_data.get("password1")
-            group = user_form.cleaned_data.get("groups")
-            user.set_password(password)
+    if request.method == 'POST':
+        form = SignUpForm(data=request.POST)
+       
+        if form.is_valid() :
+            user = form.save()
+            user.set_password(user.password)
             user.save()
-            return redirect('accounts:login')
+            registered = True
+            return render(request,'accounts/login.html')
         else:
-            print(user_form.errors)
-            return render(request, 'accounts/register.html', {'form': user_form})
-
-
+            print(form.errors)
+    else:
+        form = SignUpForm()
+        
+    return render(request,'accounts/register.html',
+                          {'form':form, 
+                           'registered':registered})
 class LoginView(FormView):
     success_url = '/'
     form_class = UserLoginForm

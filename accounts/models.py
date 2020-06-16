@@ -91,6 +91,11 @@ class Address(models.Model):
         """Return a new instance of the same address."""
         return Address.objects.create(**self.as_data())
 
+Type= [
+    ('Business Account','Business Account'),
+    ('Personal Account','Personal Account'),
+]
+
 class User(AbstractUser):
     username = models.CharField(
         'username',
@@ -122,7 +127,7 @@ class User(AbstractUser):
     )
     phone_number = models.CharField(max_length=12, blank=True, verbose_name="Contact number")
     profile_image = models.ImageField(verbose_name="User image", upload_to="user_images", blank=True)
-    #user_type = models.CharField(_('name'), max_length=150, unique=True)
+    Account_type = models.CharField(max_length=50, choices=Type)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["username"]
@@ -134,10 +139,7 @@ class User(AbstractUser):
         
    
         
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        User.objects.create(user=instance)
+
         
 class Questions(models.Model):
     STUDENT_CHOICES = ((True, 'Yes'), (False, 'No'))

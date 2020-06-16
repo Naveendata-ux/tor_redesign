@@ -57,13 +57,22 @@
                     <li class="nav-item">
                         <a href="{% url 'accounts:register' %}" class="nav-link"><i class="lni-pencil"></i>Register</a>
                     </li>
+                    
                 {% endif %}
             </ul>
+            {% if request.user.is_authenticated %}
             <div class="post-btn">
-                <a class="btn btn-common" href="{% url 'ads:category' %}">
+                <a class="btn btn-common" href="{% url 'ads:crate.ad' %}">
                     <i class="lni-pencil-alt"></i> Post an Ad
                 </a>
             </div>
+             {% else %}
+             <div class="post-btn">
+                <a class="btn btn-common" href="{% url 'accounts:login' %}">
+                    <i class="lni-pencil-alt"></i> Post an Ad
+                </a>
+            </div>
+            {% endif %}
         </div>
     </div>
 
@@ -81,6 +90,11 @@
             <li>
                 <a href="{% url 'accounts:logout' %}">Logout</a>
             </li>
+            <li>
+            <a class="btn btn-common " href="{% url 'ads:crate.ad' %}">
+                <i class="lni-pencil-alt"></i> Post Ad
+            </a>
+        </li>
         {% else %}
             <li>
                 <a href="{% url 'accounts:login' %}"><i class="lni-lock"></i> Log In</a>
@@ -88,12 +102,13 @@
             <li>
                 <a href="{% url 'accounts:register' %}" ><i class="lni-pencil"></i>Register</a>
             </li>
-        {% endif %}
-        <li>
-            <a class="btn btn-common " href="{% url 'ads:crate.ad' %}">
-                <i class="lni-pencil-alt"></i> Post an Ad
+            <li>
+            <a class="btn btn-common " href="{% url 'accounts:login' %}">
+                <i class="lni-pencil-alt"></i> Post Ad
             </a>
         </li>
+        {% endif %}
+        
     </ul>
 
 </nav>

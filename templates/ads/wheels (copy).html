@@ -1,0 +1,167 @@
+{% extends "users/dashboard.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+body {
+    background: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-font-smoothing: subpixel-antialiased;
+    color: #000;
+    line-height: 25px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    overflow-x: hidden;
+}
+h1, h2, h3, h4 {
+    font-size: 27px;
+    color: #003e6b;
+    text-align: center;
+    font-weight: 700;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
+}
+
+
+</style>
+<div class="page-header" style="background: url('{% static 'assets/img/banner1.jpg' %}');">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="breadcrumb-wrapper">
+               <h2 class="product-title">Post you Ads</h2>
+               <ol class="breadcrumb">
+                  <li><a href="{% url 'core:home' %}">Home /</a></li>
+                  <li class="current">Post you Ads</li>
+               </ol>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div id="content" class="section-padding">
+   <div class="container">
+      <div class="row">
+         {% include 'includes/sidebar.html' %}
+         <div class="col-sm-12 col-md-8 col-lg-9">
+            <div class="row page-content">
+               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  {% if form.errors %}
+                  {% for error in form.non_field_errors %}
+                  <div class="alert alert-danger alert-dismissable">
+                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                     <strong>{{ error|escape }}</strong>
+                  </div>
+                  {% endfor %}
+                  {% endif %}
+                  <div class= "col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                     <h2>Post Your Ad</h2>
+                     <form  action="{% url 'ads:wheelsad' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="inner-box">
+                           <div class="dashboard-box">
+                              <h2 class="dashbord-title">Ad Detail</h2>
+                           </div>
+                           
+                           <div class="form-group">
+                              <div class="input-icon">
+                                 {{ ad.Ad_title.errors }}
+                                 <label  for="{{ ad.Ad_title.id_for_Ad_title }}">Ad Title</label>
+                                 <input type="text"  class="form-control" name="Ad_title"
+                                    placeholder="Ad Title" value="{{ ad.Ad_title.value|default:'' }}">
+                              </div>
+                           </div>
+                          
+                           <div class="form-group">
+                              <div class="input-icon">
+                              {{ wheels.Wheels_Brand.errors }}
+                              <label  for="{{ wheels.Wheels_Brand.id_for_Wheels_Brand }}">Wheels Brand:</label>
+                              <select type="text"  class="form-control" name="Wheels_Brand"
+                                 placeholder="Tire Condition" value="{{ wheels.Wheels_Brand.value|default:'' }}">
+                                 <option id="null">Select Wheels Brand</option>
+                                 <option value="Apollo Wheels">Apollo Wheels</option>
+                                 <option value="Good Year Wheels">Good Year Wheels</option>
+                              </select>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                              <div class="input-icon">
+                              {{ wheels.Width.errors }}
+                              <label  for="{{ wheels.Width.id_for_Width }}">Width</label>
+                              <select type="number"  class="form-control" name="Width"
+                                 placeholder="Width" value="{{ wheels.Width.value|default:'' }}">
+                                 <option id="null">Select Width</option>
+                                 <option value="10">10</option>
+                                 <option value="11">11</option>
+                                 <option value="12">12</option>  
+                              </select>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                              <div class="input-icon">
+                              {{ wheels.Ratio.errors }}
+                              <label  for="{{ wheels.Ratio.id_for_Ratio }}">Aspect Ratio</label>
+                              <select type="number"  class="form-control" name="Ratio"
+                                 placeholder="Ratio" value="{{ wheels.Ratio.value|default:'' }}">
+                                 <option id="null">Select Aspect_Ratio</option>
+                                 <option value="20">20</option>
+                                 <option value="21">21</option>
+                                 <option value="22">22</option>  
+                              </select>
+                           </div>
+                        </div>
+                         <div class="form-group">
+                              <div class="input-icon">
+                              {{ wheels.Seasonality.errors }}
+                              <label  for="{{ wheels.Seasonality.id_for_Seasonality }}">Seasonality </label>
+                              <select type="text"  class="form-control" name="Seasonality"
+                                 placeholder="Seasonality" value="{{ wheels.Seasonality.value|default:'' }}">
+                                 <option id="null">Select Seasonality</option>
+                                 <option value="Summer">Summer</option>
+                                 <option value="All Season">All Season</option>
+                                 <option value="Winter">Winter</option>  
+                              </select>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                              <div class="input-icon">
+                                 {{ ad.location.errors }}
+                                 <label  for="{{ ad.location.id_for_location }}">Pick up Address</label>
+                                 <input type="text"  class="form-control" name="location"
+                                    placeholder="location" value="{{ ad.location.value|default:'' }}">
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <div class="input-icon">
+                                 {{ ad.offer_price.errors }}
+                                 <label  for="{{ ad.offer_price.id_for_offer_price }}">Offer Price</label>
+                                 <input id='chatinput2' type="number"  class="form-control" name="offer_price"
+                                    placeholder="Offer price" value="{{ ad.offer_price.value|default:'' }}">
+                              </div>
+                           <div class="form-group">
+                              <div class="input-icon">
+                                 {{ ad.description.errors }}
+                                 <label  for="{{ ad.description.id_for_description }}">Description</label>
+                                 <textarea type="text"  class="form-control" name="description"
+                                    placeholder="Description" value="{{ ad.description.value|default:'' }}"></textarea>
+                              </div>
+                           </div>
+                           {{image}}
+                       
+                        
+                        <input type="submit" name="" class="btn btn-common" value="POST AD">
+                     </form>
+                  </div>
+               </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+</div>
+{% endblock %}

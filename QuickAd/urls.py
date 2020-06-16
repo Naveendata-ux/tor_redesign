@@ -7,16 +7,16 @@ from search.urls import urlpatterns as search_urls
 from django_private_chat import urls as django_private_chat_urls
 import subscriptions
 from django.contrib.auth import views as auth_views
-
+from .views import user_dialogs
 
 urlpatterns = [
     path('api/', include('core.api.urls')),
     path('torca/', admin.site.urls),
-    path('', include('accounts.urls')),
+    path('auth/', include('accounts.urls')),
     url('^', include('django.contrib.auth.urls')),
     path('ads/', include('ads.urls')),
     path('users/', include('users.urls')),
-    path('admindashboard/', include('admindashboard.urls')),
+    path('messages/', user_dialogs, name="user_dialogs_url"),
     path('', include('core.urls')),
     path('categories', include('category.urls')),
     url(r"^search/", include((search_urls, "search"), namespace="search")),

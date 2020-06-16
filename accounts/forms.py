@@ -7,45 +7,23 @@ from .models import User, Address, Questions
 from django.forms import ModelForm
 
 
-class UserRegistrationForm(UserCreationForm):
-    
-    UserType = forms.ModelChoiceField(queryset=Group.objects.all(),
-                                   required=True)
-    
-    
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs.update({'placeholder': 'Enter Username'})
-        self.fields['email'].widget.attrs.update({'placeholder': 'Enter Email'})
-        self.fields['UserType'].widget.attrs.update({'placeholder': 'Enter UserType'})
-        self.fields['password1'].widget.attrs.update({'placeholder': 'Enter password'})
-        self.fields['password2'].widget.attrs.update({'placeholder': 'Repeat your password'})
-        # self.fields['email'].widget.attrs['placeholder'] = self.fields['email'].label or 'email@address.nl'
 
+class SignUpForm(forms.ModelForm):
+    password=forms.CharField(widget=forms.PasswordInput())
+    confirm_password=forms.CharField(widget=forms.PasswordInput())
     class Meta:
-        model = User
-        fields = ("username",
-                  "email",
-                  "UserType",
-                  "password1",
-                  "password2",
-                  )
+        model=User
+        fields=('Account_type','username','email','password')
 
-    def clean_username(self):
-        username = self.cleaned_data['username']
-        print(username)
-        if ' ' in username:
-            raise forms.ValidationError("Username can't contain spaces.")
-        return username
+    def clean(self):
+        cleaned_data = super(SignUpForm, self).clean()
+        password = cleaned_data.get("password")
+        confirm_password = cleaned_data.get("confirm_password")
 
-    def save(self, commit=True):
-        user = super(UserCreationForm, self).save(commit=False)
-        user.username = self.cleaned_data['username']
-        user.email = self.cleaned_data['email']
-        user.group = self.cleaned_data['UserType']
-        if commit:
-            user.save()
-        return user
+        if password != confirm_password:
+            raise forms.ValidationError(
+                "Password and Confirm Password does not match"
+            )
 
 class UserForm(forms.ModelForm):
     class Meta:

@@ -60,21 +60,16 @@ h1, h2, h3, h4 {
                   {% endif %}
                   <div class= "col-xs-12 col-sm-12 col-md-12 col-lg-12">
                      <h2>Post Your Ad</h2>
-                     <form enctype="multipart/form-data" action="{% url 'ads:wheelsad' %}" method="POST">
+                     <form  action="{% url 'ads:wheelsad' %}" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-                        {{ wheels|crispy }}
-                        {{ ad|crispy }}
-                        <label class="tg-fileuploadlabel" for="tg-photogallery">
-                                            <span>Drop files anywhere to upload</span>
-                                            <span>Or</span>
-                                            <span class="btn btn-common">Select Files</span>
-                                            <span>Maximum upload file size: 1MB</span>
-                                            <input id="tg-photogallery" required class="tg-fileinput" multiple
-                                                   type="file"
-                                                   accept="image/*"
-                                                   name="image">
-                                        </label>
-                        
+                        <div class="inner-box">
+                           <div class="dashboard-box">
+                              <h2 class="dashbord-title">Ad Detail</h2>
+                           </div>
+                           {{wheels}}
+                           {{ad}}
+                            {{image}}
+                       
                         
                         <input type="submit" name="" class="btn btn-common" value="POST AD">
                      </form>

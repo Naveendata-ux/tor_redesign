@@ -23,7 +23,8 @@ class ListingListView(ListView):
     model = Ad
     template_name = "listings.html"
     context_object_name = "ads"
-
+    
+        
     def get_queryset(self):
         return self.model.objects.select_related("category").filter(status=1)
         

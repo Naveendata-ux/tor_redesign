@@ -34,6 +34,8 @@ h1, h2, h3, h4 {
     border-color: #003e6b;
 }
 
+
+
 </style>
 
 
@@ -56,6 +58,13 @@ h1, h2, h3, h4 {
 </div>
 <div class= "text-center">
             <div class="row-cols-2">
+            <form>
+              Tires<input type="radio" href="{% url 'ads:tyresad' %}" id="slide1" name="foo" value="{% url 'ads:tyresad' %}" required>
+              Wheels<input type="radio" href="{% url 'ads:wheelsad' %}" id="slide"name="foo" value="option2">
+              Services<input type="radio" href="{% url 'ads:crate.ad' %}" name="foo" value="option3">
+              <br><br>
+              <a href="" onclick='myFunction()' id="myLink">Submit</a>
+            </form>
                              <a href="{% url 'ads:tyresad' %}" class="btn btn-squared-default-plain btn-danger" id="size-icon">
                              <i class="fa fa-life-ring fa-5x"></i>
                              <br/>
@@ -68,7 +77,7 @@ h1, h2, h3, h4 {
                              <br />
                              <strong class="text-white font-weight-bolder">Wheels</strong>
                              </a>
-                             <a href="#" class="btn btn-squared-default-plain btn-danger" id="vehicle-icon">
+                             <a href="{% url 'ads:crate.ad' %}" class="btn btn-squared-default-plain btn-danger" id="vehicle-icon">
                              <i class="fa fa-car fa-5x"></i>
                              <br />
                              <br />
@@ -89,5 +98,21 @@ h1, h2, h3, h4 {
 
 </br>
 </br>
+<script>
+    function myFunction() {
+   
+        if(document.getElementById('slide1').checked) {
+            document.getElementById('myLink').href = "{% url 'ads:tyresad' %}";
+        }
+    }
+</script>
+<script>
+    function myFunction() {
+   
+        if(document.getElementById('slide2').checked) {
+            document.getElementById('myLink').href = "{% url 'ads:wheelsad' %}";
+        }
+    }
+</script>
 
 {% endblock %}

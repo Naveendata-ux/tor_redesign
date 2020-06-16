@@ -7,7 +7,7 @@ SECRET_KEY = '%dt-g$4948_miuo#&r5chgo42m!#5s%1$_$*8l!=^^(&!3sw00'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','4b3407d73d5a.ngrok.io']
+ALLOWED_HOSTS = ['127.0.0.1','torca.herokuapp.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -23,11 +23,12 @@ INSTALLED_APPS = [
     'users',
     'accounts',
     'category',
-    'admindashboard',
     'search',
     'crispy_forms',
     'django_private_chat',
     'subscriptions',
+    'six',
+    
 ]
 
 # FOR ONLY DEVOLPEMENT ENVIRONMENT CHANGE FROM SIMPLE IS BETTER THAN COMPLEX SITE
@@ -41,6 +42,7 @@ CHAT_WS_SERVER_PROTOCOL = 'ws'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -79,7 +81,7 @@ WSGI_APPLICATION = 'QuickAd.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'ads.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'tires.sqlite'),
     }
 }
 

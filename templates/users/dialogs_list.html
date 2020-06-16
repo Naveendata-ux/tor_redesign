@@ -1,0 +1,46 @@
+
+{%extends 'base.html'%}
+{% block title %}
+    Messages
+{% endblock %}
+
+{% block cssfiles %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'social_network_app/css/dialogs-list.css' %}" type="text/css">
+{% endblock %}
+
+{% block content %}
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+    <div class="text-center">
+    <h4>No messages Yet?</h4>
+     <img class="img-fluid" src="/media/chat.png"  height="250px" width="250px">
+    <h5>We’ll keep messages for any item you’re selling in here</h5> 
+    </div>
+    {% if not opponents %}
+        <p class="text-center">You Have No Messages Yet </p>
+    {% endif %}
+    <div class="dialogs-list">
+    {% for profile, user in opponents %}
+        <div class="row">
+            
+                <div class="dialog-info">
+                    <a href="{{ user.username }}">
+                        <h1 class="dialog-opponent">{{ user.first_name }} {{ user.last_name }}</h1>
+                    </a>
+                   
+                </div>
+        </div>
+    {% endfor %}
+    </div>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+{% endblock %}

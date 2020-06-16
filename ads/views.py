@@ -8,27 +8,6 @@ from core.mixins import CustomLoginRequiredMixin
 from core.models import *
 from django.shortcuts import render,redirect
 
-def ad_select_type(request):
-    """View for add ad modal embedded in the product list view."""
-    form = forms.AdTypeSelectorForm(request.POST or None)
-    status = 200
-    if form.is_valid():
-        redirect_url = reverse(
-            "ads:crate.ad",
-            kwargs={"type_pk": form.cleaned_data.get("ad_type").pk},
-        )
-        return (
-            JsonResponse({"redirectUrl": redirect_url})
-            if request.is_ajax()
-            else redirect(redirect_url)
-        )
-    elif form.errors:
-        status = 400
-    ctx = {"form": form}
-    template = "index.html"
-    return TemplateResponse(request, template, ctx, status=status)
-
-
 
 class AdDetailsView(DetailView):
     template_name = "ads/add_details.html"
@@ -44,18 +23,12 @@ class AdDetailsView(DetailView):
 class AdCreateView(CustomLoginRequiredMixin, CreateView):
     template_name = 'ads/create.html'
     form_class = AdCreateForm
-    success_url = reverse_lazy('accounts:login')
+    success_url = reverse_lazy('users:dashboard')
 
-   # def get_context_data(self, **kwargs):
-        #context = super(AdCreateView, self).get_context_data(**kwargs)
-        #context['categories'] = Category.objects.all()
-        #return context
-    
-    #def get_context_data(self, **kwargs):
-     #   context = super(AdCreateView, self).get_context_data(**kwargs)
-      #  context['attributes'] = Attribute.objects.all()
-       # return context
- 
+    def get_context_data(self, **kwargs):
+        context = super(AdCreateView, self).get_context_data(**kwargs)
+        context['categories'] = Category.objects.all()
+        return context
 
     def get_form_kwargs(self):
         """Return the keyword arguments for instantiating the form."""
@@ -126,7 +99,6 @@ class AdUpdateView(CustomLoginRequiredMixin, UpdateView):
 class AdDeleteView(DeleteView):
     model = Ad
     slug_field = "id"
-    template_name = "ads/ad_delete_confirm.html"
     slug_url_kwarg = "ad_id"
     success_url = reverse_lazy('users:dashboard')
 
@@ -146,7 +118,12 @@ def post_ad_view(request):
 def tyresad(request):
     # if this is a POST request we need to process the form data
     template = 'ads/tyres.html'
-   
+    
+    def get_context_data(self, **kwargs):
+        context = super(tyresad, self).get_context_data(**kwargs)
+        context['categories'] = Category.objects.all()
+        return context
+    
     if request.method == 'POST':
         
         #form = TyresForm(request.POST)
@@ -156,10 +133,10 @@ def tyresad(request):
         if tyres.is_valid() and ad.is_valid():
                 tyres.save()
                 ad.save()
-               
-                # Login the user
-                #login(request, user)
-               
+                files = self.request.FILES.getlist('image')
+                for image in files:
+                    photo = AdImage(ad=self.object, image=image)
+                    photo.save()
                 # redirect to accounts page:
                 return render(request, 'users/dashboard.html')
                 #redirect('index')
@@ -187,11 +164,10 @@ def wheelsad(request):
                 
                 wheels.save()
                 ad.save()
-                # Login the user
-                #login(request, user)
-               
-                # redirect to accounts page:
-                #return HttpResponseRedirect('/tyres/postmsg')
+                files = request.FILES.getlist('image')
+                for image in files:
+                    photo = AdImage(ad=self.object, image=image)
+                    photo.save()
            
                 return render(request, 'users/dashboard.html')
         else:
@@ -203,3 +179,43 @@ def wheelsad(request):
         ad = AdCreateForm()
 
     return render(request, template, {'wheels': wheels,'ad':ad})
+    
+
+def ad_favourite_list(request):
+
+    user = request.user
+    favorite_ads = user.favourite.all()
+    
+    return render(request, 'ads/favourite_list.html')
+
+def favourite_ad(request, id):
+    ad = get_object_or_404(Ad, id=id)
+    if ad.favourite.filter(id=request.user.id).exists():
+        ad.favourite.remove(request.user)
+    else:
+        ad.favourite.add(request.user)
+    return HttpResponseRedirect(ad.get_absolute_url())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    

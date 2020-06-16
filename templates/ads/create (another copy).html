@@ -1,0 +1,303 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/tagsinput.css' %}">
+{% endblock %}
+{% block content %}
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+   $(document).ready(function(){
+   $('#purpose').on('change', function() {
+     if ( this.value == 'Rent')
+     {
+       $("#business").show();
+     }
+     else
+     {
+       $("#business").hide();
+     }
+   });
+   });
+</script>
+<div class="page-header" style="background: url('{% static 'assets/img/banner1.jpg' %}');">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="breadcrumb-wrapper">
+               <h2 class="product-title">Post you Ads</h2>
+               <ol class="breadcrumb">
+                  <li><a href="#">Home /</a></li>
+                  <li class="current">Post you Ads</li>
+               </ol>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div id="content" class="section-padding">
+   <div class="container">
+      <div class="row">
+         {% include 'includes/sidebar.html' %}
+         <div class="col-sm-12 col-md-8 col-lg-9">
+            <div class="row page-content">
+               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  {% if form.errors %}
+                  {% for error in form.non_field_errors %}
+                  <div class="alert alert-danger alert-dismissable">
+                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                     <strong>{{ error|escape }}</strong>
+                  </div>
+                  {% endfor %}
+                  {% endif %}
+                  <form action="{% url 'ads:crate.ad' %}" method="POST" enctype="multipart/form-data">
+                     {% csrf_token %}
+                     <div class="inner-box">
+                        <div class="dashboard-box">
+                           <h2 class="dashbord-title">Ad Detail</h2>
+                        </div>
+                        <div class="dashboard-wrapper">
+                           <div class="form-group">
+                              <div class="input-icon">
+                                 {{ form.category.errors }}
+                                 <label  for="{{ form.category.id_for_category }}">Categories</label>
+                                 <select type="text"  class="form-control" name="category"
+                                    placeholder="category" value="{{ form.category.value|default:'' }}">
+                                    <option id="null">Select category</option>
+                                    <option value="Tires">Tires</option>
+                                    <option value="Wheels">Wheels</option>
+                                    <option value="Services">Services</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <div class="input-icon">
+                                 {{ form.Ad_title.errors }}
+                                 <label  for="{{ form.Ad_title.id_for_Ad_title }}">Ad Title</label>
+                                 <input type="text"  class="form-control" name="Ad_title"
+                                    placeholder="Ad Title" value="{{ form.Ad_title.value|default:'' }}">
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <div class="input-icon">
+                                 {{ form.Tire_Condition.errors }}
+                                 <label  for="{{ form.Tire_Condition.id_for_Tire_Conditions }}">Tire Condition:</label>
+                                 <select type="text"  class="form-control" name="Tire_Condition"
+                                    placeholder="Tire Condition" value="{{ form.Tire_Condition.value|default:'' }}">
+                                    <option id="null">Select Tire Condition</option>
+                                    <option value="New">New</option>
+                                    <option value="Used">Used</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <div class="input-icon">
+                                 {{ form.On_Rims.errors }}
+                                 <label  for="{{ form.On_Rims.id_for_On_Rims }}">With Rims?</label>
+                                 <select type="text"  class="form-control" name="On_Rims"
+                                    placeholder="On_Rims" value="{{ form.On_Rims.value|default:'' }}">
+                                    <option id="null">Select On Rims</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <div class="input-icon">
+                                 {{ form.Year.errors }}
+                                 <label  for="{{ form.Year.id_for_Year }}">Year</label>
+                                 <select type="text"  class="form-control" name="Year"
+                                    placeholder="Year" value="{{ form.Year.value|default:'' }}">
+                                    <option id="null">Select Year</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2016">2016</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <div class="input-icon">
+                                 {{ form.Make.errors }}
+                                 <label  for="{{ form.Make.id_for_Make}}">Make</label>
+                                 <select type="text"  class="form-control" name="Make"
+                                    placeholder="Make" value="{{ form.Make.value|default:'' }}">
+                                    <option id="null">Select Make</option>
+                                    <option value="Acura">Acura</option>
+                                    <option value="Alpine">Alpine</option>
+                                    <option value="Bmw">Bmw</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <div class="input-icon">
+                                 {{ form.Model.errors }}
+                                 <label  for="{{ form.Model.id_for_Model }}">Model</label>
+                                 <select type="text"  class="form-control" name="Model"
+                                    placeholder="Model" value="{{ form.Model.value|default:'' }}">
+                                    <option id="null">Select Make</option>
+                                    <option value="CDX">CDX</option>
+                                    <option value="MDX">MDX</option>
+                                    <option value="SDX">SDX</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <div class="input-icon">
+                                 {{ form.Width.errors }}
+                                 <label  for="{{ form.Width.id_for_Width }}">Width</label>
+                                 <select type="number"  class="form-control" name="Width"
+                                    placeholder="Width" value="{{ form.Width.value|default:'' }}">
+                                    <option id="null">Select Width</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <div class="input-icon">
+                                 {{ form.Aspect_Ratio.errors }}
+                                 <label  for="{{ form.Aspect_Ratio.id_for_Aspect_Ratio }}">Aspect Ratio</label>
+                                 <select type="number"  class="form-control" name="Aspect_Ratio"
+                                    placeholder="Aspect_Ratio" value="{{ form.Aspect_Ratio.value|default:'' }}">
+                                    <option id="null">Select Aspect_Ratio</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <div class="input-icon">
+                                 {{ form.Seasonality.errors }}
+                                 <label  for="{{ form.Seasonality.id_for_Seasonality }}">Seasonality </label>
+                                 <select type="text"  class="form-control" name="Seasonality"
+                                    placeholder="Seasonality" value="{{ form.Seasonality.value|default:'' }}">
+                                    <option id="null">Select Seasonality</option>
+                                    <option value="Summer">Summer</option>
+                                    <option value="All Season">All Season</option>
+                                    <option value="Winter">Winter</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <div class="input-icon">
+                                 {{ form.location.errors }}
+                                 <label  for="{{ form.location.id_for_location }}">Pick up Address</label>
+                                 <input type="text"  class="form-control" name="location"
+                                    placeholder="location" value="{{ form.location.value|default:'' }}">
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <div class="input-icon">
+                                 {{ form.Ad_Type.errors }}
+                                 <label  for="{{ form.Ad_Type.id_for_Ad_Type }}">Ad Type</label>
+                                 <select id="purpose" type="text"  class="form-control" name="Ad_Type"
+                                    placeholder="Ad_Type" value="{{ form.Ad_Type.value|default:'' }}">
+                                    <option id="null">Select Ad_Type</option>
+                                    <option value="Rent">Rent</option>
+                                    <option value="Rent to Sell">Rent to Sell</option>
+                                    <option value="Sell">Sell</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div style='display:none;' id='business'>
+                              <div class="form-group">
+                                 <div class="input-icon">
+                                    {{ form.Tyres_Available.errors }}
+                                    <label  for="{{ form.Tyres_Available.id_for_Tyres_Available }}">No. of Tires Offered</label>
+                                    <input type="number"  class="form-control" name="Tyres_Available"
+                                       placeholder="Tyres_Available" value="{{ form.Tyres_Available.value|default:'' }}">
+                                 </div>
+                              </div>
+                              <div class="form-group">
+                                 <div class="input-icon">
+                                    {{ form.Tenure_offered.errors }}
+                                    <label  for="{{ form.Tenure_offered.id_for_Ad_title }}">Tenure Offered(Monthly)</label>
+                                    <input id='chatinput' type="number"  class="form-control" name="Tenure_offered"
+                                       placeholder="Tenure offered" value="{{ form.Tenure_offered.value|default:'' }}">
+                                 </div>
+                              </div>
+                              <div class="form-group">
+                                 <div class="input-icon">
+                                    {{ form.offer_price.errors }}
+                                    <label  for="{{ form.offer_price.id_for_offer_price }}">Offer Price</label>
+                                    <input id='chatinput2' type="number"  class="form-control" name="offer_price"
+                                       placeholder="Offer price" value="{{ form.offer_price.value|default:'' }}">
+                                 </div>
+                                 <div class="form-inline" style="color:#373373">
+                                    <p>  Monthly Price for tires is $ </p>
+                                    <div class='printchatbox' id='printchatbox2'></div>
+                                    <p> for </p>
+                                    <div class='printchatbox' id='printchatbox'></div>
+                                    <p> Months Tenure Total Price is $ </p>
+                                    <label name="box3" type="text">
+                                    <label>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="form-group">
+                           <div class="input-icon">
+                           {{ form.description.errors }}
+                           <label  for="{{ form.description.id_for_description }}">Description</label>
+                           <textarea type="text"  class="form-control" name="description"
+                              placeholder="Description" value="{{ form.description.value|default:'' }}"></textarea>
+                           </div>
+                           </div>
+                           <label class="tg-fileuploadlabel" for="tg-photogallery">
+                           <span>Drop files anywhere to upload</span>
+                           <span>Or</span>
+                           <span class="btn btn-common">Select Files</span>
+                           <span>Maximum upload file size: 1MB</span>
+                           <input id="tg-photogallery" required class="tg-fileinput" multiple
+                              type="file"
+                              accept="image/*"
+                              name="image">
+                           </label>
+                        </div>
+                        <button class="btn btn-common" type="submit">Post Ad</button>
+                     </div>
+               </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+</div>
+<script>
+   var inputBox = document.getElementById('chatinput2');
+   
+   inputBox.onkeyup = function(){
+       document.getElementById('printchatbox2').innerHTML = inputBox.value;
+   }
+   
+</script>
+<script>
+   var inputBox2 = document.getElementById('chatinput');
+   
+   inputBox2.onkeyup = function(){
+       document.getElementById('printchatbox').innerHTML = inputBox2.value;
+   }
+   
+</script>
+<script>
+   $('input[name="offer_price"]').keyup(function() {
+       var a = $('input[name="Tenure_offered"]').val();
+       var b = $(this).val();
+       $('input[name="box3"]').val(a * b);
+   });
+</script>
+{% endblock %}
+{% block scripts %}
+<script type="text/javascript" src="{% static 'assets/js/tagsinput.js' %}"></script>
+<script type="text/javascript">
+   $('#summernote').summernote({
+       height: 250, // set editor height
+       minHeight: null, // set minimum height of editor
+       maxHeight: null, // set maximum height of editor
+       focus: false // set focus to editable area after initializing summernote
+   });
+</script>
+{% endblock %}
