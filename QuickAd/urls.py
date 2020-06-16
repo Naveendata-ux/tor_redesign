@@ -20,6 +20,6 @@ urlpatterns = [
     path('', include('core.urls')),
     path('categories', include('category.urls')),
     url(r"^search/", include((search_urls, "search"), namespace="search")),
-    url('dialogs/', include('django_private_chat.urls'), name='dialog'),
+    url('', include('django_private_chat.urls')),
     url(r'^subscriptions/', include('subscriptions.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
