@@ -11,8 +11,8 @@ def searchposts(request):
   
         submitbutton= request.GET.get('submit')
 
-        if location is not None:
-            lookups= ((Q(Year__exact=year) | Q(Make__exact=make)))
+        if year  and make is not None:
+            lookups= ((Q(Year__exact=year) | Q(Make__icontains=make)))
 
             results= Ad.objects.filter(lookups).distinct()
             
@@ -20,11 +20,11 @@ def searchposts(request):
             context={'results': results,
                      'submitbutton': submitbutton}
 
-            return render(request, 'listings.html', context)
+            return render(request, 'search/results.html', context)
 
         else:
-            return render(request, 'listings.html')
+            return render(request, 'search/results.html')
 
     else:
-        return render(request, 'listings.html')
+        return render(request, 'search/results.html')
 

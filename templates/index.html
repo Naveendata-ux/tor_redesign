@@ -397,7 +397,7 @@ $(document).ready(function(){
                                   <div class="col-lg-3">
                                     <div class="form-group">
                                        <select id="sel_year" class="form-control" type="number" name="year"
-                                                value="{% if query %}{{ year }}{% endif %}"
+                                                value="{{request.GET.year}}"
                                                 autocomplete="off" data-width="auto"
                                                 required>
                                                <option id="null">---Select Year---</option>
@@ -458,7 +458,7 @@ $(document).ready(function(){
                                     <div class="form-group">
                                     
                                       <select id="sel_make" class="form-control" type="number" name="make"
-                                             value="{% if query %}{{ year }}{% endif %}"
+                                             value="{{request.GET.make}}"
                                              autocomplete="off"
                                              required>
                                              <option id="null">---Select Make---</option>
@@ -641,7 +641,7 @@ $(document).ready(function(){
                                     </div>
                                   </div>
                                   <div class="col-lg-2">
-                                      <input type="submit" class="btn btn-common float-left" value="Search" />
+                                      <input type="submit" name="submit" class="btn btn-common float-left" value="Search" />
                                   </div>
 
                               </div>

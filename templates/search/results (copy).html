@@ -1,0 +1,216 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<div class="page-header" style="background: url('{% static 'assets/img/banner1.jpg' %}');">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="breadcrumb-wrapper">
+               <h2 class="product-title">Listings</h2>
+               <ol class="breadcrumb">
+                  <li><a href="#">Home /</a></li>
+                  <li class="current">Listings</li>
+               </ol>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="main-container section-padding" id="app">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-3 col-md-12 col-xs-12 page-sidebar">
+            <aside>
+               <div class="widget_search">
+                  <form role="search" id="search-form">
+                     <input type="search" class="form-control" autocomplete="off" name="s"
+                        placeholder="Search..." id="search-input" value="">
+                     <button type="submit" id="search-submit" class="search-btn"><i class="lni-search"></i>
+                     </button>
+                  </form>
+               </div>
+               <div class="widget categories">
+                  <h4 class="widget-title">All Categories</h4>
+                  <ul class="categories-list">
+                     <li v-for="category in categories" @click="filter(category)" style="cursor: pointer">
+                        <i class="lni-control-panel"></i>
+                        [[ category.title ]]
+                        <span class="category-counter">([[ category.total_ads ]])</span>
+                     </li>
+                  </ul>
+               </div>
+               <div class="widget">
+                  <h4 class="widget-title">Advertisement</h4>
+                  <div class="add-box">
+                     <img class="img-fluid" src="assets/img/img1.jpg" alt="">
+                  </div>
+               </div>
+            </aside>
+         </div>
+         <div class="col-lg-9 col-md-12 col-xs-12 page-content">
+            <div class="product-filter">
+               <div class="short-name">
+                  <span>Showing all items</span>
+               </div>
+               <div class="Show-item">
+                  <span>Show Items</span>
+                  <form class="woocommerce-ordering" method="post">
+                     <label>
+                        <select name="order" class="orderby">
+                           <option selected="selected" value="menu-order">49 items</option>
+                           <option value="popularity">popularity</option>
+                           <option value="popularity">Average ration</option>
+                           <option value="popularity">newness</option>
+                           <option value="popularity">price</option>
+                        </select>
+                     </label>
+                  </form>
+               </div>
+               <ul class="nav nav-tabs">
+                  <li class="nav-item">
+                     <a class="nav-link active" data-toggle="tab" href="#grid-view"><i class="lni-grid"></i></a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" data-toggle="tab" href="#list-view"><i class="lni-list"></i></a>
+                  </li>
+               </ul>
+            </div>
+            
+            <div class="adds-wrapper">
+            {% if submitbutton == 'Search' and request.GET.year != '' and request.GET.make != '' %}
+            {% if results %}
+               <div class="tab-content">
+                  <div id="grid-view" class="tab-pane fade active show">
+                     <div class="row">
+                     {% for result in results %}
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" >
+                           <div class="featured-box">
+                              <figure>
+                                 <div class="icon">
+                                    <span class="bg-green"><i class="lni-heart"></i></span>
+                                    <span><i class="lni-bookmark"></i></span>
+                                 </div>
+                                 <a href="#">
+                                 <img class="img-fluid"
+                                    :src="{{ result.first_image_or_default }}"
+                                    alt="">
+                                 </a>
+                              </figure>
+                              <div class="feature-content">
+                                 <h4>
+                                    <a :href="{{ result.url }}">{{ result.Ad_title }}</a>
+                                 </h4>
+                                 <div class="meta-tag">
+                                    <span>
+                                    <a href="#"><i class="lni-user"></i> {{ result.user.username }}</a>
+                                    </span>
+                                    <span>
+                                    <a href="#"><i class="lni-map-marker"></i> {{ result.location }}</a>
+                                    </span>
+                                    <span>
+                                    <a href="#"><i class="lni-tag"></i> {{ result.category.title }}</a>
+                                    </span>
+                                 </div>
+                                 <p class="dsc">{{ result.description }}</p>
+                                 <div class="listing-bottom">
+                                    <h3 class="price float-left">${{ result.offer_price }}</h3>
+                                    <a :href="{{ result.url }}" class="btn btn-common float-right">View
+                                    Details</a>
+                                 </div>
+                              </div>
+                          {% endfor %}
+                           </div>
+                        </div>
+                     </div>
+                     {% endif%}
+                  {% endif%}
+                  </div>
+                  
+                 {% if submitbutton == 'Search' and request.GET.year != '' and request.GET.make != '' %}
+                 {% if results %}
+                  <div id="list-view" class="tab-pane fade">
+                     <div class="row">
+                     {% for ad in results %}
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                           <div class="featured-box">
+                              <figure>
+                                 <div class="icon">
+                                    <span class="bg-green"><i class="lni-heart"></i></span>
+                                    <span><i class="lni-bookmark"></i></span>
+                                 </div>
+                                 <a href="#">
+                                 <img class="img-fluid"
+                                    :src="{{ result.first_image_or_default }}"
+                                    alt="">
+                                 </a>
+                              </figure>
+                              <div class="feature-content">
+                                 <h4>
+                                    <a href="">{{ result.Ad_title }}</a>
+                                 </h4>
+                                 <div class="meta-tag">
+                                    <span>
+                                    <a href="#"><i class="lni-user"></i> {{ result.user.username }}</a>
+                                    </span>
+                                    <span>
+                                    <a href="#"><i class="lni-map-marker"></i> New York, US</a>
+                                    </span>
+                                    <span>
+                                    <a href="#"><i class="lni-tag"></i> {{ result.category.title }}</a>
+                                    </span>
+                                 </div>
+                                 <p class="dsc">{{ result.description |safe|truncatechars:110 }}</p>
+                                 <div class="listing-bottom">
+                                    <h3 class="price float-left">${{ result.offer_price }}</h3>
+                                    <a href="{{ result.url }}"
+                                       class="btn btn-common float-right">View Details</a>
+                                 </div>
+                              </div>
+                            {% endfor %}
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            {% endif%}
+            {% endif%}                    
+            <div class="pagination-bar">
+               
+                                       
+               <nav>
+                  
+                                              
+                  <ul class="pagination justify-content-center">
+                     
+                                                     
+                     <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                     
+                                                     
+                     <li class="page-item"><a class="page-link" href="#">2</a></li>
+                     
+                                                     
+                     <li class="page-item"><a class="page-link" href="#">3</a></li>
+                     
+                                                     
+                     <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                     
+                                                 
+                  </ul>
+                  
+                                          
+               </nav>
+               
+                                   
+            </div>
+            
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock %}
+{% block scripts %}
+
+{% endblock %}

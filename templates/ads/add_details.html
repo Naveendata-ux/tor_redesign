@@ -45,8 +45,8 @@
                             <h2>{{ ad.title }}</h2>
                             <div class="details-meta">
                                 <span><a href="#"><i class="lni-alarm-clock"></i> {{ ad.created_at }}</a></span>
-                                <span><a href="#"><i class="lni-map-marker"></i> New York</a></span>
-{#                                <span><a href="#"><i class="lni-eye"></i> 299 View</a></span>#}
+                                <span><a href="#"><i class="lni-map-marker"></i> {{ ad.location }}</a></span>
+                               
                             </div>
                             <p class="mb-4">{{ ad.description|safe }}</p>
                         </div>
@@ -55,12 +55,28 @@
                                 <ul class="advertisement">
                                     <li>
                                         <p>
-                                            <strong><i class="lni-folder"></i> Categories:</strong> <a href="#">{{ ad.category.title }}</a>
+                                            <strong><i class="lni-archive"></i> Year:</strong> <a href="#">{{ ad.Year }}</a>
                                         </p>
                                     </li>
                                     <li>
-                                        <p><strong><i class="lni-archive"></i> Condition:</strong> New</p>
+                                        <p><strong><i class="lni-archive"></i> Make:</strong> {{ad.Make}}</p>
                                     </li>
+                                    <li>
+                                        <p><strong><i class="lni-archive"></i> Model:</strong> {{ad.model}}</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="float-left">
+                                <ul class="advertisement">
+                                    <li>
+                                        <p>
+                                            <strong><i class="lni-archive"></i> Categories:</strong> <a href="#">{{ ad.category.title }}</a>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p><strong><i class="lni-archive"></i> Tire Condition:</strong> {{ad.Tire_Condition}}</p>
+                                    </li>
+                                    
                                 </ul>
                             </div>
                             <div class="float-right">
@@ -107,32 +123,7 @@
                             </div>
                         </div>
 
-                        <div class="widget">
-                            <h4 class="widget-title">More Ads From Seller</h4>
-                            <ul class="posts-list">
-                                <li>
-                                    <div class="widget-thumb">
-                                        <a href="#"><img src="assets/img/details/img1.jpg" alt=""/></a>
-                                    </div>
-                                    <div class="widget-content">
-                                        <h4><a href="#">Little Harbor Yacht 38</a></h4>
-                                        <div class="meta-tag">
-<span>
-<a href="#"><i class="lni-user"></i> Smith</a>
-</span>
-                                            <span>
-<a href="#"><i class="lni-map-marker"></i> New Your</a>
-</span>
-                                            <span>
-<a href="#"><i class="lni-tag"></i> Radio</a>
-</span>
-                                        </div>
-                                        <h4 class="price">$480.00</h4>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </li>
-                            </ul>
-                        </div>
+                        
                     </aside>
 
                 </div>
