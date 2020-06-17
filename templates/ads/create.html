@@ -203,9 +203,27 @@ body {
                         </div>
                         <div class="dashboard-wrapper">
                            <div class="form-group mb-3 tg-inputwithicon">
+                           <div class="form-group">
+                              <div class="input-icon">
+                                 
+                                 <label  for="{{ form.Ad_title.id_for_Ad_title }}">Ad Title</label>
+                                 <input type="text"  class="form-control" name="Ad_title"
+                                    placeholder="Ad Title" value="{{ form.Ad_title.value|default:'' }}">
+                                 {% if 'Ad_title' in form.errors %}
+                                 {% for error in form.Ad_title.errors %}
+                                 <div class="alert alert-danger alert-dismissable">
+                                    <a href="#" class="close" data-dismiss="alert"
+                                       aria-label="close">&times;</a>
+                                    <strong>{{ error|escape }}</strong>
+                                 </div>
+                                 {% endfor %}
+                                 {% endif %}
+                              </div>
+                           </div>
+                           
                               <label class="control-label">Category</label>
                               <div class="tg-select form-control">
-                                 <select id=category name="category" >
+                                 <select  name="category" >
                                     <option value="" selected>Select Category</option>
                                     <option value="1">Tires</option>
                                     <option value="2">Wheels</option>
@@ -222,27 +240,10 @@ body {
                               {% endfor %}
                               {% endif %}
                            </div>
-                           <div class="form-group">
-                              <div class="input-icon">
-                                 {{ form.Ad_title.errors }}
-                                 <label  for="{{ form.Ad_title.id_for_Ad_title }}">Ad Title</label>
-                                 <input type="text"  class="form-control" name="Ad_title"
-                                    placeholder="Ad Title" value="{{ form.Ad_title.value|default:'' }}">
-                                 {% if 'Ad_title' in form.errors %}
-                                 {% for error in form.Ad_title.errors %}
-                                 <div class="alert alert-danger alert-dismissable">
-                                    <a href="#" class="close" data-dismiss="alert"
-                                       aria-label="close">&times;</a>
-                                    <strong>{{ error|escape }}</strong>
-                                 </div>
-                                 {% endfor %}
-                                 {% endif %}
-                              </div>
-                           </div>
-                           <div style='display:none;' id='business2'>
+                           
                               <div class="form-group">
                                  <div class="input-icon">
-                                    {{ form.Tire_Condition.errors }}
+                                    
                                     <label  for="{{ form.Tire_Condition.id_for_Tire_Condition }}">Tire Condition:</label>
                                     <select type="text"  class="form-control" name="Tire_Condition"
                                        placeholder="Tire Condition" value="{{ form.Tire_Condition.value|default:'' }}">
@@ -263,8 +264,8 @@ body {
                               </div>
                               <div class="form-group">
                                  <div class="input-icon">
-                                    {{ form.On_Rims.errors }}
-                                    <label  for="{{ form.On_Rims.id_for_On_Rims }}">With Rims?</label>
+                                    
+                                    <label  for="{{ form.On_Rims.id_for_On_Rims }}">On Rims?</label>
                                     <select type="text"  class="form-control" name="On_Rims"
                                        placeholder="On_Rims" value="{{ form.On_Rims.value|default:'' }}">
                                        <option id="null">Select On Rims</option>
@@ -284,7 +285,7 @@ body {
                               </div>
                               <div class="form-group">
                                  <div class="input-icon">
-                                    {{ form.Year.errors }}
+                                    
                                     <label  for="{{ form.Year.id_for_Year }}">Year</label>
                                     <select id="sel_year" type="text"  class="form-control" name="Year"
                                        placeholder="Year" value="{{ form.Year.value|default:'' }}">
@@ -355,7 +356,7 @@ body {
                               </div>
                               <div class="form-group">
                                  <div class="input-icon">
-                                    {{ form.Make.errors }}
+                                    
                                     <label  for="{{ form.Make.id_for_Make}}">Make</label>
                                     <select id="sel_make" type="text"  class="form-control" name="Make"
                                        placeholder="Make" value="{{ form.Make.value|default:'' }}">
@@ -540,7 +541,7 @@ body {
                               </div>
                               <div class="form-group">
                                  <div class="input-icon">
-                                    {{ form.Model.errors }}
+                                    
                                     <label  for="{{ form.Model.id_for_Model }}">Model</label>
                                      <span id = "msg" style = "display:none;color:red;">No models found!</span>
                                     <select id="sel_model" type="text"  class="form-control" name="Model"
@@ -561,86 +562,8 @@ body {
                               </div>
                              </div>
                              <div class="form-group">
-                                    <div class="input-icon">
-                                       {{ form.Tyres_Available.errors }}
-                                       <label  for="{{ form.Tyres_Available.id_for_Tyres_Available }}">No.of Tires Offered</label>
-                                       <input type="number"  class="form-control" name="Tyres_Available"
-                                          placeholder="Tyres_Available" value="{{ form.Tyres_Available.value|default:'' }}">
-                                       {% if 'Tyres_Available' in form.errors %}
-                                       {% for error in form.Tyres_Available.errors %}
-                                       <div class="alert alert-danger alert-dismissable">
-                                          <a href="#" class="close" data-dismiss="alert"
-                                             aria-label="close">&times;</a>
-                                          <strong>{{ error|escape }}</strong>
-                                       </div>
-                                       {% endfor %}
-                                       {% endif %}
-                                    </div>
-                                 </div>
-                              <div class="form-group">
-                                 <div class="input-icon">
-                                    {{ form.Ad_Type.errors }}
-                                    <label  for="{{ form.Ad_Type.id_for_Ad_Type }}">Ad Type</label>
-                                    <select id="purpose" type="text"  class="form-control" name="Ad_Type"
-                                       placeholder="Ad_Type" value="{{ form.Ad_Type.value|default:'' }}">
-                                       <option id="null">Select Ad_Type</option>
-                                       <option value="Rent">Rent</option>
-                                       <option value="Rent to Sell">Rent to Sell</option>
-                                       <option value="Sell">Sell</option>
-                                    </select>
-                                    {% if 'Ad_Type' in form.errors %}
-                                    {% for error in form.Ad_Type.errors %}
-                                    <div class="alert alert-danger alert-dismissable">
-                                       <a href="#" class="close" data-dismiss="alert"
-                                          aria-label="close">&times;</a>
-                                       <strong>{{ error|escape }}</strong>
-                                    </div>
-                                    {% endfor %}
-                                    {% endif %}
-                                 </div>
-                              </div>
-                              <div style='display:none;' id='business'>
-                                 
-                                 <div class="form-group">
-                                    <div class="input-icon">
-                                       {{ form.Tenure_offered.errors }}
-                                       <label  for="{{ form.Tenure_offered.id_for_Tenure_offered }}">Tenure Offered(Monthly)</label>
-                                       <input id='chatinput' type="number"  class="form-control" name="Tenure_offered"
-                                          placeholder="Tenure offered" value="{{ form.Tenure_offered.value|default:'' }}">
-                                       {% if 'Tenure_offered' in form.errors %}
-                                       {% for error in form.Tenure_offered.errors %}
-                                       <div class="alert alert-danger alert-dismissable">
-                                          <a href="#" class="close" data-dismiss="alert"
-                                             aria-label="close">&times;</a>
-                                          <strong>{{ error|escape }}</strong>
-                                       </div>
-                                       {% endfor %}
-                                       {% endif %}
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="form-group">
-                                 <div class="input-icon">
-                                    {{ form.offer_price.errors }}
-                                    <label  for="{{ form.offer_price.id_for_offer_price }}">Offer Price</label>
-                                    <input id='chatinput2' type="number"  class="form-control" name="offer_price"
-                                       placeholder="Offer price" value="{{ form.offer_price.value|default:'' }}">
-                                    {% if 'offer_price' in form.errors %}
-                                    {% for error in form.offer_price.errors %}
-                                    <div class="alert alert-danger alert-dismissable">
-                                       <a href="#" class="close" data-dismiss="alert"
-                                          aria-label="close">&times;</a>
-                                       <strong>{{ error|escape }}</strong>
-                                    </div>
-                                    {% endfor %}
-                                    {% endif %}
-                                 </div>
-                              </div>
-                              
-                           
-                           <div class="form-group">
                            <div class="input-icon">
-                           {{ form.Width.errors }}
+                           
                            <label  for="{{ form.Width.id_for_Width }}">Width</label>
                            <select type="number"  class="form-control" name="Width"
                               placeholder="Width" value="{{ form.Width.value|default:'' }}">
@@ -662,7 +585,7 @@ body {
                            </div>
                            <div class="form-group">
                               <div class="input-icon">
-                                 {{ form.Aspect_Ratio.errors }}
+                                 
                                  <label  for="{{ form.Aspect_Ratio.id_for_Aspect_Ratio }}">Aspect Ratio</label>
                                  <select type="number"  class="form-control" name="Aspect_Ratio"
                                     placeholder="Aspect_Ratio" value="{{ form.Aspect_Ratio.value|default:'' }}">
@@ -682,32 +605,10 @@ body {
                                  {% endif %}
                               </div>
                            </div>
-                           <div style='display:none;' id='business3'>
-                              <div class="form-group">
-                                 <div class="input-icon">
-                                    {{ form.Wheels_Brand.errors }}
-                                    <label  for="{{ form.Wheels_Brand.id_for_Wheels_Brand }}">Wheels Brand:</label>
-                                    <select type="text"  class="form-control" name="Wheels_Brand"
-                                       placeholder="Tire Condition" value="{{ form.Wheels_Brand.value|default:'' }}">
-                                       <option id="null">Select Wheels Brand</option>
-                                       <option value="ApolloWheels">Apollo Wheels</option>
-                                       <option value="GoodYearWheels">Good Year Wheels</option>
-                                    </select>
-                                    {% if 'Wheels_Brand' in form.errors %}
-                                    {% for error in form.Wheels_Brand.errors %}
-                                    <div class="alert alert-danger alert-dismissable">
-                                       <a href="#" class="close" data-dismiss="alert"
-                                          aria-label="close">&times;</a>
-                                       <strong>{{ error|escape }}</strong>
-                                    </div>
-                                    {% endfor %}
-                                    {% endif %}
-                                 </div>
-                              </div>
-							</div>
+                           
                            <div class="form-group">
                               <div class="input-icon">
-                                 {{ form.Seasonality.errors }}
+                                 
                                  <label  for="{{ form.Seasonality.id_for_Seasonality }}">Seasonality </label>
                                  <select type="text"  class="form-control" name="Seasonality"
                                     placeholder="Seasonality" value="{{ form.Seasonality.value|default:'' }}">
@@ -729,7 +630,7 @@ body {
                            </div>
                            <div class="form-group">
                               <div class="input-icon">
-                                 {{ form.location.errors }}
+                                 
                                  <label  for="{{ form.location.id_for_location }}">Pick up Address</label>
                                  <input  id="search_input"  type="text"  class="form-control" name="location" 
                                     placeholder="location" value="{{ form.location.value|default:'' }}">
@@ -744,7 +645,95 @@ body {
                                  {% endif %}
                               </div>
                            </div>
-                           <div style='display:none;' id='business4'>
+                             
+                              <div class="form-group">
+                                 <div class="input-icon">
+                                    
+                                    <label  for="{{ form.Ad_Type.id_for_Ad_Type }}">Ad Type</label>
+                                    <select id="purpose" type="text"  class="form-control" name="Ad_Type"
+                                       placeholder="Ad_Type" value="{{ form.Ad_Type.value|default:'' }}">
+                                       <option id="null">Select Ad_Type</option>
+                                       <option value="Rent">Rent</option>
+                                       <option value="Rent to Sell">Rent to Sell</option>
+                                       <option value="Sell">Sell</option>
+                                    </select>
+                                    {% if 'Ad_Type' in form.errors %}
+                                    {% for error in form.Ad_Type.errors %}
+                                    <div class="alert alert-danger alert-dismissable">
+                                       <a href="#" class="close" data-dismiss="alert"
+                                          aria-label="close">&times;</a>
+                                       <strong>{{ error|escape }}</strong>
+                                    </div>
+                                    {% endfor %}
+                                    {% endif %}
+                                 </div>
+                              </div>
+                              <div class="form-group">
+                                    <div class="input-icon">
+                                       
+                                       <label  for="{{ form.Tyres_Available.id_for_Tyres_Available }}">No.of Tires Offered</label>
+                                       <input type="number"  class="form-control" name="Tyres_Available"
+                                          placeholder="Tyres_Available" value="{{ form.Tyres_Available.value|default:'' }}">
+                                       {% if 'Tyres_Available' in form.errors %}
+                                       {% for error in form.Tyres_Available.errors %}
+                                       <div class="alert alert-danger alert-dismissable">
+                                          <a href="#" class="close" data-dismiss="alert"
+                                             aria-label="close">&times;</a>
+                                          <strong>{{ error|escape }}</strong>
+                                       </div>
+                                       {% endfor %}
+                                       {% endif %}
+                                    </div>
+                                 </div>
+                                 
+                                 <div class="form-group">
+                                    <div class="input-icon">
+                                       
+                                       <label  for="{{ form.Tenure_offered.id_for_Tenure_offered }}">Tenure Offered(Monthly)</label>
+                                       <input id='chatinput' type="number"  class="form-control" name="Tenure_offered"
+                                          placeholder="Tenure offered" value="{{ form.Tenure_offered.value|default:'' }}">
+                                       {% if 'Tenure_offered' in form.errors %}
+                                       {% for error in form.Tenure_offered.errors %}
+                                       <div class="alert alert-danger alert-dismissable">
+                                          <a href="#" class="close" data-dismiss="alert"
+                                             aria-label="close">&times;</a>
+                                          <strong>{{ error|escape }}</strong>
+                                       </div>
+                                       {% endfor %}
+                                       {% endif %}
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="form-group">
+                                 <div class="input-icon">
+                                    
+                                    <label  for="{{ form.offer_price.id_for_offer_price }}">Offer Price</label>
+                                    <input id='chatinput2' type="number"  class="form-control" name="offer_price"
+                                       placeholder="Offer price" value="{{ form.offer_price.value|default:'' }}">
+                                    {% if 'offer_price' in form.errors %}
+                                    {% for error in form.offer_price.errors %}
+                                    <div class="alert alert-danger alert-dismissable">
+                                       <a href="#" class="close" data-dismiss="alert"
+                                          aria-label="close">&times;</a>
+                                       <strong>{{ error|escape }}</strong>
+                                    </div>
+                                    {% endfor %}
+                                    {% endif %}
+                                 </div>
+                              </div>
+                              <label class="tg-fileuploadlabel" for="tg-photogallery">
+                           <span>Drop files anywhere to upload</span>
+                           <span>Or</span>
+                           <span class="btn btn-common">Select Files</span>
+                           <span>Maximum upload file size: 1MB</span>
+                           <input id="tg-photogallery"  class="tg-fileinput" multiple
+                              type="file"
+                              accept="image/*"
+                              name="image">
+                           </label>
+                           
+                           
+                           
                               <div class="form-group">
                                  <div class="input-icon">
                                     {{ form.description.errors }}
@@ -763,16 +752,7 @@ body {
                                  </div>
                               </div>
                            </div>
-                           <label class="tg-fileuploadlabel" for="tg-photogallery">
-                           <span>Drop files anywhere to upload</span>
-                           <span>Or</span>
-                           <span class="btn btn-common">Select Files</span>
-                           <span>Maximum upload file size: 1MB</span>
-                           <input id="tg-photogallery"  class="tg-fileinput" multiple
-                              type="file"
-                              accept="image/*"
-                              name="image">
-                           </label>
+                           
                         </div>
                         <button class="btn btn-common" type="submit">Post Ad</button>
                      </div>

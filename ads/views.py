@@ -198,24 +198,3 @@ def favourite_ad(request, id):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-    

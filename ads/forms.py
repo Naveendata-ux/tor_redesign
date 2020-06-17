@@ -8,10 +8,17 @@ from django.forms.widgets import CheckboxSelectMultiple, TextInput, Select
 
 
 class AdCreateForm(forms.ModelForm):
+    Ad_title = forms.CharField(error_messages={'invalid': 'Give a suitble name for your Ad!'})
+    category = forms.CharField(error_messages={'invalid': 'Please select a valid Category!'})
+    Width = forms.CharField(error_messages={'invalid': 'Please select a valid Choice!'})
+    Year = forms.CharField(error_messages={'invalid': 'Please select a valid Year!'})
+    
+    Aspect_Ratio = forms.CharField(error_messages={'invalid': 'Please select a valid Choice!'})
+    
     class Meta:
         model = Ad
         #exclude = ('tyre','wheels')
-        fields = ( 'Ad_title', 'description', 'category','offer_price', 'location','Tire_Condition', 'On_Rims','Year','Make','Model','Width','Aspect_Ratio','Tyres_Available','Tenure_offered','Ad_Type','Wheels_Brand', 'Seasonality')
+        fields = ( 'Ad_title', 'description', 'category','offer_price', 'location','Tire_Condition', 'On_Rims','Year','Make','Model','Width','Aspect_Ratio','Tyres_Available','Tenure_offered','Ad_Type', 'Seasonality')
     
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop("request", None)
@@ -34,6 +41,8 @@ class AdCreateForm(forms.ModelForm):
     
 
 class AdUpdateForm(forms.ModelForm):
+    Aspect_Ratio = forms.CharField(error_messages={'required': 'Please let us know what to call you!'})
+    
     class Meta:
         model = Ad
         fields = ( 'Ad_title', 'description', 'category','offer_price', 'location','Tire_Condition', 'On_Rims','Year','Make','Model','Width','Aspect_Ratio','Seasonality','Tenure_offered','Tyres_Available','Ad_Type','Wheels_Brand', )
