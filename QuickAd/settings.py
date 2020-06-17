@@ -44,6 +44,7 @@ MIDDLEWARE = [
 ]
 
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 ROOT_URLCONF = 'QuickAd.urls'
 
