@@ -63,13 +63,13 @@
             {% if request.user.is_authenticated %}
             <div class="post-btn">
                 <a class="btn btn-common" href="{% url 'ads:crate.ad' %}">
-                    <i class="lni-pencil-alt"></i> Post an Ad
+                    <i class="lni-pencil-alt"></i> Post Ad
                 </a>
             </div>
              {% else %}
              <div class="post-btn">
                 <a class="btn btn-common" href="{% url 'accounts:login' %}">
-                    <i class="lni-pencil-alt"></i> Post an Ad
+                    <i class="lni-pencil-alt"></i> Post Ad
                 </a>
             </div>
             {% endif %}
