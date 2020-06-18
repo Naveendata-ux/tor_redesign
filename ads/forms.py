@@ -13,16 +13,16 @@ class AdCreateForm(forms.ModelForm):
                    ('2018',2018),
     )
     Ad_title = forms.CharField(error_messages={'invalid': 'Give a suitble name for your Ad!'})
-    category = forms.CharField(error_messages={'invalid': 'Please select a valid Category!'})
+    #category = forms.CharField(error_messages={'invalid': 'Please select a valid Category!'})
     Width = forms.CharField(error_messages={'invalid': 'Please select a valid Choice!'})
-    Year = forms.ChoiceField(choices=Year_choices,error_messages={'invalid': 'Please select a valid Year!'})
+   # Year = forms.ChoiceField(choices=Year_choices,error_messages={'invalid': 'Please select a valid Year!'})
     
     Aspect_Ratio = forms.CharField(error_messages={'invalid': 'Please select a valid Choice!'})
     
     class Meta:
         model = Ad
         #exclude = ('tyre','wheels')
-        fields = ( 'Ad_title', 'description', 'category','offer_price', 'location','Tire_Condition', 'On_Rims','Year','Make','Model','Width','Aspect_Ratio','Tyres_Available','Tenure_offered','Ad_Type', 'Seasonality')
+        fields = ( 'Ad_title', 'description', 'category','offer_price', 'location','Tire_Condition', 'On_Rims','Make','Model','Width','Aspect_Ratio','Tyres_Available','Tenure_offered','Ad_Type', 'Seasonality')
     
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop("request", None)
@@ -45,11 +45,17 @@ class AdCreateForm(forms.ModelForm):
     
 
 class AdUpdateForm(forms.ModelForm):
-    Aspect_Ratio = forms.CharField(error_messages={'required': 'Please let us know what to call you!'})
+    Ad_title = forms.CharField(error_messages={'invalid': 'Give a suitble name for your Ad!'})
+    #category = forms.CharField(error_messages={'invalid': 'Please select a valid Category!'})
+    Width = forms.CharField(error_messages={'invalid': 'Please select a valid Choice!'})
+   # Year = forms.ChoiceField(error_messages={'invalid': 'Please select a valid Year!'})
+    
+    Aspect_Ratio = forms.CharField(error_messages={'invalid': 'Please select a valid Choice!'})
+    
     
     class Meta:
         model = Ad
-        fields = ( 'Ad_title', 'description', 'category','offer_price', 'location','Tire_Condition', 'On_Rims','Year','Make','Model','Width','Aspect_Ratio','Seasonality','Tenure_offered','Tyres_Available','Ad_Type','Wheels_Brand', )
+        fields = ( 'Ad_title', 'description', 'category','offer_price', 'location','Tire_Condition', 'On_Rims','Make','Model','Width','Aspect_Ratio','Tyres_Available','Tenure_offered','Ad_Type', 'Seasonality')
 
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop("request", None)

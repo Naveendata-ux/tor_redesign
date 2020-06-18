@@ -23,7 +23,22 @@ p.big {
     margin: 0;
     font-size: 17px;
 }
-
+body {
+    background: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: open sans, sans-serif;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-font-smoothing: subpixel-antialiased;
+    color: #000;
+    font-weight: bold;
+    line-height: 28px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    overflow-x: hidden;
+}
 </style>
 
 
@@ -32,7 +47,7 @@ p.big {
             <div class="row">
                 <div class="col-md-12">
                     <div class="breadcrumb-wrapper">
-                        <h2 class="product-title">Profile</h2>
+                      
                         <ol class="breadcrumb">
                             <li><a href="{% url 'core:home' %}">Home /</a></li>
                             <li class="current">Profile</li>
