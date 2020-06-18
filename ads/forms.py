@@ -8,10 +8,14 @@ from django.forms.widgets import CheckboxSelectMultiple, TextInput, Select
 
 
 class AdCreateForm(forms.ModelForm):
+    Year_choices = (('2020',2020),
+                   ('2019',2019),
+                   ('2018',2018),
+    )
     Ad_title = forms.CharField(error_messages={'invalid': 'Give a suitble name for your Ad!'})
     category = forms.CharField(error_messages={'invalid': 'Please select a valid Category!'})
     Width = forms.CharField(error_messages={'invalid': 'Please select a valid Choice!'})
-    Year = forms.CharField(error_messages={'invalid': 'Please select a valid Year!'})
+    Year = forms.ChoiceField(choices=Year_choices,error_messages={'invalid': 'Please select a valid Year!'})
     
     Aspect_Ratio = forms.CharField(error_messages={'invalid': 'Please select a valid Choice!'})
     

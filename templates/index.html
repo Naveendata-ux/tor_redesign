@@ -700,7 +700,8 @@ function showmore() {
     dots1.style.display = "none";
     btnText1.innerHTML = "Read less";
     moreText1.style.display = "inline";
-  };
+} 
+ }
 </script>
 <style>
     #more {display: none;}
@@ -769,108 +770,79 @@ anime.timeline({loop: true})
 </script>
 <style>
     #more1 {display: none;}
-    .ml6 {
-  position: relative;
-  font-weight: 900;
-  font-size: 3.3em;
+
+/*shadow effect*/
+/* The slow way */
+.icon-box {
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  transition: box-shadow 0.3s ease-in-out;
 }
 
-.ml6 .text-wrapper {
-  position: relative;
-  display: inline-block;
-  padding-top: 0.2em;
-  padding-right: 0.05em;
-  padding-bottom: 0.1em;
-  overflow: hidden;
-  color:#003e6b;
-  font-size: 20px;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
+/* Transition to a bigger shadow on hover */
+.icon-box:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
-.ml6 .letter {
-  display: inline-block;
-  line-height: 1em;
-}
 </style>
-                        
-<section id="about" class="section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-lg-12 col-xs-12">
-                <div class="about-wrapper">
-                    <h2 class="intro-title">How does it work?</h2>
-                    <h5>Convenience is something that we all desire and that is why we have simplified the process of
-                        renting tires into mere 5 steps.</h5>
-                    
-                        
-                        <h4 class="ml6">
-                          <span class="text-wrapper">
-                            <span class="letters">Post the advertisement</span>
-                          </span>
-                        </h4>
-                        <h4 class="ml6">
-                          <span class="text-wrapper">
-                            <span class="letters">Promote the ad</span>
-                          </span>
-                        </h4>
-                        <h4 class="ml6">
-                          <span class="text-wrapper">
-                            <span class="letters">Accept an offer</span>
-                          </span>
-                        </h4>
-                        <h4 class="ml6">
-                          <span class="text-wrapper">
-                            <span class="letters">Sign the rental agreement</span>
-                          </span>
-                        </h4>
-                        <h4 class="ml6">
-                          <span class="text-wrapper">
-                            <span class="letters">Receive payments</span>
-                          </span>
-                        </h4>
-                        
-                    
-                    </br>
-                    </p>
-                    <p>No extra or hidden taxes or service charges are incurred. You get exactly what you have mentioned
+
+
+<section class="works section-padding">
+   <div class="container">
+      <div class="row">
+         <div class="col-12">
+            <h3 class="section-title">How does it work?</h3>
+            <h5>Convenience is something that we all desire and that is why we have simplified the process of renting tires into mere 5 steps.</h5>
+         </div>
+         <div class="col-lg-2 col-md-2 col-xs-12">
+            <div class="works-item">
+               <div class="icon-box">
+                  <i class="lni-camera"></i>
+               </div>
+               <p>Post the advertisement</p>
+            </div>
+         </div>
+         <div class="col-lg-3 col-md-3 col-xs-12">
+            <div class="works-item">
+               <div class="icon-box">
+                  <i class="lni-bookmark-alt"></i>
+               </div>
+               <p>Promote the Ad</p>
+            </div>
+         </div>
+         <div class="col-lg-2 col-md-2 col-xs-12">
+            <div class="works-item">
+               <div class="icon-box">
+                  <i class="lni-thumbs-up"></i>
+               </div>
+               <p>Accept an offer</p>
+            </div>
+         </div>
+         <div class="col-lg-3 col-md-3 col-xs-12">
+            <div class="works-item">
+               <div class="icon-box">                  
+                  <i class="lni-users"></i>
+               </div>
+               <p>Sign the rental Agreement</p>
+            </div>
+         </div>
+         <div class="col-lg-2 col-md-2 col-xs-12">
+            <div class="works-item">
+               <div class="icon-box">
+                  <i class="lni-wallet"></i>
+               </div>
+               <p>Receive Payments</p>
+            </div>
+         </div>
+         <hr class="works-line">
+         <p>
+   No extra or hidden taxes or service charges are incurred. You get exactly what you have mentioned
                         in the agreement. For customers, all they need to do is browse the hundreds and thousands of ads
                         on our platform, select one which suits them the best, send an offer to the owner and drive
                         around with their new tires. Isn't it easy? It is!</p>
-                    
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xs-12">
-                <img class="img-fluid" src="{% static 'assets/img/about/about.png'%}" alt="">
-            </div>
-        </div>
-    </div>
-</section>
+      </div>
+   </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-    <script>
-// Wrap every letter in a span
-var textWrapper = document.querySelector('.ml6 .letters');
-textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-anime.timeline({loop: true})
-  .add({
-    targets: '.ml6 .letter',
-    translateY: ["1.1em", 0],
-    translateZ: 0,
-    duration: 750,
-    delay: (el, i) => 50 * i
-  }).add({
-    targets: '.ml6',
-    opacity: 0,
-    duration: 1000,
-    easing: "easeOutExpo",
-    delay: 1000
-  });
-  
-</script>
-
-    
+   </section> 
     
 
 {% endblock %}
-
