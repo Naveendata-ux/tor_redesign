@@ -253,9 +253,9 @@ background:grey;
                                     <label  for="{{ form.Tire_Condition.id_for_Tire_Condition }}">Tire Condition:</label>
                                     <select type="text"  class="form-control" name="Tire_Condition"
                                        placeholder="Tire Condition" >
-                                       {{ form.value }}
+                                       {{ form.Tire_Condition.selected }}
                                        <option id="null">Select Tire Condition</option>
-                                       <option value="New">New</option>
+                                       <option value="New" selected>New</option>
                                        <option value="Used">Used</option>
                                     </select>
                                     {% if 'Tire_Condition' in form.errors %}
@@ -715,7 +715,7 @@ background:grey;
                                  <div class="input-icon">
                                     
                                     <label  for="{{ form.offer_price.id_for_offer_price }}">Offer Price</label>
-                                    <input id='chatinput2' type="number"  class="disable" name="offer_price"
+                                    <input id='chatinput2' type="number" class="form-control" class="disable" name="offer_price"
                                        placeholder="Offer price" value="{{ form.offer_price.value|default:'' }}">
                                     {% if 'offer_price' in form.errors %}
                                     {% for error in form.offer_price.errors %}
