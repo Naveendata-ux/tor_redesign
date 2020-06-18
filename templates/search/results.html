@@ -1,16 +1,45 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 {% load static %}
 {% block content %}
 <style>
-  .img-fluid {
-   max-width: 196%;
-   height: max-content;
-   }
-   img {
-   vertical-align: -webkit-baseline-middle;
-   border-style: none;
-   }
+h3.h3{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
+/********************* Shopping Demo-6 **********************/
+.product-grid6,.product-grid6 .product-image6{overflow:hidden}
+.product-grid6{font-family:'Open Sans',sans-serif;text-align:center;position:relative;transition:all .5s ease 0s}
+.product-grid6:hover{box-shadow:0 0 10px rgba(0,0,0,.3)}
+.product-grid6 .product-image6 a{display:block}
+.product-grid6 .product-image6 img{width:100%;height:auto;transition:all .5s ease 0s}
+.product-grid6:hover .product-image6 img{transform:scale(1.1)}
+.product-grid6 .product-content{padding:12px 12px 15px;transition:all .5s ease 0s}
+.product-grid6:hover .product-content{opacity:0}
+.product-grid6 .title{font-size:20px;font-weight:600;text-transform:capitalize;margin:0 0 10px;transition:all .3s ease 0s}
+.product-grid6 .title a{color:#003e6b}
+.product-grid6 .description{font-size:14px;font-weight:200;text-transform:capitalize;margin:0 0 10px;transition:all .3s ease 0s}
+.product-grid6 .description a{color:#000}
+.product-grid6 .title a:hover{color:#2e86de}
+
+.product-grid6 .social{background-color:#fff;width:100%;padding:0;margin:0;list-style:none;opacity:0;transform:translateX(-50%);position:absolute;bottom:-50%;left:50%;z-index:1;transition:all .5s ease 0s}
+.product-grid6:hover .social{opacity:1;bottom:20px}
+.product-grid6 .social li{display:inline-block}
+.product-grid6 .social li a{color:#909090;font-size:16px;line-height:45px;text-align:center;height:45px;width:45px;margin:0 7px;border:1px solid #909090;border-radius:50px;display:block;position:relative;transition:all .3s ease-in-out}
+.product-grid6 .social li a:hover{color:#fff;background-color:#2e86de;width:80px}
+.product-grid6 .social li a:after,.product-grid6 .social li a:before{content:attr(data-tip);color:#fff;background-color:#2e86de;font-size:12px;letter-spacing:1px;line-height:20px;padding:1px 5px;border-radius:5px;white-space:nowrap;opacity:0;transform:translateX(-50%);position:absolute;left:50%;top:-30px}
+.product-grid6 .social li a:after{content:'';height:15px;width:15px;border-radius:0;transform:translateX(-50%) rotate(45deg);top:-20px;z-index:-1}
+.product-grid6 .social li a:hover:after,.product-grid6 .social li a:hover:before{opacity:1}
+@media only screen and (max-width:990px){.product-grid6{margin-bottom:30px}
+}
+.price {
+    position: absolute;
+    top: 30px;
+    left: 5px;
+    background: #dc3545;
+    padding: 4px 15px;
+    font-size: 18px;
+    color: #fff;
+    font-weight: bold;
+}
 </style>
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <div class="page-header" style="background: url('{% static 'assets/img/banner1.jpg' %}');">
    <div class="container">
       <div class="row">
@@ -34,14 +63,70 @@
                <div class="widget_search">
                   <form role="search" id="search-form">
                      <input type="search" class="form-control" autocomplete="off" name="s"
-                        placeholder="Search..." id="search-input" value="">
+                        placeholder="Search" id="search-input" value="">
                      <button type="submit" id="search-submit" class="search-btn"><i class="lni-search"></i>
                      </button>
                   </form>
                </div>
-               
+               <div class="widget categories">
+                  <h4 class="widget-title">All Categories</h4>
+                  <ul class="categories-list">
+                     <li v-for="category in categories" @click="filter(category)" style="cursor: pointer">
+                        <i class="lni-control-panel"></i>
+                        Tires
+                        <span class="category-counter">(9)</span>
+                     </li>
+                  </ul>
+               </div>
+               <div class="widget categories">
+                  <h4 class="widget-title">Seasons</h4>
+                  <ul class="categories-list">
+                     <li v-for="category in categories" @click="filter(category)" style="cursor: pointer">
+                        <i class="lni-control-panel"></i>
+                        Summer
+                        <span class="category-counter">(3)</span>
+                     </li>
+                     <li v-for="category in categories" @click="filter(category)" style="cursor: pointer">
+                        <i class="lni-control-panel"></i>
+                        Winter
+                        <span class="category-counter">(4)</span>
+                     </li>
+                     <li v-for="category in categories" @click="filter(category)" style="cursor: pointer">
+                        <i class="lni-control-panel"></i>
+                        All Seasons
+                        <span class="category-counter">(9)</span>
+                     </li>
+                  </ul>
+               </div>
+               <div class="widget categories">
+                  <h4 class="widget-title">Rent Type</h4>
+                  <ul class="categories-list">
+                     <li v-for="category in categories" @click="filter(category)" style="cursor: pointer">
+                        <i class="lni-control-panel"></i>
+                        Rent
+                        <span class="category-counter">(5)</span>
+                     </li>
+                     <li v-for="category in categories" @click="filter(category)" style="cursor: pointer">
+                        <i class="lni-control-panel"></i>
+                        Rent to sell
+                        <span class="category-counter">(3)</span>
+                     </li>
+                  </ul>
+               </div>
                <div class="widget">
-                  <h4 class="widget-title">Advertisement</h4>
+                  <h4 class="widget-title">Advertisement-1</h4>
+                  <div class="add-box">
+                     <img class="img-fluid" src="assets/img/img1.jpg" alt="">
+                  </div>
+               </div>
+               <div class="widget">
+                  <h4 class="widget-title">Advertisement-2</h4>
+                  <div class="add-box">
+                     <img class="img-fluid" src="assets/img/img1.jpg" alt="">
+                  </div>
+               </div>
+               <div class="widget">
+                  <h4 class="widget-title">Advertisement-3</h4>
                   <div class="add-box">
                      <img class="img-fluid" src="assets/img/img1.jpg" alt="">
                   </div>
@@ -58,7 +143,7 @@
                   <form class="woocommerce-ordering" method="post">
                      <label>
                         <select name="order" class="orderby">
-                           <option selected="selected" value="menu-order">49 items</option>
+                           <option selected="selected" value="menu-order">20 items</option>
                            <option value="popularity">popularity</option>
                            <option value="popularity">Average ration</option>
                            <option value="popularity">newness</option>
@@ -67,63 +152,86 @@
                      </label>
                   </form>
                </div>
-               <ul class="nav nav-tabs">
-                  <li class="nav-item">
-                     <a class="nav-link active" data-toggle="tab" href="#grid-view"><i class="lni-grid"></i></a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link" data-toggle="tab" href="#list-view"><i class="lni-list"></i></a>
-                  </li>
-               </ul>
+               
             </div>
-            {% if submitbutton == 'Search' and request.GET.year != '' and request.GET.make != '' %}
-            {% if results %}
-            <div class="tab-content">
-               <div id="grid-view" class="tab-pane fade active show">
-                  <div class="row">
-                     {% for ad in results %}
-                     <div class="featured-box">
-                        <div class="feature-content">
-                        <a href="#">
-                                 <img class="img-fluid" style="width: 390px; max-height: 204px"
-                              src="{{ ad.first_image_or_default }}" alt="">
-                                 </a> 
-                           <h4><a href="">{{ ad.Ad_title }}</a></h4>
-                           <div class="meta-tag">
-                              <span>
-                              <a href="#"><i class="lni-user"></i>{{ ad.user.username }}</a>
-                              </span>
-                              <span>
-                              <a href="#"><i class="lni-map-marker"></i> {{ ad.location }}</a>
-                              </span>
-                              <span>
-                              <a href="#"><i class="lni-tag"></i>{{ ad.year }}</a>
-                              </span>
-                           </div>
-                           <p class="dsc"style="min-width: 320px; min-height: 80px" >{{ ad.description|safe|truncatechars:30 }}</p>
-                           <div class="listing-bottom">
-                              <h3 class="price float-left">${{ ad.offer_price }}</h3>
-                              <a href="{% url 'ads:ad.details' ad.id %}" class="btn btn-common float-right">View Details</a>
-                           </div>
-                        </div>
-                        </div>
-                        </div>
-                        {% endfor %}
-                     </div>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
+            
+            <div class="adds-wrapper">
+               <div class="tab-content">
+               
+{% if submitbutton == 'Search' and request.GET.year != '' and request.GET.make != '' %}
+{% if results %}
+<div class="container">
+    <h3 class="h3"> </h3>
+    <div class="row">
+     {% for ad in results %}
+       <div class="col-md-6 col-sm-6">
+            <div class="product-grid6">
+                <div class="product-image6">
+                    <a href="#">
+                    
+                        <img class="img-fluid"  style="width: 360px; max-height: 204px"
+                                    src="{{ ad.first_image_or_default }}"
+                                    alt="">
+                       <span class="price">${{ ad.offer_price }}</span>
+                    </a>
+                    
+                </div>
+                <div class="product-content">
+                    <div class="price">${{ ad.offer_price }}
+                      
+                    </div>
+                    <h3 class="title"><a href="#">{{ ad.Ad_title }}</a></h3>
+                    
+                    <h3 class="description"><a href="#">{{ ad.description|safe|truncatechars:30 }}</a></h3> 
+                </div>
+                <ul class="social">
+                    
+                    <li><a href="{% url 'ads:ad.details' ad.id %}" data-tip="View Details"><i class="fa fa-search"></i></a></li>
+                    
+                </ul>
+            </div>
+        </div>
+       {% endfor %} 
+    </div>
+</div>
+{% endif %}
+{% endif %}
+               
                </div>
-               {% endif %}
-               {% endif %}
             </div>
-           
+                                
+            <div class="pagination-bar">
+               
+                                       
+               <nav>
+                  
+                                              
+                  <ul class="pagination justify-content-center">
+                     
+                                                     
+                     <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                     
+                                                     
+                     <li class="page-item"><a class="page-link" href="#">2</a></li>
+                     
+                                                     
+                     <li class="page-item"><a class="page-link" href="#">3</a></li>
+                     
+                                                     
+                     <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                     
+                                                 
+                  </ul>
+                  
+                                          
+               </nav>
+               
+                                   
+            </div>
+            
          </div>
       </div>
    </div>
-</div>
-</div>
 </div>
 {% endblock %}
 
