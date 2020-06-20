@@ -37,7 +37,7 @@ class Ad(models.Model):
     Model = models.CharField(max_length=250)
     Width = models.PositiveIntegerField(default =1)
     Aspect_Ratio = models.PositiveIntegerField(default =1)
-    Tyres_Available = models.PositiveIntegerField(default =1)
+    tires_available = models.PositiveIntegerField(default =1)
     Tenure_offered = models.PositiveIntegerField(default =1)
     Ad_Type = models.CharField(max_length=250)
     Wheels_Brand = models.CharField(max_length=50)
@@ -50,7 +50,10 @@ class Ad(models.Model):
     @property
     def first_image_or_default(self):
         return self.ad_images.all()[0].image.url if self.ad_images.count() > 0 else "/media/ad_images/default.jpg"
-
+    
+    
+    
+    
     @property
     def ad_status(self):
         if self.status == 1:

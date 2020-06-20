@@ -21,7 +21,7 @@ class AdCreateForm(forms.ModelForm):
     Year = forms.IntegerField(error_messages={'invalid': 'Please select a valid Year!'})
     
     Aspect_Ratio = forms.IntegerField(error_messages={'invalid': 'Please select a valid Choice for Ratio!'})
-    Tyres_Available = forms.IntegerField(error_messages={'invalid': 'Please enter value for Tyres_Available!'})
+    tires_available = forms.IntegerField(error_messages={'invalid': 'Please enter value for Tyres_Available!'})
     Tenure_offered = forms.IntegerField(error_messages={'invalid': 'Please enter value for Tenure_offered!'})
     Ad_Type = forms.CharField(error_messages={'invalid': 'Please select valid choice for Ad_Type!'})
     Seasonality= forms.CharField(error_messages={'invalid': 'Please Select valid choice for Seasonality!'})
@@ -30,7 +30,7 @@ class AdCreateForm(forms.ModelForm):
         model = Ad
         #exclude = ('tyre','wheels')
         fields = ( 'Ad_title', 'description', 'category','offer_price','Tire_Condition', 'On_Rims', 'Year','Make','Model','Width','Aspect_Ratio',
-        'Tyres_Available','Tenure_offered','Ad_Type', 'Seasonality')
+        'tires_available','Tenure_offered','Ad_Type', 'Seasonality')
     
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop("request", None)
@@ -63,7 +63,7 @@ class AdUpdateForm(forms.ModelForm):
     
     class Meta:
         model = Ad
-        fields = ( 'Ad_title', 'description', 'category','offer_price', 'location','Tire_Condition', 'On_Rims','Year','Make','Model','Width','Aspect_Ratio','Tyres_Available','Tenure_offered','Ad_Type', 'Seasonality')
+        fields = ( 'Ad_title', 'description', 'category','offer_price', 'location','Tire_Condition', 'On_Rims','Year','Make','Model','Width','Aspect_Ratio','tires_available','Tenure_offered','Ad_Type', 'Seasonality')
         
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop("request", None)

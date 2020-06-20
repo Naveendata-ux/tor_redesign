@@ -712,11 +712,11 @@ body {
                               <div class="form-group">
                                     <div class="input-icon">
                                        
-                                       <label  for="{{ form.Tyres_Available.id_for_Tyres_Available }}">No.of Tires Offered</label>
-                                       <input type="number"  class="form-control" name="Tyres_Available"
-                                          placeholder="Tyres_Available" value="{{ form.Tyres_Available.value|default:'' }}">
-                                       {% if 'Tyres_Available' in form.errors %}
-                                       {% for error in form.Tyres_Available.errors %}
+                                       <label  for="{{ form.tires_available.id_for_tires_available}}">No.of Tires Offered</label>
+                                       <input type="number"  class="form-control" name="tires_available"
+                                          placeholder="Tires Available" value="{{ form.tires_available.value|default:'' }}">
+                                       {% if 'tires_available' in form.errors %}
+                                       {% for error in form.tires_available.errors %}
                                        <div class="alert alert-danger alert-dismissable">
                                           <a href="#" class="close" data-dismiss="alert"
                                              aria-label="close">&times;</a>
