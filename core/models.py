@@ -32,7 +32,7 @@ class Ad(models.Model):
     favourite = models.ManyToManyField(User, related_name="favourite", blank=True)
     Tire_Condition = models.CharField(max_length=50)
     On_Rims = models.CharField(max_length=50)
-    Year = models.PositiveIntegerField(default =1)
+    Year = models.PositiveIntegerField(default =2020)
     Make = models.CharField(max_length=250)
     Model = models.CharField(max_length=250)
     Width = models.PositiveIntegerField(default =1)

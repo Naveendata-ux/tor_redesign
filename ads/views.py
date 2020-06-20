@@ -92,9 +92,19 @@ class AdUpdateView(CustomLoginRequiredMixin, UpdateView):
 
     def get_object(self, queryset=None):
         obj = self.model.objects.get(id=self.kwargs['ad_id'])
+        #obj = self.model.objects.select_related('AdImage').filter(id=self.kwargs['ad_id'])
         if obj is None:
             raise Http404("Ad doesn't exists")
         return obj
+
+    def get_images(self, queryset=None):
+        #obj = self.model.objects.get(id=self.kwargs['ad_id'])
+        obj = self.model.objects.select_related('AdImage').filter(id=self.kwargs['ad_id'])
+        if obj is None:
+            raise Http404("Ad doesn't exists")
+        return obj
+
+
 
 
 class AdDeleteView(DeleteView):

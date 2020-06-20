@@ -248,10 +248,21 @@ body {
                                     
                                     <label  for="{{ form.Tire_Condition.id_for_Tire_Condition }}">Tire Condition:</label>
                                     <select type="text"  class="form-control" name="Tire_Condition"
-                                       placeholder="Tire Condition" value="{{ form.Tire_Condition.value|default:'' }}">
-                                       <option id="null">Select Tire Condition</option>
+                                       placeholder="Tire Condition" >
+                                      {% if  form.Tire_Condition.value == "New" %}
+                                       <option value="">Select Tire Condition</option>
+                                       <option value="New" selected>New</option>
+                                       <option value="Used">Used</option>
+                                         
+                                      {% elif  form.Tire_Condition.value == "Used" %}
+                                       <option value="">Select Tire Condition</option>
+                                       <option value="New">New</option>
+                                       <option value="Used" selected>Used</option>
+                                      {% else %}
+                                       <option value="">Select Tire Condition</option>
                                        <option value="New">New</option>
                                        <option value="Used">Used</option>
+                                      {% endif %}
                                     </select>
                                     {% if 'Tire_Condition' in form.errors %}
                                     {% for error in form.Tire_Condition.errors %}
@@ -269,10 +280,20 @@ body {
                                     
                                     <label  for="{{ form.On_Rims.id_for_On_Rims }}">On Rims?</label>
                                     <select type="text"  class="form-control" name="On_Rims"
-                                       placeholder="On_Rims" value="{{ form.On_Rims.value|default:'' }}">
+                                       placeholder="On_Rims" >
+                                    {% if  form.On_Rims.value == "Yes" %}
+                                       <option id="null">Select On Rims</option>
+                                       <option value="Yes" selected>Yes</option>
+                                       <option value="No">No</option>
+                                    {% elif  form.On_Rims.value == "No" %}
+                                       <option id="null">Select On Rims</option>
+                                       <option value="Yes">Yes</option>
+                                       <option value="No" selected>No</option>
+                                    {% else %}
                                        <option id="null">Select On Rims</option>
                                        <option value="Yes">Yes</option>
                                        <option value="No">No</option>
+                                    {% endif %}
                                     </select>
                                     {% if 'On_Rims' in form.errors %}
                                     {% for error in form.On_Rims.errors %}
@@ -290,60 +311,60 @@ body {
                                     
                                     <label  for="{{ form.Year.id_for_Year }}">Year</label>
                                     <select id="sel_year" type="text"  class="form-control" name="Year"
-                                       placeholder="Year" value="{{ form.Year.value|default:'' }}">
-                                       <option selected>Select Year</option>
-                                                <option id="null">---Select Year---</option>
-                                <option id="2020">2020</option>
-                                <option id="2019">2019</option>
-                                <option id="2018">2018</option>
-                                <option id="2017">2017</option>
-                                <option id="2016">2016</option>
-                                <option id="2015">2015</option>
-                                <option id="2014">2014</option>
-                                <option id="2013">2013</option>
-                                <option id="2012">2012</option>
-                                <option id="2011">2011</option>
-                                <option id="2010">2010</option>
-                                <option id="2009">2009</option>
-                                <option id="2008">2008</option>
-                                <option id="2007">2007</option>
-                                <option id="2006">2006</option>
-                                <option id="2005">2005</option>
-                                <option id="2004">2004</option>
-                                <option id="2003">2003</option>
-                                <option id="2002">2002</option>
-                                <option id="2001">2001</option>
-                                <option id="2000">2000</option>
-                                <option id="1999">1999</option>
-                                <option id="1998">1998</option>
-                                <option id="1997">1997</option>
-                                <option id="1996">1996</option>
-                                <option id="1995">1995</option>
-                                <option id="1994">1994</option>
-                                <option id="1993">1993</option>
-                                <option id="1992">1992</option>
-                                <option id="1991">1991</option>
-                                <option id="1990">1990</option>
-                                <option id="1989">1989</option>
-                                <option id="1988">1988</option>
-                                <option id="1987">1987</option>
-                                <option id="1986">1986</option>
-                                <option id="1985">1985</option>
-                                <option id="1984">1984</option>
-                                <option id="1983">1983</option>
-                                <option id="1982">1982</option>
-                                <option id="1981">1981</option>
-                                <option id="1980">1980</option>
-                                <option id="1979">1979</option>
-                                <option id="1978">1978</option>
-                                <option id="1977">1977</option>
-                                <option id="1976">1976</option>
-                                <option id="1975">1975</option>
-                                <option id="1974">1974</option>
-                                <option id="1973">1973</option>
-                                <option id="1972">1972</option>
-                                <option id="1971">1971</option>
-                            
+                                       placeholder="Year" value="{{ form.Year.value }}">
+                                      
+                                    <option value="null">Select Year</option>
+                                  <option value="{{ form.Year.value }}" selected>{{ form.Year.value}}</option>
+                                 <option value="2020">2020</option>
+                                 <option value="2019">2019</option>
+                                 <option value="2018">2018</option>
+                                 <option value="2017">2017</option>
+                                 <option value="2016">2016</option>
+                                 <option value="2015">2015</option>
+                                 <option value="2014">2014</option>
+                                 <option value="2013">2013</option>
+                                 <option value="2012">2012</option>
+                                 <option value="2011">2011</option>
+                                 <option value="2010">2010</option>
+                                 <option value="2009">2009</option>
+                                 <option value="2008">2008</option>
+                                 <option value="2007">2007</option>
+                                 <option value="2006">2006</option>
+                                 <option value="2005">2005</option>
+                                 <option value="2004">2004</option>
+                                 <option value="2003">2003</option>
+                                 <option value="2002">2002</option>
+                                 <option value="2001">2001</option>
+                                 <option value="2000">2000</option>
+                                 <option value="1999">1999</option>
+                                 <option value="1998">1998</option>
+                                 <option value="1997">1997</option>
+                                 <option value="1996">1996</option>
+                                 <option value="1995">1995</option>
+                                 <option value="1994">1994</option>
+                                 <option value="1993">1993</option>
+                                 <option value="1992">1992</option>
+                                 <option value="1991">1991</option>
+                                 <option value="1990">1990</option>
+                                 <option value="1989">1989</option>
+                                 <option value="1988">1988</option>
+                                 <option value="1987">1987</option>
+                                 <option value="1986">1986</option>
+                                 <option value="1985">1985</option>
+                                 <option value="1984">1984</option>
+                                 <option value="1983">1983</option>
+                                 <option value="1982">1982</option>
+                                 <option value="1981">1981</option>
+                                 <option value="1980">1980</option>
+                                 <option value="1979">1979</option>
+                                 <option value="1978">1978</option>
+                                 <option value="1977">1977</option>
+                                 <option value="1976">1976</option>
+                                 <option value="1975">1975</option>
+                                 <option value="1974">1974</option>
+                                 <option value="1973">1973</option>
+                                 <option value="1972">1972</option>
+                                 <option value="1971">1971</option>
                                     </select>
                                     {% if 'Year' in form.errors %}
                                     {% for error in form.Year.errors %}
@@ -361,8 +382,9 @@ body {
                                     
                                     <label  for="{{ form.Make.id_for_Make}}">Make</label>
                                     <select id="sel_make" type="text"  class="form-control" name="Make"
-                                       placeholder="Make" value="{{ form.Make.value|default:'' }}">
-                                       <option id="null">---Select Make---</option>
+                                       placeholder="Make" >
+                                       <option value="null">Select Make</option>
+                                <option value="{{ form.Make.value}}">{{ form.Make.value}}</option>
                                <option value="Acura">Acura</option>
                                <option value="Alfa Romeo">Alfa Romeo</option>
                                <option value="Alpine">Alpine</option>
@@ -548,8 +570,8 @@ body {
                                      <span id = "msg" style = "display:none;color:red;">No models found!</span>
                                     <select id="sel_model" type="text"  class="form-control" name="Model"
                                        placeholder="Model" value="{{ form.Model.value|default:'' }}">
-                                       <option selected>Choose...</option>
-                                       <option>...</option>
+                                       <option value="{{ form.Model.value}}">{{ form.Model.value}}</option>
+                                       
                                     </select>
                                     {% if 'Model' in form.errors %}
                                     {% for error in form.Model.errors %}
@@ -568,11 +590,20 @@ body {
                            
                            <label  for="{{ form.Width.id_for_Width }}">Width</label>
                            <select type="number"  class="form-control" name="Width"
-                              placeholder="Width" value="{{ form.Width.value|default:'' }}">
-                           <option id="null">Select Width</option>
-                           <option value="10">10</option>
+                              placeholder="Width">
+                           {% if  form.Width.value == "10" %}
+                           <option value="{{ form.Aspect_Ratio.value }}" selected>{{ form.Aspect_Ratio.value }}</option>
+                           <option value="">Select Width</option>
+                           <option value="10" selected>10</option>
                            <option value="11">11</option>
                            <option value="12">12</option>
+                           
+                           {% else %}
+                            <option value="">Select Width</option>
+                           <option value="10">10</option>
+                           <option value="11">11</option>
+                           <option value="12"selected>12</option>
+                           {% endif %}
                            </select>
                            {% if 'Width' in form.errors %}
                            {% for error in form.Width.errors %}
@@ -590,11 +621,15 @@ body {
                                  
                                  <label  for="{{ form.Aspect_Ratio.id_for_Aspect_Ratio }}">Aspect Ratio</label>
                                  <select type="number"  class="form-control" name="Aspect_Ratio"
-                                    placeholder="Aspect_Ratio" value="{{ form.Aspect_Ratio.value|default:'' }}">
-                                    <option id="null">Select Aspect_Ratio</option>
+                                    placeholder="Aspect_Ratio" >
+                                    <option value="null">Select Aspect Ratio</option>
+                                    <option value="{{ form.Aspect_Ratio.value }}" selected>{{ form.Aspect_Ratio.value }}</option>
+                                    
                                     <option value="20">20</option>
                                     <option value="21">21</option>
                                     <option value="22">22</option>
+                                    
+                                    
                                  </select>
                                  {% if 'Aspect_Ratio' in form.errors %}
                                  {% for error in form.Aspect_Ratio.errors %}
@@ -613,10 +648,12 @@ body {
                                  
                                  <label  for="{{ form.Seasonality.id_for_Seasonality }}">Seasonality </label>
                                  <select type="text"  class="form-control" name="Seasonality"
-                                    placeholder="Seasonality" value="{{ form.Seasonality.value|default:'' }}">
-                                    <option id="null">Select Seasonality</option>
+                                    placeholder="Seasonality" >
+                                     <option value="AllSeason">All Season</option>
+                                    <option value="{{ form.Seasonality.value}}">{{ form.Seasonality.value}}</option>
+                                   
                                     <option value="Summer">Summer</option>
-                                    <option value="AllSeason">All Season</option>
+                                   
                                     <option value="Winter">Winter</option>
                                  </select>
                                  {% if 'Seasonality' in form.errors %}
@@ -654,7 +691,8 @@ body {
                                     <label  for="{{ form.Ad_Type.id_for_Ad_Type }}">Ad Type</label>
                                     <select id="purpose" type="text"  class="form-control" name="Ad_Type"
                                        placeholder="Ad_Type" value="{{ form.Ad_Type.value|default:'' }}">
-                                       <option id="null">Select Ad_Type</option>
+                                       <option value="null">Select Ad Type</option>
+                                       <option value="{{ form.Ad_Type.value}}">{{ form.Ad_Type.value}}</option>
                                        <option value="Rent">Rent</option>
                                        <option value="Rent to Sell">Rent to Sell</option>
                                        <option value="Sell">Sell</option>
@@ -670,7 +708,7 @@ body {
                                     {% endif %}
                                  </div>
                               </div>
-                              <div style='display:none;' id='business'> 
+                              
                               <div class="form-group">
                                     <div class="input-icon">
                                        
@@ -688,6 +726,11 @@ body {
                                        {% endif %}
                                     </div>
                                  </div>
+                                 {% if form.Ad_Type.value == "Sell" %}
+                                  <div style='display:none;' id='business'>
+                                  {% else %}
+                                   <div id='business'>
+                                 {% endif %}
                                  
                                  <div class="form-group">
                                     <div class="input-icon">
@@ -725,8 +768,7 @@ body {
                                  </div>
                               </div>
                               <label class="tg-fileuploadlabel" for="tg-photogallery">
-                           <span>Drop files anywhere to upload</span>
-                           <span>Or</span>
+                           
                            <span class="btn btn-common">Select Files</span>
                            <span>Maximum upload file size: 1MB</span>
                            <input id="tg-photogallery"  class="tg-fileinput" multiple
@@ -742,7 +784,7 @@ body {
                                     {{ form.description.errors }}
                                     <label  for="{{ form.description.id_for_description }}">Description</label>
                                     <textarea type="text"  class="form-control" name="description"
-                                       placeholder="Description" value="{{ form.description.value|default:'' }}"></textarea>
+                                       placeholder="Description" >{{ form.description.value}}</textarea>
                                     {% if 'description' in form.errors %}
                                     {% for error in form.description.errors %}
                                     <div class="alert alert-danger alert-dismissable">
@@ -767,6 +809,18 @@ body {
       </div>
    </div>
 </div>
+
+<script>
+var map = {};
+$('select option').each(function () {
+    if (map[this.value]) {
+        $(this).remove()
+    }
+    map[this.value] = true;
+})
+</script>
+
+
 <script>
 var searchInput = 'search_input';
  
