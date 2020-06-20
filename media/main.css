@@ -2653,14 +2653,18 @@ a.back-to-top:focus {
 }
 
 .ads-details-wrapper .product-img {
-	position: relative
+	position: absolute
+	width:100%;
+	height:auto;
+	transition:all .5s ease 0s
+	transform:scale(1.1)
 }
 
 .ads-details-wrapper .price {
 	position: absolute;
 	top: 30px;
 	left: 5px;
-	background: #003e6b;
+	background:  #dc3545;
 	padding: 10px 25px;
 	font-size: 20px;
 	color: #fff;

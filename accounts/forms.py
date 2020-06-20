@@ -90,8 +90,8 @@ class QuestionsForm(forms.Form):
     
         
 class UserLoginForm(forms.Form):
-    email = forms.EmailField(label="Email")
-    password = forms.CharField(
+    email = forms.EmailField(label="Email",error_messages={'invalid': 'Please Enter Correct Email Address'})
+    password = forms.CharField(error_messages={'invalid': 'Please Enter a Correct  Password'},
         label="Password",
         strip=False,
         widget=forms.PasswordInput,
@@ -111,7 +111,7 @@ class UserLoginForm(forms.Form):
             self.user = authenticate(email=email, password=password)
 
             if self.user is None:
-                raise forms.ValidationError("User Does Not Exist.")
+                raise forms.ValidationError("Please Enter a Correct  Password")
             if not self.user.check_password(password):
                 raise forms.ValidationError("Password Does not Match.")
             if not self.user.is_active:

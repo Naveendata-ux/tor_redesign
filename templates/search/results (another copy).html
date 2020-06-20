@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+h3.h3{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
+/********************* Shopping Demo-6 **********************/
+.product-grid6,.product-grid6 .product-image6{overflow:hidden}
+.product-grid6{font-family:'Open Sans',sans-serif;text-align:center;position:relative;transition:all .5s ease 0s}
+.product-grid6:hover{box-shadow:0 0 10px rgba(0,0,0,.3)}
+.product-grid6 .product-image6 a{display:block}
+.product-grid6 .product-image6 img{width:100%;height:auto;transition:all .5s ease 0s}
+.product-grid6:hover .product-image6 img{transform:scale(1.1)}
+.product-grid6 .product-content{padding:12px 12px 15px;transition:all .5s ease 0s}
+.product-grid6:hover .product-content{opacity:0}
+.product-grid6 .title{font-size:20px;font-weight:600;text-transform:capitalize;margin:0 0 10px;transition:all .3s ease 0s}
+.product-grid6 .title a{color:#003e6b}
+.product-grid6 .description{font-size:14px;font-weight:200;text-transform:capitalize;margin:0 0 10px;transition:all .3s ease 0s}
+.product-grid6 .description a{color:#000}
+.product-grid6 .title a:hover{color:#2e86de}
+
+.product-grid6 .social{background-color:#fff;width:100%;padding:0;margin:0;list-style:none;opacity:0;transform:translateX(-50%);position:absolute;bottom:-50%;left:50%;z-index:1;transition:all .5s ease 0s}
+.product-grid6:hover .social{opacity:1;bottom:20px}
+.product-grid6 .social li{display:inline-block}
+.product-grid6 .social li a{color:#909090;font-size:16px;line-height:45px;text-align:center;height:45px;width:45px;margin:0 7px;border:1px solid #909090;border-radius:50px;display:block;position:relative;transition:all .3s ease-in-out}
+.product-grid6 .social li a:hover{color:#fff;background-color:#003e6b;width:80px}
+.product-grid6 .social li a:after,.product-grid6 .social li a:before{content:attr(data-tip);color:#fff;background-color:#dc4445;font-size:12px;letter-spacing:1px;line-height:20px;padding:1px 5px;border-radius:5px;white-space:nowrap;opacity:0;transform:translateX(-50%);position:absolute;left:50%;top:-30px}
+.product-grid6 .social li a:after{content:'';height:15px;width:15px;border-radius:0;transform:translateX(-50%) rotate(45deg);top:-20px;z-index:-1}
+.product-grid6 .social li a:hover:after,.product-grid6 .social li a:hover:before{opacity:1}
+@media only screen and (max-width:990px){.product-grid6{margin-bottom:30px}
+}
+.price {
+    position: absolute;
+    top: 30px;
+    left: 5px;
+    background: #ca3e3d;
+    padding: 4px 15px;
+    font-size: 18px;
+    color: #fff;
+    font-weight: bold;
+}
+</style>
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<div class="page-header" style="background: url('{% static 'assets/img/banner1.jpg' %}');">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="breadcrumb-wrapper">
+               <h2 class="product-title">Listings</h2>
+               <ol class="breadcrumb">
+                  <li><a href="#">Home /</a></li>
+                  <li class="current">Listings</li>
+               </ol>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="main-container section-padding" id="app">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-3 col-md-12 col-xs-12 page-sidebar">
+            <aside>
+               <div class="widget_search">
+                  <form role="search" id="search-form">
+                     <input type="search" class="form-control" autocomplete="off" name="s"
+                        placeholder="Search" id="search-input" value="">
+                     <button type="submit" id="search-submit" class="search-btn"><i class="lni-search"></i>
+                     </button>
+                  </form>
+               </div>
+               <div class="widget categories">
+                  <h4 class="widget-title">All Categories</h4>
+                  <ul class="categories-list">
+                     
+                        {% for category in categories %}
+						<a href="/?category={{category.id}}"
+							class="list-group-item list-group-item-action">{{category.name}}</a>
+						{% endfor %}
+                       
+                     
+                  </ul>
+               </div>
+               
+               </br>
+               </br>
+               <div class="widget categories">
+                  <h4 class="widget-title">Rent Type</h4>
+                  <ul class="categories-list">
+                     <li v-for="category in categories" @click="filter(category)" style="cursor: pointer">
+                        <i class="lni-control-panel"></i>
+                        Rent
+                        <span class="category-counter">(5)</span>
+                     </li>
+                     <li v-for="category in categories" @click="filter(category)" style="cursor: pointer">
+                        <i class="lni-control-panel"></i>
+                        Rent to sell
+                        <span class="category-counter">(3)</span>
+                     </li>
+                  </ul>
+               </div>
+               <div class="widget">
+                  <h4 class="widget-title">Advertisement-1</h4>
+                  <div class="add-box">
+                     <img class="img-fluid" src="assets/img/img1.jpg" alt="">
+                  </div>
+               </div>
+               <div class="widget">
+                  <h4 class="widget-title">Advertisement-2</h4>
+                  <div class="add-box">
+                     <img class="img-fluid" src="assets/img/img1.jpg" alt="">
+                  </div>
+               </div>
+               <div class="widget">
+                  <h4 class="widget-title">Advertisement-3</h4>
+                  <div class="add-box">
+                     <img class="img-fluid" src="assets/img/img1.jpg" alt="">
+                  </div>
+               </div>
+            </aside>
+         </div>
+         <div class="col-lg-9 col-md-12 col-xs-12 page-content">
+            <div class="product-filter">
+               <div class="short-name">
+                  <span>Showing all items</span>
+               </div>
+               <div class="Show-item">
+                  <span>Show Items</span>
+                  <form class="woocommerce-ordering" method="post">
+                     <label>
+                        <select name="order" class="orderby">
+                           <option selected="selected" value="menu-order">20 items</option>
+                           <option value="popularity">popularity</option>
+                           <option value="popularity">Average ration</option>
+                           <option value="popularity">newness</option>
+                           <option value="popularity">price</option>
+                        </select>
+                     </label>
+                  </form>
+               </div>
+               
+            </div>
+            
+
+
+{% if submitbutton == 'Search' and request.GET.location != ''  and request.GET.year != ''  and request.GET.make != ''   %}
+{% if results %}
+<div class="container">
+    <h3 class="h3"> </h3>
+    <div class="row">
+     {% for ad in results %}
+       <div class="col-md-6 col-sm-6">
+            <div class="product-grid6">
+                <div class="product-image6">
+                    <a href="#">
+                    
+                        <img class="img-fluid"  style="width: 360px; max-height: 204px"
+                                    src="{{ ad.first_image_or_default }}"
+                                    alt="">
+                       <span class="price">${{ ad.offer_price }}</span>
+                    </a>
+                    
+                </div>
+                <div class="product-content">
+                    <div class="price">${{ ad.offer_price }}
+                      
+                    </div>
+                    <h3 class="title"><a href="#">{{ ad.Ad_title }}</a></h3>
+                    
+                    <h3 class="description"><a href="#">{{ ad.description|safe|truncatechars:30 }}</a></h3> 
+                </div>
+                <ul class="social">
+                    <div class="text-center">
+                    <a href="{% url 'ads:ad.details' ad.id %}" class="btn btn-common " >View Details</a>
+                    </div>
+                </ul>
+            </div>
+        </div>
+       {% endfor %} 
+    </div>
+</div>
+ {% endif %}
+ {% endif %}
+               </div>
+            </div>
+                                
+           
+            
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock %}
+

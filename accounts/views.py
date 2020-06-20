@@ -8,6 +8,9 @@ from .forms import *
 from django.template.response import TemplateResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView, CreateView
+from django.contrib import messages
+
+
 
 def signup(request):
     registered = False
@@ -20,7 +23,8 @@ def signup(request):
             user.set_password(user.password)
             user.save()
             registered = True
-            return render(request,'accounts/login.html')
+            messages.success(request, 'Form submission successfull')
+            #return render(request,'accounts/register.html')
         else:
             print(form.errors)
     else:
@@ -29,6 +33,9 @@ def signup(request):
     return render(request,'accounts/register.html',
                           {'form':form, 
                            'registered':registered})
+                           
+                           
+
 class LoginView(FormView):
     success_url = '/'
     form_class = UserLoginForm
@@ -41,7 +48,7 @@ class LoginView(FormView):
     def dispatch(self, request, *args, **kwargs):
         if self.request.user.is_authenticated:
             return HttpResponseRedirect(self.get_success_url())
-        return super().dispatch(self.request, *args, **kwargs)
+        return super().dispatch(self.request,*args,**kwargs)
 
     # @method_decorator(sensitive_post_parameters('password'))
     # @method_decorator(csrf_protect)
@@ -60,7 +67,8 @@ class LoginView(FormView):
         auth.login(self.request, form.get_user())
         return HttpResponseRedirect(self.get_success_url())
 
-    def form_invalid(self, form):
+    def form_invalid(self,form):
+        #return redirect('accounts:login')
         return self.render_to_response(self.get_context_data(form=form))
         
 

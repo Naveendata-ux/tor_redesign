@@ -40,24 +40,29 @@
             <div class="row justify-content-center">
                 <div class="col-lg-5 col-md-12 col-xs-12">
                     <div class="register-form login-area">
-                        <h3>
-                            Register
-                        </h3>
-                        
-                        <form action="{% url 'accounts:register' %}"class="login-form" method="post">
-                            {% csrf_token %}
-                            {{form|crispy}}
-                            <div class="form-group mb-3">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox"  class="custom-control-input" id="checkedall">
-                                    <label class="custom-control-label" for="checkedall">By registering, you accept our
-                                        Terms & Conditions</label>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                <button class="btn btn-common log-btn" type="submit">Register</button>
-                            </div>
-                        </form>
+						{% if registered %}
+							<h3>Thank you !Registration Successfull...</h3>
+							<a class="btn btn-common log-btn" type="submit" href="{% url 'accounts:login' %}">Login Here</a>
+						{% else %}
+							<h3>
+								Register
+							</h3>
+							
+							<form action="{% url 'accounts:register' %}"class="login-form" method="post">
+								{% csrf_token %}
+								{{form|crispy}}
+								<div class="form-group mb-3">
+									<div class="custom-control custom-checkbox">
+										<input type="checkbox"  class="custom-control-input" id="checkedall">
+										<label class="custom-control-label" for="checkedall">By registering, you accept our
+											Terms & Conditions</label>
+									</div>
+								</div>
+								<div class="text-center">
+									<button class="btn btn-common log-btn" type="submit">Register</button>
+								</div>
+							</form>
+						{% endif %}
                     </div>
                 </div>
             </div>

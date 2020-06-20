@@ -482,14 +482,25 @@ $(document).ready(function(){
                                  <br>
                                  <hr class="style1">
                                  <br>
-
+                                 
+                                 <div class="col-lg-5">
+                                 <div class="form-group">
+                                       <input class="form-control" type="text" name="location"
+                                                value="{{request.GET.location}}"
+                                                autocomplete="off" data-width="auto" placeholder="Enter Location"
+                                                required>    
+                                
+                                       
+                                    </div>
+                                    </div>
+                                    
                               <div class="row">
                                   <div class="col-lg-3">
                                     <div class="form-group">
                                        <select id="sel_year" class="form-control" type="number" name="year"
                                                 value="{{request.GET.year}}"
-                                                autocomplete="off" data-width="auto"
-                                                required>
+                                                autocomplete="off" data-width="auto" required>
+                                                
                                                <option value="">Select Year</option>
                                 <option id="2020">2020</option>
                                 <option value="2019">2019</option>

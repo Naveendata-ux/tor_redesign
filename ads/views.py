@@ -7,6 +7,7 @@ from .forms import *
 from core.mixins import CustomLoginRequiredMixin
 from core.models import *
 from django.shortcuts import render,redirect
+from .filters import UserFilter
 
 
 class AdDetailsView(DetailView):
@@ -197,4 +198,7 @@ def favourite_ad(request, id):
     return HttpResponseRedirect(ad.get_absolute_url())
 
 
-
+def search(request):
+    user_list = Ad.objects.all()
+    user_filter = UserFilter(request.GET, queryset=user_list)
+    return render(request, 'search/results.html', {'filter': user_filter})

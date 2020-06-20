@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+   ul.thumb
+   {
+   margin: 0 auto;
+   padding: 0;
+   float: left;
+   }
+   ul.thumb li
+   {
+   list-style: none;
+   margin: 5px;
+   width: 100px;
+   height: 100px;
+   border: 1px solid rgba(0,0,0,0.2);
+   overflow: hidden;
+   }
+   ul.thumb li img
+   {
+   width:100%;
+   }
+   .imgBox
+   {
+   float: left;
+   width: 500px;
+   height: 400px;
+   margin: 5px;
+   border: 1px solid rgba(0,0,0,0.2);
+   overflow: hidden;
+   }
+   .imgBox img
+   {
+   width: 100%;
+   }
+</style>
+<div class="page-header" style="background: url('{% static 'assets/img/banner1.jpg' %}');">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="breadcrumb-wrapper">
+               <h2 class="product-title">Details</h2>
+               <ol class="breadcrumb">
+                  <li><a href="#">Home /</a></li>
+                  <li class="current">Details</li>
+               </ol>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="section-padding">
+   <div class="container">
+      <div class="product-info row">
+         <div class="col-lg-8 col-md-12 col-xs-12">
+         {% if ad.ad_images.count > 0 %}
+            <div class="ads-details-wrapper">
+               <div class="container">
+                  {% for ad_image in ad.ad_images.all %}
+                  <ul class="thumb">
+                     <li><a href="{{ ad_image.image.url }}" target="imgBox"><img src="{{ ad_image.image.url }}"></a></li>
+                  </ul>
+                   {% endfor %} 
+                  <div class="imgBox">
+                     <img src="{{ ad_image.image.url }}">
+                  </div>
+                  
+               </div>
+            </div>
+            </div>
+           {% endif %}
+         <div class="details-box">
+            <div class="ads-details-info">
+               <h2>{{ ad.title }}</h2>
+               <div class="details-meta">
+                  <span><a href="#"><i class="lni-alarm-clock"></i> {{ ad.created_at }}</a></span>
+                  <span><a href="#"><i class="lni-map-marker"></i> {{ ad.location }}</a></span>
+               </div>
+               <p class="mb-4">{{ ad.description|safe }}</p>
+            </div>
+            <div class="tag-bottom">
+               <div class="float-left">
+                  <ul class="advertisement">
+                     <li>
+                        <p>
+                           <strong><i class="lni-archive"></i> Year:</strong> <a href="#">{{ ad.Year }}</a>
+                        </p>
+                     </li>
+                     <li>
+                        <p><strong><i class="lni-archive"></i> Make:</strong> {{ad.Make}}</p>
+                     </li>
+                     <li>
+                        <p><strong><i class="lni-archive"></i> Model:</strong> {{ad.Model}}</p>
+                     </li>
+                  </ul>
+               </div>
+               <div class="float-left">
+                  <ul class="advertisement">
+                     <li>
+                        <p>
+                           <strong><i class="lni-archive"></i> Categories:</strong> <a href="#">{{ ad.category.title }}</a>
+                        </p>
+                     </li>
+                     <li>
+                        <p><strong><i class="lni-archive"></i> Tire Condition:</strong> {{ad.Tire_Condition}}</p>
+                     </li>
+                  </ul>
+               </div>
+               
+            </div>
+         </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-xs-12">
+         <aside class="details-sidebar">
+            <div class="widget">
+               <h4 class="widget-title">Ad Posted By</h4>
+               <div class="agent-inner">
+                  <div class="agent-title">
+                     <div class="agent-photo">
+                        <a href="#"><img src="{% static 'assets/img/avatar.png' %}" alt=""></a>
+                     </div>
+                     <div class="agent-details">
+                        <h3><a href="#">{{ ad.user.username }}</a></h3>
+                        <span><i class="lni-phone-handset"></i>(123) 123-456</span>
+                     </div>
+                  </div>
+                  <p>I'm interested in this property [ID 123456] and I'd like to know more details.</p>
+                  <a href="/dialogs/{{ad.user.username}}"> 
+                  <button class="btn btn-common fullwidth mt-4" style = "text-transform:capitalize;">Chat With <strong>{{ad.user.username}}</strong></button></a>
+               </div>
+            </div>
+      </div>
+      </aside>
+   </div>
+</div>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+   <script type="text/javascript">
+   $(document).ready(function(){
+       $('.thumb a').mouseover(function(e){
+           e.preventDefault();
+       $('.imgBox img').attr("src", $(this).attr("href"));
+       })
+   })
+</script>
+{% endblock %}

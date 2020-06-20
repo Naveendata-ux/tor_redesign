@@ -15,6 +15,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'corsheaders',
     'django_extensions',
     'taggit',
@@ -28,7 +29,11 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_private_chat',
     'subscriptions',
-]
+    'django_messages',
+    'six',
+    'pinax.notifications',
+    'mailer',
+]  
 
 MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -43,10 +48,15 @@ MIDDLEWARE = [
     
 ]
 
+SITE_ID = 1
+
+EMAIL_BACKEND = "mailer.backend.DbBackend"
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 ROOT_URLCONF = 'QuickAd.urls'
+
+FORM_RENDERER = 'django.forms.renderers.DjangoTemplates'
 
 TEMPLATES = [
     {
@@ -63,6 +73,13 @@ TEMPLATES = [
         },
     },
 ]
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    
+    'django_messages.context_processors.inbox',
+)
+
+DJANGO_MESSAGES_NOTIFY = False
 
 WSGI_APPLICATION = 'QuickAd.wsgi.application'
 
