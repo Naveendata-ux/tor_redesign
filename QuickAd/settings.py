@@ -136,6 +136,7 @@ CHAT_WS_SERVER_PORT = 5002
 CHAT_WS_SERVER_PROTOCOL = 'ws'
 
 
+
 AUTH_USER_MODEL = "accounts.User"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

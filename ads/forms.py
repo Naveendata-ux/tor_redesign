@@ -22,7 +22,7 @@ class AdCreateForm(forms.ModelForm):
     
     Aspect_Ratio = forms.IntegerField(error_messages={'invalid': 'Please select a valid Choice for Ratio!'})
     tires_available = forms.IntegerField(error_messages={'invalid': 'Please enter value for Tyres_Available!'})
-    Tenure_offered = forms.IntegerField(error_messages={'invalid': 'Please enter value for Tenure_offered!'})
+    #Tenure_offered = forms.IntegerField(error_messages={'invalid': 'Please enter value for Tenure_offered!'})
     Ad_Type = forms.CharField(error_messages={'invalid': 'Please select valid choice for Ad_Type!'})
     Seasonality= forms.CharField(error_messages={'invalid': 'Please Select valid choice for Seasonality!'})
    
