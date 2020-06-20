@@ -33,7 +33,7 @@ class AdCreateForm(forms.ModelForm):
     class Meta:
         model = Ad
         #exclude = ('tyre','wheels')
-        fields = ( 'Ad_title', 'description', 'category','offer_price','Tire_Condition', 'On_Rims','Make','Model','Width','Aspect_Ratio',
+        fields = ( 'Ad_title', 'description', 'category','offer_price','Tire_Condition', 'On_Rims', 'Year','Make','Model','Width','Aspect_Ratio',
         'Tyres_Available','Tenure_offered','Ad_Type', 'Seasonality')
     
     def __init__(self, *args, **kwargs):
