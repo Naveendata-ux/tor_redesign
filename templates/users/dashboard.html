@@ -7,6 +7,13 @@
     background-color: #003e6b;
     border-color: #003e6b;
 }
+p {
+    font-weight: 400;
+    color: #6f6c6c
+    font-family: 'Proxima Nova Soft', 'Helvetica Neue', sans-serif;
+    margin: 0px;
+    font-size: 19px;
+}
 </style>
 <div class="page-header" style="background: url('{% static 'assets/img/banner1.jpg' %}');">
    <div class="container">
@@ -150,7 +157,23 @@
                </div>
             </div>
             {% else %}
-            <h2 class="text-center">You don't have any ad</h2>
+            </br>
+            </br>
+       <div class="text-center">     
+     <img class="img-fluid" src="/media/noads.png"  height="250px" width="250px">
+     </br>
+     </br>
+    <h5>You haven't listed anything yet</h5>
+    <p>Let go of what you </p>
+    <p>don't use anymore </p> 
+    </br>
+    </br>
+    <div class="post-btn">
+                <a class="btn btn-common" href="{% url 'ads:crate.ad' %}">
+                     START SELLING
+                </a>
+            </div>
+    
             {% endif %}
          </div>
       </div>

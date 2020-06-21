@@ -17,6 +17,12 @@
     backface-visibility: hidden;
     overflow-x: hidden;
 }
+a {
+    color: #003e6b;
+    font-family: 'Proxima Nova Soft', 'Helvetica Neue', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+}
 </style>
     <div class="page-header" style="background: url(assets/img/banner1.jpg);">
         <div class="container">
@@ -41,8 +47,8 @@
                 <div class="col-lg-5 col-md-12 col-xs-12">
                     <div class="register-form login-area">
 						{% if registered %}
-							<h3>Thank you !Registration Successfull...</h3>
-							<a class="btn btn-common log-btn" type="submit" href="{% url 'accounts:login' %}">Login Here</a>
+							<h6> Registered Successfully please login... <a href="{% url 'accounts:login' %}"</a>Login</h6>
+							
 						{% else %}
 							<h3>
 								Register

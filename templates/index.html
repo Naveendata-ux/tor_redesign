@@ -166,6 +166,132 @@ button.big-button:active::before {
 
 
 </style>
+<style>
+._3BIgv {
+    height: 58px!important;
+    line-height: 28px!important;
+    padding-top: 0!important;
+    padding-left: 15px!important;
+    padding-right: 160px!important;
+    caret-color: #0c0c0c;
+    font-size: 18px!important;
+    font-weight: 500;
+}
+._1oTLG {
+    height: 50px;
+    padding-top: 0;
+    font-size: 1.15rem;
+}
+._381fS {
+    background-color: transparent;
+    line-height: normal;
+    border: none;
+    outline: none;
+    height: 70px;
+    width: 100%;
+    font-size: 17px;
+    margin: 0;
+    padding: 0 20px;
+    padding-top: 22px;
+    box-shadow: none;
+    box-sizing: border-box;
+    border-radius: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
+}
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+._2oQ4_ {
+    padding: 0 5px;
+    border: 1px solid #bebfc5;
+    box-shadow: none;
+}
+._3Um38 {
+    border: 1px solid #d4d5d9;
+    padding: 0;
+    display: block;
+    position: relative;
+    transform: translateZ(0);
+}
+._1fiQt {
+    color: #535665;
+}
+._1fiQt:hover {
+    background: #e9e9eb;
+}
+[class*=" icon-"], [class^=icon-] {
+    font-family: icomoon;
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.LukWG {
+    padding-top: 0;
+}
+._25lQg {
+    margin-right: 6px;
+    top: 2px;
+    position: relative;
+}
+._1fiQt {
+    color: #535665;
+}
+._1fiQt, .NqZN6 {
+    position: absolute;
+    right: 150px;
+    top: 90px;;
+    padding: 12px 10px;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    right: 180px;
+    letter-spacing: -.35px;
+}
+._3iFC5 {
+    width: 100%;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    border: none;
+    line-height: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    top: 83px;
+    height: 50px;
+    padding: 0 2rem;
+    color: #fc8019;
+    letter-spacing: 0;
+    color: #fff;
+    background-color: #003e6b;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.12);
+    right: 16px;
+    height: 60px;
+    line-height: 60px;
+    width: 140px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: .53px;
+    padding: 0;
+}
+._1b8uz, ._3iFC5 {
+    position: absolute;
+    z-index: 1;
+}
+</style>
 
 
     <link rel="stylesheet" href="/media/assets/fonts/font-awesome.min.css">
@@ -482,18 +608,17 @@ $(document).ready(function(){
                                  <br>
                                  <hr class="style1">
                                  <br>
-                                 
-                                 <div class="col-lg-5">
-                                 <div class="form-group">
-                                       <input class="form-control" type="text" name="location"
-                                                value="{{request.GET.location}}"
-                                                autocomplete="off" data-width="auto" placeholder="Enter Location"
-                                                required>    
-                                
-                                       
-                                    </div>
-                                    </div>
-                                    
+                                 <div class="Al5GE">
+                                 <div class="_3Um38 _2oQ4_">
+                                 <input type="text" class="_381fS _1oTLG _3BIgv" value="{{request.get.locaation}}" name="location" id="location" autocomplete="off" tabindex="1" placeholder="Enter your Pickup location" maxlength="30">
+                                 <div class=""></div>
+                                 <label class="" for="location"></label>
+                                 </div><div class="_1fiQt">
+                                 <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                                 </span><span class="LukWG">Locate Me</span>
+                                 </div></div>
+                                 <div class="_3iFC5"><span>Find Location</span></div>
+                                </br>
                               <div class="row">
                                   <div class="col-lg-3">
                                     <div class="form-group">
