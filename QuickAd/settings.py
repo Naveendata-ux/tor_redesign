@@ -29,10 +29,10 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_private_chat',
     'subscriptions',
-    #'django_messages',
+    'django_messages',
     'six',
-    #'pinax.notifications',
-    #'mailer',
+    'pinax.notifications',
+    'mailer',
 ]  
 
 MIDDLEWARE = [

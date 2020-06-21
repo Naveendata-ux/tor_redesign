@@ -23,7 +23,8 @@ def signup(request):
             user.set_password(user.password)
             user.save()
             registered = True
-            messages.success(request, 'Form submission successfull')
+            messages.success(request,"Registration Successfull")
+            return render(request,"accounts/login.html")
             #return render(request,'accounts/register.html')
         else:
             print(form.errors)

@@ -3,6 +3,9 @@
 {% load static %}
 
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Google Maps JavaScript library -->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyBGtJ7aXNfcFwBT3AK5_9QZdCFlrO0hiMU"></script>
 <style>
      .btn-danger:hover {
     color: #fff;
@@ -610,12 +613,12 @@ $(document).ready(function(){
                                  <br>
                                  <div class="Al5GE">
                                  <div class="_3Um38 _2oQ4_">
-                                 <input type="text" class="_381fS _1oTLG _3BIgv" value="{{request.get.locaation}}" name="location" id="location" autocomplete="off" tabindex="1" placeholder="Enter your Pickup location" maxlength="30">
+                                 <input type="text" class="_381fS _1oTLG _3BIgv"  id="search_input" value="{{request.get.locaation}}" name="location" id="location" autocomplete="off" tabindex="1" placeholder="Enter your Pickup location" maxlength="30">
                                  <div class=""></div>
                                  <label class="" for="location"></label>
                                  </div><div class="_1fiQt">
                                  <i class="fa fa-location-arrow" aria-hidden="true"></i>
-                                 </span><span class="LukWG">Locate Me</span>
+                                 </span><span class="LukWG" type="button" onclick="showPosition();" >Locate Me</span>
                                  </div></div>
                                  <div class="_3iFC5"><span>Find Location</span></div>
                                 </br>
@@ -1351,6 +1354,34 @@ anime.timeline({loop: true})
    </div>
 
    </section> 
-    
+   <script>
+    function showPosition() {
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var positionInfo = "Your current position is (" + "Latitude: " + position.coords.latitude + ", " + "Longitude: " + position.coords.longitude + ")";
+                document.getElementById("result").innerHTML = positionInfo;
+            });
+        } else {
+            alert("Sorry, your browser does not support HTML5 geolocation.");
+        }
+    }
+</script> 
+<script>
+var searchInput = 'search_input';
+ 
+$(document).ready(function () {
+ var autocomplete;
+ autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+  types: ['geocode'],
+  componentRestrictions: {
+   country:[ "USA", "CA"]
+  }
+ });
+  
+ google.maps.event.addListener(autocomplete, 'place_changed', function () {
+  var near_place = autocomplete.getPlace();
+ });
+});
+</script>
 
 {% endblock %}

@@ -46,12 +46,25 @@
             <div class="row justify-content-center">
                 <div class="col-lg-5 col-md-12 col-xs-12">
                     <div class="login-form login-area">
+                    
                         <h3>
                             Login Now
                         </h3>
                         
                         <form role="form" class="login-form" method="post">
+                            
+                            
+						    
                             {% csrf_token %}
+                            {% if messages %}
+							  <ul class="messages">
+								{% for message in messages %}
+								<li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+								{{ message }}
+								</li>
+								{% endfor % }
+								</ul>
+						        {% endif %}
                             {{form|crispy}}
                             <div class="form-group mb-3">
                                 <div class="custom-control custom-checkbox">
@@ -64,6 +77,7 @@
                                 <button class="btn btn-common log-btn">Login</button>
                             </div>
                         </form>
+                        
                     </div>
                 </div>
             </div>

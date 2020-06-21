@@ -9,8 +9,8 @@ from django.forms import ModelForm
 
 
 class SignUpForm(forms.ModelForm):
-    password=forms.CharField(widget=forms.PasswordInput())
-    confirm_password=forms.CharField(widget=forms.PasswordInput())
+    password=forms.CharField(min_length=6,widget=forms.PasswordInput())
+    confirm_password=forms.CharField(min_length=6,widget=forms.PasswordInput())
     class Meta:
         model=User
         fields=('Account_type','username','email','password')
@@ -26,10 +26,11 @@ class SignUpForm(forms.ModelForm):
             )
 
 class UserForm(forms.ModelForm):
+    about = forms.CharField(widget=forms.Textarea(attrs={'rows': 4, 'cols': 50}), max_length=200)
     class Meta:
         model = User
         fields = [
-            'username', 
+             
             'first_name', 
             'last_name', 
             'email',
@@ -50,6 +51,7 @@ class ProfileForm(forms.ModelForm):
 
 
 class AddressForm(forms.ModelForm):
+    street_address_1 = forms.CharField(label="Address")
     class Meta:
         model = Address
         fields = [
