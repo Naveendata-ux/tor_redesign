@@ -2,506 +2,219 @@
 {% load static %}
 {% block content %}
 <style>
-   h3.h3{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
-   /********************* Shopping Demo-6 **********************/
-   .product-grid6,.product-grid6 .product-image6{overflow:hidden}
-   .product-grid6{font-family:'Open Sans',sans-serif;text-align:center;position:relative;transition:all .5s ease 0s}
-   .product-grid6:hover{box-shadow:0 0 10px rgba(0,0,0,.3)}
-   .product-grid6 .product-image6 a{display:block}
-   .product-grid6 .product-image6 img{width:100%;height:auto;transition:all .5s ease 0s}
-   .product-grid6:hover .product-image6 img{transform:scale(1.1)}
-   .product-grid6 .product-content{padding:12px 12px 15px;transition:all .5s ease 0s}
-   .product-grid6:hover .product-content{opacity:0}
-   .product-grid6 .title{font-size:20px;font-weight:600;text-transform:capitalize;margin:0 0 10px;transition:all .3s ease 0s}
-   .product-grid6 .title a{color:#003e6b}
-   .product-grid6 .description{font-size:14px;font-weight:200;text-transform:capitalize;margin:0 0 10px;transition:all .3s ease 0s}
-   .product-grid6 .description a{color:#000}
-   .product-grid6 .title a:hover{color:#2e86de}
-   .product-grid6 .social{background-color:#fff;width:100%;padding:0;margin:0;list-style:none;opacity:0;transform:translateX(-50%);position:absolute;bottom:-50%;left:50%;z-index:1;transition:all .5s ease 0s}
-   .product-grid6:hover .social{opacity:1;bottom:20px}
-   .product-grid6 .social li{display:inline-block}
-   .product-grid6 .social li a{color:#909090;font-size:16px;line-height:45px;text-align:center;height:45px;width:45px;margin:0 7px;border:1px solid #909090;border-radius:50px;display:block;position:relative;transition:all .3s ease-in-out}
-   .product-grid6 .social li a:hover{color:#fff;background-color:#003e6b;width:80px}
-   .product-grid6 .social li a:after,.product-grid6 .social li a:before{content:attr(data-tip);color:#fff;background-color:#dc4445;font-size:12px;letter-spacing:1px;line-height:20px;padding:1px 5px;border-radius:5px;white-space:nowrap;opacity:0;transform:translateX(-50%);position:absolute;left:50%;top:-30px}
-   .product-grid6 .social li a:after{content:'';height:15px;width:15px;border-radius:0;transform:translateX(-50%) rotate(45deg);top:-20px;z-index:-1}
-   .product-grid6 .social li a:hover:after,.product-grid6 .social li a:hover:before{opacity:1}
-   @media only screen and (max-width:990px){.product-grid6{margin-bottom:30px}
-   }
-   .price {
-   position: absolute;
-   top: 30px;
-   left: -6px;
-   background: #ca3e3d;
-   padding: 4px 15px;
-   font-size: 18px;
-   color: #fff;
-   font-weight: bold;
-   }
-   .card {
-   position: relative;
-   display: -ms-flexbox;
-   display: flex;
-   -ms-flex-direction: column;
-   flex-direction: column;
-   min-width: 0;
-   word-wrap: break-word;
-   background-color: #f7f7f7;
-   background-clip: border-box;
-   border: 1px solid rgba(0, 0, 0, .125);
-   border-radius: 1.25rem;
-   }
-   .card {
-   box-shadow: 0 0 10px rgba(175, 175, 175, .23);
-   padding: -2px 30px 30px;
-   margin-bottom: 10px;
-   }
-   .mt-5, .my-5 {
-   margin-top: -2rem!important;
-   }
-   .section-padding {
-   padding: 6px 0;
-   }
+h3.h3{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
+/********************* Shopping Demo-6 **********************/
+.product-grid6,.product-grid6 .product-image6{overflow:hidden}
+.product-grid6{font-family:'Open Sans',sans-serif;text-align:center;position:relative;transition:all .5s ease 0s}
+.product-grid6:hover{box-shadow:0 0 10px rgba(0,0,0,.3)}
+.product-grid6 .product-image6 a{display:block}
+.product-grid6 .product-image6 img{width:100%;height:auto;transition:all .5s ease 0s}
+.product-grid6:hover .product-image6 img{transform:scale(1.1)}
+.product-grid6 .product-content{padding:12px 12px 15px;transition:all .5s ease 0s}
+.product-grid6:hover .product-content{opacity:0}
+.product-grid6 .title{font-size:20px;font-weight:600;text-transform:capitalize;margin:0 0 10px;transition:all .3s ease 0s}
+.product-grid6 .title a{color:#003e6b}
+.product-grid6 .description{font-size:14px;font-weight:200;text-transform:capitalize;margin:0 0 10px;transition:all .3s ease 0s}
+.product-grid6 .description a{color:#000}
+.product-grid6 .title a:hover{color:#2e86de}
+
+.product-grid6 .social{background-color:#fff;width:100%;padding:0;margin:0;list-style:none;opacity:0;transform:translateX(-50%);position:absolute;bottom:-50%;left:50%;z-index:1;transition:all .5s ease 0s}
+.product-grid6:hover .social{opacity:1;bottom:20px}
+.product-grid6 .social li{display:inline-block}
+.product-grid6 .social li a{color:#909090;font-size:16px;line-height:45px;text-align:center;height:45px;width:45px;margin:0 7px;border:1px solid #909090;border-radius:50px;display:block;position:relative;transition:all .3s ease-in-out}
+.product-grid6 .social li a:hover{color:#fff;background-color:#003e6b;width:80px}
+.product-grid6 .social li a:after,.product-grid6 .social li a:before{content:attr(data-tip);color:#fff;background-color:#dc4445;font-size:12px;letter-spacing:1px;line-height:20px;padding:1px 5px;border-radius:5px;white-space:nowrap;opacity:0;transform:translateX(-50%);position:absolute;left:50%;top:-30px}
+.product-grid6 .social li a:after{content:'';height:15px;width:15px;border-radius:0;transform:translateX(-50%) rotate(45deg);top:-20px;z-index:-1}
+.product-grid6 .social li a:hover:after,.product-grid6 .social li a:hover:before{opacity:1}
+@media only screen and (max-width:990px){.product-grid6{margin-bottom:30px}
+}
+.price {
+    position: absolute;
+    top: 30px;
+    left: 5px;
+    background: #ca3e3d;
+    padding: 4px 15px;
+    font-size: 18px;
+    color: #fff;
+    font-weight: bold;
+}
 </style>
-<script type="text/javascript">
-   $(document).ready(function(){
-   
-       $("#sel_make").change(function(){
-           var year = $("#sel_year option:selected").text();
-           var makeid = $(this).val();
-           //var makeid = $("#sel_make option:selected").val();
-           var api = '4a7488fedfd6685e3ba26c495bf569c9'
-   
-           $("#msg").css("display", "none");
-           //https://api.wheel-size.com/v1/years/?make=mitsubishi&user_key=4a7488fedfd6685e3ba26c495bf569c9
-           // working for makes
-           //https://api.wheel-size.com/v1/makes/?user_key=4a7488fedfd6685e3ba26c495bf569c9
-   
-           $.ajax({
-               url: 'https://api.wheel-size.com/v1/models/?',
-               type: 'get',
-               data: {make:makeid, year:year, user_key:api},
-               dataType: 'json',
-               success:function(response){
-   
-                   var len = response.length;
-                   if(len == 0){
-                       $("#msg").css("display", "block");
-                       $("#sel_model").css("display", "none");
-                   }else{
-                   $("#sel_model").css("display", "block");
-                   }
-   
-                   $("#sel_model").empty();
-                   for( var i = 0; i<len; i++){
-                       //var id = response[i]['id'];
-                       var name = response[i]['name'];
-   
-                       $("#sel_model").append("<option value='"+name+"'>"+name+"</option>");
-   
-                   }
-               }
-           });
-       });
-   
-   });
-   $(document).ready(function(){
-   
-       $("#sel_year").change(function(){
-           //var year = $("#sel_year option:selected").text();
-           var year = $(this).val();
-           var makeid = $("#sel_make option:selected").val();
-           //console.log(makeid)
-           if(makeid == "---Select Make---")
-           {
-           	makeid = 'Acura'
-           }
-           var api = '4a7488fedfd6685e3ba26c495bf569c9'
-   
-           $("#msg").css("display", "none");
-           //https://api.wheel-size.com/v1/years/?make=mitsubishi&user_key=4a7488fedfd6685e3ba26c495bf569c9
-           // working for makes
-           //https://api.wheel-size.com/v1/makes/?user_key=4a7488fedfd6685e3ba26c495bf569c9
-   
-           $.ajax({
-               url: 'https://api.wheel-size.com/v1/models/?',
-               type: 'get',
-               data: {make:makeid, year:year, user_key:api},
-               dataType: 'json',
-               success:function(response){
-   
-                   var len = response.length;
-                   if(len == 0){
-                       $("#msg").css("display", "block");
-                       $("#sel_model").css("display", "none");
-                   }else{
-                   $("#sel_model").css("display", "block");
-                   }
-   
-                   $("#sel_model").empty();
-                   for( var i = 0; i<len; i++){
-                       //var id = response[i]['id'];
-                       var name = response[i]['name'];
-   
-                       $("#sel_model").append("<option value='"+name+"'>"+name+"</option>");
-   
-                   }
-               }
-           });
-       });
-   
-   });
-</script>
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-<div class="container-fluid">
-   <section class="search-banner text-white py-3 form-arka-plan" id="search-banner">
-   <div class="container py-5 my-5">
-      
-         <!-- Tab content -->
-         <form action = "{% url "search:searchposts"  %}" name = "" method= "GET" >
-         <div class="row">
-            <div class="col-md-12">
-               <div class="card acik-renk-form">
-                  <div class="card-body">
-                     <div class="row">
-                        <div class="col-md-3">
-                           <div class="form-group ">
-                              <input type="text" class="form-control" id="search_input" name="location"
-                                 value="{{request.GET.location}}"
-                                 autocomplete="off"
-                                 placeholder="Enter Location to search"
-                                 required>
-                           </div>
-                        </div>
-                        <div class="col-md-7">
-                           <div class="form-group ">
-                              <input type="text" class="form-control" placeholder="Enter your tire related keywords to search">
-                           </div>
-                        </div>
-                        <div class="col-md-2">
-                           <input type="submit" class="btn pl-5 pr-5" value="Search" style = "background-color:#003e6b; color: white;">
-                        </div>
-                     </div>
-                     <div class="row">
-                        <div class="col-md-2">
-                           <div class="form-group ">
-                              <select id="sel_year" class="form-control" type="number" name="year"
-                                 value="{{request.GET.year}}"
-                                 autocomplete="off" required>
-                                 <option value="">Year</option>
-                                 <option value="2020">2020</option>
-                                 <option value="2019">2019</option>
-                                 <option value="2018">2018</option>
-                                 <option value="2017">2017</option>
-                                 <option value="2016">2016</option>
-                                 <option value="2015">2015</option>
-                                 <option value="2014">2014</option>
-                                 <option value="2013">2013</option>
-                                 <option value="2012">2012</option>
-                                 <option value="2011">2011</option>
-                                 <option value="2010">2010</option>
-                                 <option value="2009">2009</option>
-                                 <option value="2008">2008</option>
-                                 <option value="2007">2007</option>
-                                 <option value="2006">2006</option>
-                                 <option value="2005">2005</option>
-                                 <option value="2004">2004</option>
-                                 <option value="2003">2003</option>
-                                 <option value="2002">2002</option>
-                                 <option value="2001">2001</option>
-                                 <option value="2000">2000</option>
-                                 <option value="1999">1999</option>
-                                 <option value="1998">1998</option>
-                                 <option value="1997">1997</option>
-                                 <option value="1996">1996</option>
-                                 <option value="1995">1995</option>
-                                 <option value="1994">1994</option>
-                                 <option value="1993">1993</option>
-                                 <option value="1992">1992</option>
-                                 <option value="1991">1991</option>
-                                 <option value="1990">1990</option>
-                                 <option value="1989">1989</option>
-                                 <option value="1988">1988</option>
-                                 <option value="1987">1987</option>
-                                 <option value="1986">1986</option>
-                                 <option value="1985">1985</option>
-                                 <option value="1984">1984</option>
-                                 <option value="1983">1983</option>
-                                 <option value="1982">1982</option>
-                                 <option value="1981">1981</option>
-                                 <option value="1980">1980</option>
-                                 <option value="1979">1979</option>
-                                 <option value="1978">1978</option>
-                                 <option value="1977">1977</option>
-                                 <option value="1976">1976</option>
-                                 <option value="1975">1975</option>
-                                 <option value="1974">1974</option>
-                                 <option value="1973">1973</option>
-                                 <option value="1972">1972</option>
-                                 <option value="1971">1971</option>
-                              </select>
-                           </div>
-                        </div>
-                        <div class="col-md-2">
-                           <div class="form-group ">
-                              <select id="sel_make" class="form-control" type="number" name="make"
-                                 value="{{request.GET.make}}""
-                                 autocomplete="off"
-                                 required>
-                                 <option value=""> select Make</option>
-                                 <option value="Acura">Acura</option>
-                                 <option value="Alfa Romeo">Alfa Romeo</option>
-                                 <option value="Alpine">Alpine</option>
-                                 <option value="ARO">ARO</option>
-                                 <option value="Aston Martin">Aston Martin</option>
-                                 <option value="Audi">Audi</option>
-                                 <option value="BAIC">BAIC</option>
-                                 <option value="Baojun">Baojun</option>
-                                 <option value="Beiqi">Beiqi</option>
-                                 <option value="Beiqi Huansu">Beiqi Huansu</option>
-                                 <option value="Beiqi Weiwang">Beiqi Weiwang</option>
-                                 <option value="Bentley">Bentley</option>
-                                 <option value="BMW">BMW</option>
-                                 <option value="BMW Alpina">BMW Alpina</option>
-                                 <option value="Borgward">Borgward</option>
-                                 <option value="Bugatti">Bugatti</option>
-                                 <option value="Buick">Buick</option>
-                                 <option value="BYD">BYD</option>
-                                 <option value="Cadillac">Cadillac</option>
-                                 <option value="Changan">Changan</option>
-                                 <option value="Changhe">Changhe</option>
-                                 <option value="Chery">Chery</option>
-                                 <option value="Chevrolet">Chevrolet</option>
-                                 <option value="Chrysler">Chrysler</option>
-                                 <option value="Ciimo">Ciimo</option>
-                                 <option value="Citroën">Citroën</option>
-                                 <option value="Cupra">Cupra</option>
-                                 <option value="Dacia">Dacia</option>
-                                 <option value="Daewoo">Daewoo</option>
-                                 <option value="Daihatsu">Daihatsu</option>
-                                 <option value="Datsun">Datsun</option>
-                                 <option value="Denza">Denza</option>
-                                 <option value="Dodge">Dodge</option>
-                                 <option value="Dongfeng">Dongfeng</option>
-                                 <option value="DR">DR</option>
-                                 <option value="DS">DS</option>
-                                 <option value="Eagle">Eagle</option>
-                                 <option value="Enovate">Enovate</option>
-                                 <option value="Enranger">Enranger</option>
-                                 <option value="Everus">Everus</option>
-                                 <option value="FAW">FAW</option>
-                                 <option value="FAW Audi">FAW Audi</option>
-                                 <option value="FAW Mazda">FAW Mazda</option>
-                                 <option value="FAW Toyota">FAW Toyota</option>
-                                 <option value="FAW Volkswagen">FAW Volkswagen</option>
-                                 <option value="Ferrari">Ferrari</option>
-                                 <option value="Fiat">Fiat</option>
-                                 <option value="Fisker">Fisker</option>
-                                 <option value="Foday">Foday</option>
-                                 <option value="Force">Force</option>
-                                 <option value="Ford">Ford</option>
-                                 <option value="Foton">Foton</option>
-                                 <option value="GAC">GAC</option>
-                                 <option value="GAC Fiat">GAC Fiat</option>
-                                 <option value="GAC Honda">GAC Honda</option>
-                                 <option value="GAC Toyota">GAC Toyota</option>
-                                 <option value="GAZ">GAZ</option>
-                                 <option value="Geely">Geely</option>
-                                 <option value="Genesis">Genesis</option>
-                                 <option value="GEO">GEO</option>
-                                 <option value="GMC">GMC</option>
-                                 <option value="Great Wall">Great Wall</option>
-                                 <option value="Haima">Haima</option>
-                                 <option value="Haval">Haval</option>
-                                 <option value="Hawtai">Hawtai</option>
-                                 <option value="Hindustan">Hindustan</option>
-                                 <option value="Holden">Holden</option>
-                                 <option value="Honda">Honda</option>
-                                 <option value="Huanghai">Huanghai</option>
-                                 <option value="Huasong">Huasong</option>
-                                 <option value="Hummer">Hummer</option>
-                                 <option value="Hyundai">Hyundai</option>
-                                 <option value="Infiniti">Infiniti</option>
-                                 <option value="Isuzu">Isuzu</option>
-                                 <option value="Iveco">Iveco</option>
-                                 <option value="JAC">JAC</option>
-                                 <option value="Jaguar">Jaguar</option>
-                                 <option value="Jeep">Jeep</option>
-                                 <option value="Jetta">Jetta</option>
-                                 <option value="Jinbei">Jinbei</option>
-                                 <option value="JMC">JMC</option>
-                                 <option value="Karry">Karry</option>
-                                 <option value="Kia">Kia</option>
-                                 <option value="Kinglong">Kinglong</option>
-                                 <option value="LADA">LADA</option>
-                                 <option value="Lamborghini">Lamborghini</option>
-                                 <option value="Lancia">Lancia</option>
-                                 <option value="Land Rover">Land Rover</option>
-                                 <option value="Landwind">Landwind</option>
-                                 <option value="LDV">LDV</option>
-                                 <option value="LEVC">LEVC</option>
-                                 <option value="Lexus">Lexus</option>
-                                 <option value="Lifan">Lifan</option>
-                                 <option value="Lincoln">Lincoln</option>
-                                 <option value="Lotus">Lotus</option>
-                                 <option value="Luxgen">Luxgen</option>
-                                 <option value="Lynk&amp;Co">Lynk&amp;Co</option>
-                                 <option value="Mahindra">Mahindra</option>
-                                 <option value="Maruti">Maruti</option>
-                                 <option value="Maserati">Maserati</option>
-                                 <option value="Maxus">Maxus</option>
-                                 <option value="Maybach">Maybach</option>
-                                 <option value="Mazda">Mazda</option>
-                                 <option value="McLaren">McLaren</option>
-                                 <option value="Mercedes-Benz">Mercedes-Benz</option>
-                                 <option value="Mercury">Mercury</option>
-                                 <option value="MG">MG</option>
-                                 <option value="MINI">MINI</option>
-                                 <option value="Mitsubishi">Mitsubishi</option>
-                                 <option value="Mosler">Mosler</option>
-                                 <option value="Nio">Nio</option>
-                                 <option value="Nissan">Nissan</option>
-                                 <option value="Oldsmobile">Oldsmobile</option>
-                                 <option value="Opel">Opel</option>
-                                 <option value="Panoz">Panoz</option>
-                                 <option value="Perodua">Perodua</option>
-                                 <option value="Peugeot">Peugeot</option>
-                                 <option value="Plymouth">Plymouth</option>
-                                 <option value="Polaris">Polaris</option>
-                                 <option value="Pontiac">Pontiac</option>
-                                 <option value="Porsche">Porsche</option>
-                                 <option value="Proton">Proton</option>
-                                 <option value="Qiantu">Qiantu</option>
-                                 <option value="Qiteng">Qiteng</option>
-                                 <option value="Qoros">Qoros</option>
-                                 <option value="Ram">Ram</option>
-                                 <option value="Ravon">Ravon</option>
-                                 <option value="Red Flag">Red Flag</option>
-                                 <option value="Rely">Rely</option>
-                                 <option value="Renault">Renault</option>
-                                 <option value="Renault Samsung">Renault Samsung</option>
-                                 <option value="Riich">Riich</option>
-                                 <option value="Roewe">Roewe</option>
-                                 <option value="Rolls-Royce">Rolls-Royce</option>
-                                 <option value="Rover">Rover</option>
-                                 <option value="Saab">Saab</option>
-                                 <option value="Saturn">Saturn</option>
-                                 <option value="Scion">Scion</option>
-                                 <option value="Seat">Seat</option>
-                                 <option value="Skoda">Skoda</option>
-                                 <option value="Smart">Smart</option>
-                                 <option value="Soueast">Soueast</option>
-                                 <option value="SsangYong">SsangYong</option>
-                                 <option value="Subaru">Subaru</option>
-                                 <option value="Suzuki">Suzuki</option>
-                                 <option value="TagAZ">TagAZ</option>
-                                 <option value="Tata">Tata</option>
-                                 <option value="Tesla">Tesla</option>
-                                 <option value="Toyota">Toyota</option>
-                                 <option value="UAZ">UAZ</option>
-                                 <option value="Vauxhall">Vauxhall</option>
-                                 <option value="VAZ">VAZ</option>
-                                 <option value="Venucia">Venucia</option>
-                                 <option value="Victory">Victory</option>
-                                 <option value="Volkswagen">Volkswagen</option>
-                                 <option value="Volvo">Volvo</option>
-                                 <option value="Vortex">Vortex</option>
-                                 <option value="Wey">Wey</option>
-                                 <option value="Wuling">Wuling</option>
-                                 <option value="XPeng">XPeng</option>
-                                 <option value="Yema">Yema</option>
-                                 <option value="ZAZ">ZAZ</option>
-                                 <option value="Brilliance">Brilliance</option>
-                                 <option value="Zotye">Zotye</option>
-                                 <option value="Zotye Jiangnan">Zotye Jiangnan</option>
-                                 <option value="ZX">ZX</option>
-                              </select>
-                           </div>
-                        </div>
-                        <div class="col-md-2">
-                           <div class="form-group ">
-                              <span id = "msg" style = "display:none;color:red;">No models found!</span>
-                              <select id="sel_model" class="form-control">
-                                 <option selected>Model</option>
-                              </select>
-                           </div>
-                        </div>
-                        <div class="col-md-4">
-                           <div class="form-group align-right">
-                           </div>
-                        </div>
-                        <div class="col-md-2">
-                           <div class="form-group align-right">
-                              <h2 class="grid-title"><i class="fa fa-filter"></i> Filters</h2>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            
-         </div>
-         </form>
-      </div>
-      <div class="main-container section-padding" id="app">
-         <div class="container">
-            <div class="col-lg-12 col-md-12 col-xs-12 page-content">
-               <div class="product-filter">
-                  <div class="short-name">
-                     <span>Showing all items</span>
-                  </div>
-                  <div class="Show-item">
-                     <span>Show Items</span>
-                     <form class="woocommerce-ordering" method="post">
-                        <label>
-                           <select name="order" class="orderby">
-                              <option selected="selected" value="menu-order">20 items</option>
-                              <option value="popularity">popularity</option>
-                              <option value="popularity">Average ration</option>
-                              <option value="popularity">newness</option>
-                              <option value="popularity">price</option>
-                           </select>
-                        </label>
-                     </form>
-                  </div>
-               </div>
-               {% if submitbutton == 'Search' and request.GET.location != ''  and request.GET.year != ''  and request.GET.make != ''   %}
-               {% if results %}
-               <div class="container">
-                  <h3 class="h3"> </h3>
-                  <div class="row">
-                     {% for ad in results %}
-                     <div class="col-md-4 col-sm-6">
-                        <div class="product-grid6">
-                           <div class="product-image6">
-                              <a href="#">
-                              <img class="img-fluid"  style="width: 360px; max-height: 204px"
-                                 src="{{ ad.first_image_or_default }}"
-                                 alt="">
-                              <span class="price">${{ ad.offer_price }}</span>
-                              </a>
-                           </div>
-                           <div class="product-content">
-                              <div class="price">${{ ad.offer_price }}
-                              </div>
-                              <h3 class="title"><a href="#">{{ ad.Ad_title }}</a></h3>
-                              <h3 class="description"><a href="#">{{ ad.description|safe|truncatechars:30 }}</a></h3>
-                           </div>
-                           <ul class="social">
-                              <div class="text-center">
-                                 <a href="{% url 'ads:ad.details' ad.id %}" class="btn btn-common " >View Details</a>
-                              </div>
-                           </ul>
-                        </div>
-                     </div>
-                     {% endfor %} 
-                  </div>
-               </div>
-               {% endif %}
-               {% endif %}
+<div class="page-header" style="background: url('{% static 'assets/img/banner1.jpg' %}');">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="breadcrumb-wrapper">
+               <h2 class="product-title">Listings</h2>
+               <ol class="breadcrumb">
+                  <li><a href="#">Home /</a></li>
+                  <li class="current">Listings</li>
+               </ol>
             </div>
          </div>
       </div>
    </div>
 </div>
+<div class="main-container section-padding" id="app">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-3 col-md-12 col-xs-12 page-sidebar">
+            <aside>
+               <div class="widget_search">
+                  <form role="search" id="search-form">
+                     <input type="search" class="form-control" autocomplete="off" name="s"
+                        placeholder="Search" id="search-input" value="">
+                     <button type="submit" id="search-submit" class="search-btn"><i class="lni-search"></i>
+                     </button>
+                  </form>
+               </div>
+               <div class="widget categories">
+                  <h4 class="widget-title">All Categories</h4>
+                  <ul class="categories-list">
+                     
+                        {% for category in categories %}
+						<a href="/?category={{category.id}}"
+							class="list-group-item list-group-item-action">{{category.name}}</a>
+						{% endfor %}
+                       
+                     
+                  </ul>
+               </div>
+               
+               </br>
+               </br>
+               <div class="widget categories">
+                  <h4 class="widget-title">Rent Type</h4>
+                  <ul class="categories-list">
+                     <li v-for="category in categories" @click="filter(category)" style="cursor: pointer">
+                        <i class="lni-control-panel"></i>
+                        Rent
+                        <span class="category-counter">(5)</span>
+                     </li>
+                     <li v-for="category in categories" @click="filter(category)" style="cursor: pointer">
+                        <i class="lni-control-panel"></i>
+                        Rent to sell
+                        <span class="category-counter">(3)</span>
+                     </li>
+                  </ul>
+               </div>
+               <div class="widget">
+                  <h4 class="widget-title">Advertisement-1</h4>
+                  <div class="add-box">
+                     <img class="img-fluid" src="assets/img/img1.jpg" alt="">
+                  </div>
+               </div>
+               <div class="widget">
+                  <h4 class="widget-title">Advertisement-2</h4>
+                  <div class="add-box">
+                     <img class="img-fluid" src="assets/img/img1.jpg" alt="">
+                  </div>
+               </div>
+               <div class="widget">
+                  <h4 class="widget-title">Advertisement-3</h4>
+                  <div class="add-box">
+                     <img class="img-fluid" src="assets/img/img1.jpg" alt="">
+                  </div>
+               </div>
+            </aside>
+         </div>
+         <div class="col-lg-9 col-md-12 col-xs-12 page-content">
+            <div class="product-filter">
+               <div class="short-name">
+                  <span>Showing all items</span>
+               </div>
+               <div class="Show-item">
+                  <span>Show Items</span>
+                  <form class="woocommerce-ordering" method="post">
+                     <label>
+                        <select name="order" class="orderby">
+                           <option selected="selected" value="menu-order">20 items</option>
+                           <option value="popularity">popularity</option>
+                           <option value="popularity">Average ration</option>
+                           <option value="popularity">newness</option>
+                           <option value="popularity">price</option>
+                        </select>
+                     </label>
+                  </form>
+               </div>
+               
+            </div>
+            
+
+
+{% if submitbutton == 'Search' and request.GET.location != ''  and request.GET.year != ''  and request.GET.make != ''   %}
+{% if results %}
+<div class="container">
+    <h3 class="h3"> </h3>
+    <div class="row">
+     {% for ad in results %}
+       <div class="col-md-6 col-sm-6">
+            <div class="product-grid6">
+                <div class="product-image6">
+                    <a href="#">
+                    
+                        <img class="img-fluid"  style="width: 360px; max-height: 204px"
+                                    src="{{ ad.first_image_or_default }}"
+                                    alt="">
+                       <span class="price">${{ ad.offer_price }}</span>
+                    </a>
+                    
+                </div>
+                <div class="product-content">
+                    <div class="price">${{ ad.offer_price }}
+                      
+                    </div>
+                    <h3 class="title"><a href="#">{{ ad.Ad_title }}</a></h3>
+                    
+                    <h3 class="description"><a href="#">{{ ad.description|safe|truncatechars:30 }}</a></h3> 
+                </div>
+                <ul class="social">
+                    <div class="text-center">
+                    <a href="{% url 'ads:ad.details' ad.id %}" class="btn btn-common " >View Details</a>
+                    </div>
+                </ul>
+            </div>
+        </div>
+       {% endfor %} 
+    </div>
+</div>
+ {% endif %}
+ {% endif %}
+               </div>
+            </div>
+                                
+            <div class="pagination-bar">
+               
+                                       
+               <nav>
+                  
+                                              
+                  <ul class="pagination justify-content-center">
+                     
+                                                     
+                     <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                     
+                                                     
+                     <li class="page-item"><a class="page-link" href="#">2</a></li>
+                     
+                                                     
+                     <li class="page-item"><a class="page-link" href="#">3</a></li>
+                     
+                                                     
+                     <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                     
+                                                 
+                  </ul>
+                  
+                                          
+               </nav>
+               
+                                   
+            </div>
+            
+         </div>
+      </div>
+   </div>
 </div>
 {% endblock %}
+
