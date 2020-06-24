@@ -1,21 +1,20 @@
-.features-blue {
-  color: #fff;
-  background: linear-gradient(135deg, #172a74, #21a9af);
-  background-color: #184e8e;
+.features-clean {
+  color: #313437;
+  background-color: #fff;
   padding-bottom: 30px;
 }
 
 @media (max-width:767px) {
-  .features-blue {
+  .features-clean {
     padding-bottom: 10px;
   }
 }
 
-.features-blue p {
-  color: rgba(255,255,255,0.6);
+.features-clean p {
+  color: #7d8285;
 }
 
-.features-blue h2 {
+.features-clean h2 {
   font-weight: bold;
   margin-bottom: 40px;
   padding-top: 40px;
@@ -23,38 +22,38 @@
 }
 
 @media (max-width:767px) {
-  .features-blue h2 {
+  .features-clean h2 {
     margin-bottom: 25px;
     padding-top: 25px;
     font-size: 24px;
   }
 }
 
-.features-blue .intro {
+.features-clean .intro {
   font-size: 16px;
   max-width: 500px;
   margin: 0 auto 60px;
 }
 
 @media (max-width:767px) {
-  .features-blue .intro {
+  .features-clean .intro {
     margin-bottom: 40px;
   }
 }
 
-.features-blue .item {
+.features-clean .item {
   min-height: 100px;
   padding-left: 80px;
   margin-bottom: 40px;
 }
 
 @media (max-width:767px) {
-  .features-blue .item {
+  .features-clean .item {
     min-height: 0;
   }
 }
 
-.features-blue .item .name {
+.features-clean .item .name {
   font-size: 20px;
   font-weight: bold;
   margin-top: 0;
@@ -62,14 +61,14 @@
   color: inherit;
 }
 
-.features-blue .item .description {
+.features-clean .item .description {
   font-size: 15px;
   margin-bottom: 0;
 }
 
-.features-blue .item .icon {
+.features-clean .item .icon {
   font-size: 40px;
-  color: #ffcc1e;
+  color: #1485ee;
   float: left;
   margin-left: -65px;
 }

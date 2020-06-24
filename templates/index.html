@@ -1,312 +1,12 @@
 {% extends 'base.html' %}
-{% block content %}
 {% load static %}
 
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!-- Google Maps JavaScript library -->
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyAfZpmVI9Nzza6yJsIylbbqB9d7QPz-v8U"></script>
-<script
-  src="https://code.jquery.com/jquery-3.5.1.min.js"
-  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-  crossorigin="anonymous"></script>
-<style>
-     .btn-danger:hover {
-    color: #fff;
-    background-color: #827f80;
-    border-color: #929191;
-}
-.btn-danger {
-    color: #fff;
-    background-color: #989495;
-    border-color: #807e7f;
-}
-    /*This is for search buttons design*/
-    .tab-content{
-        background-color: #f8f8f8;
-    }
-        .btn-squared-default
-    {
-        width: 100px !important;
-        height: 100px !important;
-        /*font-size: 10px;*/
-    }
+{% block content %}
 
-        .btn-squared-default:hover
-        {
-            border: 3px solid white;
-            font-weight: 800;
-        }
-
-    .btn-squared-default-plain
-    {
-        width: 180px !important;
-        height: 150px !important;
-        /*font-size: 10px;*/
-    }
-
-        .btn-squared-default-plain:hover
-        {
-            border: 0px solid white;
-            box-shadow: 5px 7px 7px 5px rgba(0, 0, 0, 0.19), 10px 12px 20px 10px rgba(0, 0, 0, 0.19);
-        }
-
-    /*square box*/
-    .displaystyle {
-        padding: 15px;
-        margin: 15px;
-        background-color: #FFFFFF;
-        margin-bottom: 10px;
-        box-shadow: 5px 7px 7px 5px rgba(0, 0, 0, 0.19), 10px 12px 20px 10px rgba(0, 0, 0, 0.19);
-    }
-
-    .displaystyle-danger>strong {
-        color: #d73814;
-    }
-</style>
-<style>
-
-
-
-hr.style1{
-	border-top: 0.5px solid #000;
-    width: 75%;
-}
-
-.span {
-  font-style: inherit;
-  font-weight: inherit;
-  font-size: 20px;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
-  color:#003e6b;
-}
-
-
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
-* {
-  box-sizing: border-box;
-}
-*::before, *::after {
-  box-sizing: border-box;
-}
-
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-   color: #fff;
-   background-color:  #003e6b;
-   }
-
-.btn-danger {
-    color: #fff;
-    background-color: #003e6b;
-    border-color: #003e6b;
-}
-.btn {
-    font-size: 20px;
-    font-family: 'Proxima Nova Soft', 'Helvetica Neue', sans-serif;
-}
-.nav-tabs .nav-link {
-    color: white;
-    border: 1px solid transparent;
-    border-top-left-radius: .25rem;
-    border-top-right-radius: .25rem;
-}
-
-
-button {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    outline: none;
-    border: 0;
-    vertical-align: middle;
-    text-decoration: none;
-    font-size: 1.5rem;
-    color: #ffffff;
-    font-weight: 600;
-    font-family: inherit;
-}
-button.big-button {
-    padding: -0.5em -1.5em;
-    border: 1px solid rgb(14, 13, 13);
-    border-radius: 0.5em;
-    background: rgb(49, 47, 49);
-    transform-style: preserve-3d;
-    transition: all 175ms cubic-bezier(0, 0, 1, 1);
-}
-
-button.big-button::before {
-  position: absolute;
-  content: '';
-  width: 66%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--colorShadeC);
-  border-radius: inherit;
-    box-shadow: 0 0 0 2px , 0 0.75em 0 0 ;
- transform: translate3d(0, 0.75em, -1em);
-     transition: all 175ms cubic-bezier(0, 0, 1, 1);
-}
-
-
-button.big-button:hover {
-  background: rgb(26, 29, 27);
-  transform: translate(0, 0.375em);
-}
-
-button.big-button:hover::before {
-  transform: translate3d(0, 0.75em, -1em);
-}
-
-button.big-button:active {
-            transform: translate(0em, 0.75em);
-}
-
-button.big-button:active::before {
-  transform: translate3d(0, 0, -1em);
-  
-      box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.25em 0 0 var(--colorShadeB);
-
-}
-
-
-</style>
-<style>
-._3BIgv {
-    height: 58px!important;
-    line-height: 28px!important;
-    padding-top: 0!important;
-    padding-left: 15px!important;
-    padding-right: 160px!important;
-    caret-color: #0c0c0c;
-    font-size: 18px!important;
-    font-weight: 500;
-}
-._1oTLG {
-    height: 50px;
-    padding-top: 0;
-    font-size: 1.15rem;
-}
-._381fS {
-    background-color: transparent;
-    line-height: normal;
-    border: none;
-    outline: none;
-    height: 70px;
-    width: 100%;
-    font-size: 17px;
-    margin: 0;
-    padding: 0 20px;
-    padding-top: 22px;
-    box-shadow: none;
-    box-sizing: border-box;
-    border-radius: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-weight: 500;
-}
-button, input, optgroup, select, textarea {
-    color: inherit;
-    font: inherit;
-    margin: 0;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-}
-._2oQ4_ {
-    padding: 0 5px;
-    border: 1px solid #bebfc5;
-    box-shadow: none;
-}
-._3Um38 {
-    border: 1px solid #d4d5d9;
-    padding: 0;
-    display: block;
-    position: relative;
-    transform: translateZ(0);
-}
-._1fiQt {
-    color: #535665;
-}
-._1fiQt:hover {
-    background: #e9e9eb;
-}
-[class*=" icon-"], [class^=icon-] {
-    font-family: icomoon;
-    speak: none;
-    font-style: normal;
-    font-weight: 400;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-.LukWG {
-    padding-top: 0;
-}
-._25lQg {
-    margin-right: 6px;
-    top: 2px;
-    position: relative;
-}
-._1fiQt {
-    color: #535665;
-}
-._1fiQt, .NqZN6 {
-    position: absolute;
-    right: 150px;
-    top: 90px;;
-    padding: 12px 10px;
-    font-weight: 500;
-    font-size: 14px;
-    cursor: pointer;
-    right: 180px;
-    letter-spacing: -.35px;
-}
-._3iFC5 {
-    width: 100%;
-    text-decoration: none;
-    cursor: pointer;
-    display: inline-block;
-    text-align: center;
-    border: none;
-    line-height: 50px;
-    font-size: 14px;
-    font-weight: 600;
-    top: 83px;
-    height: 50px;
-    padding: 0 2rem;
-    color: #fc8019;
-    letter-spacing: 0;
-    color: #fff;
-    background-color: #003e6b;
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,.12);
-    right: 16px;
-    height: 60px;
-    line-height: 60px;
-    width: 140px;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: .53px;
-    padding: 0;
-}
-._1b8uz, ._3iFC5 {
-    position: absolute;
-    z-index: 1;
-}
-</style>
-
-
-    <link rel="stylesheet" href="/media/assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="/media/assets/css/best-carousel-slide.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="/media/assets/css/styles.css">
-    <script src="/media/assets/js/jquery.min.js"></script>
-    <script src="/media/assets/bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/media/assets/fonts/font-awesome.min.css">
+ <script src="/media/assets/js/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
@@ -328,6 +28,117 @@ $(document).ready(function(){
 });
 
 </script>
+<style>
+#wrap:after {
+  content: '';
+  display: block;
+  position: absolute;
+  z-index: 2;
+}
+a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #000;
+    background-color: #ffffff;
+}
+a {
+    color: #f7f7f7;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #373373;
+    border-color: #8d84ae;
+}
+
+#ml3 {
+  font-weight: 900;
+  font-size: 3.5em;
+}
+
+#ml4 {
+  font-weight: 900;
+  font-size: 3.5em;
+}
+
+body {
+    background: #f3f3f3;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: open sans, sans-serif;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-font-smoothing: subpixel-antialiased;
+    color: #999;
+    line-height: 25px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    overflow-x: hidden;
+}
+
+a:not([href]):not([tabindex]) {
+    color: inherit;
+    text-decoration: none;
+    font-size: 19px;
+}
+
+<style> 
+        
+        .buttonIn { 
+            width: 300px; 
+            position: relative; 
+        } 
+          
+        input { 
+            margin: 0px; 
+            padding: 0px; 
+            width: 100%; 
+            
+            height: 40px; 
+            
+        } 
+          
+        button { 
+            position: absolute;
+				top: 0;
+				border-radius: -47px;
+				right: 0px;
+				z-index: 2;
+				color: white;
+				border: none;
+				background-color:#a7a7ab;
+				height: 40px;
+				
+               transform: translateX(2px); 
+        } 
+        
+        .btn-common {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    background-color: #373373;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px 0 rgba(55,51,115,.3);
+    box-sizing: border-box;
+    color: #fff;
+    font-weight: 700;
+    margin-left: 8px;
+    padding: 4px 16px;
+    text-align: center;
+    text-decoration: none;
+    -webkit-transition: background-color .2s linear;
+    -moz-transition: background-color .2s linear;
+    transition: background-color .2s linear;
+}
+
+    </style> 
+</style>
 <script type="text/javascript">
         $(document).ready(function(){
 
@@ -506,43 +317,46 @@ $(document).ready(function(){
 
         });
       </script>
-    <section id="carousel">
-        <div class="carousel slide" data-ride="carousel" id="carousel-1">
-            <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                    <div class="jumbotron pulse animated carousel-hero" style="background-image: url(&quot;/media/assets/img/tires.jpg&quot;);background-position: center;background-repeat: no-repeat; background-size: cover;">
-                        <h1 class="hero-title" style="font-size: 30px;">BUY TIRES AND WHEELS ONLINE</h1>
-                        <p class="hero-subtitle" style="font-size: 23px;"><strong>AT THE BEST PRICE</strong><br></p>
-                        <p></p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="jumbotron pulse animated carousel-hero" style="background-image: url(&quot;/media/assets/img/wheels.jpg&quot;);min-height:100%;background-position: center;background-repeat: no-repeat; background-size: cover;">
-                        <h1 class="hero-title" style="font-size: 37px;">&nbsp; &nbsp;EXCLUSIVE OFFER&nbsp;</h1>
-                        <p class="hero-subtitle" style="font-size: 28px;"><strong>ENJOY UPTO $60 OFF</strong><br></p>
-                        <p></p>
-                    </div>
-                </div>
-                <div class="carousel-item ">
-                    <div class="jumbotron pulse animated carousel-hero" style="background-image: url(&quot;/media/assets/img/services.jpg&quot;);background-position: center;background-repeat: no-repeat; background-size: cover;">
-                        <h1 class="hero-title" style="font-size: 36px;">&nbsp; &nbsp;BRAND NEW WHEELS&nbsp;</h1>
-                        <p class="hero-subtitle" style="font-size: 28px;"><strong>STARTING AT $55</strong><br></p>
-                        <p></a></p>
-                    </div>
-                </div>
-            </div>
-            <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev"><i class="fa fa-chevron-left"></i><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-slide="next"><i class="fa fa-chevron-right"></i><span class="sr-only">Next</span></a></div>
-            <ol
-                class="carousel-indicators" style="opacity: 0;">
-                <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-1" data-slide-to="1"></li>
-                <li data-target="#carousel-1" data-slide-to="2" ></li>
-                </ol>
-        </div>
-    </section>
-    
-    <section id="categories">
-   <div class="container" style="background-colour:#6c757d;" id="back">
+    <div id="main-slide" class="carousel slide" data-ride="carousel">
+   <div class="carousel-inner">
+   <div id="wrap">
+      <div class="carousel-item active">
+         <img class="d-block w-100" style="opacity:0.9" src="/media/assets/img/tires.jpg" alt="First slide">
+         <div class="carousel-caption d-md-block">
+            <h1 class="animated wow fadeInDown hero-heading" data-wow-delay=".4s">Welcome To the Market Place For Tires And Wheels </h1>
+            <p class="animated fadeInUp wow hero-sub-heading" data-wow-delay=".6s">Rent, Sell, and Rent to Sell wide range Of tires and its related servies, explore more to save more</p>
+         </div>
+      </div>
+      
+      <div class="carousel-item">
+         <img class="d-block w-100" src="/media/assets/img/wheels.jpg" alt="Second slide">
+         <div class="carousel-caption d-md-block">
+            <h1 class="animated wow fadeInLeft hero-heading" data-wow-delay=".7s">Post Free Ads</h1>
+            <p class="animated wow fadeInRight hero-sub-heading" data-wow-delay=".9s">Get resgistered and post your first 10 free ads and start exploring our Ad Extensions to get more Ad clicks </p>
+         </div>
+      </div>
+      <div class="carousel-item">
+         <img class="d-block w-100" src="/media/assets/img/services.jpg" alt="Third slide">
+         <div class="carousel-caption d-md-block">
+            <h1 class="animated wow fadeInDown hero-heading" data-wow-delay=".6s">Get More Sell And More Exposure </h1>
+            <p class="animated fadeInUp wow hero-sub-heading" data-wow-delay=".8s">At Tires On Rent, you can Rent or Rent to Sell or Sell your unwanted tires, which are in a good condition</p>
+         </div>
+      </div>
+   </div>
+   </div>
+   <a class="carousel-control-prev" href="#main-slide" role="button" data-slide="prev">
+   <span class="carousel-control" aria-hidden="true"><i class="lni-chevron-left" data-ripple-color="#F0F0F0"></i></span>
+   <span class="sr-only">Previous</span>
+   </a>
+   <a class="carousel-control-next" href="#main-slide" role="button" data-slide="next">
+   <span class="carousel-control" aria-hidden="true"><i class="lni-chevron-right" data-ripple-color="#F0F0F0"></i></span>
+   <span class="sr-only">Next</span>
+   </a>
+</div>
+
+
+  <section id="categories">
+   <div class="container" style="background-colour:#373373;" id="back">
       <div class="row justify-content-center">
          <div class="col-lg-10 col-md-12 col-xs-12">
             <div class="container py-5">
@@ -576,7 +390,7 @@ $(document).ready(function(){
                              </div>
                              -->
                           <div class="row-cols-2">
-                             <a href="#" class="btn btn-squared-default-plain btn-danger" id="size-icon">
+                             <a  href='javascript:void();' class="btn btn-squared-default-plain btn-danger" id="size-icon">
                              <i class="fa fa-car fa-5x"></i>
                              
                              <br/>
@@ -615,17 +429,27 @@ $(document).ready(function(){
                                  <br>
                                  <hr class="style1">
                                  <br>
-                                 <div class="Al5GE">
-                                 <div class="_3Um38 _2oQ4_">
-                                 <input type="text" class="_381fS _1oTLG _3BIgv"  id="search_input" value="" name="location"  autocomplete="off" tabindex="1" placeholder="Enter your Pickup location" maxlength="30">
-                                 <div class=""></div>
-                                 <label class="" for="location"></label>
-                                 </div><div class="_1fiQt">
-                                 <i class="fa fa-location-arrow" aria-hidden="true"></i>
-                                 </span><span class="LukWG" type="button" id="location" >Locate Me</span>
-                                 </div></div>
-                                 <div class="_3iFC5"><span>Find Location</span></div>
-                                </br>
+                                 <div class="row">
+                                
+                                 <div class="col-lg-9"> 
+                                 <div class="form-group">
+									<input type="text" class="input-ol form-control" name="query" placeholder="Search based on Location" />
+									<span class="input-group-btn" onclick="return searchcontent()">
+									  <button type="button" aria-label="Search">
+										<i class="fa fa-location-arrow" aria-hidden="true">Locate Me</i> 
+										
+									   </button>
+									   </div> 
+									</div>
+									   <div class="col-lg-3"> 
+									   <div class="form-group">
+									   <input type="submit" name="submit" class="btn btn-common float-left" value="By Location" />
+								   </div>
+								   </div>
+								   </div>
+									 
+								
+								</br>
                               <div class="row">
                                   <div class="col-lg-3">
                                     <div class="form-group">
@@ -1155,7 +979,7 @@ $(document).ready(function(){
                                     </div>
                                   </div>
                                   <div class="col-lg-2">
-                                      <input type="submit" name="submit" class="btn btn-common float-left" value="Search" />
+                                      <button type="submit" name="submit" value="Search" ></button>
                                   </div>
 
                               </div>
@@ -1176,207 +1000,241 @@ $(document).ready(function(){
       </div>
    </div>
    </div>
-</section>
-<section id="about" class="section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-lg-12 col-xs-12">
-                <div class="about-wrapper">
-                    <h2 class="intro-title">How does TOR help the owners?</h2>
-                    <p class="intro-desc">
-                        You might be wondering what's in it for you to give away your precious tires. No, you're not
-                        giving them away permanently, rather temporarily and that also in return for some decent cash.<span id="dots">...</span><span id="more">
-                        If you've just sold your car or got some extra tires laying around, why not take the advantage
-                        and generate some passive income by leasing them away?
-                        Not only will you be helping someone in need, you will also be compensated by a rental charge of
-                        your own choice. After all, it's better than letting those tires rot away in an isolated garage
-                        or giving them away at a ridiculously low price.
-                        At Tires On Rent, you can lease away all your unwanted tires, which are in a good condition,
-                        obviously, and generate income from several sources. You might as well buy some extra tires just
-                        for the sake of renting them away. It's money while you sleep, so why not?</span>
-                    </p>
-                    <button onclick="showmore()" id="myBtn" class="btn btn-common btn-md">Read more</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<script type="text/javascript">
-function showmore() {
-  var dots1 = document.getElementById("dots");
-  var moreText1 = document.getElementById("more");
-  var btnText1 = document.getElementById("myBtn");
 
-  if (dots1.style.display === "none") {
-    dots1.style.display = "inline";
-    btnText1.innerHTML = "Read more";
-    moreText1.style.display = "none";
-  } else {
-    dots1.style.display = "none";
-    btnText1.innerHTML = "Read less";
-    moreText1.style.display = "inline";
-} 
- }
-</script>
-<style>
-    #more {display: none;}
-</style>
-<section id="about" class="">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-lg-12 col-xs-12">
-                <div class="about-wrapper">
-                    <h2 class="intro-title">How does TOR help the tenants?</h2>
-                    <p class="intro-desc">
-                        You cannot prevent a tire from being worn out but you can definitely protect yourself and your
-                        family from being exposed to a deadly risk of driving on bad tires. <span id="dots1">...</span><span id="more1">The sole reason why Tires On
-                        Rent was found was to make life easier for those people who are on a tight budget and cannot
-                        afford to spend hefty amounts on new tires. So, if you fall into this category, you're at the
-                        right spot. Whether you need high quality tires on a short-term basis or for a long-term usage,
-                        TOR has got you covered with hundreds and thousands of listings from all buyers of all kinds of
-                        vehicles.
-                        So, rent tires, drive safe and do your wallet a favour!
-                    </span></p>
-                    <button onclick="myFunction1()" id="myBtn1" class="btn btn-common btn-md">Read more</button>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xs-12">
-                <img class="img-fluid" src="{% static 'assets/img/about/about.png'%}" alt="">
-            </div>
-        </div>
-    </div>
-</section>
-<script>
-function myFunction1() {
-  var dots = document.getElementById("dots1");
-  var moreText = document.getElementById("more1");
-  var btnText = document.getElementById("myBtn1");
 
-  if (dots.style.display === "none") {
-    dots.style.display = "inline";
-    btnText.innerHTML = "Read more";
-    moreText.style.display = "none";
-  } else {
-    dots.style.display = "none";
-    btnText.innerHTML = "Read less";
-    moreText.style.display = "inline";
-  }
-}
-</script>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+
+
+<div id=about>
+<div class="container">
+<div class="row">
+<div class="col-md-6 col-lg-6 col-xs-12">
+<div class="about-wrapper">
+<img class="img-fluid" src="/media/tyre2.png" alt="">
+
+
+</div>
+</div>
+<div class="col-md-6 col-lg-6 col-xs-12">
+<h6 class="intro-title" id="ml3" style=color:#373373;>How does TOR help the Tire Owners?</h6>
+<a class="intro-desc" style=color:#3d5769;>
+If you've just sold your car or completed your car lease or got some extra tires laying around, why not take the advantage and generate some passive income by leasing them away?
+	Not only will you be helping someone in need, you will also earn money. After all, it's better than letting those tires rot away in a garage or giving them away at a ridiculously low price.
+	At Tires On Rent, you can Rent or Rent to Sell or Sell your unwanted tires, which are in a good condition, obviously. 
+</div>
+</div>
+</div>
+</br>
+<div class="container">
+<div class="row">
+<div class="col-md-6 col-lg-6 col-xs-12">
+<div class="about-wrapper">
+<h6 class="intro-title" style=color:#373373; id="ml4" >How does TOR help the  Tire Seeker?</h6>
+<a id="intro-desc" style=color:#3d5769;>
+You cannot prevent a tire from being worn out but you can definitely protect yourself. 
+								The sole reason why Tires On Rent was found was to make life easier for those who are on 
+								a tight budget and cannot afford to spend hefty amounts on new tires. So, if you fall into 
+								this category, you're at the right place. Whether you need high quality tires on a short-term 
+								basis or for a long-term usage, TOR has got you covered. Now you can Rent or Rent to Own or Buy 
+								from the tire owners directly. Sounds interesting? Search the tires you are looking for and rent 
+								or buy them now.
+</a>
+
+</div>
+</div>
+<div class="col-md-6 col-lg-6 col-xs-12">
+<img class="img-fluid" src="/media/tyre12.png" alt="">
+</div>
+</div>
+</div>
+
+
+
+   <div class="container">
+      <div class="row">
+         <div class="col-12">
+            <h3 class="section-title">How Does It Works?</h3>
+             <p class="text-center">Convenience is something that we all desire and that is why we have simplified the process of renting tires into mere 5 steps. </p>
+         </br>
+         </div>
+         
+         <div class="col-md-6 col-lg-4 col-xs-12">
+            <div class="services-item wow fadeInRight" data-wow-delay="0.2s">
+               <div class="icon">
+                  <i class="lni-leaf"></i>
+               </div>
+               <div class="services-content">
+                  <h3><a href="#">Post Ad</a></h3>
+                  <p>Post Ads  for Rent or Rent to sell or Sell.</p>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-6 col-lg-4 col-xs-12">
+            <div class="services-item wow fadeInRight" data-wow-delay="0.4s">
+               <div class="icon">
+                  <i class="lni-display"></i>
+               </div>
+               <div class="services-content">
+                  <h3><a href="#">Promote Ad</a></h3>
+                  <p>Promote your Ad, so that user finds your post.</p>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-6 col-lg-4 col-xs-12">
+            <div class="services-item wow fadeInRight" data-wow-delay="0.6s">
+               <div class="icon">
+                  <i class="lni-color-pallet"></i>
+               </div>
+               <div class="services-content">
+                  <h3><a href="#">Accept Offer</a></h3>
+                  <p>Receive/Accept the offer you expect.</p>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-6 col-lg-4 col-xs-12">
+            <div class="services-item wow fadeInRight" data-wow-delay="1s">
+               <div class="icon">
+                  <i class="lni-pencil-alt"></i>
+               </div>
+               <div class="services-content">
+                  <h3><a href="#">Sign Rental Agreement</a></h3>
+                  <p>Make a deal with tenants!</p>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-6 col-lg-4 col-xs-12">
+            <div class="services-item wow fadeInRight" data-wow-delay="0.8s">
+               <div class="icon">
+                  <i class="lni-emoji-smile"></i>
+               </div>
+               <div class="services-content">
+                  <h3><a href="#">Payment</a></h3>
+                  <p>Finish your payment to signoff the deal!</p>
+               </div>
+            </div>
+         </div>
+         
+        
+      </div>
+   </div>
+</section>
+<section id="pricing-table" class="section-padding">
+   <div class="container">
+      <div class="row">
+         <div class="col-12">
+            <h2 class="section-title">Pricing Plan</h2>
+         </div>
+         <div class="col-lg-4 col-md-6 col-xs-12">
+            <div class="table">
+               <div class="icon">
+                  <i class="lni-gift"></i>
+               </div>
+               <div class="pricing-header">
+                  <p class="price-value">$29</p>
+               </div>
+               <div class="title">
+                  <h3>Basic</h3>
+               </div>
+               <ul class="description">
+                  <li>Free ad posting</li>
+                  <li>No Featured ads availability</li>
+                  <li>Access to limited features</li>
+                  <li>For 30 days</li>
+                  <li>100% Secure!</li>
+               </ul>
+               <button class="btn btn-common">Purchase</button>
+            </div>
+         </div>
+         <div class="col-lg-4 col-md-6 col-xs-12">
+            <div class="table" id="active-tb">
+               <div class="icon">
+                  <i class="lni-leaf"></i>
+               </div>
+               <div class="pricing-header">
+                  <p class="price-value">$49</p>
+               </div>
+               <div class="title">
+                  <h3>Standard</h3>
+               </div>
+               <ul class="description">
+                  <li>Free ad posting</li>
+                  <li>10 Featured ads availability</li>
+                  <li>Access to unlimited features</li>
+                  <li>For 30 days</li>
+                  <li>100% Secure!</li>
+               </ul>
+               <button class="btn btn-common">Purchase</button>
+            </div>
+         </div>
+         <div class="col-lg-4 col-md-6 col-xs-12">
+            <div class="table">
+               <div class="icon">
+                  <i class="lni-layers"></i>
+               </div>
+               <div class="pricing-header">
+                  <p class="price-value">$69</p>
+               </div>
+               <div class="title">
+                  <h3>Premium</h3>
+               </div>
+               <ul class="description">
+                  <li>Free ad posting</li>
+                  <li>100 Featured ads availability</li>
+                  <li>Access to unlimited features</li>
+                  <li>For 30 days</li>
+                  <li>100% Secure!</li>
+               </ul>
+               <button class="btn btn-common">Purchase</button>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
 <script>
 // Wrap every letter in a span
-var textWrapper = document.querySelector('.ml6 .letters');
+var textWrapper = document.querySelector('#ml3');
 textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
 anime.timeline({loop: true})
   .add({
-    targets: '.ml6 .letter',
-    translateY: ["1.1em", 0],
-    translateZ: 0,
-    duration: 750,
-    delay: (el, i) => 50 * i
+    targets: '#ml3 .letter',
+    opacity: [0,1],
+    easing: "easeInOutQuad",
+    duration: 2250,
+    delay: (el, i) => 150 * (i+1)
   }).add({
-    targets: '.ml6',
+    targets: '#ml3',
     opacity: 0,
     duration: 1000,
     easing: "easeOutExpo",
     delay: 1000
   });
 </script>
-<style>
-    #more1 {display: none;}
-
-/*shadow effect*/
-/* The slow way */
-.icon-box {
-  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
-  transition: box-shadow 0.3s ease-in-out;
-}
-
-/* Transition to a bigger shadow on hover */
-.icon-box:hover {
-  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-}
-
-</style>
-
-
-<section class="works section-padding">
-   <div class="container">
-      <div class="row">
-         <div class="col-12">
-            <h3 class="section-title">How does it work?</h3>
-            <h5>Convenience is something that we all desire and that is why we have simplified the process of renting tires into mere 5 steps.</h5>
-         </div>
-         <div class="col-lg-2 col-md-2 col-xs-12">
-            <div class="works-item">
-               <div class="icon-box">
-                  <i class="lni-camera"></i>
-               </div>
-               <p>Post the advertisement</p>
-            </div>
-         </div>
-         <div class="col-lg-3 col-md-3 col-xs-12">
-            <div class="works-item">
-               <div class="icon-box">
-                  <i class="lni-bookmark-alt"></i>
-               </div>
-               <p>Promote the Ad</p>
-            </div>
-         </div>
-         <div class="col-lg-2 col-md-2 col-xs-12">
-            <div class="works-item">
-               <div class="icon-box">
-                  <i class="lni-thumbs-up"></i>
-               </div>
-               <p>Accept an offer</p>
-            </div>
-         </div>
-         <div class="col-lg-3 col-md-3 col-xs-12">
-            <div class="works-item">
-               <div class="icon-box">                  
-                  <i class="lni-users"></i>
-               </div>
-               <p>Sign the rental Agreement</p>
-            </div>
-         </div>
-         <div class="col-lg-2 col-md-2 col-xs-12">
-            <div class="works-item">
-               <div class="icon-box">
-                  <i class="lni-wallet"></i>
-               </div>
-               <p>Receive Payments</p>
-            </div>
-         </div>
-         <hr class="works-line">
-         <p>
-   No extra or hidden taxes or service charges are incurred. You get exactly what you have mentioned
-                        in the agreement. For customers, all they need to do is browse the hundreds and thousands of ads
-                        on our platform, select one which suits them the best, send an offer to the owner and drive
-                        around with their new tires. Isn't it easy? It is!</p>
-      </div>
-   </div>
-
-   </section> 
-   <script>
-    function showPosition() {
-        if(navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                var positionInfo = "Your current position is (" + "Latitude: " + position.coords.latitude + ", " + "Longitude: " + position.coords.longitude + ")";
-                document.getElementById("result").innerHTML = positionInfo;
-            });
-        } else {
-            alert("Sorry, your browser does not support HTML5 geolocation.");
-        }
-    }
-</script> 
 <script>
-$(document).ready(function(){ 
-  $('#location').click(function(){ 
-    $.get("http://ipinfo.io", function (response) {
-    $("#search_input").val(response.city);
-    }, "jsonp");
-   });
-});
+// Wrap every letter in a span
+var textWrapper = document.querySelector('#ml4');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '#ml4 .letter',
+    opacity: [0,1],
+    easing: "easeInOutQuad",
+    duration: 2250,
+    delay: (el, i) => 150 * (i+1)
+  }).add({
+    targets: '#ml4',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
 </script>
+
+	
 {% endblock %}

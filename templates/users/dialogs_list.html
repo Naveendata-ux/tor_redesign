@@ -36,18 +36,15 @@ Messages
                      <div class="dashboard-wrapper">
                         <form class="row ">
                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5">
-                              
-                                 
-                                 
                                  {% for profile, user in opponents %}
                                  <ul class="offers-user-online">
                                     <li class="offerer">
                                        <figure>
                                        <div class="text-center">
                                           {% if user.profile_image %}
-											  <img style="width:90px;height:90px;" src="{{ user.profile_image.url }}" alt="User avatar">
+											  <img style="width:30px;height:30px;" src="{{ user.profile_image.url }}" alt="User avatar">
 										  {% else %}
-											  <img style="width:90px;height:90px;"src="{% static 'assets/img/avatar.png' %}" alt="User avatar">
+											  <img style="width:30px;height:30px;"src="{% static 'assets/img/avatar.png' %}" alt="User avatar">
 										  {% endif %}
 									   </div>
                                        </figure>

@@ -396,8 +396,8 @@ a.back-to-top:focus {
 }
 
 .page-header {
-	padding: 115px 0 25px;
-	position: relative
+    padding: 27px 0 10px;
+    position: relative;
 }
 
 .page-header:before {
