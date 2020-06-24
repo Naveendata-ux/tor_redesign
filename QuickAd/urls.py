@@ -16,7 +16,7 @@ urlpatterns = [
     url('^', include('django.contrib.auth.urls')),
     path('ads/', include('ads.urls')),
     path('users/', include('users.urls')),
-    path('messages/', user_dialogs, name="user_dialogs_url"),
+    path('dialogs/', user_dialogs, name="user_dialogs_url"),
     path('', include('core.urls')),
     path('categories', include('category.urls')),
     url(r"^search/", include((search_urls, "search"), namespace="search")),
