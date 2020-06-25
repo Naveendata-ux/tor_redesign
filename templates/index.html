@@ -397,7 +397,7 @@ a:not([href]):not([tabindex]) {
                              
                              <strong>BY VEHICLE</strong>
                              </a>
-                             <a href="#" class="btn btn-squared-default-plain btn-danger" id="vehicle-icon">
+                             <a href='javascript:void();' class="btn btn-squared-default-plain btn-danger" id="vehicle-icon">
                              <i class="fa fa-life-ring fa-5x"></i>
                              <br />
                              
@@ -433,7 +433,7 @@ a:not([href]):not([tabindex]) {
                                 
                                  <div class="col-lg-9"> 
                                  <div class="form-group">
-									<input type="text" class="input-ol form-control" name="query" placeholder="Search based on Location" />
+									<input type="text" class="input-ol form-control" name="location" value="{{request.GET.location}}" placeholder="Search based on Location" />
 									<span class="input-group-btn" onclick="return searchcontent()">
 									  <button type="button" aria-label="Search">
 										<i class="fa fa-location-arrow" aria-hidden="true">Locate Me</i> 

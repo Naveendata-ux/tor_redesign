@@ -11,6 +11,7 @@ from .views import user_dialogs
 
 urlpatterns = [
     path('api/', include('core.api.urls')),
+    path('accounts/', include('allauth.urls')),
     path('torca/', admin.site.urls),
     path('auth/', include('accounts.urls')),
     url('^', include('django.contrib.auth.urls')),

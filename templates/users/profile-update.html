@@ -21,28 +21,28 @@
    }
 </style>
 <style>
-body {
-    background: #fff;
-    font-size: 14px;
-    font-weight: 400;
-    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-font-smoothing: subpixel-antialiased;
-    color: #000;
-    line-height: 25px;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    overflow-x: hidden;
-}
-h1, h2, h3, h4 {
-    font-size: 27px;
-    color: #003e6b;
-    text-align: center;
-    font-weight: 700;
-    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
-}
+   body {
+   background: #fff;
+   font-size: 14px;
+   font-weight: 400;
+   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+   -webkit-font-smoothing: subpixel-antialiased;
+   color: #000;
+   line-height: 25px;
+   -webkit-backface-visibility: hidden;
+   backface-visibility: hidden;
+   overflow-x: hidden;
+   }
+   h1, h2, h3, h4 {
+   font-size: 27px;
+   color: #003e6b;
+   text-align: center;
+   font-weight: 700;
+   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
+   }
 </style>
 <script type="text/javascript">
    function yesnoCheck() {
@@ -80,7 +80,6 @@ h1, h2, h3, h4 {
       <div class="row">
          <div class="col-md-12">
             <div class="breadcrumb-wrapper">
-               
                <ol class="breadcrumb">
                   <li><a href="{% url 'core:home' %}">Home /</a></li>
                   <li class="current">Profile Update</li>
@@ -96,7 +95,6 @@ h1, h2, h3, h4 {
       <div class="row">
          {% include 'includes/sidebar.html' %}
          <!-- Page Heading -->
-        
          <div class="col-sm-12 col-md-8 col-lg-9">
             <div class="row page-content">
                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -111,19 +109,96 @@ h1, h2, h3, h4 {
                   </form>
                </div>
             </div>
+            </br>
+            <form action="{% url 'accounts:insurance-info' %}" method="POST" enctype="multipart/form-data">
+               {% csrf_token %}
+               <div class="inner-box">
+                  <div class="dashboard-box">
+                     <h2 class="dashbord-title">Insurace Info</h2>
+                  </div>
+                  <div class="dashboard-wrapper">
+                     <div class="form-group mb-3 tg-inputwithicon">
+                        <div class="form-group">
+                           <div class="input-icon">
+                              <label  for="{{ form.is_student.id_for_is_student }}">Are you student?</label>
+                              <div class="">
+                                 Yes <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck"> No <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck"><br>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <div class="input-icon">
+                              <label  for="{{ form.is_student.id_for_is_student }}">Student Id </label>
+                              <div class="">
+                                 <input type="text" name="student" class="textinput textInput form-control" > 
+                              </div>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <div class="input-icon">
+                              <label  for="{{ form.student_id.id_for_student_id }}">Student ID</label>
+                              <div class=""> <input type="file" name="student_id" accept="image/*" class="clearablefileinput form-control-file" required id="id_student_id"> </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="input-icon">
+                           <label  for="{{ form.senior.id_for_senior }}"> Are you Senior Citizen?</label>
+                           <div class="">
+                              Yes <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck"> No <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck"><br>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="input-icon">
+                           <label  for="{{ form.senior.id_for_senior }}">Senior Id </label>
+                           <div class="">
+                              <input type="text" name="senior" class="textinput textInput form-control" required > 
+                           </div>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="input-icon">
+                           <label  for="{{ form.senior_id.id_for_senior_id }}">Senior ID</label>
+                           <div class=""> <input type="file" name="student_id" accept="image/*" class="clearablefileinput form-control-file" required id="id_student_id"> </div>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="input-icon">
+                           <label  for="{{ form.is_ersm.id_for_is_ersm }}">Do you have Emergency Roadside Service Membership ?</label>
+                           <div class="">
+                              Yes <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck"> No <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck"><br>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="input-icon">
+                           <label  for="{{ form.ersm_yes_questions.id_for_ersm_yes_questions }}">Do you have Emergency Roadside Service Membership ?</label>
+                           <div class="">
+                              <div class="">
+                                 <div class="form-check"> <input type="radio" class="form-check-input" name="ersm_yes_questions" id="id_ersm_yes_questions_1" value="CAA" > <label for="id_ersm_yes_questions_1" class="form-check-label">
+                                    CAA
+                                    </label> 
+                                 </div>
+                                 <div class="form-check"> <input type="radio" class="form-check-input" name="ersm_yes_questions" id="id_ersm_yes_questions_2" value="CandianTire" > <label for="id_ersm_yes_questions_2" class="form-check-label">
+                                    CandianTire
+                                    </label> 
+                                 </div>
+                                 <div class="form-check"> <input type="radio" class="form-check-input" name="ersm_yes_questions" id="id_ersm_yes_questions_3" value="others" > <label for="id_ersm_yes_questions_3" class="form-check-label">
+                                    Others
+                                    </label>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <button type="submit" class="btn btn-common">Update</button>
+            </form>
+            </div>
+            </div>
          </div>
-      
-      </div>
-      </br>
-       
-               
       </div>
    </div>
-</div>
-</div>
-</div>
-</div>
-</div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
