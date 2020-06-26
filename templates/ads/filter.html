@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{%load crispy_forms_tags%}
-
+{% load crispy_forms_tags %}
 {% block content %}
 <style>
 h3.h3{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
@@ -42,7 +41,7 @@ h3.h3{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
 }
 </style>
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-<div class="add-box">
+ <div class="add-box">
                      <img class="img-fluid" src="/media/adbanner4.gif" alt="">
                      <img class="img-fluid" src="/media/adbanner4.gif" alt="">
                      <img class="img-fluid" src="/media/adbanner4.gif" alt="">
@@ -66,28 +65,7 @@ h3.h3{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
                   
                   
                    <form method="get" action="{% url 'ads:filter' %}">
-                          
-
-<div id="div_id_category" class="form-group"> <label for="" class=""> <b>CATEGORY</b> </label> <div class=""> <div class="form-check"> <input type="checkbox" class="form-check-input" name="category" id="id_category_1" value="1" > <label class="form-check-label" for="id_category_1">
-            Tires
-        </label> </div> <div class="form-check"> <input type="checkbox" class="form-check-input" name="category" id="id_category_2" value="2" > <label class="form-check-label" for="id_category_2">
-            Wheels
-        </label> </div> <div class="form-check"> <input type="checkbox" class="form-check-input" name="category" id="id_category_3" value="3" > <label class="form-check-label" for="id_category_3">
-            Services
-        </label> </div> </div> </div> <div id="div_id_Ad_Type" class="form-group"> <label for="" class=""> <b>Rent Type</b> </label> <div class=""> <div class="form-check"> <input type="checkbox" class="form-check-input" name="Ad_Type" id="id_Ad_Type_1" value="Rent" > <label class="form-check-label" for="id_Ad_Type_1">
-            Rent
-        </label> </div> <div class="form-check"> <input type="checkbox" class="form-check-input" name="Ad_Type" id="id_Ad_Type_2" value="Rent to Sell" > <label class="form-check-label" for="id_Ad_Type_2">
-            Rent to Sell
-        </label> </div> <div class="form-check"> <input type="checkbox" class="form-check-input" name="Ad_Type" id="id_Ad_Type_3" value="Sell" > <label class="form-check-label" for="id_Ad_Type_3">
-            Sell
-        </label> </div> </div> </div> <div id="div_id_Seasonality" class="form-group"> <label for="" class=""> <b>Seasonality</b> </label> <div class=""> <div class="form-check"> <input type="checkbox" class="form-check-input" name="Seasonality" id="id_Seasonality_1" value="Summer" > <label class="form-check-label" for="id_Seasonality_1">
-            Summer
-        </label> </div> <div class="form-check"> <input type="checkbox" class="form-check-input" name="Seasonality" id="id_Seasonality_2" value="All Season" > <label class="form-check-label" for="id_Seasonality_2">
-            All Season
-        </label> </div> <div class="form-check"> <input type="checkbox" class="form-check-input" name="Seasonality" id="id_Seasonality_3" value="Winter" > <label class="form-check-label" for="id_Seasonality_3">
-            Winter
-        </label> </div> </div> </div>
-        
+                    {{filter.form|crispy}}
                           <hr>
                           <button type="submit" class="btn btn-common">Filter</button>
                        </form>
@@ -144,12 +122,12 @@ h3.h3{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
 
 
 
- {% if submitbutton == 'Search' and request.GET.location != ''  and request.GET.year != ''  and request.GET.make != ''   %}
-{% if results %}
+ 
+{% if ads %}
 <div class="container">
     <h3 class="h3"> </h3>
     <div class="row">
-     {% for ad in results %}
+     {% for ad in ads %}
        <div class="col-md-6 col-sm-6">
             <div class="product-grid6">
                 <div class="product-image6">
@@ -179,7 +157,7 @@ h3.h3{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
     </div>
 </div>
  {% endif %}
- {% endif %}
+ 
  </div>
 </div>
                                 

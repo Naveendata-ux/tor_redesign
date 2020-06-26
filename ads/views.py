@@ -7,7 +7,8 @@ from .forms import *
 from core.mixins import CustomLoginRequiredMixin
 from core.models import *
 from django.shortcuts import render,redirect
-from .filters import UserFilter
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from .filters import AdFilter
 
 
 class AdDetailsView(DetailView):
@@ -207,7 +208,64 @@ def favourite_ad(request, id):
     return HttpResponseRedirect(ad.get_absolute_url())
 
 
+
+    
+def filter(request):
+    ad_filter = AdFilter(request.GET, queryset=Ad.objects.all())
+    page = request.GET.get('page')
+    paginator = Paginator(ad_filter.qs, 12)
+    try:
+        ads = paginator.page(page)
+    except PageNotAnInteger:
+        ads = paginator.page(1)
+    except EmptyPage:
+        ads = paginator.page(paginator.num_pages)
+
+    context = {'filter': ad_filter, 'ads': ads}
+    return render(request, 'ads/filter.html', context)
+
+
 def search(request):
-    user_list = Ad.objects.all()
-    user_filter = UserFilter(request.GET, queryset=user_list)
-    return render(request, 'search/results.html', {'filter': user_filter})
+    queryset = Ad.objects.all().order_by('-created_at')
+    query = request.GET.get('q')
+    ad_filter = AdFilter(request.GET, queryset=Ad.objects.all())
+
+    if query:
+        queryset = queryset.filter(Q(Ad_title__icontains=query) | Q(category__icontains=query) |
+                                   Q(offer_price__icontains=query) ).distinct()
+    page = request.GET.get('page')
+    paginator = Paginator(queryset, 12)
+    try:
+        ads = paginator.page(page)
+    except PageNotAnInteger:
+        ads = paginator.page(1)
+    except EmptyPage:
+        ads = paginator.page(paginator.num_pages)
+
+    context = {'queryset': queryset,
+               'filter': ad_filter,
+               'ads': ads,
+               'q': query}
+    return render(request, 'ads/search.html', context)    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

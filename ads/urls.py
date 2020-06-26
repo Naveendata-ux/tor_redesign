@@ -11,7 +11,9 @@ urlpatterns = [
     path('<int:ad_id>/update', AdUpdateView.as_view(), name="update.ad"),
     path('<int:ad_id>/delete', AdDeleteView.as_view(), name="delete.ad"),
     url('favourite_list/$', views.ad_favourite_list, name='favourite_ads'),
-    url('', views.search, name='search'),
+    
+    url(r'^filter$', views.filter, name='filter'),
+    url(r'^search$', views.search, name='search'),
     
     
 ]
