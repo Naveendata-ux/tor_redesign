@@ -178,6 +178,14 @@ import dj_database_url
 prod_db  =  dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
 
+
+AUTHENTICATION_BACKENDS = (
+ 'django.contrib.auth.backends.ModelBackend',
+ 'allauth.account.auth_backends.AuthenticationBackend',
+ 'social_core.backends.facebook.FacebookOAuth2',
+ 'django.contrib.auth.backends.ModelBackend',
+ )
+
 SOCIAL_AUTH_FACEBOOK_KEY = '574070036551707'  # App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = 'ef9458e5df36b52e61881dda51e6d707'
 
