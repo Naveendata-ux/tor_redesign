@@ -57,13 +57,12 @@ MIDDLEWARE = [
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
-        # For each OAuth based provider, either add a ``SocialApp``
-        # (``socialaccount`` app) containing the required client
-        # credentials, or list them here:
-        'APP': {
-            'client_id': '954917184966-f680h7srhutsgl29tu6dtvkesg5m9p00.apps.googleusercontent.com',
-            'secret': 'tjxee2FGPBAg8gLq9fxAPxwz',
-            'key': ''
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
         }
     }
 }
@@ -178,6 +177,10 @@ CORS_ORIGIN_ALLOW_ALL = True
 import dj_database_url 
 prod_db  =  dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
+
+SOCIAL_AUTH_FACEBOOK_KEY = '574070036551707'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = 'ef9458e5df36b52e61881dda51e6d707'
+
 
 
 
