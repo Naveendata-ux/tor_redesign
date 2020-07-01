@@ -906,6 +906,16 @@ $(document).ready(function () {
    
    document.querySelector('#tg-photogallery').addEventListener("change", previewImages);
 </script>
+<script type="text/javascript">
+$(function(){
+    $("button[type='submit']").click(function(){
+        var $fileUpload = $("input[type='file']");
+        if (parseInt($fileUpload.get(0).files.length)>3){
+         alert("You can only upload a maximum of 3 files");
+        }
+    });    
+});
+</script>
 
 {% endblock %}
 {% block scripts %}
