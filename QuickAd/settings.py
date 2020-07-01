@@ -182,7 +182,7 @@ DATABASES['default'].update(prod_db)
 AUTHENTICATION_BACKENDS = (
  'django.contrib.auth.backends.ModelBackend',
  'allauth.account.auth_backends.AuthenticationBackend',
- 
+ 'social_core.backends.facebook.FacebookOAuth2',
  'django.contrib.auth.backends.ModelBackend',
  )
 
