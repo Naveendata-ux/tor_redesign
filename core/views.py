@@ -2,6 +2,8 @@ from django.views.generic import ListView
 from django.shortcuts import render
 
 from core.models import *
+from core.forms import *
+from django.contrib.auth.decorators import login_required
 
 
 class IndexView(ListView):
@@ -30,14 +32,29 @@ class ListingListView(ListView):
         
 def about_page_view(request):
     return render(request, 'about.html')
-    
+
+@login_required
 def contact_page_view(request):
-    return render(request, 'contact.html')
+    template = 'contact.html'
+    if request.method== 'POST':
+        contact = ContactForm(request.POST)
+        if contact.is_valid():
+            contact.save()
+            return render(request, 'contactmessage.html')
+        else:
+            print(contact.errors)
+    else:
+        contact = ContactForm()
+    return render(request, template,{'contact': contact})
   
 def helpsupport_page_view(request):
     return render(request, 'help.html')
 
 def faqs_page_view(request):
     return render(request, 'faqs.html')
+ 
+def privacy_policy_view(request):
+    return render(request, 'privacypolicy.html') 
     
-    
+def terms_of_service_view(request):
+    return render(request, 'termsofservice.html') 

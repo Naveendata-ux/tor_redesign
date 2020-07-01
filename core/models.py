@@ -70,6 +70,14 @@ class AdImage(models.Model):
     ad = models.ForeignKey(Ad, on_delete=models.CASCADE, related_name="ad_images" ,default =1)
     image = models.ImageField(verbose_name="Ad image", upload_to="ad_images")
     
+class Contact(models.Model):
+    Name = models.CharField(max_length=256)
+    Email = models.EmailField(max_length=256)
+    Subject = models.CharField(max_length=256)
+    Message = models.TextField(max_length=256)
+    
+    def __str__(self):
+        return self.Name
     
     
     

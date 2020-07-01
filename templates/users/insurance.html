@@ -1,0 +1,181 @@
+{% extends "users/dashboard.html" %}
+{% load static %}
+{% load crispy_forms_tags %} 
+{% block content %}
+<style>
+   #app {
+   background: #fff;
+   border-radius: 4px;
+   padding: 20px;
+   transition: all 0.2s;
+   }
+   li {
+   margin: 8px 0;
+   }
+   h2 {
+   font-weight: bold;
+   margin-bottom: 15px;
+   }
+   del {
+   color: rgba(0, 0, 0, 0.3);
+   }
+</style>
+<style>
+   body {
+   background: #fff;
+   font-size: 14px;
+   font-weight: 400;
+   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+   -webkit-font-smoothing: subpixel-antialiased;
+   color: #000;
+   line-height: 25px;
+   -webkit-backface-visibility: hidden;
+   backface-visibility: hidden;
+   overflow-x: hidden;
+   }
+   h1, h2, h3, h4 {
+   font-size: 27px;
+   color: #003e6b;
+   text-align: center;
+   font-weight: 700;
+   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
+   }
+</style><script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<script type="text/javascript">
+     
+$(document).ready(function(){       
+          $("#student_id").hide();
+          $("#student_proof").hide();
+      	  $("#snr").hide();
+  		  $("#snr_age").hide();
+          $("#snr_proof").hide();
+  		  $("#ers_provider").hide();
+  		  $("#other_name").hide();
+    $('input[name="is_student"]').click(function(){
+        var inputValue = $(this).attr("value"); 
+      	if(inputValue == "yes"){
+          $("#student_id").show();
+          $("#student_proof").show();
+          $("#snr").hide();
+        }else{
+          $("#student_id").hide();
+          $("#student_proof").hide();
+          $("#snr").show();
+        
+        }
+        
+    });
+  $('input[name="is_senior"]').click(function(){
+        var inputValue = $(this).attr("value"); 
+      	if(inputValue == "yes"){
+          $("#snr_age").show();
+          $("#snr_proof").show();
+        }else{
+          $("#snr_age").hide();
+          $("#snr_proof").hide();
+        
+        }        
+    });
+  $('input[name="is_ers"]').click(function(){
+        var inputValue = $(this).attr("value"); 
+      	if(inputValue == "yes"){
+          $("#ers_provider").show();
+        }else{
+          $("#ers_provider").hide();
+        
+        }        
+    });
+  $('input[name="provider"]').click(function(){
+        var inputValue = $(this).attr("value"); 
+      	if(inputValue == "other"){
+          $("#other_name").show();
+          $("#other_name").val("");
+        }else if(inputValue == "caa"){
+          $("#other_name").show();
+          $("#other_name").val(inputValue);
+        }else if(inputValue == "canadian_tire"){
+          $("#other_name").show();
+          $("#other_name").val(inputValue);
+        }else{
+          $("#other_name").val("");
+        
+        }        
+    });
+});
+</script>
+<!-- Begin Page Content -->
+<div class="page-header" style="background: url('{% static 'assets/img/banner1.jpg' %}');">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="breadcrumb-wrapper">
+               <ol class="breadcrumb">
+                  <li><a href="{% url 'core:home' %}">Home /</a></li>
+                  <li class="current">Profile Update</li>
+               </ol>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- Begin Page Content -->
+<div id="content" class="section-padding">
+   <div class="container">
+      <div class="row">
+         {% include 'includes/sidebar.html' %}
+         <!-- Page Heading -->
+        <div class="col-sm-12 col-md-8 col-lg-9">
+            <div class="row page-content">
+               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <form method="post" action="{% url 'accounts:insurance-info' %}" enctype="multipart/form-data">
+                     <div class="container-fluid">
+                        {% csrf_token %}
+                        <div id="std">
+					  <strong>Are you student?</strong> <br>
+					<div class="">
+					<input type="radio" name="is_student" id="studentyes" value="yes">Yes  <input type="radio" name="is_student" id="studentno" value="no"> No<br>
+					  <input type="text" name="student" id="student_id" placeholder="Enter your student ID"><br>
+					  <input type="file" name="std_photo" id="student_proof" ><br>
+					  
+					</div>
+					  </div>
+					  <div id="snr" style="display:none;">
+						<strong>Are you senior citizen?</strong> <br>
+
+					<input type="radio" name="is_senior" id="senioryes" value="yes">Yes  <input type="radio" name="is_senior" id="seniorno" value="no"> No<br>
+					  <input type="text" name="senior_age" id="snr_age" placeholder="Enter your Age"><br>
+					  <input type="file" name="snr_photo" id="snr_proof" ><br>
+
+					  </div>
+						<div>
+							<strong>Do you have Emergency Roadside Service Membership ?</strong> <br>
+							<label><input type="radio" name="is_ers" value="yes"> Yes</label>
+							<label><input type="radio" name="is_ers" value="no"> No</label>
+						</div><br>
+						<div id="ers_provider">
+						  <strong>Select Provider</strong> <br>
+							<label><input type="radio" name="provider" value="caa"> CAA</label><br>
+							<label><input type="radio" name="provider" value="canadian_tire"> Canadian Tire</label><br>
+						  <label><input type="radio" name="provider" id="other_provider" value="other"> Others</label><br>
+					  <label><input type="text" name="provide_name" id="other_name" placeholder="Enter Provider Name"></label><br>
+						</div>
+										 </div>
+										 <button type="submit" class="btn btn-common">Update</button>
+				</form>
+										 
+			</div>
+		</div>
+		</br>
+	</div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script type='text/javascript'></script>
+<!-- /.container-fluid -->
+{% endblock content %}

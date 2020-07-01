@@ -110,7 +110,7 @@ class User(AbstractUser):
                               error_messages={
                                   'unique': "A user with that email already exists.",
                               })
-    about = models.TextField(blank=True)
+    #about = models.TextField(blank=True)
     first_name = models.CharField(max_length=256, blank=True)
     last_name = models.CharField(max_length=256, blank=True)
     addresses = models.ManyToManyField(
@@ -126,7 +126,7 @@ class User(AbstractUser):
         Address, related_name="+", null=True, blank=True, on_delete=models.SET_NULL
     )
     phone_number = models.CharField(max_length=12, blank=True, verbose_name="Contact number")
-    profile_image = models.ImageField(verbose_name="User image", upload_to="user_images", blank=True)
+    profile_image = models.ImageField(verbose_name="Profile Picture", upload_to="user_images", blank=True)
     Account_type = models.CharField(max_length=50, choices=Type)
 
     USERNAME_FIELD = "email"
@@ -135,6 +135,7 @@ class User(AbstractUser):
     #objects = GroupManager()
 
     def __unicode__(self):
+        self.fields['phone_number'].required
         return self.email
         
    

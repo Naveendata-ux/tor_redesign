@@ -48,10 +48,18 @@ a {
                 <div class="col-lg-5 col-md-12 col-xs-12">
                     <div class="register-form login-area">
 						{% if registered %}
-							<h6> Registered Successfully please login... <a href="{% url 'accounts:login' %}"</a>Login</h6>
+							<h6> Registered Successfully please login... <a href="{% url 'accounts:login' %}">Login</a></h6>
 							
 						{% else %}
-							<h3>
+						 {% if form.errors %}
+				          {% for error in form.non_field_errors %}
+				          <div class="alert alert-danger alert-dismissable">
+				             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				             <strong>{{ error|escape }}</strong>
+				          </div>
+				          {% endfor %}
+				          {% endif %}
+									<h3>
 								Register
 							</h3>
 							
@@ -60,9 +68,10 @@ a {
 								{{form|crispy}}
 								<div class="form-group mb-3">
 									<div class="custom-control custom-checkbox">
-										<input type="checkbox"  class="custom-control-input" id="checkedall">
+										<input type="checkbox" required  class="custom-control-input" id="checkedall">
 										<label class="custom-control-label" for="checkedall">By registering, you accept our
-											Terms & Conditions</label>
+											<u><a class="" href="{% url 'core:termsofservice' %}">
+												Terms & Conditions</a></u></label>
 									</div>
 								</div>
 								<div class="text-center">

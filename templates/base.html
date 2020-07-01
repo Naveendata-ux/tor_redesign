@@ -25,8 +25,10 @@
     <link rel="stylesheet" type="text/css" href="/media/main.css ">
 
     <link rel="stylesheet" type="text/css" href="{% static 'assets/css/responsive.css' %} ">
-
-    {% block stylesheets %}{% endblock %}
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	{% block stylesheets %}{% endblock %}
 </head>
 <style>
  .navbar-brand img {
@@ -69,17 +71,20 @@
                     <div class="widget">
                         <h3 class="block-title">Quick Link</h3>
                         <ul class="menu">
-                            <li><a href="#">- About Us</a></li>
-                            <li><a href="#">- Blog</a></li>
-                            <li><a href="#">- Events</a></li>
-                            <li><a href="#">- Shop</a></li>
-                            <li><a href="#">- FAQ's</a></li>
-                            <li><a href="#">- About Us</a></li>
-                            <li><a href="#">- Blog</a></li>
-                            <li><a href="#">- Events</a></li>
-                            <li><a href="#">- Shop</a></li>
-                            <li><a href="#">- FAQ's</a></li>
-                        </ul>
+							<li><a href="{% url 'core:home' %}">- Home</a></li>
+                            <li><a href="{% url 'core:about' %}">- About Us</a></li>
+                            <li><a href="{% url 'core:termsofservice' %}">- Terms Of Use</a></li>
+                            <li><a href="{% url 'core:privacypolicy' %}">- Privacy Policy</a></li>
+                            <li><a href="{% url 'core:faqs' %}">- FAQ's</a></li>
+                            {% if request.user.is_authenticated %}
+								<li><a href="{% url 'core:contact' %}">- Contact Us</a></li>
+                            {% else %}
+								<li><a class="" href="{% url 'accounts:login' %}">
+									- Contact Us
+									</a>
+								</li>
+							{% endif %}
+							</ul> 
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-xs-6 col-mb-12">
@@ -132,6 +137,7 @@
 <script src="{% static 'assets/js/contact-form-script.min.js' %} "></script>
 <script src="{% static 'assets/js/summernote.js' %} "></script>
 
+       
 {% block extra_js %}{% endblock %}
 
 {% block scripts %} {% endblock %}

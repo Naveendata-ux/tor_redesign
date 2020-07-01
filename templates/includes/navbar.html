@@ -8,15 +8,24 @@
     font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
     color: #484848;
     font: bold;
+	
 }
 .btn {
     font-size: 20px;
     font-family: 'Proxima Nova Soft', 'Helvetica Neue', sans-serif;
 }
-
+.fixed-top{
+position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 90px;
+  background-color: #00a087;
+}
 </style>
 <div class="box-shadow">
-<nav class="navbar navbar-expand-lg bg-white scrolling-navbar">
+<nav class="navbar navbar-expand-lg bg-white scrolling-navbar fixed-top">
     <div class="container">
 
         <div class="navbar-header">
@@ -54,7 +63,11 @@
                             <a class="dropdown-item" href="{% url 'users:dashboard' %}">Dashboard</a>
                             <a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a>
                         </div>
-                   
+		               <li class="nav-item">
+							<a class="nav-link" href="{% url 'user_dialogs_url' %}">
+							   	<i class="fa fa-comments fa-2x"></i>
+							</a>
+						</li>
                     
                 
                      </li>
@@ -65,7 +78,11 @@
                     <li class="nav-item">
                         <a href="{% url 'accounts:register' %}" class="nav-link">Register</a>
                     </li>
-                    
+                    <li class="nav-item">
+							<a class="nav-link" href="{% url 'user_dialogs_url' %}">
+							<i class="fa fa-comments fa-2x"></i>
+							</a>
+					</li>
                 {% endif %}
             </ul>
                       

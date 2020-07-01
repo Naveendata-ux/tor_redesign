@@ -43,36 +43,69 @@
    font-weight: 700;
    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
    }
-</style>
+</style><script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
 <script type="text/javascript">
-   function yesnoCheck() {
-       if (document.getElementById('yesCheck').checked) {
-           document.getElementById('ifYes').style.display = 'block';
-       }
-       else document.getElementById('ifYes').style.display = 'none';
-   
-   }
-   
-</script>
-<script type="text/javascript">
-   function yesnoCheck2() {
-       if (document.getElementById('yesCheck2').checked) {
-           document.getElementById('ifYes2').style.display = 'block';
-       }
-       else document.getElementById('ifYes2').style.display = 'none';
-   
-   }
-   
-</script>
-<script type="text/javascript">
-   function yesnoCheck3() {
-       if (document.getElementById('yesCheck3').checked) {
-           document.getElementById('ifYes3').style.display = 'block';
-       }
-       else document.getElementById('ifYes3').style.display = 'none';
-   
-   }
-   
+     
+$(document).ready(function(){       
+          $("#student_id").hide();
+          $("#student_proof").hide();
+      	  $("#snr").hide();
+  		  $("#snr_age").hide();
+          $("#snr_proof").hide();
+  		  $("#ers_provider").hide();
+  		  $("#other_name").hide();
+    $('input[name="is_student"]').click(function(){
+        var inputValue = $(this).attr("value"); 
+      	if(inputValue == "yes"){
+          $("#student_id").show();
+          $("#student_proof").show();
+          $("#snr").hide();
+        }else{
+          $("#student_id").hide();
+          $("#student_proof").hide();
+          $("#snr").show();
+        
+        }
+        
+    });
+  $('input[name="is_senior"]').click(function(){
+        var inputValue = $(this).attr("value"); 
+      	if(inputValue == "yes"){
+          $("#snr_age").show();
+          $("#snr_proof").show();
+        }else{
+          $("#snr_age").hide();
+          $("#snr_proof").hide();
+        
+        }        
+    });
+  $('input[name="is_ers"]').click(function(){
+        var inputValue = $(this).attr("value"); 
+      	if(inputValue == "yes"){
+          $("#ers_provider").show();
+        }else{
+          $("#ers_provider").hide();
+        
+        }        
+    });
+  $('input[name="provider"]').click(function(){
+        var inputValue = $(this).attr("value"); 
+      	if(inputValue == "other"){
+          $("#other_name").show();
+          $("#other_name").val("");
+        }else if(inputValue == "caa"){
+          $("#other_name").show();
+          $("#other_name").val(inputValue);
+        }else if(inputValue == "canadian_tire"){
+          $("#other_name").show();
+          $("#other_name").val(inputValue);
+        }else{
+          $("#other_name").val("");
+        
+        }        
+    });
+});
 </script>
 <!-- Begin Page Content -->
 <div class="page-header" style="background: url('{% static 'assets/img/banner1.jpg' %}');">
@@ -105,98 +138,13 @@
                         {{profile_form | crispy}}
                         {{address_form | crispy}}
                      </div>
-                     <button type="submit" class="btn btn-common">Update</button>
-                  </form>
+					 <button type="submit" class="btn btn-common">Update</button>
+					 </form>
+					 
                </div>
             </div>
             </br>
-            <form action="{% url 'accounts:insurance-info' %}" method="POST" enctype="multipart/form-data">
-               {% csrf_token %}
-               <div class="inner-box">
-                  <div class="dashboard-box">
-                     <h2 class="dashbord-title">Insurace Info</h2>
-                  </div>
-                  <div class="dashboard-wrapper">
-                     <div class="form-group mb-3 tg-inputwithicon">
-                        <div class="form-group">
-                           <div class="input-icon">
-                              <label  for="{{ form.is_student.id_for_is_student }}">Are you student?</label>
-                              <div class="">
-                                 Yes <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck"> No <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck"><br>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="form-group">
-                           <div class="input-icon">
-                              <label  for="{{ form.is_student.id_for_is_student }}">Student Id </label>
-                              <div class="">
-                                 <input type="text" name="student" class="textinput textInput form-control" > 
-                              </div>
-                           </div>
-                        </div>
-                        <div class="form-group">
-                           <div class="input-icon">
-                              <label  for="{{ form.student_id.id_for_student_id }}">Student ID</label>
-                              <div class=""> <input type="file" name="student_id" accept="image/*" class="clearablefileinput form-control-file" required id="id_student_id"> </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="form-group">
-                        <div class="input-icon">
-                           <label  for="{{ form.senior.id_for_senior }}"> Are you Senior Citizen?</label>
-                           <div class="">
-                              Yes <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck"> No <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck"><br>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="form-group">
-                        <div class="input-icon">
-                           <label  for="{{ form.senior.id_for_senior }}">Senior Id </label>
-                           <div class="">
-                              <input type="text" name="senior" class="textinput textInput form-control" required > 
-                           </div>
-                        </div>
-                     </div>
-                     <div class="form-group">
-                        <div class="input-icon">
-                           <label  for="{{ form.senior_id.id_for_senior_id }}">Senior ID</label>
-                           <div class=""> <input type="file" name="student_id" accept="image/*" class="clearablefileinput form-control-file" required id="id_student_id"> </div>
-                        </div>
-                     </div>
-                     <div class="form-group">
-                        <div class="input-icon">
-                           <label  for="{{ form.is_ersm.id_for_is_ersm }}">Do you have Emergency Roadside Service Membership ?</label>
-                           <div class="">
-                              Yes <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck"> No <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck"><br>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="form-group">
-                        <div class="input-icon">
-                           <label  for="{{ form.ersm_yes_questions.id_for_ersm_yes_questions }}">Do you have Emergency Roadside Service Membership ?</label>
-                           <div class="">
-                              <div class="">
-                                 <div class="form-check"> <input type="radio" class="form-check-input" name="ersm_yes_questions" id="id_ersm_yes_questions_1" value="CAA" > <label for="id_ersm_yes_questions_1" class="form-check-label">
-                                    CAA
-                                    </label> 
-                                 </div>
-                                 <div class="form-check"> <input type="radio" class="form-check-input" name="ersm_yes_questions" id="id_ersm_yes_questions_2" value="CandianTire" > <label for="id_ersm_yes_questions_2" class="form-check-label">
-                                    CandianTire
-                                    </label> 
-                                 </div>
-                                 <div class="form-check"> <input type="radio" class="form-check-input" name="ersm_yes_questions" id="id_ersm_yes_questions_3" value="others" > <label for="id_ersm_yes_questions_3" class="form-check-label">
-                                    Others
-                                    </label>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <button type="submit" class="btn btn-common">Update</button>
-            </form>
-            </div>
-            </div>
-         </div>
+		</div>
       </div>
    </div>
 </div>

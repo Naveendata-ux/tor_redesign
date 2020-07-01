@@ -54,7 +54,7 @@
       <div class="table-header">
         <div>{% trans "Plan name" %}</div>
         <div>{% trans "Description" %}</div>
-        <div>{% trans "Tags" %}</div>
+       
         <div>{% trans "Costs" %}</div>
       </div>
 
@@ -68,14 +68,7 @@
             <span class="table-title">{% trans "Description" %}</span>
             {{ plan.plan_description }}
           </div>
-          <div>
-            <span class="table-title">{% trans "Tags" %}</span>
-            {% if plan.display_tags %}
-              {{ plan.display_tags }}
-            {% else %}
-              None
-            {% endif %}
-          </div>
+          
           <div>
             <span class="table-title">{% trans "Costs" %}</span>
             <ul class="plan-costs">

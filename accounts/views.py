@@ -9,7 +9,7 @@ from django.template.response import TemplateResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView, CreateView
 from django.contrib import messages
-
+from django.contrib.auth.models import Group
 
 
 def signup(request):
@@ -22,6 +22,8 @@ def signup(request):
             user = form.save()
             user.set_password(user.password)
             user.save()
+            group = form.cleaned_data['group']        
+            group.user_set.add(user)
             registered = True
             messages.success(request,"Registration Successfull")
             
@@ -78,24 +80,21 @@ class ProfileView(LoginRequiredMixin, TemplateView):
     
 class InsuranceInfoView(LoginRequiredMixin, TemplateView):
     questions_form = QuestionsForm
-    template_name = 'users/profile-update.html'
+    template_name = 'users/insurance.html'
     
     def post(self, request):
 
         post_data = request.POST or None
         file_data = request.FILES or None
         
-        questions_form = QuestionsForm(post_data, file_data)
+        questions_form = QuestionsForm(post_data, file_data, instance=request.user)
         
         if questions_form.is_valid() :
             questions_form.save()
-            messages.error(request, 'Your profile is updated successfully!')
+            messages.success(request, 'Your profile is updated successfully!')
             return HttpResponseRedirect(reverse_lazy('accounts:profile'))
 
-        context = self.get_context_data(
-                                        
-                                        questions_form=questions_form,
-                                    )
+        context = self.get_context_data(questions_form=questions_form,)
 
         return self.render_to_response(context)     
 
@@ -107,6 +106,7 @@ class ProfileUpdateView(LoginRequiredMixin, TemplateView):
     user_form = UserForm
     profile_form = ProfileForm
     address_form = AddressForm
+    #questions_form = QuestionsForm
     template_name = 'users/profile-update.html'
 
     def post(self, request):
@@ -117,20 +117,23 @@ class ProfileUpdateView(LoginRequiredMixin, TemplateView):
         user_form = UserForm(post_data, instance=request.user)
         profile_form = ProfileForm(post_data, file_data, instance=request.user)
         address_form = AddressForm(post_data, file_data, instance=request.user)
+        #questions_form = QuestionsForm(post_data, file_data, instance=request.user)
         
-        if user_form.is_valid() and profile_form.is_valid() and address_form.is_valid() :
+        if user_form.is_valid() and profile_form.is_valid() and address_form.is_valid()  :
             user_form.save()
             profile_form.save()
             address_form.save()
+            #questions_form.save()
             
-            messages.error(request, 'Your profile is updated successfully!')
+            
+            messages.success(request, 'Your profile is updated successfully!')
             return HttpResponseRedirect(reverse_lazy('accounts:profile'))
 
         context = self.get_context_data(
                                         user_form=user_form,
                                         profile_form=profile_form,
                                         address_form=address_form,
-                                        
+                                        #questions_form=questions_form,
                                     )
 
         return self.render_to_response(context)     

@@ -12,7 +12,7 @@ def searchposts(request):
         submitbutton= request.GET.get('submit')
 
         if location and year  and make is not None:
-            lookups= (Q(location__icontains=location) & Q(Year__icontains=year) | Q(Make__icontains=make))
+            lookups= (Q(location__icontains=location) | Q(Year__icontains=year) | Q(Make__icontains=make))
 
             results= Ad.objects.filter(lookups).distinct()
             

@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm, UsernameField
 from django.contrib.auth.models import Group
-
+from django.contrib.auth.models import Group,User
 from .models import User, Address, Questions
 from django.forms import ModelForm
 
@@ -11,9 +11,12 @@ from django.forms import ModelForm
 class SignUpForm(forms.ModelForm):
     password=forms.CharField(min_length=6,widget=forms.PasswordInput())
     confirm_password=forms.CharField(min_length=6,widget=forms.PasswordInput())
+    group = forms.ModelChoiceField(queryset=Group.objects.all(),label="Account Type", required=True,error_messages={
+               'invalid': 'Please Select Your  Account Type'
+                })
     class Meta:
         model=User
-        fields=('Account_type','username','email','password')
+        fields=('group','username','email','password',)
 
     def clean(self):
         cleaned_data = super(SignUpForm, self).clean()
@@ -26,7 +29,11 @@ class SignUpForm(forms.ModelForm):
             )
 
 class UserForm(forms.ModelForm):
-    about = forms.CharField(widget=forms.Textarea(attrs={'rows': 4, 'cols': 50}), max_length=200)
+    #about = forms.CharField(widget=forms.Textarea(attrs={'rows': 4, 'cols': 50}), max_length=200)
+    group = forms.ModelChoiceField(queryset=Group.objects.all(), required=True)
+    def __init__(self, *args, **kwargs):
+        super(UserForm, self).__init__(*args, **kwargs)
+        self.fields['phone_number'].required = True
     class Meta:
         model = User
         fields = [
@@ -34,7 +41,7 @@ class UserForm(forms.ModelForm):
             'first_name', 
             'last_name', 
             'email',
-            'about',
+            #'about',
             'phone_number',
             
             
@@ -59,7 +66,7 @@ class AddressForm(forms.ModelForm):
             'street_address_1',
         ]
 
-class QuestionsForm(forms.Form):
+class QuestionsForm(forms.ModelForm):
     STUDENT_CHOICES = ((True, 'Yes'), (False, 'No'))
     SENIOR_CHOICES = ((True, 'Yes'), (False, 'No'))
     ERSM_CHOICES = ((True, 'Yes'), (False, 'No'))
@@ -73,19 +80,23 @@ class QuestionsForm(forms.Form):
     )
     student_id = forms.ImageField()
     is_senior_citizen = forms.ChoiceField( choices=SENIOR_CHOICES,label = "Are you Senior Citizen", widget=forms.RadioSelect)
-    is_student = forms.ChoiceField( choices=STUDENT_CHOICES, label = "Are you student", widget=forms.RadioSelect)
-    senior = forms.CharField(
+    #is_student = forms.ChoiceField( choices=STUDENT_CHOICES, label = "Are you student", widget=forms.RadioSelect)
+    senior_age = forms.CharField(
         label="Senior Citizen Age",
         widget=forms.TextInput,
     )
-    senior_id = forms.ImageField()
+    senior_citizen_id = forms.ImageField()
     is_ersm = forms.ChoiceField(choices=ERSM_CHOICES, label = "Do you have Emergency Roadside Service Membership ?", widget=forms.RadioSelect)
     ersm_yes_questions = forms.ChoiceField(choices=ERSM_YES_CHOICES, label = "Which service provider?", widget=forms.RadioSelect)
     ersm_no_questions = forms.ChoiceField(choices=ERSM_NO_CHOICES, label = "Would you be interested in ERS?", widget=forms.RadioSelect)
    
     class Meta:
         model = Questions
-    
+        fields = [
+            
+            'is_student','student','student_id','is_senior_citizen','senior_age',
+            'senior_citizen_id','is_ersm','ersm_yes_questions','ersm_no_questions',
+        ]
     def save(self, *args, **kwargs):
         QuestionsForm.save(*args, **kwargs)
     

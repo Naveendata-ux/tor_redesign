@@ -71,7 +71,7 @@ SOCIALACCOUNT_PROVIDERS = {
 
 
 
-SITE_ID = 1
+SITE_ID = 2
 
 EMAIL_BACKEND = "mailer.backend.DbBackend"
 
@@ -93,6 +93,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries':{
+            'user_tags': 'accounts.templatetags.usertags',
+
+            }
         },
     },
 ]

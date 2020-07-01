@@ -5,6 +5,8 @@
 {% block title %}Subscribe{% endblock %}
 
 {% block content %}
+<style>
+</style>
   <main class="subscribe-container">
     <h1>Subscribe</h1>
     <span class="subtitle">{{ plan.plan_name }}</span>
@@ -13,8 +15,9 @@
       {% csrf_token %}
       <input type="hidden" name="action" value="confirm">
       <input type="hidden" name="plan_id" value="{{ plan.id }}">
-
-      {% include 'subscriptions/snippets/subscription_plan_cost.html' with form=plan_cost_form %}
+      
+      <h2>Subscription Details</h2>
+    <p> <span> $ {{plan.cost}}</span> for {{plan.post_count}} Ads and validity upto {{plan.days_count}} days</p>
       {% include 'subscriptions/snippets/payment_details.html' with form=payment_form %}
 
       <button type="submit" class="button-positive">Confirm order</button>

@@ -12,4 +12,6 @@ urlpatterns = [
     url(r'^contact/', contact_page_view, name='contact'),
     url(r'^help&support/', helpsupport_page_view, name='helpsupport'),
     url(r'^FAQs/', faqs_page_view, name='faqs'),
+    url(r'^privacy-policy/', privacy_policy_view, name='privacypolicy'),
+    url(r'^terms_of_service/', terms_of_service_view, name='termsofservice'),
 ]

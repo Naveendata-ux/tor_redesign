@@ -1,32 +1,112 @@
-{%extends 'basesub.html'%}
+{%extends 'base.html'%}
+
+{% load usertags %} 
+{% load currency_filters %}
 
 {% load i18n %}
 
 {% block title %}Subscribe{% endblock %}
 
 {% block content %}
+</br>
+</br>
   <main class="subscribe-container">
-    <h1>{{ plan_list.title|safe }}</h1>
+    
+    <section id="pricing-table" class="section-padding">
+   <div class="container">
+      <div class="row">
+         <div class="col-12">
+            <h2 class="section-title">Subscription Plans</h2>
+         </div>
+        
+         {% if request.user|has_group:"Personal Account" %}
+          
+         {% for detail in details %}
+                
+          {% if detail.plan.active == 1 %}         
+         {% if detail.plan.group_id == 1 %}  
+         
+         <div class="col-lg-4 col-md-6 col-xs-12">
+         
+            <div class="table">
+               <div class="icon">
+                  <i class="lni-gift"></i>
+               </div>
+               <div class="pricing-header">
+                  <p class="price-value">${{ detail.plan.cost }}</p>
+               </div>
+               <div class="title">
+                  <h3>{{ detail.plan }}</h3>
+               </div>
+               <ul class="description">
+                  <li> {{ detail.plan.post_count }} Ads</li>
+                  <li>{{ detail.plan.days_count }} Days</li>
+                  <li> {{ detail.html_content|safe }}</li>
+                  
+                  <li>100% Secure!</li>
+               </ul>
+              <form method="post" action="{% url 'dfs_subscribe_add' %}">
+                {% csrf_token %}
+               <input type="hidden" name="plan_id" value="{{ detail.plan.id }}">
+               <button class="btn btn-common">{{ detail.subscribe_button_text|safe }}</button>
+               </form>
+            </div>
+            
+         </div> 
+          {% endif %}
+          {% endif %}
+         {% endfor %}
+        
+         
+         
+         {% elif request.user|has_group:"Business Account" %} 
+          {% for detail in details %}
+           {% if detail.plan.active == 1 %}                
+           {% if detail.plan.group_id == 2 %}       
+         <div class="col-lg-4 col-md-6 col-xs-12">
+         
+            <div class="table">
+               <div class="icon">
+                  <i class="lni-gift"></i>
+               </div>
+                
+               <div class="pricing-header">
+               
+                  <p class="price-value">$ {{ detail.plan.cost }}</p>
+                
+               </div>
+               
+               <div class="title">
+                  <h3> {{ detail.plan }}</h3>
+               </div>
+               <ul class="description">
+                  <li> {{ detail.plan.post_count }} Ads</li>
+                  <li>{{ detail.plan.days_count }} Days</li>
+                  <li> {{ detail.html_content|safe }}</li>
+                  
+                  <li>100% Secure!</li>
+               </ul>
+              <form method="post" action="{% url 'dfs_subscribe_add' %}">
+                {% csrf_token %}
+               <input type="hidden" name="plan_id" value="{{ detail.plan.id }}">
+              
+               <button class="btn btn-common">{{ detail.subscribe_button_text|safe }}</button>
+               </form>
+            </div>
+            
+         </div> 
+    {% endif %}
+          {% endif %}
+         {% endfor %}
+        {% endif %}
+         
+         
+        
+         
+      </div>
+   </div>
+</section>
 
-    <span class="subtitle">{{ plan_list.subtitle|safe }}</span>
-
-    <div class="header">{{ plan_list.header|safe }}</div>
-
-    <div class="plans">
-      {% for detail in details %}
-        <div class="plan">
-          {{ detail.plan }}
-          {{ detail.html_content|safe }}
-
-          <form method="post" action="{% url 'dfs_subscribe_add' %}">
-            {% csrf_token %}
-            <input type="hidden" name="plan_id" value="{{ detail.plan.id }}">
-            <button type="submit" class="button-positive">{{ detail.subscribe_button_text|safe }}</button>
-          </form>
-        </div>
-      {% endfor %}
-    </div>
-
-    <div class="footer">{{ plan_list.footer|safe }}</div>
+    
   </main>
 {% endblock %}

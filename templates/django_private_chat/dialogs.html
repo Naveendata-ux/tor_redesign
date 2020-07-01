@@ -4,6 +4,10 @@
 {% block content %}
 {% load tz %}
  
+ <!-- private-chat -->
+	<link href="/media/bootstrap.css' rel="stylesheet" type="text/css" media="all">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all">
+    
     <style>
         #inbox-page-row {
             border-top: 1px solid #ffffff;
@@ -48,63 +52,26 @@
             background-color: #5FB95F;
             color: #F6F5EE;
         }
-        .messages-container {
-          height: 310px;
-          width: 90%;
-          border: 1px solid #333D51;
-          position: relative;
-        }
-        .messages {
-          font-family: 'Roboto', sans-serif !important;
-          box-sizing: border-box;
-          overflow: auto;
-          height: 300px;
-          width:100%;
-          padding-left:15px;
-        }
-        #each-message {
-           padding-top:5px;
-        }
-        .username {
-          font-weight: bold;
-          margin-left: 15px;
-        }
-        .timestamp {
-          font-size: 12px;
-        }
-        .msg-read {
-          background-color:#CBD0D8;
-          color: #F4F3EA;
+        .button {
+		  background-color: Crimson;  
+		  border-radius: 5px;
+		  color: white;
+		  padding: .5em;
+		  text-decoration: none;
+		}
 
-        }
-        .msg-unread {
-          background-color:#333D51;
-          color: #333D51;
-          
-        }
-        .add-message {
-            width: 90%;
-        }
-        textarea {
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-            width: 100%;
-            border-radius: 0 !important;
-            margin-top: 10px;
-            border: 1px solid #333D51 !important;
-            resize: none;
-            background-color: #F6F5EE !important;
-        }
     </style>
+    </br>
+    </br>
+     </br>
      <div class="page-header" style="background: url('{% static 'assets/img/banner1.jpg' %}');">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="breadcrumb-wrapper">
-                        <h2 class="product-title">Chat</h2>
+                        
                         <ol class="breadcrumb">
-                            <li><a href="#">Home /</a></li>
+                            <li><a href="{% url 'core:home'%}">Home /</a></li>
                             <li class="current">Chat</li>
                         </ol>
                     </div>
@@ -115,67 +82,124 @@
     <div id="content" class="section-padding">
         <div class="container">
         <div class="row">
-                {% include 'includes/sidebar.html' %}
+          <div class="col-lg -3">
+          
+          <div class="inner-box">
+                  <div class="dashboard-box">
+                  <div class="dashboard-box">
+                     <h2 class="dashbord-title" >Users</h2>
+                  </div>
+					<div class="dashboard-wrapper">
+							{% for dialog in object_list %}
+							<ul class="offers-user-online">
+                                    <li class="offerer">
+                                       <figure>
+                                       <div class="text-center">
+                                          {% if user.profile_image %}
+											  <img style="width:30px;height:30px;" src="{{ user.profile_image.url }}" alt="User avatar">
+										  {% else %}
+											  <img style="width:30px;height:30px;"src="{% static 'assets/img/avatar.png' %}" alt="User avatar">
+										  {% endif %}
+									   </div>
+                                       </figure>
+                                       
+									<div class="user-name">
+									{% if dialog.owner == request.user %}
+										{% with dialog.opponent.username as username %}
+									
+											<a href="{% url 'dialogs_detail' username %}" id="user-{{ username }}"
+											   class="" >
+											   <h4><strong>{% trans "Chat with" %} {{ username }}</strong></h4>
+											   											   
+									
+									</a>
+						
+									</div>
+									</li>
+
+									</li>
+									
+								<li>
+									
+										{% endwith %}
+									{% else %}
+									
+										{% with dialog.owner.username as username %}
+											<a href="{% url 'dialogs_detail' username %}" id="user-{{ username }}"
+											    class=""><h3><strong>{% trans "Chat with" %} {{ username }}</strong></h3></a>
+										{% endwith %}
+							       
+									{% endif %}
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div> 
+				</div>
+				</div>    
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4 mt-4">
         
         </div>          
 
-    <div class=" my-4 col-lg-8">
-            
-    <input id="owner_username" type="hidden" value="{{ request.user.username }}">
-    <div class="row" id="inbox-page-row">
-       
-        <!-- Chat Box -->
-        
-                <!-- Chat Header -->
-                
-                    <h3 style = "text-transform:capitalize;">
-                        {{ opponent_username }}
-                        <span class="badge badge-success" id="online-status" style="display: none;">{% trans "Online" %}</span>
-                        <span class="badge badge-danger" id="offline-status" style="display: none;">{% trans "Offline" %}</span>
-                    </h3>
-                </div>
-                <!-- Chat History -->
-                <div class="row">
-                    <div class="messages-container clearfix">
-                        <div id="messages" class="messages">
-                            <!-- {% for msg in active_dialog.messages.all reversed %} {% endfor %} -->
-                            {% for msg in active_dialog.messages.all %}
-                                <div class="row  {% if msg.read %}msg-read{% else %}msg-unread{% endif %} {% if msg.sender != request.user %}opponent{% endif %}"
-                                     data-id="{{ msg.id }}" id="each-message">
-                                    <p class="{% if msg.sender == request.user %}pull-right{% else %}pull-left{% endif %}">
-                                        <span class="username">{{ msg.sender.username }}:</span>
-                                        {{ msg.text }}
-                                        <span class="timestamp">&ndash;
-                                            <span data-livestamp="{{ msg.get_formatted_create_datetime }}">{% timezone "Asia/Manila" %} {{ msg.get_formatted_create_datetime }} {% endtimezone %}</span>
-                                        </span>
-                                    </p>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
+		<div class="col-md-9">
+				<div class="well well-lg">
+					<div class="row">
+						<div class="col-md-3 col-md-offset-9">
+						
+						<span class="pull-right" hidden id="typing-text">
+							<strong>{{ opponent_username }} {% trans "is typing..." %}</strong>
+						</span>
+						
+						</div>
+						
+							<p>
+							<strong>{{ opponent_username }}</strong>
+							</p></br>
+							<p class="text-success" id="online-status" style="display: none">{% trans "Online" %}</p>
+							</br><p class="text-danger" id="offline-status" style="display: none">{% trans "Offline" %}</p>
+						</div>
+						<div class="messages-container">
+							<div id="messages" class="messages">
+								{% for msg in active_dialog.messages.all %}
+									<div class="row  {% if msg.read %}msg-read{% else %}msg-unread{% endif %} {% if msg.sender != request.user %}opponent{% endif %}"
+										 data-id="{{ msg.id }}">
+										<p class="{% if msg.sender == request.user %}pull-left{% else %}pull-right{% endif %}">
+											<span class="username">{{ msg.sender.username }}:</span>
+											{{ msg.text }}
+											<span class="timestamp">&ndash; <span
+													data-livestamp="{{ msg.get_formatted_create_datetime }}">{{ msg.get_formatted_create_datetime }}</span></span>
+										</p>
+									</div>
+								{% endfor %}
+							</div>
+						</div>
+					<div class="row">
 
-                <!-- Chat Input -->
-                <div class="row" id="chat-box-form">
-                    <div class="add-message">
-                        <div class="form-group">
-                            <textarea id="chat-message" class="form-control"
-                            placeholder="{% trans 'Write a message...' %}"></textarea>
-                            
-                        </div>
-                        <div class="form-group">
-                            <input id="btn-send-message" type="submit" style=background-color:#003e6b; class="btn btn-common fullwidth mt-4" style="margin-bottom: 10px;" value="{% trans 'Send' %}"/>
-                        </div>
-                    </div>
-                </div>
-               
+						<div class="add-message ">
+							<div class="form-group">
+							<textarea id="chat-message"  class="form-control message"
+									  placeholder=" Write Your message here..."></textarea>
+							</div>
+
+							<div class="form-group clearfix">
+								<input id="btn-send-message" type="submit" class="btn btn-primary pull-right send-message"
+									   style="margin-right: 10px;" value="{% trans 'Send' %}"/>
+							</div>
+						</div>
+					</div>
+					
+					
+					
+				</div>
+
+					
+				</div>
         </div>
     </div>
     </div>
     </div>
-    </div>
+    
 
 {% endblock %}
 
@@ -443,4 +467,9 @@
         });
 
     </script>
+	<!-- private-chat -->
+<script src="{% static 'js/jquery.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/handlebars-v1.3.0.js' %}" type="text/javascript"></script>
+ 
 {% endblock %}

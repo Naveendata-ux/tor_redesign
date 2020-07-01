@@ -163,7 +163,9 @@ body {
 
         });
       </script>
-  
+  </br>
+  </br>
+  </br>
 
 <div class="page-header" style="background: url('{% static 'assets/img/banner1.jpg' %}');">
    <div class="container">
@@ -172,7 +174,7 @@ body {
             <div class="breadcrumb-wrapper">
                
                <ol class="breadcrumb">
-                  <li><a href="#">Home /</a></li>
+                  <li><a href="{% url 'core:home' %}">Home /</a></li>
                   <li class="current">Post your Ad</li>
                </ol>
             </div>
@@ -675,7 +677,7 @@ body {
                               <div class="form-group">
                                     <div class="input-icon">
                                        
-                                       <label  for="{{ form.tires_available.id_for_tires_available }}">No.of Tires Offered</label>
+                                       <label  for="{{ form.tires_available.id_for_tires_available }}">Number of Tires</label>
                                        <input type="number"  class="form-control" name="tires_available"
                                           placeholder="Tires Available" value="{{ form.tires_available.value|default:'' }}">
                                        {% if 'tires_available' in form.errors %}
@@ -693,7 +695,7 @@ body {
                                  <div class="form-group">
                                     <div class="input-icon">
                                        
-                                       <label  for="{{ form.Tenure_offered.id_for_Tenure_offered }}">Tenure Offered(Monthly)</label>
+                                       <label  for="{{ form.Tenure_offered.id_for_Tenure_offered }}">Tenure Offered(In Months)</label>
                                        <input id='chatinput' type="number"  class="form-control" name="Tenure_offered"
                                           placeholder="Tenure offered" value="{{ form.Tenure_offered.value|default:'' }}">
                                        {% if 'Tenure_offered' in form.errors %}
@@ -711,7 +713,7 @@ body {
                               <div class="form-group">
                                  <div class="input-icon">
                                     
-                                    <label  for="{{ form.offer_price.id_for_offer_price }}">Offer Price</label>
+                                    <label  for="{{ form.offer_price.id_for_offer_price }}">Price(Per Tire)</label>
                                     <input id='chatinput2' type="number"  class="form-control" name="offer_price"
                                        placeholder="Offer price" value="{{ form.offer_price.value|default:'' }}">
                                     {% if 'offer_price' in form.errors %}
@@ -729,6 +731,7 @@ body {
                            
                            <span class="btn btn-common">Select Files</span>
                            <span>Maximum upload file size: 1MB</span>
+						   <span> User can upload only three images..</span>
                            <input id="tg-photogallery"  class="tg-fileinput" multiple
                               type="file"
                               accept="image/*"
@@ -742,7 +745,7 @@ body {
                                     {{ form.description.errors }}
                                     <label  for="{{ form.description.id_for_description }}">Description</label>
                                     <textarea type="text"  class="form-control" name="description"
-                                       placeholder="Description" value="{{ form.description.value|default:'' }}"></textarea>
+                                       placeholder="User can enter upto 250 words" value="{{ form.description.value|default:'' }}"></textarea>
                                     {% if 'description' in form.errors %}
                                     {% for error in form.description.errors %}
                                     <div class="alert alert-danger alert-dismissable">
@@ -752,6 +755,18 @@ body {
                                     </div>
                                     {% endfor %}
                                     {% endif %}
+                                 </div>
+                              </div>
+							  <div class="form-group">
+                                 <div class="input-icon">
+                                    
+                                  <a href="/media/Tires on Rent Rental Agreement.docx " download="Tires on Rent Rental Agreement" >
+								  <label  >Download <strong>Tires on Rent Rental Agreement</strong> </label>
+                                    </a>
+									<br>
+                                    <a href="/media/Tires on Rent Sale Agreement.docx " download="Tires on Rent Sale Agreement" >
+								  <label  >Download <strong>Tires on Rent Sale Agreement</strong> </label>
+                                    </a>
                                  </div>
                               </div>
                            <button class="btn btn-common" type="submit">Post Ad</button> 
