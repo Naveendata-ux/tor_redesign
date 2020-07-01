@@ -28,18 +28,17 @@ a {
 
 /* Shared */
 .loginBtn {
-  box-sizing: border-box;
-  position: relative;
-  /* width: 13em;  - apply for fixed size */
-  margin: 0.2em;
-  padding: 0 15px 0 46px;
-  border: none;
-  text-align: left;
-  line-height: 34px;
-  white-space: nowrap;
-  border-radius: 0.2em;
-  font-size: 16px;
-  color: #FFF;
+    box-sizing: border-box;
+    position: relative;
+    margin: 0.2em;
+    padding: 2px 27px 1px 54px;
+    border: none;
+    text-align: center;
+    line-height: 38px;
+    white-space: nowrap;
+    border-radius: 5.2em;
+    font-size: 16px;
+    color: #FFF;
 }
 .loginBtn:before {
   content: "";
@@ -91,21 +90,8 @@ a {
 }
 
 </style>
-    <div class="page-header" style="background: url(assets/img/banner1.jpg);">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="breadcrumb-wrapper">
-                        
-                        <ol class="breadcrumb">
-                            <li><a href="#">Home /</a></li>
-                            <li class="current">Register</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+</br>
+</br>
 
 
     <section class="register section-padding">
@@ -129,6 +115,7 @@ a {
 								Register
 							</h3>
 							</br>
+							<div class=text-center>
 							<a href="{% provider_login_url 'google' %}" >
 								<button class="loginBtn loginBtn--google">
 								  Signup with Google
@@ -139,7 +126,7 @@ a {
 							  Signup with Facebook
 							</button>
 							 </a>
-							
+							</div>
 							<form action="{% url 'accounts:register' %}"class="login-form" method="post">
 								{% csrf_token %}
 								{{form|crispy}}

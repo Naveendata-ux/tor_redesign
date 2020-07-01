@@ -101,8 +101,9 @@ position: fixed;
             {% endif %}
         </div>
     </div>
-
+     
     <ul class="mobile-menu">
+    </br>
         <li>
             <a href="{% url 'core:home' %}">Home</a>
         </li>
@@ -122,6 +123,7 @@ position: fixed;
             </a>
         </li>
         {% else %}
+        
             <li>
                 <a href="{% url 'accounts:login' %}"> Log In</a>
             </li>
