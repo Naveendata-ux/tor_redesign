@@ -78,8 +78,8 @@
    text-decoration: underline;
    }
    .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-   color: #000;
-   background-color: #ffffff;
+   color: #ffffff;
+   background-color: #373373;
    }
    a {
    color: #f7f7f7;
@@ -804,7 +804,7 @@
                               <div class="row">
                                  <div class="col-lg-3">
                                     <div class="form-group">
-                                       <select id="sel_year" class="form-control" type="number" name="Year"
+                                       <select id="sel_years" class="form-control" type="number" name="Year"
                                           value="{{request.GET.Year}}"
                                           autocomplete="off" data-width="auto" >
                                           <option value="">Select Year</option>
@@ -863,7 +863,7 @@
                                  </div>
                                  <div class="col-lg-4">
                                     <div class="form-group">
-                                       <select id="sel_make" class="form-control" type="number" name="Make"
+                                       <select id="sel_makes" class="form-control" type="number" name="Make"
                                           value="{{request.GET.Make}}"
                                           autocomplete="off"
                                           required>
@@ -1040,7 +1040,7 @@
                                  <div class="col-lg-3">
                                     <div class="form-group">
                                        <span id = "msg" style = "display:none;color:red;">No models found!</span>
-                                       <select id="sel_model" class="form-control">
+                                       <select id="sel_models" class="form-control">
                                           <option selected>Select Model</option>
                                        </select>
                                     </div>
