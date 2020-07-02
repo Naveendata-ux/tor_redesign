@@ -213,7 +213,7 @@ def favourite_ad(request, id):
 def filter(request):
     ad_filter = AdFilter(request.GET, queryset=Ad.objects.all())
     page = request.GET.get('page')
-    paginator = Paginator(ad_filter.qs, 12)
+    paginator = Paginator(ad_filter.qs, 4)
     try:
         ads = paginator.page(page)
     except PageNotAnInteger:

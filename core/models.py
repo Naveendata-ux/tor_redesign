@@ -16,6 +16,13 @@ class Category(models.Model):
         return self.title
 
 
+def validate_only_one_instance(obj):
+    model = obj.__class__
+    if (model.objects.count() > 0 and
+            obj.id != model.objects.get().id):
+        raise ValidationError("Can only create 1 %s instance" % model.__name__)
+
+
 class Ad(models.Model): 
     user = models.ForeignKey(User, on_delete=models.CASCADE,  default=1)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)

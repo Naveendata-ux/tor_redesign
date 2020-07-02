@@ -4897,9 +4897,10 @@ footer .menu li a {
 }
 
 footer .menu li a:hover {
-	color: #26EDE1;
+	border-radius:30px;
+	background-color:#fff;
+	color: #bd1424;
 }
-
 .contact-footer {
 	margin: 0;
 	padding: 0;

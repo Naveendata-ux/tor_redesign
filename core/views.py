@@ -4,6 +4,7 @@ from django.shortcuts import render
 from core.models import *
 from core.forms import *
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 class IndexView(ListView):
@@ -33,20 +34,24 @@ class ListingListView(ListView):
 def about_page_view(request):
     return render(request, 'about.html')
 
-@login_required
-def contact_page_view(request):
+def contact(request):
     template = 'contact.html'
+    registered = False
     if request.method== 'POST':
         contact = ContactForm(request.POST)
         if contact.is_valid():
             contact.save()
-            return render(request, 'contactmessage.html')
+            messages.success(request,"We have received your Information")
+            messages.success(request,"We will contact you soon...")
+            registered = True
+            return render(request, 'contactmessage.html', {})
+            #return render(request, 'signup/contactmessage.html')
         else:
             print(contact.errors)
     else:
         contact = ContactForm()
     return render(request, template,{'contact': contact})
-  
+    
 def helpsupport_page_view(request):
     return render(request, 'help.html')
 

@@ -37,8 +37,13 @@ class AdFilter(django_filters.FilterSet):
                                                    widget=forms.CheckboxSelectMultiple,
                                                    label='<b>Seasonality</b>')
     price__gt = django_filters.NumberFilter(field_name='offer_price', lookup_expr='gt')
-    price__lt = django_filters.NumberFilter(field_name='offer_price', lookup_expr='lt')   
+    price__lt = django_filters.NumberFilter(field_name='offer_price', lookup_expr='lt') 
+    
+    Year = django_filters.NumberFilter(label='<b>Year</b>',lookup_expr='exact') 
+    Make = django_filters.CharFilter(label='<b>Make</b>',lookup_expr='icontains') 
+    Model = django_filters.CharFilter(label='<b>Model</b>',lookup_expr='icontains') 
+    location = django_filters.CharFilter(label='<b>Location</b>',lookup_expr='icontains')  
     
     class Meta:
         model = Ad
-        fields = ['category', 'Ad_Type','Seasonality',]
+        fields = ['category', 'Ad_Type','Seasonality', 'Year','Make','Model','location']
