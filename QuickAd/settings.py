@@ -167,13 +167,13 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 #private_chat
 
-#CHAT_WS_SERVER_HOST = 'localhost'
-#CHAT_WS_SERVER_PORT = 5002
-#CHAT_WS_SERVER_PROTOCOL = 'ws'
+CHAT_WS_SERVER_HOST = 'localhost'
+CHAT_WS_SERVER_PORT = 5002
+CHAT_WS_SERVER_PROTOCOL = 'ws'
 
-CHAT_WS_SERVER_HOST =  '0.0.0.0'
-CHAT_WS_SERVER_PROTOCOL = 'wss'
-CHAT_WS_SERVER_PORT = int(os.environ.get('PORT', 5002))
+#CHAT_WS_SERVER_HOST =  '0.0.0.0'
+#CHAT_WS_SERVER_PROTOCOL = 'wss'
+#CHAT_WS_SERVER_PORT = int(os.environ.get('PORT', 5002))
 
 
 AUTH_USER_MODEL = "accounts.User"
