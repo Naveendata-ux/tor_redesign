@@ -76,14 +76,9 @@
                             <li><a href="{% url 'core:termsofservice' %}">- Terms Of Use</a></li>
                             <li><a href="{% url 'core:privacypolicy' %}">- Privacy Policy</a></li>
                             <li><a href="{% url 'core:faqs' %}">- FAQ's</a></li>
-                            {% if request.user.is_authenticated %}
-								<li><a href="{% url 'core:contact' %}">- Contact Us</a></li>
-                            {% else %}
-								<li><a class="" href="{% url 'accounts:login' %}">
-									- Contact Us
-									</a>
+                            <li><a href="{% url 'core:contact' %}">- Contact Us</a></li>
 								</li>
-							{% endif %}
+							
 							</ul> 
                     </div>
                 </div>
