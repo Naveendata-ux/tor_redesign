@@ -10,8 +10,10 @@ class ContactForm(forms.ModelForm):
                            (attrs={'placeholder':'email@gmail.com'}))
     Subject= forms.CharField(widget= forms.TextInput
                            (attrs={'placeholder':'Enter Subject'}))
-    Message= forms.CharField(widget= forms.TextInput
+    Message= forms.CharField(widget= forms.Textarea 
                            (attrs={'placeholder':'Enter Message <250 words'}))
+
+
 
     class Meta:
         model=Contact
