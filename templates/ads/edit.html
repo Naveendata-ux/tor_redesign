@@ -794,7 +794,7 @@ img {
                                     {{ form.description.errors }}
                                     <label  for="{{ form.description.id_for_description }}">Description</label>
                                     <textarea type="text"  class="form-control" name="description"
-                                       placeholder="Description" >{{ form.description.value}}</textarea>
+                                       placeholder="Description Must be upto 250 words" >{{ form.description.value}}</textarea>
                                     {% if 'description' in form.errors %}
                                     {% for error in form.description.errors %}
                                     <div class="alert alert-danger alert-dismissable">

@@ -752,7 +752,7 @@ img {
                                     {{ form.description.errors }}
                                     <label  for="{{ form.description.id_for_description }}">Description</label>
                                     <textarea type="text"  class="form-control" name="description"
-                                       placeholder="User can enter upto 250 words" value="{{ form.description.value|default:'' }}"></textarea>
+                                       placeholder="Description Must be upto 250 words" value="{{ form.description.value|default:'' }}"></textarea>
                                     {% if 'description' in form.errors %}
                                     {% for error in form.description.errors %}
                                     <div class="alert alert-danger alert-dismissable">
