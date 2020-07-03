@@ -29,7 +29,7 @@ class AdCreateForm(forms.ModelForm):
     class Meta:
         model = Ad
         #exclude = ('tyre','wheels')
-        fields = ( 'Ad_title', 'description', 'category','offer_price','Tire_Condition', 'On_Rims', 'Year','Make','Model',
+        fields = ( 'Ad_title', 'description', 'category', 'location','offer_price','Tire_Condition', 'On_Rims', 'Year','Make','Model',
         'tires_available','Tenure_offered','Ad_Type', 'Seasonality')
     
     def __init__(self, *args, **kwargs):
@@ -45,7 +45,7 @@ class AdCreateForm(forms.ModelForm):
         images = self.request.FILES.getlist('image')
         if images:
             for image in images:
-                if image.size > 1 * 1024 * 1024:
+                if image.size > 1 * 6024 * 6024:
                     raise ValidationError("Image file too large ( > 1mb )")
         else:
             raise ValidationError("Couldn't read uploaded images")

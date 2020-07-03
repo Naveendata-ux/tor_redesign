@@ -1,16 +1,15 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load crispy_forms_tags %}
-{% block content %}
-</br>
-</br>
-</br>
 
+{% load static %}
+{% block content %}
+<br><br><br>
 <div class="page-header" style="background: url(assets/img/banner1.jpg);">
 <div class="container">
 <div class="row">
 <div class="col-md-12">
 <div class="breadcrumb-wrapper">
-
+<h2 class="product-title">Contact Us</h2>
 <ol class="breadcrumb">
 <li><a href="{% url 'core:home' %}">Home /</a></li>
 <li class="curret">Contact Us</li>
@@ -25,34 +24,20 @@
 
 
 
-<section id="content" class="section-padding">
+<section id="content"  >
 <div class="container">
+<div class="head-faq text-left">
+<h3 class="section-title">Send Message To Us</h3>
+</div>
 <div class="row">
 <div class="col-lg-8 col-md-8 col-xs-12">
 
-<form id="contactForm" class="contact-form" data-toggle="validator">
-<h2 class="contact-title">
-Send Message To Us
-</h2>
-<div class="row">
-<div class="col-md-12">
-		<form enctype="multipart/form-data" action="{% url 'core:contact' %}" method="POST" novalidate>
+<form enctype="multipart/form-data" method="POST">
           {% csrf_token %}
-		   {{ contact|crispy }}
-		   
+          {{ contact|crispy }}
           
-		<input type="submit" name="" class="btn btn-common" value="Submit"> 
+          <input type="submit"class="btn btn-common " name="" value="Submit Form">
         </form>
-
-</div>
-
-<!-- <div class="col-md-12">
-<button type="submit" id="submit" class="btn btn-common">Submit Now</button>
-<div id="msgSubmit" class="h3 text-center hidden"></div>
-<div class="clearfix"></div>
-</div> -->
-</div>
-</form>
 </div>
 <div class="col-lg-4 col-md-4 col-xs-12">
 <div class="information mb-4">
