@@ -10,9 +10,11 @@
    $(document).ready(function(){
      $("#size-form").hide();
      $("#vehicle-form").hide();
+     $("#size-back").hide();
      
      $("#size-icon").click(function(){
        $("#size-form").show();
+       $("#size-back").show();
        $("#size-icon").hide();
        $("#vehicle-icon").hide();
        $("#vehicle-form").hide();
@@ -23,6 +25,13 @@
        $("#size-icon").hide();
        $("#vehicle-form").show();
      });
+     $("#size-back").click(function(){
+       $("#size-form").hide();
+       $("#size-icon").show();
+       $("#vehicle-icon").show();
+       $("#vehicle-form").hide();
+       $("#size-back").hide();
+     });
    });
    
 </script>
@@ -30,9 +39,11 @@
    $(document).ready(function(){
      $("#size-form2").hide();
      $("#vehicle-form2").hide();
+     $("#size-back2").hide();
      
      $("#size-icon2").click(function(){
        $("#size-form2").show();
+       $("#size-back2").show();
        $("#size-icon2").hide();
        $("#vehicle-icon2").hide();
        $("#vehicle-form2").hide();
@@ -43,6 +54,13 @@
        $("#size-icon2").hide();
        $("#vehicle-form2").show();
      });
+     $("#size-back2").click(function(){
+       $("#size-form2").hide();
+       $("#size-icon2").show();
+       $("#vehicle-icon2").show();
+       $("#vehicle-form2").hide();
+       $("#size-back2").hide();
+     });
    });
    
 </script>
@@ -50,9 +68,11 @@
    $(document).ready(function(){
      $("#size-form3").hide();
      $("#vehicle-form3").hide();
+     $("#size-back3").hide();
      
      $("#size-icon3").click(function(){
        $("#size-form3").show();
+       $("#size-back3").show();
        $("#size-icon3").hide();
        $("#vehicle-icon3").hide();
        $("#vehicle-form3").hide();
@@ -63,9 +83,17 @@
        $("#size-icon3").hide();
        $("#vehicle-form3").show();
      });
+     $("#size-back3").click(function(){
+       $("#size-form3").hide();
+       $("#size-icon3").show();
+       $("#vehicle-icon3").show();
+       $("#vehicle-form3").hide();
+       $("#size-back3").hide();
+     });
    });
    
 </script>
+
 <style>
    #wrap:after {
    content: '';
@@ -436,8 +464,12 @@
                         </div>
                      </div>
                      <div class = "row" id="form-row">
+                      <a  href='javascript:void();' style="color:#373373; padding-right: 323px;" id="size-back"><strong><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Go back </strong></a>
                         <div class="col-lg-12 text-center">
+                        
                            <form action = "{% url 'ads:filter' %}" name = "" method= "GET" id="size-form">
+                           
+                            </br>
                               <div class="custom-control custom-radio">
                                  <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="groupOfDefaultRadios">
                                  <label class="custom-control-label" for="defaultGroupExample1"><b>Summer/All Seasons</b></label>
@@ -457,6 +489,7 @@
                                  <label class="custom-control-label" for="defaultGroupExample4"><b>Trailer</b></label>
                               </div>
                               <br>
+                              
                               <hr class="style1">
                               <br>
                               <div class="row">
@@ -760,6 +793,7 @@
                         </div>
                      </div>
                      <div class = "row" id="form-row">
+                      <a  href='javascript:void();' style="color:#373373; padding-right: 323px;" id="size-back2"><strong><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Go back </strong></a>
                         <div class="col-lg-12 text-center">
                            <form action = "{% url 'ads:filter' %}" name = "" method= "GET" id="size-form2">
                               <div class="custom-control custom-radio">
@@ -1084,6 +1118,7 @@
                         </div>
                      </div>
                      <div class = "row" id="form-row">
+                      <a  href='javascript:void();' style="color:#373373; padding-right: 323px;" id="size-back3"><strong><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Go back </strong></a>
                         <div class="col-lg-12 text-center">
                            <form action = "{% url 'ads:filter' %}" name = "" method= "GET" id="size-form3">
                               <div class="custom-control custom-radio">
