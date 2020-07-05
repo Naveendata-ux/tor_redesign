@@ -176,6 +176,11 @@ CHAT_WS_SERVER_PROTOCOL = 'ws'
 #CHAT_WS_SERVER_PORT = int(os.environ.get('PORT', 5002))
 
 
+
+STRIPE_PUBLISHABLE_KEY = 'pk_test_eGMbcpswSjblf9dzmh5hhpBW00l2d07cpA'
+STRIPE_SECRET_KEY = 'sk_test_gsyDXO3WH0eB4EjCEe8w5m2600d9Q9XmXW'
+
+
 AUTH_USER_MODEL = "accounts.User"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
