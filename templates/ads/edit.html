@@ -793,7 +793,7 @@ img {
                                  <div class="input-icon">
                                     {{ form.description.errors }}
                                     <label  for="{{ form.description.id_for_description }}">Description</label>
-                                    <textarea type="text"  class="form-control" name="description"
+                                    <textarea type="text" rows="6" class="form-control" name="description"
                                        placeholder="Description Must be upto 250 words" >{{ form.description.value}}</textarea>
                                     {% if 'description' in form.errors %}
                                     {% for error in form.description.errors %}
@@ -839,7 +839,7 @@ $(document).ready(function () {
  autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
   types: ['geocode'],
   componentRestrictions: {
-   country:[ "USA", "CA"]
+   country:[ "CA"]
   }
  });
   

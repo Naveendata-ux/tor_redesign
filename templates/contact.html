@@ -9,7 +9,7 @@
 <div class="row">
 <div class="col-md-12">
 <div class="breadcrumb-wrapper">
-<h2 class="product-title">Contact Us</h2>
+
 <ol class="breadcrumb">
 <li><a href="{% url 'core:home' %}">Home /</a></li>
 <li class="curret">Contact Us</li>
@@ -26,20 +26,25 @@
 
 <section id="content"  >
 <div class="container">
+
+<div class="row">
+<div class="col-lg-8 col-md-8 col-xs-12">
 <div class="head-faq text-left">
 <h3 class="section-title">Send Message To Us</h3>
 </div>
-<div class="row">
-<div class="col-lg-8 col-md-8 col-xs-12">
 
 <form enctype="multipart/form-data" method="POST">
           {% csrf_token %}
           {{ contact|crispy }}
           
           <input type="submit"class="btn btn-common " name="" value="Submit Form">
+          </br>
+          </br>
         </form>
 </div>
+
 <div class="col-lg-4 col-md-4 col-xs-12">
+</br>
 <div class="information mb-4">
 <h3>Address</h3>
 <div class="contact-datails">

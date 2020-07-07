@@ -74,9 +74,9 @@ ol li {
 }
 
 .hero-sub-heading {
-	font-size: 20px;
+	font-size: 22px;
 	font-weight: 400;
-	color: #e6e6e6;
+	color: #ffffff;
 	line-height: 45px
 }
 
@@ -3894,7 +3894,7 @@ label {
 }
 
 .testimonial-item .content {
-	padding: 50px 20px 15px
+	padding: 20px 20px 15px
 }
 
 .testimonial-item .content .description {

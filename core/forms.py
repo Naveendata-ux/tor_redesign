@@ -5,7 +5,7 @@ from core.models import *
 class ContactForm(forms.ModelForm):
 
     Name= forms.CharField(widget= forms.TextInput
-                           (attrs={'placeholder':'Enter your first name'}))
+                           (attrs={'placeholder':'Enter your Name'}))
     Email= forms.CharField(widget= forms.EmailInput
                            (attrs={'placeholder':'email@gmail.com'}))
     Subject= forms.CharField(widget= forms.TextInput

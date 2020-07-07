@@ -79,7 +79,7 @@ class AdUpdateForm(forms.ModelForm):
         images = self.request.FILES.getlist('image')
         if images:
             for image in images:
-                if image.size > 1 * 1024 * 1024:
+                if image.size > 1 * 5024 * 1024:
                     raise ValidationError("Image file too large ( > 1mb )")
         else:
             raise ValidationError("Couldn't read uploaded images")

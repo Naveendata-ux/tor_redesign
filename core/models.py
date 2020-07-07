@@ -44,7 +44,7 @@ class Ad(models.Model):
     Model = models.CharField(max_length=250)
     Width = models.PositiveIntegerField(default =1)
     Aspect_Ratio = models.PositiveIntegerField(default =1)
-    tires_available = models.PositiveIntegerField(default =1)
+    tires_available = models.PositiveIntegerField(default =0)
     Tenure_offered = models.PositiveIntegerField(default =1)
     Ad_Type = models.CharField(max_length=250)
     Wheels_Brand = models.CharField(max_length=50)

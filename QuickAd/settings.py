@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'users',
     'accounts',
     'category',
+    'stripe',
     'crispy_forms',
     'django_private_chat',
     'subscriptions',

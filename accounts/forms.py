@@ -30,7 +30,7 @@ class SignUpForm(forms.ModelForm):
 
 class UserForm(forms.ModelForm):
     #about = forms.CharField(widget=forms.Textarea(attrs={'rows': 4, 'cols': 50}), max_length=200)
-    group = forms.ModelChoiceField(queryset=Group.objects.all(), required=True)
+    #group = forms.ModelChoiceField(queryset=Group.objects.all(), required=True)
     def __init__(self, *args, **kwargs):
         super(UserForm, self).__init__(*args, **kwargs)
         self.fields['phone_number'].required = True
@@ -58,12 +58,12 @@ class ProfileForm(forms.ModelForm):
 
 
 class AddressForm(forms.ModelForm):
-    street_address_1 = forms.CharField(label="Address")
+    address = forms.CharField(widget= forms.TextInput(attrs={'id':'search_input'}))
     class Meta:
-        model = Address
+        model = User
         fields = [
             
-            'street_address_1',
+            'address',
         ]
 
 class QuestionsForm(forms.ModelForm):

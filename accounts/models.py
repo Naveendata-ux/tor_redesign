@@ -119,13 +119,9 @@ class User(AbstractUser):
     is_staff = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now, editable=False)
-    default_shipping_address = models.ForeignKey(
-        Address, related_name="+", null=True, blank=True, on_delete=models.SET_NULL
-    )
-    default_billing_address = models.ForeignKey(
-        Address, related_name="+", null=True, blank=True, on_delete=models.SET_NULL
-    )
+    
     phone_number = models.CharField(max_length=12, blank=True, verbose_name="Contact number")
+    address = models.CharField(max_length=256, blank=True, verbose_name="address number")
     profile_image = models.ImageField(verbose_name="Profile Picture", upload_to="user_images", blank=True)
     Account_type = models.CharField(max_length=50, choices=Type)
 
