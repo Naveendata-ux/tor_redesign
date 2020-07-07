@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     #'notifications',
     #'django_messages',
     'six',
+    'social_django',
     #'pinax.notifications',
     #'mailer',
 ]  
