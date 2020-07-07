@@ -6,7 +6,7 @@ from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from .forms import *
 from core.mixins import CustomLoginRequiredMixin
 from core.models import *
-from django.shortcuts import render,redirect
+from django.shortcuts import render,get_object_or_404,redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .filters import AdFilter
 
@@ -17,10 +17,15 @@ class AdDetailsView(DetailView):
     slug_field = "id"
     slug_url_kwarg = "ad_id"
     context_object_name = "ad"
-
+    
+    
     def get_queryset(self):
         return self.model.objects.select_related("category").select_related("user").all()
 
+    def get_context_data(self, **kwargs):
+        context = super(AdDetailsView, self).get_context_data(**kwargs)
+        context['ads'] = Ad.objects.select_related("user").select_related("category").order_by("-created_at")[:4]
+        return context
 
 class AdCreateView(CustomLoginRequiredMixin, CreateView):
     template_name = 'ads/create.html'

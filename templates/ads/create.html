@@ -682,7 +682,7 @@ img {
                               <div class="form-group">
                                     <div class="input-icon">
                                        
-                                       <label  for="{{ form.tires_available.id_for_tires_available }}">Number of Tires</label>
+                                       <label  for="{{ form.tires_available.id_for_tires_available }}">Number of Tires Offered</label>
                                        <input type="number" min="0" class="form-control" name="tires_available"
                                           placeholder="Tires Available" value="{{ form.tires_available.value|default:'' }}">
                                        {% if 'tires_available' in form.errors %}
@@ -701,7 +701,7 @@ img {
                                     <div class="input-icon">
                                        
                                        <label  for="{{ form.Tenure_offered.id_for_Tenure_offered }}">Tenure Offered(In Months)</label>
-                                       <input id='chatinput' type="number"  class="form-control" name="Tenure_offered"
+                                       <input id='chatinput' type="number" min="0" class="form-control" name="Tenure_offered"
                                           placeholder="Tenure offered" value="{{ form.Tenure_offered.value|default:'' }}">
                                        {% if 'Tenure_offered' in form.errors %}
                                        {% for error in form.Tenure_offered.errors %}
@@ -720,7 +720,7 @@ img {
                                     
                                     <label  for="{{ form.offer_price.id_for_offer_price }}">Price(Per Tire)</label>
                                     <input id='chatinput2' type="number" min="0"  class="form-control" name="offer_price"
-                                       placeholder="Offer price" value="{{ form.offer_price.value|default:'' }}">
+                                       placeholder="CAN$" value="{{ form.offer_price.value|default:'' }}">
                                     {% if 'offer_price' in form.errors %}
                                     {% for error in form.offer_price.errors %}
                                     <div class="alert alert-danger alert-dismissable">
@@ -735,7 +735,7 @@ img {
                               <label class="tg-fileuploadlabel" for="tg-photogallery">
                            
                            <span class="btn btn-common">Select Files</span>
-                           <span>Maximum upload file size: 1MB</span>
+                           <span>Maximum upload file size: 5MB</span>
 						   <span>Upload only 3 images..</span>
 						   </br>
 						   <div id="preview"></div>
