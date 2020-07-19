@@ -27,6 +27,7 @@ django-mailer==2.0.1
 django-allauth==0.42.0
 social-auth-app-django==4.0.0
 stripe==2.48.0
+dj-stripe==2.3.0
 drf-django-flexible-subscriptions==0.1.1
 elasticsearch==7.6.0
 elasticsearch-dsl==7.1.0

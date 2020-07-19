@@ -20,10 +20,10 @@ from django.utils import timezone
 from subscriptions import models, forms, abstract
 
 
-import stripe
+#import stripe
 
-stripe.api_key = "sk_test_gsyDXO3WH0eB4EjCEe8w5m2600d9Q9XmXW"
-stripe.api_version = "2020-03-02"
+#stripe.api_key = settings.STRIPE_TEST_SECRET_KEY"
+#stripe.api_version = "2020-03-02"
 
 
 # Dashboard View

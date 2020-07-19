@@ -9,6 +9,15 @@ from core.models import *
 from django.shortcuts import render,get_object_or_404,redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .filters import AdFilter
+from django.contrib.auth.decorators import login_required
+
+# import the wonderful decorator
+#from djstripe.decorators import subscription_payment_required
+
+# import method_decorator which allows us to use function
+# decorators on Class-Based View dispatch function.
+#from django.utils.decorators import method_decorator
+
 
 
 class AdDetailsView(DetailView):
@@ -26,6 +35,8 @@ class AdDetailsView(DetailView):
         context = super(AdDetailsView, self).get_context_data(**kwargs)
         context['ads'] = Ad.objects.select_related("user").select_related("category").order_by("-created_at")[:4]
         return context
+
+
 
 class AdCreateView(CustomLoginRequiredMixin, CreateView):
     template_name = 'ads/create.html'
@@ -46,7 +57,8 @@ class AdCreateView(CustomLoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(AdCreateView, self).form_valid(form)
-
+    
+    
     def post(self, request, *args, **kwargs):
         self.object = None
         form = self.get_form()

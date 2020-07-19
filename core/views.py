@@ -19,6 +19,7 @@ class IndexView(ListView):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['categories'] = Category.objects.all()
         context['featured_products'] = Ad.objects.filter(featured=True)
+        context['results'] = Ad.objects.all()
         return context
 
 

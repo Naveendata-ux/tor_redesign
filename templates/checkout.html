@@ -1,132 +1,249 @@
-<html>
-<body>
-  <script src="https://js.stripe.com/v3/"></script>
-</body>
-<style>
-/**
- * The CSS shown here will not be introduced in the Quickstart guide, but shows
- * how you can use CSS to style your Element's container.
- */
-.StripeElement {
-  box-sizing: border-box;
-
-  height: 40px;
-
-  padding: 10px 12px;
-
-  border: 1px solid transparent;
-  border-radius: 4px;
-  background-color: white;
-
-  box-shadow: 0 1px 3px 0 #e6ebf1;
-  -webkit-transition: box-shadow 150ms ease;
-  transition: box-shadow 150ms ease;
-}
-
-.StripeElement--focus {
-  box-shadow: 0 1px 3px 0 #cfd7df;
-}
-
-.StripeElement--invalid {
-  border-color: #fa755a;
-}
-
-.StripeElement--webkit-autofill {
-  background-color: #fefde5 !important;
-}
-</style>
 
 
-<form action="/charge" method="post" id="payment-form">
-  <div class="form-row">
-    <label for="card-element">
-      Credit or debit card
-    </label>
-    <div id="card-element">
-      <!-- A Stripe Element will be inserted here. -->
-    </div>
 
-    <!-- Used to display form errors. -->
-    <div id="card-errors" role="alert"></div>
-  </div>
+{% block content %}
 
-  <button>Submit Payment</button>
-</form>
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://js.stripe.com/v3/"></script>
+ <link rel="stylesheet" type="text/css" href="/media/stripe.css ">
+</head>
+<br><br><br><br><hr>
 
-<script type=text/script>
-// Create a Stripe client.
-var stripe = Stripe('pk_test_eGMbcpswSjblf9dzmh5hhpBW00l2d07cpA');
+	
+<div class="container ">
 
-// Create an instance of Elements.
-var elements = stripe.elements();
+	<div class="row ">
+		{% for p in products %}
+		<div class="col-6">
+			<div class="card mx-5 shadow" style="border-radius: 10px; border:none; ">
+				<div class="card-body">
+					<h5 class="card-title font-weight-bold">{{p.name}}</h5>
+					<p class="card-text text-muted"><svg class="bi bi-check" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
+					</svg>{{p.description}}</p>
 
-// Custom styling can be passed to options when creating an Element.
-// (Note that this demo uses a wider set of styles than the guide below.)
-var style = {
-  base: {
-    color: '#32325d',
-    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-    fontSmoothing: 'antialiased',
-    fontSize: '16px',
-    '::placeholder': {
-      color: '#aab7c4'
-    }
-  },
-  invalid: {
-    color: '#fa755a',
-    iconColor: '#fa755a'
+					{% for plan in p.plan_set.all %}
+					<h5 >{{ plan.human_readable_price }}</h5>
+					<div class="text-right">
+						<input type="checkbox" name="{{p.name}}" value="{{p.id}}" onclick="planSelect('{{p.name}}' ,'{{plan.human_readable_price}}', '{{plan.id}}')">
+					{% endfor %}
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		{% endfor %}
+	</div>
+	<br><br><hr><br><br>
+	<div>
+		<div class="row">
+			<div class="col-12">
+				<div class="card mx-5 shadow rounded" style="border-radius:50px;border:none">
+					<div class="card-body">
+						<h5 class="card-title font-weight-bold">Checkout</h5>
+						<p class="text-muted ">Enter card details.  Your subscription will start immediately</p>
+						<div class="row">
+							<div class="col-6 text-muted">
+								<p>Plan:</p>
+								<p>Total:</p>
+							</div>
+							<div class="col-6 text-right">
+								<p id="plan"></p>
+								<p id="price"></p>
+								<p hidden id="priceId"></p>
+							</div>
+
+						</div>
+						<br>
+						<form id="subscription-form" >
+							<div id="card-element" class="MyCardElement">
+								<!-- Elements will create input elements here -->
+							</div>
+							
+							<!-- We'll put the error messages in this element -->
+							<div id="card-errors" role="alert"></div>
+							<button id="submit" type="submit">
+								<div class="spinner-border  spinner-border-sm text-light hidden" id="spinner" role="status">
+									<span class="sr-only">Loading...</span>
+								</div>
+								<span id="button-text">Subscribe</span>
+							</button>
+						</form>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+document.getElementById("submit").disabled = true;
+
+stripeElements();
+
+function stripeElements() {
+  stripe = Stripe('pk_test_eGMbcpswSjblf9dzmh5hhpBW00l2d07cpA');
+
+  if (document.getElementById('card-element')) {
+    let elements = stripe.elements();
+
+    // Card Element styles
+    let style = {
+    	base: {
+    		color: "#32325d",
+    		fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+    		fontSmoothing: "antialiased",
+    		fontSize: "16px",
+    		"::placeholder": {
+    			color: "#aab7c4"
+    		}
+    	},
+    	invalid: {
+    		color: "#fa755a",
+    		iconColor: "#fa755a"
+    	}
+    };
+
+
+    card = elements.create('card', { style: style });
+
+    card.mount('#card-element');
+
+    card.on('focus', function () {
+      let el = document.getElementById('card-errors');
+      el.classList.add('focused');
+    });
+
+    card.on('blur', function () {
+      let el = document.getElementById('card-errors');
+      el.classList.remove('focused');
+    });
+
+    card.on('change', function (event) {
+      displayError(event);
+    });
   }
-};
+  //we'll add payment form handling here
+}
 
-// Create an instance of the card Element.
-var card = elements.create('card', {style: style});
-
-// Add an instance of the card Element into the `card-element` <div>.
-card.mount('#card-element');
-
-// Handle real-time validation errors from the card Element.
-card.on('change', function(event) {
-  var displayError = document.getElementById('card-errors');
+function displayError(event) {
+ 
+  let displayError = document.getElementById('card-errors');
   if (event.error) {
     displayError.textContent = event.error.message;
   } else {
     displayError.textContent = '';
   }
-});
-
-// Handle form submission.
-var form = document.getElementById('payment-form');
-form.addEventListener('submit', function(event) {
-  event.preventDefault();
-
-  stripe.createToken(card).then(function(result) {
-    if (result.error) {
-      // Inform the user if there was an error.
-      var errorElement = document.getElementById('card-errors');
-      errorElement.textContent = result.error.message;
-    } else {
-      // Send the token to your server.
-      stripeTokenHandler(result.token);
-    }
-  });
-});
-
-// Submit the form with the token ID.
-function stripeTokenHandler(token) {
-  // Insert the token ID into the form so it gets submitted to the server
-  var form = document.getElementById('payment-form');
-  var hiddenInput = document.createElement('input');
-  hiddenInput.setAttribute('type', 'hidden');
-  hiddenInput.setAttribute('name', 'stripeToken');
-  hiddenInput.setAttribute('value', token.id);
-  form.appendChild(hiddenInput);
-
-  // Submit the form
-  form.submit();
 }
+
+function planSelect(name, price, priceId) {
+		var inputs = document.getElementsByTagName('input');
+
+		for(var i = 0; i<inputs.length; i++){
+			inputs[i].checked = false;
+			if(inputs[i].name== name){
+
+				inputs[i].checked = true;
+			}
+		}
+
+		var n = document.getElementById('plan');
+		var p = document.getElementById('price');
+		var pid = document.getElementById('priceId');
+		n.innerHTML = name;
+		p.innerHTML = price;
+		pid.innerHTML = priceId;
+        document.getElementById("submit").disabled = false;
+
+
+	}
+
+
+//we'll add payment form handling here
+    let paymentForm = document.getElementById('subscription-form');
+	if (paymentForm) {
+
+		paymentForm.addEventListener('submit', function (evt) {
+			evt.preventDefault();
+			changeLoadingState(true);
+
+
+	      // create new payment method & create subscription
+	      createPaymentMethod({ card });
+	  });
+	}
+
+}
+
+
+
+function createPaymentMethod({ card }) {
+
+  // Set up payment method for recurring usage
+  let billingName = '{{user.username}}';
+
+  stripe
+    .createPaymentMethod({
+      type: 'card',
+      card: card,
+      billing_details: {
+        name: billingName,
+      },
+    })
+    .then((result) => {
+      if (result.error) {
+        displayError(result);
+      } else {
+       const paymentParams = {
+          price_id: document.getElementById("priceId").innerHTML,
+          payment_method: result.paymentMethod.id,
+      };
+      fetch("/create-sub", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken':'{{ csrf_token }}',
+        },
+        credentials: 'same-origin',
+        body: JSON.stringify(paymentParams),
+      }).then((response) => {
+        return response.json(); 
+      }).then((result) => {
+      	if (result.error) {
+          // The card had an error when trying to attach it to a customer
+          throw result;
+        }
+        return result;
+      }).then((result) => {
+      	if (result && result.status === 'active') {
+
+         window.location.href = '/complete';
+      	};
+      }).catch(function (error) {
+          displayError(result.error.message);
+
+      });
+      }
+    });
+}
+
+
+var changeLoadingState = function(isLoading) {
+	if (isLoading) {
+		document.getElementById("submit").disabled = true;
+		document.querySelector("#spinner").classList.remove("hidden");
+		document.querySelector("#button-text").classList.add("hidden");
+	} else {
+		document.getElementById("submit").disabled = false;
+		document.querySelector("#spinner").classList.add("hidden");
+		document.querySelector("#button-text").classList.remove("hidden");
+	}
+};
 </script>
 
-
-
-
-</html>
+{% endblock %}

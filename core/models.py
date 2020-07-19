@@ -1,6 +1,14 @@
-from django.db import models
+from django.db import models, connections
 
 from accounts.models import User
+
+
+
+class model(models.Model):
+    model_year = models.CharField(max_length=10)
+    class Meta:
+        db_table="model"
+
 
 
 class Category(models.Model):

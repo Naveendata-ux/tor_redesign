@@ -762,7 +762,7 @@ img {
                                     
                                     <label  for="{{ form.offer_price.id_for_offer_price }}">Price(Per Tire)</label>
                                     <input id='chatinput2' type="number"  class="form-control" name="offer_price"
-                                       placeholder="CAN$" value="{{ form.offer_price.value|default:'' }}">
+                                       placeholder="CAD" value="{{ form.offer_price.value|default:'' }}">
                                     {% if 'offer_price' in form.errors %}
                                     {% for error in form.offer_price.errors %}
                                     <div class="alert alert-danger alert-dismissable">

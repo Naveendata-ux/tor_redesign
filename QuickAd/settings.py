@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'accounts',
     'category',
     'stripe',
+    'djstripe',
     'crispy_forms',
     'django_private_chat',
     'subscriptions',
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     #'django_messages',
     'six',
     'social_django',
+    
     #'pinax.notifications',
     #'mailer',
 ]  
@@ -53,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'djstripe.middleware.SubscriptionPaymentMiddleware',
     
 ]
 
@@ -179,8 +182,20 @@ CHAT_WS_SERVER_PROTOCOL = 'ws'
 
 
 
-STRIPE_PUBLISHABLE_KEY = 'pk_test_eGMbcpswSjblf9dzmh5hhpBW00l2d07cpA'
-STRIPE_SECRET_KEY = 'sk_test_gsyDXO3WH0eB4EjCEe8w5m2600d9Q9XmXW'
+#STRIPE_PUBLISHABLE_KEY = 'pk_test_eGMbcpswSjblf9dzmh5hhpBW00l2d07cpA'
+#STRIPE_SECRET_KEY = 'sk_test_gsyDXO3WH0eB4EjCEe8w5m2600d9Q9XmXW'
+
+
+#STRIPE_LIVE_PUBLIC_KEY = os.environ.get("STRIPE_LIVE_PUBLIC_KEY", "<your publishable key>")
+#STRIPE_LIVE_SECRET_KEY = os.environ.get("STRIPE_LIVE_SECRET_KEY", "<your secret key>")
+STRIPE_TEST_PUBLIC_KEY = os.environ.get("STRIPE_TEST_PUBLIC_KEY", "pk_test_eGMbcpswSjblf9dzmh5hhpBW00l2d07cpA")
+STRIPE_TEST_SECRET_KEY = os.environ.get("STRIPE_TEST_SECRET_KEY", "sk_test_gsyDXO3WH0eB4EjCEe8w5m2600d9Q9XmXW")
+STRIPE_LIVE_MODE = False  # Change to True in production
+DJSTRIPE_WEBHOOK_SECRET = "whsec_xxx"  # Get it from the section in the Stripe dashboard where you added the webhook endpoint
+
+
+STRIPE_API_VERSION = "2019-09-09"
+
 
 
 AUTH_USER_MODEL = "accounts.User"
