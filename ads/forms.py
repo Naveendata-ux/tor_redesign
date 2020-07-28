@@ -259,31 +259,65 @@ Ad_type = (
 
 )
 
+category = (
+('','Select Ad Type'),
+('1','Tire'),
 
+
+)
+
+Wheel_type = (
+('','Select Wheel Type'),
+('Alloy','Alloy'),
+('Steel','Steel'),
+('Aluminum','Aluminum'),
+('Multi Piece','Multi Piece'),
+('Forged','Forged')
+
+)
+
+Specials = (
+('','Select Offer Type'),
+('Limited Time Offer','Limited Time Offer'),
+('Seasonal Discounts','Seasonal Discounts'),
+('Promotional Discounts','Promotional Discounts'),
+('Special Offer','Special Offer')
+)
+
+Service_type = (
+('','Service Type'),
+('Tire Rotation','Tire Rotation'),
+('Tire Repair','Tire Repair'),
+('Wheel Balancing','Wheel Balancing'),
+('Oil Change','Oil Change'),
+('Seasonal Tire Change','Seasonal Tire Change')
+
+)
 class AdCreateForm(forms.ModelForm):
-    
-    Ad_title = forms.CharField(label="Ad Title",widget=forms.TextInput(attrs={'placeholder': 'Ad Title'}),error_messages={'invalid': 'Give a suitble name for your Ad!'})
-    #category = forms.CharField(error_messages={'invalid': 'Please select a valid Categry!'})
-    description = forms.CharField(max_length=250,widget=forms.Textarea(attrs={'placeholder': 'Description upto 250 words',}),error_messages={'invalid': 'Please fill description field!'})
+    Ad_title = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Ad Title','id': 'ad_title',}),error_messages={'invalid': 'Give a suitble name for your Ad!'})
+    #category = forms.CharField(initial="Tires",widget=forms.TextInput(attrs={'readonly':'readonly'}))
+    description = forms.CharField(max_length=250,widget=forms.Textarea(attrs={'placeholder': 'Description upto 250 words','id': 'description',}),error_messages={'invalid': 'Please fill description field!'})
     offer_price = forms.IntegerField( min_value=0,error_messages={'invalid': 'Please enter offer price!'})
-    location = forms.CharField(widget=forms.TextInput(attrs={'id':'search_input'}),error_messages={'invalid': 'Please enter location!'})
+    location = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Location','id':'search_input'}),error_messages={'invalid': 'Please enter location!'})
     Tire_Condition = forms.ChoiceField(choices = Tire_Conditions)
-    On_Rims = forms.ChoiceField(label="On Rims?",choices = On_Rims,widget=forms.Select(attrs={'placeholder': 'On Rims'}))
+    On_Rims = forms.ChoiceField(label="On Rims?",choices = On_Rims,widget=forms.Select(attrs={'placeholder': 'On Rims','id': 'on_rims'}))
     Make = forms.ChoiceField(choices=make_choices,widget=forms.Select(attrs={'placeholder': 'Select Make','id': 'sel_make',}),error_messages={'invalid': 'Please select a valid Choice for Make!'})
     Year = forms.ChoiceField(choices=year_choices,widget=forms.Select(attrs={'placeholder': 'Select Year','id': 'sel_make',}),error_messages={'invalid': 'Please select a valid Year!'})
-    Model = forms.ChoiceField(widget=forms.Select(attrs={'placeholder': 'Select Model','id': 'sel_model','class':'form-control'}),error_messages={'invalid': 'Please select a valid Model!'})
-    Seasonality= forms.ChoiceField(choices=Seasonality,widget=forms.Select(attrs={'placeholder': 'Select Seasonality'}),error_messages={'invalid': 'Please Select valid choice for Seasonality!'})
-    
-    #Aspect_Ratio = forms.IntegerField(error_messages={'invalid': 'Please select a valid Choice for Ratio!'})
-    tires_available = forms.IntegerField( min_value=0,widget=forms.NumberInput(attrs={'placeholder': 'Number of Tires'}),error_messages={'invalid': 'Please enter value for Tyres_Available!'})
-    Tenure_offered = forms.IntegerField(label='', min_value=0,widget=forms.NumberInput(attrs={'placeholder': 'Tenure Offered','style': 'display:none;','id': 'business',}),error_messages={'invalid': 'Please enter value for Tenure_offered!'})
+    Model = forms.ChoiceField(required=False,widget=forms.Select(attrs={'placeholder': 'Select Model','id': 'sel_model','class':'form-control'}),error_messages={'invalid': 'Please select a valid Model!'})
+    Seasonality= forms.ChoiceField(choices=Seasonality,widget=forms.Select(attrs={'placeholder': 'Select Seasonality','id': 'seasonality',}),error_messages={'invalid': 'Please Select valid choice for Seasonality!'})
+    tires_available = forms.IntegerField( min_value=0,widget=forms.NumberInput(attrs={'placeholder': 'Number of Tires','id': 'tires_available',}),error_messages={'invalid': 'Please enter value for Tyres_Available!'})
+    Tenure_offered = forms.IntegerField(label='', min_value=0,widget=forms.NumberInput(attrs={'placeholder': 'Tenure Offered','id': 'tires_offered','style': 'display:none;','id': 'business',}),error_messages={'invalid': 'Please enter value for Tenure_offered!'})
     Ad_Type = forms.ChoiceField(choices=Ad_type,widget=forms.Select(attrs={'placeholder': 'Select Ad Type','id': 'purpose',}),error_messages={'invalid': 'Please select valid choice for Ad_Type!'})
+    wheel_type = forms.ChoiceField(required=False,label="Wheel Type",choices=Wheel_type,widget=forms.Select(attrs={'placeholder': 'Select Wheel Type','id':'wheel_type'}),error_messages={'invalid': 'Please select valid choice for Wheel_Type!'})
+    wheel_color = forms.CharField(required=False,widget=forms.TextInput(attrs={'placeholder': 'Wheel Colour','id':'wheel_color'}),error_messages={'invalid': 'Please enter wheel Color!'}) 
+    specials = forms.ChoiceField(required=False,choices=Specials,widget=forms.Select(attrs={'placeholder': 'Select Wheel Type','id': 'specials',}),error_messages={'invalid': 'Please select valid choice for Specials!'})
+    service_type = forms.ChoiceField(required=False,choices=Service_type,widget=forms.Select(attrs={'placeholder': 'Select Wheel Type','id': 'service_type',}),error_messages={'invalid': 'Please select valid choice for Service_Type!'})
     
     class Meta:
         model = Ad
         #exclude = ('tyre','wheels')
         fields = ( 'Ad_title', 'category','Tire_Condition', 'On_Rims','Year','Make','Model', 'Seasonality','location','Ad_Type',
-        'tires_available','Tenure_offered','offer_price', 'description',)
+        'tires_available','Tenure_offered','offer_price', 'description')
     
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop("request", None)
@@ -303,7 +337,86 @@ class AdCreateForm(forms.ModelForm):
         else:
             raise ValidationError("Couldn't read uploaded images")
 
+
+class WheelCreateForm(forms.ModelForm):
+    Ad_title = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Ad Title','id': 'ad_title',}),error_messages={'invalid': 'Give a suitble name for your Ad!'})
     
+    description = forms.CharField(max_length=250,widget=forms.Textarea(attrs={'placeholder': 'Description upto 250 words','id': 'description',}),error_messages={'invalid': 'Please fill description field!'})
+    offer_price = forms.IntegerField( min_value=0,error_messages={'invalid': 'Please enter offer price!'})
+    location = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Location','id':'search_input'}),error_messages={'invalid': 'Please enter location!'})
+    
+    Make = forms.ChoiceField(choices=make_choices,widget=forms.Select(attrs={'placeholder': 'Select Make','id': 'sel_make',}),error_messages={'invalid': 'Please select a valid Choice for Make!'})
+    Year = forms.ChoiceField(choices=year_choices,widget=forms.Select(attrs={'placeholder': 'Select Year','id': 'sel_make',}),error_messages={'invalid': 'Please select a valid Year!'})
+    Model = forms.ChoiceField(required=False,widget=forms.Select(attrs={'placeholder': 'Select Model','id': 'sel_model','class':'form-control'}),error_messages={'invalid': 'Please select a valid Model!'})
+    
+    tires_available = forms.IntegerField( label="No. of Wheels Offered",min_value=0,widget=forms.NumberInput(attrs={'placeholder': 'Number of Wheels','id': 'tires_available',}),error_messages={'invalid': 'Please enter value for Tyres_Available!'})
+    
+    wheel_type = forms.ChoiceField(required=False,label="Wheel Type",choices=Wheel_type,widget=forms.Select(attrs={'placeholder': 'Select Wheel Type','id':'wheel_type'}),error_messages={'invalid': 'Please select valid choice for Wheel_Type!'})
+    wheel_color = forms.CharField(required=False,widget=forms.TextInput(attrs={'placeholder': 'Wheel Colour','id':'wheel_color'}),error_messages={'invalid': 'Please enter wheel Color!'}) 
+    specials = forms.ChoiceField(required=False,choices=Specials,widget=forms.Select(attrs={'placeholder': 'Select Wheel Type','id': 'specials',}),error_messages={'invalid': 'Please select valid choice for Specials!'})
+    
+    class Meta:
+        model = Ad
+        #exclude = ('tyre','wheels')
+        fields = ( 'Ad_title', 'category','Year','Make','Model', 'location',
+        'tires_available','offer_price', 'description','wheel_type','wheel_color','specials')
+    
+    def __init__(self, *args, **kwargs):
+        self.request = kwargs.pop("request", None)
+        super(WheelCreateForm, self).__init__(*args, **kwargs)
+
+    def clean(self):
+        self._validate_unique = True
+        self.validate_ad_images()
+        return self.cleaned_data
+
+    def validate_ad_images(self):
+        images = self.request.FILES.getlist('image')
+        if images:
+            for image in images:
+                if image.size > 1 * 6024 * 6024:
+                    raise ValidationError("Image file too large ( > 1mb )")
+        else:
+            raise ValidationError("Couldn't read uploaded images")
+
+
+class ServicesCreateForm(forms.ModelForm):
+    Ad_title = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Ad Title','id': 'ad_title',}),error_messages={'invalid': 'Give a suitble name for your Ad!'})
+    #category = forms.CharField(initial="Services",widget=forms.TextInput(attrs={'readonly':'readonly'}))
+    description = forms.CharField(max_length=250,widget=forms.Textarea(attrs={'placeholder': 'Description upto 250 words','id': 'description',}),error_messages={'invalid': 'Please fill description field!'})
+    offer_price = forms.IntegerField( min_value=0,error_messages={'invalid': 'Please enter offer price!'})
+    location = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Location','id':'search_input'}),error_messages={'invalid': 'Please enter location!'})
+    
+    
+    specials = forms.ChoiceField(required=False,choices=Specials,widget=forms.Select(attrs={'placeholder': 'Select Wheel Type','id': 'specials',}),error_messages={'invalid': 'Please select valid choice for Specials!'})
+    
+    class Meta:
+        model = Ad
+        #exclude = ('tyre','wheels')
+        fields = ( 'Ad_title','category','location','offer_price','description','specials')
+    
+    def __init__(self, *args, **kwargs):
+        self.request = kwargs.pop("request", None)
+        super(ServicesCreateForm, self).__init__(*args, **kwargs)
+
+    def clean(self):
+        self._validate_unique = True
+        self.validate_ad_images()
+        return self.cleaned_data
+
+    def validate_ad_images(self):
+        images = self.request.FILES.getlist('image')
+        if images:
+            for image in images:
+                if image.size > 1 * 6024 * 6024:
+                    raise ValidationError("Image file too large ( > 1mb )")
+        else:
+            raise ValidationError("Couldn't read uploaded images")
+
+
+
+
+   
 
 class AdUpdateForm(forms.ModelForm):
     Ad_title = forms.CharField(error_messages={'invalid': 'Give a suitble name for your Ad!'})

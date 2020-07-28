@@ -180,7 +180,10 @@ img {
       $("#service-form").hide();
       $("#wheel-form").hide();
       
-      
+      $("#div_id_wheel_type").hide();
+      $("#div_id_wheel_color").hide();
+      $("#div_id_specials").hide();
+      $("#div_id_service_type").hide();
      });
      });
 </script>
@@ -195,7 +198,10 @@ img {
       $("#wheel-form").show();
       $("#size-form").hide();
       $("#service-form").hide(); 
-      
+      $("#div_id_On_Rims").hide();
+      $("#div_id_Seasonality").hide();
+      $("#div_id_purpose").hide();
+      $("#div_id_service_type").hide();
    });
    });
 </script>
@@ -212,14 +218,18 @@ img {
       $("#size-form").hide();
       
       $("#wheel-form").hide();
-      
+      $("#div_id_wheel_type").hide();
+      $("#div_id_wheel_color").hide();
+      $("#div_id_On_Rims").hide();
+      $("#div_id_Seasonality").hide();
+      $("#div_id_purpose").hide();
       
    });
    });
 </script> 
 <script>
 $(document).ready(function(){
-$('select option[value="1"]').attr("selected",true);
+$('select option[value="3"]').attr("selected",true);
 $("#id_category").attr('readonly','readonly');
 
 });
@@ -258,8 +268,8 @@ $("#id_category").attr('readonly','readonly');
          <div class="col-sm-12 col-md-8 col-lg-9">
             <div class="row page-content">
                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                 
-                  <form action="{% url 'ads:crate.ad' %}" method="POST" enctype="multipart/form-data" >
+                    
+                  <form action="{% url 'ads:service.ad' %}" method="POST" enctype="multipart/form-data" >
                      {% csrf_token %}
                      <div class="inner-box">
                         <div class="dashboard-box">
@@ -306,112 +316,7 @@ $("#id_category").attr('readonly','readonly');
                        </div> 
                      </div>
                   </form>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                   <div >           
-                  <form action="create" method="POST" enctype="multipart/form-data" id="wheel-form" >
-                     {% csrf_token %}
-                     <div class="inner-box">
-                        <div class="dashboard-box">
-                           <h2 class="dashbord-title">Post Your AD</h2>
-                        </div>
-                        <div class="dashboard-wrapper">
-                           <div class="form-group mb-3 tg-inputwithicon">
-                           <div class="form-group">
-                              <div class="input-icon">
-                              {{form|crispy}}
-                                 
-           
-                              
-                              <label class="tg-fileuploadlabel" for="tg-photogallery">
-                           
-                           <span class="btn btn-common">Select Files</span>
-                           <span>Maximum upload file size: 5MB</span>
-						   <span>Upload only 3 images..</span>
-						   </br>
-						   <div id="preview"></div>
-                           <input id="tg-photogallery"  class="tg-fileinput" multiple
-                              type="file"
-                              accept="image/*"
-                              name="image">
-                           </label>
-                           
-                           
-                           
-                              
-							  <div class="form-group">
-                                 <div class="input-icon">
-                                    
-                                  <a href="/media/Tires on Rent Rental Agreement.docx " download="Tires on Rent Rental Agreement" >
-								  <label >Download <strong>Tires on Rent Rental Agreement</strong> </label>
-                                    </a>
-									<br>
-                                    <a href="/media/Tires on Rent Sale Agreement.docx " download="Tires on Rent Sale Agreement" >
-								  <label>Download <strong>Tires on Rent Sale Agreement</strong> </label>
-                                    </a>
-                                 </div>
-                              </div>
-                           <button class="btn btn-common" type="submit">Post Ad</button> 
-                           </div>
-                          
-                        </div>
-                       </div> 
-                     </div>
-                  </form>
-                  </div>
-                   <div >           
-                  <form action="create" method="POST" enctype="multipart/form-data" id="service-form" >
-                     {% csrf_token %}
-                     <div class="inner-box">
-                        <div class="dashboard-box">
-                           <h2 class="dashbord-title">Post Your AD</h2>
-                        </div>
-                        <div class="dashboard-wrapper">
-                           <div class="form-group mb-3 tg-inputwithicon">
-                           <div class="form-group">
-                              <div class="input-icon">
-                              {{form|crispy}}
-                                 
-           
-                              
-                              <label class="tg-fileuploadlabel" for="tg-photogallery">
-                           
-                           <span class="btn btn-common">Select Files</span>
-                           <span>Maximum upload file size: 5MB</span>
-						   <span>Upload only 3 images..</span>
-						   </br>
-						   <div id="preview"></div>
-                           <input id="tg-photogallery"  class="tg-fileinput" multiple
-                              type="file"
-                              accept="image/*"
-                              name="image">
-                           </label>
-                           
-                           
-                           
-                              
-							  <div class="form-group">
-                                 <div class="input-icon">
-                                    
-                                  <a href="/media/Tires on Rent Rental Agreement.docx " download="Tires on Rent Rental Agreement" >
-								  <label >Download <strong>Tires on Rent Rental Agreement</strong> </label>
-                                    </a>
-									<br>
-                                    <a href="/media/Tires on Rent Sale Agreement.docx " download="Tires on Rent Sale Agreement" >
-								  <label>Download <strong>Tires on Rent Sale Agreement</strong> </label>
-                                    </a>
-                                 </div>
-                              </div>
-                           <button class="btn btn-common" type="submit">Post Ad</button> 
-                           </div>
-                          
-                        </div>
-                       </div> 
-                     </div>
-                  </form>
-                  </div>
+
                </div>
             </div>
          </div>

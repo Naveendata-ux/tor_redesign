@@ -24,6 +24,22 @@ SEASONALITY_TYPE_CHOICES = (
     
 )
 
+SERVICE_TYPE = (
+	('Tire Rotation','Tire Rotation'),
+	('Tire Repair','Tire Repair'),
+	('Wheel Balancing','Wheel Balancing'),
+	('Oil Change','Oil Change'),
+	('Seasonal Tire Change','Seasonal Tire Change'),
+)
+
+Specials_Choices = (
+
+('Limited Time Offer','Limited Time Offer'),
+('Seasonal Discounts','Seasonal Discounts'),
+('Promotional Discounts','Promotional Discounts'),
+('Special Offer','Special Offer')
+)
+
 
 class AdFilter(django_filters.FilterSet):
     category = django_filters.MultipleChoiceFilter(choices=CATEGORY_CHOICES,
@@ -42,8 +58,67 @@ class AdFilter(django_filters.FilterSet):
     Year = django_filters.NumberFilter(label='<b>Year</b>',lookup_expr='exact') 
     Make = django_filters.CharFilter(label='<b>Make</b>',lookup_expr='icontains') 
     Model = django_filters.CharFilter(label='<b>Model</b>',lookup_expr='icontains') 
-    location = django_filters.CharFilter(label='<b>Location</b>',lookup_expr='icontains')  
+    location = django_filters.CharFilter(label='<b>Location</b>',lookup_expr='icontains')
+    
     
     class Meta:
         model = Ad
         fields = ['category', 'Ad_Type','Seasonality', 'Year','Make','Model','location']
+        
+class AdFilterServices(django_filters.FilterSet):
+	location = django_filters.CharFilter(label='<b>Location</b>',lookup_expr='icontains')
+	service_type = django_filters.MultipleChoiceFilter(choices=SERVICE_TYPE,
+                                                   widget=forms.CheckboxSelectMultiple,
+                                                   label='<b>Service Type</b>') 
+	specials = django_filters.MultipleChoiceFilter(choices=Specials_Choices,widget=forms.CheckboxSelectMultiple,label='<b>Special Offers</b>') 
+	
+	class Meta:
+		model = Ad
+		fields = ['location','service_type','specials']
+        
+
+WHEEL_TYPE_CHOICES = (
+    ('Alloy', 'Alloy'),
+    ('Steel', 'Steel'),
+    ('Aluminum', 'Aluminum'),
+    ('Multi Piece', 'Multi Piece'),
+    ('Forged', 'Forged'),
+    
+    
+)
+
+class AdFilterWheels(django_filters.FilterSet):
+	location = django_filters.CharFilter(label='<b>Location</b>',lookup_expr='icontains')
+	wheel_type = django_filters.MultipleChoiceFilter(choices=WHEEL_TYPE_CHOICES,
+                                                   widget=forms.CheckboxSelectMultiple,
+                                                   label='<b>Wheel Type</b>')
+                                                   
+	wheel_color = django_filters.CharFilter(label='<b>Wheel Color</b>',lookup_expr='icontains')
+    
+	specials = django_filters.MultipleChoiceFilter(choices=Specials_Choices,widget=forms.CheckboxSelectMultiple,label='<b>Special Offers</b>')   
+	
+	class Meta:
+		model = Ad
+		fields = ['location','wheel_type','wheel_color','specials']
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

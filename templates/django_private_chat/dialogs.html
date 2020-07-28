@@ -136,7 +136,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollmonitor/1.2.0/scrollMonitor.js"
             integrity="sha256-BseZlDlA+yL4qu+Voi82iFa5aaifralQEXIjOjaXgeo=" crossorigin="anonymous"></script>
     <script>
-        var base_ws_server_path = "wss://<chat-service-tiresonrent>.herokuapp.com/";
+        var base_ws_server_path = "{{ ws_server_path }}";
         $(document).ready(function () {
             var websocket = null;
             var monitor = null;

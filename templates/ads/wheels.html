@@ -1,48 +1,269 @@
-{% extends "users/dashboard.html" %}
+{% extends 'base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/tagsinput.css' %}">
+{% endblock %}
 {% block content %}
 <style>
 body {
     background: #fff;
     font-size: 14px;
     font-weight: 400;
-    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
+    font-family: open sans, sans-serif;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     -webkit-font-smoothing: subpixel-antialiased;
     color: #000;
-    line-height: 25px;
+    font-weight: bold;
+    line-height: 28px;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     overflow-x: hidden;
 }
-h1, h2, h3, h4 {
-    font-size: 27px;
-    color: #003e6b;
-    text-align: center;
-    font-weight: 700;
-    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
+img {
+    vertical-align: middle;
+    border-style: none;
+    padding: 10px;
 }
-
-
 </style>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.0.0.min.js" type="text/javascript"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyBl-OAsRMW2vu8SUJmCe-fa0as9cXuqq68"></script>
+<!-- Google Maps JavaScript library -->
+  
+
+<script type="text/javascript">
+   $(document).ready(function(){
+   $('#purpose').on('change', function() {
+     if ( this.value == 'Rent')
+     {
+       $("#business").show();
+     }
+     else if ( this.value == 'Rent to Sell')
+     {
+       $("#business").show();
+       
+     }
+     else if ( this.value == 'Sell')
+     {
+        $("#business").hide();
+       $("#business3").show();
+     }
+   });
+   });
+</script>
+<script type="text/javascript">
+   $(document).ready(function(){
+   $('#category').on('change', function() {
+     if ( this.value == '1')
+     {
+       $("#business2").show();
+        $("#business4").show();
+       $("#business3").hide();
+     }
+     else if ( this.value == '2')
+     {
+       $("#business2").hide();
+       $("#business3").show();
+        $("#business4").show();
+     }
+     else if ( this.value == '3')
+     {
+       $("#business2").hide();
+       $("#business3").hide();
+       $("#business4").show();
+     }
+   });
+   });
+</script>
+<script type="text/javascript">
+        $(document).ready(function(){
+
+            $("#sel_make").change(function(){
+                var year = $("#sel_year option:selected").text();
+                var makeid = $(this).val();
+                //var makeid = $("#sel_make option:selected").val();
+                var api = '4a7488fedfd6685e3ba26c495bf569c9'
+
+                $("#msg").css("display", "none");
+                //https://api.wheel-size.com/v1/years/?make=mitsubishi&user_key=4a7488fedfd6685e3ba26c495bf569c9
+                // working for makes
+                //https://api.wheel-size.com/v1/makes/?user_key=4a7488fedfd6685e3ba26c495bf569c9
+
+                $.ajax({
+                    url: 'https://api.wheel-size.com/v1/models/?',
+                    type: 'get',
+                    data: {make:makeid, year:year, user_key:api},
+                    dataType: 'json',
+                    success:function(response){
+
+                        var len = response.length;
+                        if(len == 0){
+                            $("#msg").css("display", "block");
+                            $("#sel_model").css("display", "none");
+                        }else{
+                        $("#sel_model").css("display", "block");
+                        }
+
+                        $("#sel_model").empty();
+                        for( var i = 0; i<len; i++){
+                            //var id = response[i]['id'];
+                            var name = response[i]['name'];
+
+                            $("#sel_model").append("<option value='"+name+"'>"+name+"</option>");
+
+                        }
+                    }
+                });
+            });
+
+        });
+        $(document).ready(function(){
+
+            $("#sel_year").change(function(){
+                //var year = $("#sel_year option:selected").text();
+                var year = $(this).val();
+                var makeid = $("#sel_make option:selected").val();
+                //console.log(makeid)
+                if(makeid == "---Select Make---")
+                {
+                	makeid = 'Acura'
+                }
+                var api = '4a7488fedfd6685e3ba26c495bf569c9'
+
+                $("#msg").css("display", "none");
+                //https://api.wheel-size.com/v1/years/?make=mitsubishi&user_key=4a7488fedfd6685e3ba26c495bf569c9
+                // working for makes
+                //https://api.wheel-size.com/v1/makes/?user_key=4a7488fedfd6685e3ba26c495bf569c9
+
+                $.ajax({
+                    url: 'https://api.wheel-size.com/v1/models/?',
+                    type: 'get',
+                    data: {make:makeid, year:year, user_key:api},
+                    dataType: 'json',
+                    success:function(response){
+
+                        var len = response.length;
+                        if(len == 0){
+                            $("#msg").css("display", "block");
+                            $("#sel_model").css("display", "none");
+                        }else{
+                        $("#sel_model").css("display", "block");
+                        }
+
+                        $("#sel_model").empty();
+                        for( var i = 0; i<len; i++){
+                            //var id = response[i]['id'];
+                            var name = response[i]['name'];
+
+                            $("#sel_model").append("<option value='"+name+"'>"+name+"</option>");
+
+                        }
+                    }
+                });
+            });
+
+        });
+      </script>
+  <script>
+   $(document).ready(function(){
+      $("#size-form").hide();
+      $("#wheel-form").hide();
+      $("#service-form").hide();
+      
+      $("#defaultGroupExample1").click(function(){
+      $("#size-form").show();
+      $("#service-form").hide();
+      $("#wheel-form").hide();
+      
+      $("#div_id_wheel_type").hide();
+      $("#div_id_wheel_color").hide();
+      $("#div_id_specials").hide();
+      $("#div_id_service_type").hide();
+     });
+     });
+</script>
+
+<script>   
+      $(document).ready(function(){
+      $("#size-form").hide();
+      $("#wheel-form").hide();
+      $("#service-form").hide();
+      
+      $("#defaultGroupExample2").click(function(){
+      $("#wheel-form").show();
+      $("#size-form").hide();
+      $("#service-form").hide(); 
+      $("#div_id_On_Rims").hide();
+      $("#div_id_Seasonality").hide();
+      $("#div_id_purpose").hide();
+      $("#div_id_service_type").hide();
+   });
+   });
+</script>
+
+<script>  
+      $(document).ready(function(){
+       $("#service-form").hide();
+       $("#size-form").hide();
+      $("#wheel-form").hide();
+      
+      
+      $("#defaultGroupExample3").click(function(){
+      $("#service-form").show();
+      $("#size-form").hide();
+      
+      $("#wheel-form").hide();
+      $("#div_id_wheel_type").hide();
+      $("#div_id_wheel_color").hide();
+      $("#div_id_On_Rims").hide();
+      $("#div_id_Seasonality").hide();
+      $("#div_id_purpose").hide();
+      
+   });
+   });
+</script> 
+
+<script>
+$(document).ready(function(){
+$('select option[value="2"]').attr("selected",true);
+$("#id_category").attr('readonly','readonly');
+
+});
+
+
+</script>
+<style type="text/css">
+  #id_category{
+  pointer-events: none;
+}
+</style>
+
+
+  </br>
+  </br>
+  </br>
+
 <div class="page-header" style="background: url('{% static 'assets/img/banner1.jpg' %}');">
    <div class="container">
       <div class="row">
          <div class="col-md-12">
             <div class="breadcrumb-wrapper">
-               <h2 class="product-title">Post you Ads</h2>
+               
                <ol class="breadcrumb">
                   <li><a href="{% url 'core:home' %}">Home /</a></li>
-                  <li class="current">Post you Ads</li>
+                  <li class="current">Post your Ad</li>
                </ol>
             </div>
          </div>
       </div>
    </div>
 </div>
+
 <div id="content" class="section-padding">
    <div class="container">
       <div class="row">
@@ -50,36 +271,161 @@ h1, h2, h3, h4 {
          <div class="col-sm-12 col-md-8 col-lg-9">
             <div class="row page-content">
                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  {% if form.errors %}
-                  {% for error in form.non_field_errors %}
-                  <div class="alert alert-danger alert-dismissable">
-                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                     <strong>{{ error|escape }}</strong>
-                  </div>
-                  {% endfor %}
-                  {% endif %}
-                  <div class= "col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                     <h2>Post Your Ad</h2>
-                     <form  action="{% url 'ads:wheelsad' %}" method="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <div class="inner-box">
-                           <div class="dashboard-box">
-                              <h2 class="dashbord-title">Ad Detail</h2>
+                    
+                  <form action="{% url 'ads:wheels.ad' %}" method="POST" enctype="multipart/form-data" >
+                     {% csrf_token %}
+                     <div class="inner-box">
+                        <div class="dashboard-box">
+                           <h2 class="dashbord-title">Post Your AD</h2>
+                        </div>
+                        <div class="dashboard-wrapper">
+                           <div class="form-group mb-3 tg-inputwithicon">
+                           <div class="form-group">
+                              <div class="input-icon">
+                              {{form|crispy}}
+                                 
+           
+                              
+                              <label class="tg-fileuploadlabel" for="tg-photogallery">
+                           
+                           <span class="btn btn-common">Select Files</span>
+                           <span>Maximum upload file size: 5MB</span>
+						   <span>Upload only 3 images..</span>
+						   </br>
+						   <div id="preview"></div>
+                           <input id="tg-photogallery"  class="tg-fileinput" multiple
+                              type="file"
+                              accept="image/*"
+                              name="image">
+                           </label>
+                           
+   
+							  <div class="form-group">
+                                 <div class="input-icon">
+                                    
+                                  <a href="/media/Tires on Rent Rental Agreement.docx " download="Tires on Rent Rental Agreement" >
+								  <label >Download <strong>Tires on Rent Rental Agreement</strong> </label>
+                                    </a>
+									<br>
+                                    <a href="/media/Tires on Rent Sale Agreement.docx " download="Tires on Rent Sale Agreement" >
+								  <label>Download <strong>Tires on Rent Sale Agreement</strong> </label>
+                                    </a>
+                                 </div>
+                              </div>
+                           <button class="btn btn-common" type="submit">Post Ad</button> 
                            </div>
-                           {{wheels}}
-                           {{ad}}
-                            {{image}}
-                       
-                        
-                        <input type="submit" name="" class="btn btn-common" value="POST AD">
-                     </form>
-                  </div>
+                          
+                        </div>
+                       </div> 
+                     </div>
+                  </form>
+
                </div>
-               </form>
             </div>
          </div>
       </div>
    </div>
 </div>
-</div>
+</br></br>
+
+
+<script>
+var searchInput = 'search_input';
+ 
+$(document).ready(function () {
+ var autocomplete;
+ autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+  types: ['geocode'],
+  componentRestrictions: {
+   country:["CA"]
+  }
+ });
+  
+ google.maps.event.addListener(autocomplete, 'place_changed', function () {
+  var near_place = autocomplete.getPlace();
+ });
+});
+</script>
+
+<script>
+   var inputBox = document.getElementById('chatinput2');
+   
+   inputBox.onkeyup = function(){
+       document.getElementById('printchatbox2').innerHTML = inputBox.value;
+   }
+   
+</script>
+<script>
+   var inputBox2 = document.getElementById('chatinput');
+   
+   inputBox2.onkeyup = function(){
+       document.getElementById('printchatbox').innerHTML = inputBox2.value;
+   }
+   
+</script>
+
+<script>
+   $('input[name="offer_price"]').keyup(function() {
+       var a = $('input[name="Tenure_offered"]').val();
+       var b = $(this).val();
+       $('input[name="box3"]').val(a * b);
+   });
+</script>
+<script>
+   function previewImages() {
+   
+     var preview = document.querySelector('#preview');
+     
+     if (this.files) {
+       [].forEach.call(this.files, readAndPreview);
+     }
+   
+     function readAndPreview(file) {
+   
+       // Make sure `file.name` matches our extensions criteria
+       if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
+         return alert(file.name + " is not an image");
+       } // else...
+       
+       var reader = new FileReader();
+       
+       reader.addEventListener("load", function() {
+         var image = new Image();
+         image.height = 100;
+         image.title  = file.name;
+         image.src    = this.result;
+         preview.appendChild(image);
+       });
+       
+       reader.readAsDataURL(file);
+       
+     }
+   
+   }
+   
+   document.querySelector('#tg-photogallery').addEventListener("change", previewImages);
+</script>
+<script type="text/javascript">
+$(function(){
+    $("button[type='submit']").click(function(){
+        var $fileUpload = $("input[type='file']");
+        if (parseInt($fileUpload.get(0).files.length)>3){
+         alert("You can only upload a maximum of 3 files");
+        }
+    });    
+});
+</script>
+
+{% endblock %}
+{% block scripts %}
+<script type="text/javascript" src="{% static 'assets/js/tagsinput.js' %}"></script>
+<script type="text/javascript">
+   $('#summernote').summernote({
+       height: 250, // set editor height
+       minHeight: null, // set minimum height of editor
+       maxHeight: null, // set maximum height of editor
+       focus: false // set focus to editable area after initializing summernote
+   });
+</script>
+
 {% endblock %}

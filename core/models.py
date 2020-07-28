@@ -33,7 +33,7 @@ def validate_only_one_instance(obj):
 
 class Ad(models.Model): 
     user = models.ForeignKey(User, on_delete=models.CASCADE,  default=1)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     Ad_title = models.CharField(max_length=256, verbose_name="Ad title")
     offer_price = models.PositiveIntegerField(verbose_name="Ad price",default =1)
     featured = models.BooleanField(default=False)
@@ -55,8 +55,15 @@ class Ad(models.Model):
     tires_available = models.PositiveIntegerField(default =0)
     Tenure_offered = models.PositiveIntegerField(default =1)
     Ad_Type = models.CharField(max_length=250)
-    Wheels_Brand = models.CharField(max_length=50)
-    Seasonality= models.CharField(max_length=50)
+    Wheels_Brand = models.CharField(max_length=50,null=True, blank=True)
+    Seasonality= models.CharField(max_length=50,null=True, blank=True)
+    wheel_type = models.CharField(max_length=50,null=True, blank=True)
+    wheel_color = models.CharField(max_length=50,null=True, blank=True)
+    specials = models.CharField(max_length=50,null=True, blank=True)
+    service_type = models.CharField(max_length=50,null=True, blank=True)
+    
+    
+    
     
 
     def __str__(self):

@@ -8,8 +8,9 @@ from core.mixins import CustomLoginRequiredMixin
 from core.models import *
 from django.shortcuts import render,get_object_or_404,redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .filters import AdFilter
+from .filters import AdFilter,AdFilterServices,AdFilterWheels
 from django.contrib.auth.decorators import login_required
+
 
 # import the wonderful decorator
 #from djstripe.decorators import subscription_payment_required
@@ -72,6 +73,78 @@ class AdCreateView(CustomLoginRequiredMixin, CreateView):
             return HttpResponseRedirect(self.get_success_url())
         else:
             return self.form_invalid(form)
+
+class AdCreateViewWheels(CustomLoginRequiredMixin, CreateView):
+    template_name = 'ads/wheels.html'
+    form_class = WheelCreateForm
+    success_url = reverse_lazy('users:dashboard')
+
+    def get_context_data(self, **kwargs):
+        context = super(AdCreateViewWheels, self).get_context_data(**kwargs)
+        context['categories'] = Category.objects.all()
+        return context
+
+    def get_form_kwargs(self):
+        """Return the keyword arguments for instantiating the form."""
+        kwargs = super().get_form_kwargs()
+        kwargs.update({'request': self.request})
+        return kwargs
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(AdCreateViewWheels, self).form_valid(form)
+    
+    
+    def post(self, request, *args, **kwargs):
+        self.object = None
+        form = self.get_form()
+        if form.is_valid():
+            # print(self.request.FILES.getlist('image'))
+            self.form_valid(form)
+            files = self.request.FILES.getlist('image')
+            for image in files:
+                photo = AdImage(ad=self.object, image=image)
+                photo.save()
+            return HttpResponseRedirect(self.get_success_url())
+        else:
+            return self.form_invalid(form)
+
+
+class AdCreateViewServices(CustomLoginRequiredMixin, CreateView):
+    template_name = 'ads/services.html'
+    form_class = ServicesCreateForm
+    success_url = reverse_lazy('users:dashboard')
+
+    def get_context_data(self, **kwargs):
+        context = super(AdCreateViewServices, self).get_context_data(**kwargs)
+        context['categories'] = Category.objects.all()
+        return context
+
+    def get_form_kwargs(self):
+        """Return the keyword arguments for instantiating the form."""
+        kwargs = super().get_form_kwargs()
+        kwargs.update({'request': self.request})
+        return kwargs
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(AdCreateViewServices, self).form_valid(form)
+    
+    
+    def post(self, request, *args, **kwargs):
+        self.object = None
+        form = self.get_form()
+        if form.is_valid():
+            # print(self.request.FILES.getlist('image'))
+            self.form_valid(form)
+            files = self.request.FILES.getlist('image')
+            for image in files:
+                photo = AdImage(ad=self.object, image=image)
+                photo.save()
+            return HttpResponseRedirect(self.get_success_url())
+        else:
+            return self.form_invalid(form)
+
 
 
 class AdUpdateView(CustomLoginRequiredMixin, UpdateView):
@@ -240,6 +313,36 @@ def filter(request):
 
     context = {'filter': ad_filter, 'ads': ads}
     return render(request, 'ads/filter.html', context)
+
+def filter_wheels(request):
+    ad_filter_wheels = AdFilterWheels(request.GET, queryset=Ad.objects.all())
+    page = request.GET.get('page')
+    paginator = Paginator(ad_filter_wheels.qs, 4)
+    try:
+        ads = paginator.page(page)
+    except PageNotAnInteger:
+        ads = paginator.page(1)
+    except EmptyPage:
+        ads = paginator.page(paginator.num_pages)
+
+    context = {'filter': ad_filter_wheels, 'ads': ads}
+    return render(request, 'ads/filter_wheels.html', context)
+
+
+def filter_services(request):
+    ad_filter_services = AdFilterServices(request.GET, queryset=Ad.objects.all())
+    page = request.GET.get('page')
+    paginator = Paginator(ad_filter_services.qs, 4)
+    try:
+        ads = paginator.page(page)
+    except PageNotAnInteger:
+        ads = paginator.page(1)
+    except EmptyPage:
+        ads = paginator.page(paginator.num_pages)
+
+    context = {'filter': ad_filter_services, 'ads': ads}
+    return render(request, 'ads/filter_services.html', context)
+
 
 
 def search(request):

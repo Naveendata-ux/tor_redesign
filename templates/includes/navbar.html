@@ -23,7 +23,13 @@ position: fixed;
   height: 90px;
   background-color: #00a087;
 }
+
+.fa{
+    color: red; 
+    background: radial-gradient(grey 50%, transparent 50%);
+}
 </style>
+
 <div class="box-shadow">
 <nav class="navbar navbar-expand-lg bg-white scrolling-navbar fixed-top">
     <div class="container">
@@ -87,8 +93,8 @@ position: fixed;
             </ul>
                       
             {% if request.user.is_authenticated %}
-            <div class="post-btn">
-                <a class="btn btn-common" href="{% url 'ads:crate.ad' %}">
+            <div class="post-btn" >
+                <a class="btn btn-common" href="{% url 'ads:crate.ad' %}" data-toggle="modal" data-target="#exampleModal">
                      Post Ad
                 </a>
             </div>
@@ -118,7 +124,7 @@ position: fixed;
                 <a href="{% url 'accounts:logout' %}">Logout</a>
             </li>
             <li>
-            <a class="btn btn-common " href="{% url 'ads:crate.ad' %}">
+            <a class="btn btn-common " >
                  Post Ad
             </a>
         </li>
@@ -138,6 +144,42 @@ position: fixed;
         {% endif %}
         
     </ul>
-
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Please Choose a Category</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="text-center">
+      <div class="row-cols-2">
+                           <a  class="btn btn-squared-default-plain btn-danger" href="{% url 'ads:crate.ad' %}">
+                           <i class="fa fa-car"></i>
+                           <br/>
+                           <strong>Tire</strong>
+                           </a>
+                           <a  class="btn btn-squared-default-plain btn-danger"  href="{% url 'ads:wheels.ad' %}" >
+                           <i class="fa fa-life-ring"></i>
+                           <br />
+                           <strong class="text-white font-weight-bolder">Wheels</strong>
+                           </a>
+                           <a  class="btn btn-squared-default-plain btn-danger" href="{% url 'ads:service.ad' %}">
+                           <i class="fa fa-cogs"></i>
+                           <br/>
+                           <strong>Services</strong>
+                           </a>
+                        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
 </nav>
+<script type="text/javascript">
+
+ 
+  </script>
 <div>
