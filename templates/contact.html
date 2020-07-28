@@ -1,68 +1,337 @@
-{% extends "base.html" %}
-{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% load static %}
-{% block content %}
-<br><br><br>
-<div class="page-header" style="background: url(assets/img/banner1.jpg);">
-<div class="container">
-<div class="row">
-<div class="col-md-12">
-<div class="breadcrumb-wrapper">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<ol class="breadcrumb">
-<li><a href="{% url 'core:home' %}">Home /</a></li>
-<li class="curret">Contact Us</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-</div>
+  <title>TOR Tires On Rent - Contact US</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+ <!-- Favicons -->
+  <link href="/media/newdesigns/img/favicon.png"  rel="icon">
+  <link href="/media/newdesigns/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/media/newdesigns/vendor/bootstrap/css/bootstrap.min.css"  rel="stylesheet">
+  <link href="/media/newdesigns/vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="/media/newdesigns/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="/media/newdesigns/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/media/newdesigns/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/media/newdesigns/css/style.css" rel="stylesheet">
+  <link href="/media/newdesigns/css/radio.css" rel="stylesheet">
+
+  <link href="/media/newdesigns/css/main02.css" rel="stylesheet" />
+  <link href="/media/newdesigns/fonts/fonts.css" rel="stylesheet" />
+
+  <!-- =======================================================
+  * Template Name: EstateAgency - v2.1.0
+  * Template URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+
+<style type="text/css">
+  .div-contact p {
+    font-size: 20px;
+}
 
 
+  /* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: 1px solid #ebebeb;
+  background: #fff;
+}
 
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
 
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
 
-<section id="content"  >
-<div class="container">
+/* Set a style for the submit button */
+.registerbtn {
+  background-color: #c91f3d;
+  color: white;
+  padding: 10px 20px;
+  margin: 0px 0;
+  border: none;
+  cursor: pointer;
+  width: 40%;
+  opacity: 0.9;
+  float: left;
+}
 
-<div class="row">
-<div class="col-lg-8 col-md-8 col-xs-12">
-<div class="head-faq text-left">
-<h3 class="section-title">Send Message To Us</h3>
-</div>
+.registerbtn:hover {
+  opacity: 1;
+}
 
-<form enctype="multipart/form-data" method="POST">
-          {% csrf_token %}
-          {{ contact|crispy }}
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+.section-register .about-bg {
+    padding: 70px 200px;
+}
+
+img.img-form {
+    width: 49%;
+}
+
+.fa-form {
+    padding-bottom: 35px;
+}
+
+.section-register .about-bg {
+    padding: 70px 130px;
+}
+
+input#mobile {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: 1px solid #ebebeb;
+    background: #fff;
+}
+
+@media (max-width: 767px) { 
+  .section-register h2 {
+    font-size: 30px;
+  }
+
+  .registerbtn {
+    width: 55% !important;
+  }
+
+  .div-contact p {
+    font-size: 18px;
+  }
+
+  form {
+    margin-bottom: 35px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+  <!-- ======= Header/Navbar ======= -->
+  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand text-brand" href="{% url 'core:home' %}"><img class="img logo" src="/media/newdesigns/img/logo-tor.png" /></a>
+      <!-- <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-expanded="false">
+        <span class="fa fa-search" aria-hidden="true"></span>
+      </button> -->
+    <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link " href="{% url 'core:home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'core:about' %}">About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'core:contact' %}">Contact us</a>
+          </li>
+          {% if request.user.is_authenticated %}
+           <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Welcome, {{ request.user.username }} 
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'users:dashboard' %}">Dashboard</a>
+              <a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a>              
+            </div>
+          {% else %}
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:register' %}">Register</a>
+          </li>
+          {% endif %}
+          <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Pages
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="property-single.html">Property Single</a>
+              <a class="dropdown-item" href="blog-single.html">Blog Single</a>
+              <a class="dropdown-item" href="agents-grid.html">Agents Grid</a>
+              <a class="dropdown-item" href="agent-single.html">Agent Single</a>
+            </div>
+          </li> -->
           
-          <input type="submit"class="btn btn-common " name="" value="Submit Form">
-          </br>
-          </br>
-        </form>
-</div>
 
-<div class="col-lg-4 col-md-4 col-xs-12">
-</br>
-<div class="information mb-4">
-<h3>Address</h3>
-<div class="contact-datails">
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc metus lectus, viverra vehicula porta id, posuere at massa. Nam sollicitudin porta nunc.</p>
-</div>
-</div>
-<div class="information">
-<h3>Contact Info</h3>
-<div class="contact-datails">
-<ul class="list-unstyled info">
-<li><span>Address : </span><p> 9870 St Vincent Place, Glasgow, DC 45 Fr 45</p></li>
-<li><span>Email : </span><p><a href="#">support@mail.com</a></p></li>
-<li><span>Phone : </span><p>555 444 66647 & 555 444 66647</p></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-{% endblock %}
+          <li class="nav-item a-tor-nav">
+            <a class="nav-link" href="contact.html">Post  AD</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Mobile -->
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav><!-- End Header/Navbar -->
+
+  <main id="main">
+
+    <!-- ======= Services Section ======= -->
+    <section class="section-register section-t8">
+      <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <h2>Contact Tires On Rent</h2>
+              <div class="border-tor"></div>
+            </div>
+          </div>
+          <br>
+          <br>
+          <div class="about-bg">
+            <div class="row">
+              <div class="col-md-6">
+                <form action="/action_page.php">
+                  <div class="container-fluid01">
+                    
+                    <label for="Name"><b>Name</b></label>
+                    <input type="text" placeholder="" name="name" id="name" required>
+
+                    <label for="email"><b>Email</b></label>
+                    <input type="text" placeholder="" name="email" id="email" required>
+
+                    <label for="mobile"><b>Mobile No</b></label>
+                    <input type="mobile" placeholder="" name="mobile" id="mobile" required>
+                    <br>
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+
+                    <button type="submit" class="registerbtn">send message</button> <p style="text-align: right; margin-top: 10px;">Fields with * are required.</p>
+                  </div>
+                  
+                </form>
+              </div>
+
+              <div class="col-md-6">
+                <div class="div-contact">
+                  <p>Address<br>
+9870 st vincent place,Glasgow,<br>
+Dc45 Fr45</p>
+                  <br>
+                  <br>
+                <p>Telephones<br>
+Support : +1 555 444 66647<br>
+                    
+Email addresses<br>
+contact@mail.com<br>
+Support@mail.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </section><!-- End Services Section -->
+
+  </main><!-- End #main -->
+
+  
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-4" id="footer-left">
+          <nav class="nav-footer">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="{% url 'core:about' %}">About Us</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="{% url 'core:faqs' %}">faq’S</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="{% url 'core:contact' %}">Contact US</a>
+              </li>
+            </ul>
+          </nav>
+          <ul class="list-inline list-nav">
+            <li><a href="{% url 'core:privacypolicy' %}">Privacy policy</a></li>
+            <li><a href="{% url 'core:termsofservice' %}">Terms & Conditions</a></li>
+          </ul>
+        </div>
+    
+    <div class="col-sm-12 col-md-3"></div>
+    
+    <div class="col-sm-12 col-md-5">
+      <div class="socials-a">
+        <ul class="list-inline list-nav03">
+          <li class="list-inline-item">
+          <a href="#">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+          </a>
+          </li>
+          <li class="list-inline-item">
+          <a href="#">
+            <i class="fa fa-youtube-play" aria-hidden="true"></i>
+          </a>
+          </li>
+          <li class="list-inline-item">
+          <a href="#">
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+          </a>
+          </li>
+        </ul>
+
+        <ul class="list-inline list-nav02">
+          <li><p>Copyright © 2020 - tires on rent Inc. All rights reserved.</p></li>
+        </ul>
+      </div>
+    </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="/media/newdesigns/vendor/jquery/jquery.min.js"></script>
+  <script src="/media/newdesigns/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/media/newdesigns/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="/media/newdesigns/vendor/php-email-form/validate.js"></script>
+  <script src="/media/newdesigns/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="/media/newdesigns/vendor/scrollreveal/scrollreveal.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/media/newdesigns/js/main.js"></script>
+  <script src="/media/newdesigns/js/jquery-2.1.4.js"></script>
+
+  <script src="/media/newdesigns/js/choices.js"></script>
+
+</body>
+
+</html>

@@ -1,142 +1,226 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
 
-<style>
-body, button, html, input, select, textarea {
-    font-family: Galano Grotesque,sans-serif;
-}
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-h1 {
-    font-size: 43px;
-    color: #333;
-    font-weight: 700;
-    font-family: roboto, sans-serif;
-}
-</style>
+  <title>TOR Tires On Rent - About Us</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
 
-</br>
-<section id="about" class="section-padding">
-<div class="text-center">
-<h1 style=color:#003e6b;>Our Story</h1>
-<a style=color:#3d5769;>
-Our story didn't come into life instantly. It has gone through a comprehensive thought process of several years</br> before finally becoming what it is today. For an unknowingly long enough time, the founders of this </br>company have been travelling around the beautiful states of Canada and trying to find a way </br>to make people's lives easier and more convenient. 
-</a>
-</div>
-</div>
-</br>
-<section id="about" class="section-padding">
-<div class="container">
-<div class="row">
-<div class="col-md-6 col-lg-6 col-xs-12">
-<div class="about-wrapper">
-<h3 class="intro-title"style=color:#003e6b;>The Idea</h3>
-<a class="intro-desc" style=color:#3d5769;>
-The idea of a classified ads platform wasn't ignited until our months of observance had led us to an astonishing realization that many young drivers, students and underprivileged individuals did not bother changing the tires of their vehicle even if they were completely worn out or almost about to come out. One question led to another until we found out that many of these people are not financially powerful and have actually no choice but to stick to their old worn-out tires because they cannot buy new ones.
-</a>
+  <!-- Favicons -->
+  <link href="/media/newdesigns/img/favicon.png"  rel="icon">
+  <link href="/media/newdesigns/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-</div>
-</div>
-<div class="col-md-6 col-lg-6 col-xs-12">
-<img class="img-fluid" src="/media/idea.jpg" alt="">
-</div>
-</div>
-</div>
-</section>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 
-<section id="about" class="section-padding">
-<div class="container">
-<div class="row">
-<div class="col-md-6 col-lg-6 col-xs-12">
-<div class="about-wrapper">
-<img class="img-fluid" src="/media/research.jpg" alt="">
+  <!-- Vendor CSS Files -->
+  <link href="/media/newdesigns/vendor/bootstrap/css/bootstrap.min.css"  rel="stylesheet">
+  <link href="/media/newdesigns/vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="/media/newdesigns/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="/media/newdesigns/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/media/newdesigns/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
 
+  <!-- Template Main CSS File -->
+  <link href="/media/newdesigns/css/style.css" rel="stylesheet">
+  <link href="/media/newdesigns/css/radio.css" rel="stylesheet">
 
-</div>
-</div>
-<div class="col-md-6 col-lg-6 col-xs-12">
-<h3 class="intro-title"style=color:#003e6b;>Comprehensive research on tires Industry.</h3>
-<a class="intro-desc" style=color:#3d5769;>
-We then decided to carry out a comprehensive research into the tires industry which was another 
-shocking discovery that being able to afford all four brand new tires for a car isn't something 
-a substantially large population of people can do. </br></br>The most painful irony, however, is that while 
-those in need of urgent replacement of their tires cannot buy new ones due to tight budgets, some 
-wealthy citizens are not aware of these underprivileged individuals and they end up either throwing 
-away their slightly-used tires or sell them away at a ridiculously low price to exploitative dealers, 
-thinking that who would even care to buy a tire anyway.</br></br>
+  <link href="/media/newdesigns/css/main02.css" rel="stylesheet" />
+  <link href="/media/newdesigns/fonts/fonts.css" rel="stylesheet" />
 
+  <!-- =======================================================
+  * Template Name: EstateAgency - v2.1.0
+  * Template URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
 
-we came up with the idea of connecting these car owners who had tires in good condition or extra 
-wheels available to lease away with those people who couldn't afford new tires and would benefit 
-substantially if they could get even these slightly-used tires. 
-</div>
-</div>
-</div>
-</section>
-<section id="about" class="section-padding">
-<div class="container">
-<div class="row">
-<div class="col-md-6 col-lg-6 col-xs-12">
-<div class="about-wrapper">
-<h3 class="intro-title"style=color:#003e6b;>TOR as Platform.</h3>
-<a class="intro-desc" style=color:#3d5769;>
-Nowadays, getting things on installment and rent is a popular method to own something you cannot afford. So we thought why not incorporate this idea into an actual company which connects the car owners and tire seekers together? That's when our idea came into life and we started doing some serious work because we knew this would help thousands, if not millions, of people drive more safely with tires that are in a better condition. We understand how you feel. This is precisely why the idea of Tires On Rent (TOR) was born, a Canadian classified ads platform with the primary objective of making tire ownership affordable, convenient and easy for everyone.
+<body>
 
-</a>
-
-</div>
-</div>
-<div class="col-md-6 col-lg-6 col-xs-12">
-<img class="img-fluid" src="/media/about.png" alt="">
-</div>
-</div>
-</div>
-</section>
-
-
-<section class="testimonial ">
+  <!-- ======= Header/Navbar ======= -->
+  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div id="testimonials" class="owl-carousel">
-                    
-                    <div class="item">
-                        <div class="item">
-                        <div class="testimonial-item">
-                        <div class="content">
-						<h3 class=""style="color:#003e6b;font-size: 25px;text-align: center;">Mission Statement</h3>
-						</br>
-						<div class="text-center">
-                        <p class="description">To provide an innovative platform for vehicle owners, businesses and tire seekers to exchange services as an alternative to the conventional buying system.</p>
-                        </div>
-                        </div>
-                        </div>
-                        </div>
-                        </div>
-                        <div class="item">
-                        <div class="item">
-                        <div class="testimonial-item">
-                        <div class="content">
-						<h3 class=""style="color:#003e6b;font-size: 25px;text-align: center;">Vision Statement</h3>
-						</br>
-						<div class="text-center">
-                        <p class="description">To revolutionize the industry by providing affordable and convenient solutions for people to buy and rent vehicular products so that everyone can drive safely. </p>
-                       </div>
-                        </div>
-                        </div>
-                        </div>
-                        </div>
-                                            
-                   
-                        </div>
-                    </div>
-                </div>
+      <a class="navbar-brand text-brand" href="index.html"><img class="img logo" src="/media/newdesigns/img/logo-tor.png" /></a>
+      <!-- <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-expanded="false">
+        <span class="fa fa-search" aria-hidden="true"></span>
+      </button> -->
+      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link " href="{% url 'core:home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'core:about' %}">About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'core:contact' %}">Contact us</a>
+          </li>
+          {% if request.user.is_authenticated %}
+           <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Welcome, {{ request.user.username }} 
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'users:dashboard' %}">Dashboard</a>
+              <a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a>              
             </div>
+          {% else %}
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:register' %}">Register</a>
+          </li>
+          {% endif %}
+           
+          
+
+          <li class="nav-item a-tor-nav">
+            <a class="nav-link" href="contact.html">Post  AD</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Mobile -->
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav><!-- End Header/Navbar -->
+
+  <main id="main">
+
+    <!-- ======= Services Section ======= -->
+    <section class="section-about section-t8">
+      <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <h2>About Tires On Rent</h2>
+              <div class="border-tor"></div>
+            </div>
+          </div>
+          <br>
+          <br>
+          <div class="about-bg">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="div-about-bg">
+                  <h3>Every big revolution begins with a<br>
+  tiny spark of inspiration.</h3>
+                  <p>And that’s how Tires On Rent was born.</p>
+                  <p>For months together, we observed that a good number of students and financially challenged individuals had to put up with worn-out tires that were potentially risky – endangering their lives and the lives of those travelling with them. The reason was simple – unaffordability.</p>
+                  <p>Our prolonged and deeper research revealed another fascinating side of the picture.<br>
+  Many wealthy people, blissfully unaware of the plight of the financially weaker segment, were literally discarding their moderately used tires or selling them for ridiculously low prices to exploitative buyers.</p><br>
+                  <p><img class="img img-about02" src="img/02about.jpg" alt="" /></p>
+                  <p>Then, out of the blue, came that little spark of an idea.</p>
+
+                  <p>What if we could bring the tire seekers and tire owners together in one common platform?<br>
+  The tire seekers could enjoy the double benefit of affordability and safety.</p>
+
+                  <p>And the tire owners could profit from those spare tires, besides of course deriving the satisfaction of serving someone in need.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6" id="mobile-tor">
+                <img class="img-about03" src="img/logo-tor.png" alt="" />
+              </div>
+
+              <div class="col-md-6" style="text-align: justify;">
+                <p>That was how <strong style="color: #000;">Tires On Rent (TOR) was born.</strong> </p>
+                <p>A Canadian based online classified ads portal, TOR is the most convenient and the most innovative platform that links tire seekers with tire owners.</p>
+                <p>We, the founders of TOR, strive to create a better, safer and a happier world.</p>
+                <p>Well, we are on a roll in our journey of success and we are sure to implement more path-breaking features to further delight our customers.</p>
+              </div>
+
+              <div class="col-md-6" id="win-tor">
+                <img class="img-about03" src="/media/newdesigns/img/logo-tor.png" alt="" />
+              </div>
+            </div>
+          </div>
+      </div>
+    </section><!-- End Services Section -->
+
+  </main><!-- End #main -->
+
+  
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-4" id="footer-left">
+          <nav class="nav-footer">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="{% url 'core:about' %}">About Us</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="{% url 'core:faqs' %}">faq’S</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="{% url 'core:contact' %}">Contact US</a>
+              </li>
+            </ul>
+          </nav>
+          <ul class="list-inline list-nav">
+            <li><a href="{% url 'core:privacypolicy' %}">Privacy policy</a></li>
+            <li><a href="{% url 'core:termsofservice' %}">Terms & Conditions</a></li>
+          </ul>
         </div>
-    </div>
-    </div>
     
-</section>
+    <div class="col-sm-12 col-md-3"></div>
+    
+    <div class="col-sm-12 col-md-5">
+      <div class="socials-a">
+        <ul class="list-inline list-nav03">
+          <li class="list-inline-item">
+          <a href="#">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+          </a>
+          </li>
+          <li class="list-inline-item">
+          <a href="#">
+            <i class="fa fa-youtube-play" aria-hidden="true"></i>
+          </a>
+          </li>
+          <li class="list-inline-item">
+          <a href="#">
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+          </a>
+          </li>
+        </ul>
 
+        <ul class="list-inline list-nav02">
+          <li><p>Copyright © 2020 - tires on rent Inc. All rights reserved.</p></li>
+        </ul>
+      </div>
+    </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
 
-{% endblock %}
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+    <!-- Vendor JS Files -->
+  <script src="/media/newdesigns/vendor/jquery/jquery.min.js"></script>
+  <script src="/media/newdesigns/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/media/newdesigns/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="/media/newdesigns/vendor/php-email-form/validate.js"></script>
+  <script src="/media/newdesigns/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="/media/newdesigns/vendor/scrollreveal/scrollreveal.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/media/newdesigns/js/main.js"></script>
+  <script src="/media/newdesigns/js/jquery-2.1.4.js"></script>
+
+  <script src="/media/newdesigns/js/choices.js"></script>
+
+</body>
+
+</html>

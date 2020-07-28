@@ -1,164 +1,359 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
-</br>
-</br>
-</br>
-<div class="page-header" style="background: url(assets/img/banner1.jpg);">
-<div class="container">
-<div class="row">
-<div class="col-md-12">
-<div class="breadcrumb-wrapper">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<ol class="breadcrumb">
-<li><a href="{% url 'core:home' %}">Home /</a></li>
-<li class="current">Privacy Policy</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-</div>
+  <title>TOR Tires On Rent - Privacy policy</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
 
+   <!-- Favicons -->
+  <link href="/media/newdesigns/img/favicon.png"  rel="icon">
+  <link href="/media/newdesigns/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-<div class="faq section-padding">
-<div class="container">
-<div class="row">
-<div class="col-md-12">
-<div class="head-faq text-center">
-<h2 class="section-title">Privacy policy</h2>
-</div>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 
-<div class="panel-group" id="accordion">
-<div class="panel panel-default">
+  <!-- Vendor CSS Files -->
+  <link href="/media/newdesigns/vendor/bootstrap/css/bootstrap.min.css"  rel="stylesheet">
+  <link href="/media/newdesigns/vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="/media/newdesigns/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="/media/newdesigns/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/media/newdesigns/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
 
+  <!-- Template Main CSS File -->
+  <link href="/media/newdesigns/css/style.css" rel="stylesheet">
+  <link href="/media/newdesigns/css/radio.css" rel="stylesheet">
 
-<div class="panel-body">
-<p>At Tires On Rent Inc, we recognize and appreciate the importance our customers place on privacy and the security of their personal information.  Our goal is to protect your personal information in every way that we can when we interact with you, whether it's on the phone, in our showroom, or on the internet.<br><br> 
-We think it is important for you to be informed of the policies, procedures, and security measures we have in place to safeguard your personal and confidential information. With that in mind, we have developed this policy to help you to understand the steps we take to protect your personal information when you utilize our internet services.<br><br>   
-We may utilize the services of third-party providers to assist us in providing online services, such as website/app hosting. These third-party providers are referred to within this policy as service providers. 
-<br>
+  <link href="/media/newdesigns/css/main02.css" rel="stylesheet" />
+  <link href="/media/newdesigns/fonts/fonts.css" rel="stylesheet" />
 
-</div>
-</div>
-</div>
-<div class="panel-group" id="accordion">
-<div class="panel panel-default">
-<div class="panel-body">
-<p style="font-size:25px;color:#373373">Information Collected on the Internet</p>
-<hr/style="background-color:#373373;">
+  <!-- =======================================================
+  * Template Name: EstateAgency - v2.1.0
+  * Template URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 
-<br><br>
-<p style="font-size:25px;color:#373373;">General Information.</p>
-<hr/style="background-color:#373373;">
-<p> Service providers helping our website/app collect general non-personally identifiable information on all website/app visitors. This information is collected on our behalf simply for administrative, statistical, and security purposes so that we may provide online services to you.  This Institution and/or its service provider(s) may use cookies to collect some of this general information which includes:  
-<br><br>The Internet address (referral site) which brought you to our web site;
-<br><br>The date and time you access our site;
-<br><br>The name and version of your web browser;
-<br><br>The Internet service provider you used when you accessed our site;
-<br><br>Your Internet Protocol (IP) address; and
-</p>
-<br><br>
+</head>
 
-</div></div></div>
+<body>
 
-<p style="font-size:25px;color:#373373;">Registration.</p><hr/style="background-color:#373373;"> <p>website/app visitors are  required to register in order to utilize certain features of our website/app. The registration process allows user to access other features of the website/app including but not limited to as viewing the listings put up by manufacturers, placing an order. During the registration, we collect the following information
+  <!-- ======= Header/Navbar ======= -->
+  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand text-brand" href="{% url 'core:home' %}"><img class="img logo" src="/media/newdesigns/img/logo-tor.png" /></a>
+      <!-- <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-expanded="false">
+        <span class="fa fa-search" aria-hidden="true"></span>
+      </button> -->
+      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'core:home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'core:about' %}">About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'core:contact' %}">Contact us</a>
+          </li>
+          {% if request.user.is_authenticated %}
+           <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Welcome, {{ request.user.username }} 
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'users:dashboard' %}">Dashboard</a>
+              <a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a>              
+            </div>
+          {% else %}
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:register' %}">Register</a>
+          </li>
+          {% endif %}
+           
+          
+         {% if request.user.is_authenticated %}
+          <li class="nav-item a-tor-nav">
+            <a class="nav-link" href="{% url 'ads:crate.ad' %}">Post  AD</a>
+          </li>
+          {% else %}
+          <li class="nav-item a-tor-nav">
+            <a class="nav-link" href="{% url 'accounts:login' %}">Post  AD</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+      <!-- Mobile -->
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav><!-- End Header/Navbar -->
 
-<br>First and the Last name
-<br><br>Email address
-<br><br>Billing address
-<br><br>Any other information relevant for commencement of business.
-</p>
-<br><br>
+  <main id="main">
 
-<p style="font-size:25px;color:#373373;">Other information:</p><hr/style="background-color:#373373;"><p>  We may collect additional information if website/app visitors knowingly and willingly provide that information to us, such as when you send us an email. If you provide us information, it is only used internally and in furtherance of the purpose for which it was provided
-</p>
-<br><br>
+    <!-- ======= Services Section ======= -->
+    <section class="section-pp section-t8">
+      <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <h2>Privacy policy</h2>
+              <div class="border-tor"></div>
+            </div>
+          </div>
+          <br>
+          <br>
+          <div class="about-bg">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="div-about-bg">
+                  <p>At Tires On Rent Inc, we recognize and appreciate the importance our customers place on privacy and the security of their personal information. Our goal is to protect your personal information in every way that we can when we interact with you, whether it's on the phone, in our showroom, or on the internet.</p>
 
-<p style="font-size:25px;color:#373373;">Internet Protocol (IP) Addresses</p>
-<hr/style="background-color:#373373;"><p>An IP address is a number that's automatically assigned to your computer whenever you're on the Internet.  Web servers, the computers that "serve up" web pages, automatically identify your computer by its IP address.  When collecting information for us, our service provider does not link IP addresses to anything personally identifiable; however, this institution and our service providers may use IP addresses to audit the use of our site. We can and will use IP addresses to identify a user when necessary for security purposes. 
-</p>
-<br><br>
+<p>We think it is important for you to be informed of the policies, procedures, and security measures we have in place to safeguard your personal and confidential information. With that in mind, we have developed this policy to help you to understand the steps we take to protect your personal information when you utilize our internet services.</p>
 
-<p style="font-size:25px;color:#373373;">What is a Cookie?</p>
-<hr/style="background-color:#373373;"><p>A cookie is a very small text file sent by a web server and stored on your hard drive, your computer’s memory, or in your browser so that it can be read back later.  Cookies are a basic way for a server to identify the computer you happen to be using at the time. Cookies are used for many things from personalizing start up pages to facilitating online purchases.  Cookies help sites recognize return visitors and they perform a very important function in secure Internet banking. 
-<br><br>Our service provider uses cookies simply to facilitate the customization and personalization of our website/app. For your security, our service provider does not store any personally identifiable information in cookies which are further described below. 
-</p>
-<br><br>
+<p>We may utilize the services of third-party providers to assist us in providing online services, such as website/app hosting. These third-party providers are referred to within this policy as service providers.</p>
+                  <br>
+                  <h4>Information Collected on the Internet</h4>
+                  <hr>
+                  <br>
+                  <h4>General Information.</h4>
+                  <hr>
+                  <br>
+                  <p style="text-align: justify;">Service providers helping our website/app collect general non-personally identifiable information on all website/app visitors. This information is collected on our behalf simply for administrative, statistical, and security purposes so that we may provide online services to you. This Institution and/or its service provider(s) may use cookies to collect some of this general information which includes:</p>
+                  <br>
+                  <p>The Internet address (referral site) which brought you to our web site;</p>
+                  <p>The name and version of your web browser;</p>
+                  <p>The Internet service provider you used when you accessed our site;</p>
+                  <p>Your Internet Protocol (IP) address; and</p>
+                  <br>
+                  <h4>Registration.</h4>
+                  <hr>
+                  <br>
+                  <p>website/app visitors are required to register in order to utilize certain features of our website/app. The registration process allows user to access other features of the website/app including but not limited to as viewing the listings put up by manufacturers, placing an order. During the registration, we collect the following information</p>
+                  <p> First and the Last name</p>
+                  <p>Email address </p>
+                  <p>Billing address</p>
+                  <p>Any other information relevant for commencement of business.</p>
+                  <br>
+                  <h4>Other information:</h4>
+                  <hr>
+                  <br>
+                  <p>We may collect additional information if website/app visitors knowingly and willingly provide that information to us, such as when you send us an email. If you provide us information, it is only used internally and in furtherance of the purpose for which it was provided</p>
+                  <br>
+                  <br>
+                  <h4>Internet Protocol (IP) Addresses</h4>
+                  <hr><br>
+                  <p>An IP address is a number that's automatically assigned to your computer whenever you're on the Internet. Web servers, the computers that "serve up" web pages, automatically identify your computer by its IP address. When collecting information for us, our service provider does not link IP addresses to anything personally identifiable; however, this institution and our service providers may use IP addresses to audit the use of our site. We can and will use IP addresses to identify a user when necessary for security purposes.</p>
+                  <br>
+                  <h4>What is a Cookie?</h4>
+                  <hr><br>
+                  <p>A cookie is a very small text file sent by a web server and stored on your hard drive, your computer’s memory, or in your browser so that it can be read back later. Cookies are a basic way for a server to identify the computer you happen to be using at the time. Cookies are used for many things from personalizing start up pages to facilitating online purchases. Cookies help sites recognize return visitors and they perform a very important function in secure Internet banking.
+                    <br><br>
+                  Our service provider uses cookies simply to facilitate the customization and personalization of our website/app. For your security, our service provider does not store any personally identifiable information in cookies which are further described below.</p>
+                  <br>
+                  <br>
+                  <h4>Website Cookies:</h4>
+                  <hr>
+                  <br>
+                  <p>
+                    When you register on our website and select the “Remember Me” checkbox, our service provider sends a cookie to your hard drive, which enables you to customize the website and bypass the login process each time you revisit. These cookies are retained on your computer until you either delete them or click on the logout link within the website. These cookies only contain a unique user identification number and do not contain or collect any personally identifiable information.
+                    <br><br>
+                    When registered users login to the website, our service provider may also send cookies called "per-session" cookies or "server-side" cookies. These cookies reside in the browser and are only used to monitor the session by a unique identification number. These cookies are used for security purposes and you must allow your browser to accept these cookies in order to use the website. These cookies are destroyed after eight hours.
+                    <br><br>
+                    When you click on advertisements in our website or advertisements on linked 3rd party web sites, you may receive another cookie. You do not have to accept these cookies to visit the website.
+                  </p>
+                  <br>
+                  <br>
+                  <h4>Use of Information Collected</h4>
+                  <hr>
+                  <br>
+                  <p>
+                    In order to provide online services, such as our customizable website/app, we must share all customer information collected over the Internet with our service provider(s). We have a confidentiality agreement with our service provider(s) to protect your personal information to the same extent that we must do.
+                    <br><br>
+                    We do not sell any of your personal information.
+                    <br><br>
+                    We will not disclose any medical information that you provide to us, unless you specifically authorize its disclosure.
+                    <br><br>
+                    We may disclose aggregate (not personally identifiable) customer information that we collect on our website/app to service providers, companies, and/or financial institutions that perform marketing and research services on our behalf and with whom we have joint marketing. Our contracts require these service providers, companies and/or financial institutions to protect the confidentiality of your personal information to the same extent that we must do.
+               
+                  </p>
+                  <br>
+                  <br>
+                  <h4>Email Policies</h4>
+                  <hr>
+                  <br>
+                  <p>When you register on our website/app we will use your email address to send you a welcome letter.</p>
+                  <br><br>
+                  <p>If you send us an email, please do not include any non-public personal or sensitive information as email messages may not be secure and/or confidential.</p>
+                  <br>
+                  <br>
+                  <h4>External 3rd Party Links</h4>
+                  <hr>
+                  <br>
+                  <p>
+                    Our website/app may include numerous links to other 3rd party sites. These links to external third parties are offered as a courtesy and a convenience to our customers. When you visit these sites, you will leave our website/app and will be redirected to another site.
+                    <br>
+                    <br>
+                    This Institution does not control linked 3rd party sites. We are not an agent for these third parties nor do we endorse or guarantee their products. We make no representation or warranty regarding the accuracy of the information contained in the linked sites. We suggest that you always verify information obtained from linked website/app before acting upon this information. Also, please be aware that the security and privacy policies on these sites may be different from our policies, so please read third party privacy and security policies closely.
+                    <br><br>
+                    While using our website/app, you may still see our logo when visiting other 3rd party sites. A technique called “Framing” allows us to display our logo and look and feel while allowing you to browse another site at the same time. It’s important to note that while you may still see our logo and frame, any information you provide to a 3rd party is not covered by our privacy or security policies.
+                    <br><br>
+                    If you have questions or concerns about the privacy policies and practices of linked third parties, please review their website/app and contact them directly. This privacy policy applies solely to information collected by this Institution.
+                  </p>
+                  <br>
+                  <br>
+                  <h4>Security</h4>
+                  <hr>
+                  <br>
+                  <p>This Institution and its service providers have developed strict policies and procedures to safeguard your personal information. We restrict employee access to your sensitive personal information to a "need to know" basis. We maintain physical, electronic, and procedural safeguards that comply with federal regulations to guard your non-public personal information. We educate our employees about the importance of confidentiality and customer privacy. We take appropriate disciplinary measures to enforce employee privacy responsibilities.</p>
+                  <br>
+                  <br>
+                  <h4>Legal Compliances</h4>
+                  <hr>
+                  <br>
+                  <p>
+                    We reserve the right to disclose information about customers where required in good faith, to do so by law or to exercise our legal rights or defend ourselves against legal claims.
+                    <br>
+                    <br>
+                    We further reserve the right to share information with law enforcement to investigate or prevent illegal activities being committed over our network.
+                    <br>
+                    <br>
+                    We reserve our rights to disclose your personal information where you have given us explicit legal written consent to do so.
+                    <br>
+                    <br>
+                    We reserve the right to monitor user and network traffic for site security purposes and prevent any unauthorized attempts to tamper with our site or cause damage to our property.
+                    <br>
+                    <br>
+                    We reserve the right to make changes to this privacy policy or update it. Where a major change is made, customers will be informed by e-mail notification or through a notice on our website. Customers and site visitors bear the responsibility to ensure that they have read the changes or updates as the case may be.
+                  </p>
+                  <br>
+                  <br>
+                  <h4>Privacy of Children</h4>
+                  <hr>
+                  <br>
+                  <p>
+                    We respect the privacy of children. We do not knowingly collect names, emails addresses, or any other personally identifiable information from children. We do not knowingly market to children on our website/app.
+                    <br>
+                    <br>
+                    Our website/app may include linked 3rd party sites that would be of interest to children. We are not responsible for the privacy and security practices of these sites. Parents should review the privacy policies of these sites closely before allowing children to visit these sites and provide any personally identifiable information.
+                  </p>
+                  <br>
+                  <br>
+                  <h4>Copyright infringement</h4>
+                  <hr>
+                  <br>
+                  <p>All and any data that is published on the website/app cannot be used for any commercial purposes. The customers are allowed to do the following
+                    <br><br>
+                    Using the data only for personal use (downloading pictures etc.).
+                    <br><br>
+                    Non- personal usage of all the content on the website/app is prohibited.
+                    <br><br>
+                    No content published on the website/app can be published unless the permission is given in written by the website/app and/or by the manufacturer, except the provisions mentioned above.
+                  </p>
+                  <br>
+                  <br>
+                  <h4>Governing law</h4>
+                  <hr>
+                  <br>
+                  <p>This privacy policy and all the transactions taking place on the website/app are subject to the laws Ontario, Canada.</p>
+                  <br>
+                  <h4>Privacy Updates</h4>
+                  <hr>
+                  <br>
+                  <p>New product releases may require changes to our Privacy Policy. The effective date of our policy will always be clearly displayed. If we make any changes regarding the use or disclosure of your personal information, we will provide you prior notice and the opportunity to opt-out of such disclosure if required by law.</p>
+                  <br>
+                  <h4>Questions</h4>
+                  <hr>
+                  <br>
+                  <p>If you have any questions about our privacy policy or concerns about our privacy practices, please contact us at</p>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </section><!-- End Services Section -->
 
-<p style="font-size:25px;color:#373373;">Website Cookies:</p>
-<hr/style="background-color:#373373;"><p>When you register on our website and select the “Remember Me” checkbox, our service provider sends a cookie to your hard drive, which enables you to customize the website and bypass the login process each time you revisit. These cookies are retained on your computer until you either delete them or click on the logout link within the website. These cookies only contain a unique user identification number and do not contain or collect any personally identifiable information.
-<br><br>When registered users login to the website, our service provider may also send cookies called  "per-session" cookies or "server-side" cookies. These cookies reside in the browser and are only used to monitor the session by a unique identification number. These cookies are used for security purposes and you must allow your browser to accept these cookies in order to use the website. These cookies are destroyed after eight hours. 
-<br><br>When you click on advertisements in our website or advertisements on linked 3rd party web sites, you may receive another cookie.  You do not have to accept these cookies to visit the website.
-</p>
-<br><br>
+  </main><!-- End #main -->
 
-<p style="font-size:25px;color:#373373;">Use of Information Collected</p>
-<hr/style="background-color:#373373;"><p>In order to provide online services, such as our customizable website/app, we must share all customer information collected over the Internet with our service provider(s). We have a confidentiality agreement with our service provider(s) to protect your personal information to the same extent that we must do.
-<br><br>We do not sell any of your personal information.
-<br><br>We will not disclose any medical information that you provide to us, unless you specifically authorize its disclosure.
-<br><br>We may disclose aggregate (not personally identifiable) customer information that we collect on our website/app to service providers, companies, and/or financial institutions that perform marketing and research services on our behalf and with whom we have joint marketing. Our contracts require these service providers, companies and/or financial institutions to protect the confidentiality of your personal information to the same extent that we must do.
-</p>
-<br><br>
+  
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-4" id="footer-left">
+          <nav class="nav-footer">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="{% url 'core:about' %}">About Us</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="{% url 'core:faqs' %}">faq’S</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="{% url 'core:contact' %}">Contact US</a>
+              </li>
+            </ul>
+          </nav>
+          <ul class="list-inline list-nav">
+            <li><a href="{% url 'core:privacypolicy' %}">Privacy policy</a></li>
+            <li><a href="{% url 'core:termsofservice' %}">Terms & Conditions</a></li>
+          </ul>
+        </div>
+    
+    <div class="col-sm-12 col-md-3"></div>
+    
+    <div class="col-sm-12 col-md-5">
+      <div class="socials-a">
+        <ul class="list-inline list-nav03">
+          <li class="list-inline-item">
+          <a href="#">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+          </a>
+          </li>
+          <li class="list-inline-item">
+          <a href="#">
+            <i class="fa fa-youtube-play" aria-hidden="true"></i>
+          </a>
+          </li>
+          <li class="list-inline-item">
+          <a href="#">
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+          </a>
+          </li>
+        </ul>
 
-<p style="font-size:25px;color:#373373;">Email Policies</p>
-<hr/style="background-color:#373373;"><p>When you register on our website/app we will use your email address to send you a welcome letter.
-<br><br>If you send us an email, please do not include any non-public personal or sensitive information as email messages may not be secure and/or confidential.
-</p>
-<br><br>
-<p style="font-size:25px;color:#373373;">External 3rd Party Links </p>
-<hr/style="background-color:#373373;"><p>Our website/app may include numerous links to other 3rd party sites.  These links to external third parties are offered as a courtesy and a convenience to our customers.  When you visit these sites, you will leave our website/app and will be redirected to another site.
-<br><br>This Institution does not control linked 3rd party sites.  We are not an agent for these third parties nor do we endorse or guarantee their products.  We make no representation or warranty regarding the accuracy of the information contained in the linked sites.  We suggest that you always verify information obtained from linked website/app before acting upon this information. Also, please be aware that the security and privacy policies on these sites may be different from our policies, so please read third party privacy and security policies closely. 
-<br><br>While using our website/app, you may still see our logo when visiting other 3rd party sites.  A technique called “Framing” allows us to display our logo and look and feel while allowing you to browse another site at the same time. It’s important to note that while you may still see our logo and frame, any information you provide to a 3rd party is not covered by our privacy or security policies. 
-<br><br>If you have questions or concerns about the privacy policies and practices of linked third parties, please review their website/app and contact them directly. This privacy policy applies solely to information collected by this Institution.  
-</p>
-<br><br>
-<p style="font-size:25px;color:#373373;">Security</p>
-<hr/style="background-color:#373373;"><p>This Institution and its service providers have developed strict policies and procedures to safeguard your personal information. We restrict employee access to your sensitive personal information to a "need to know" basis. We maintain physical, electronic, and procedural safeguards that comply with federal regulations to guard your non-public personal information. We educate our employees about the importance of confidentiality and customer privacy.  We take appropriate disciplinary measures to enforce employee privacy responsibilities.
-</p>
-<br><br>
+        <ul class="list-inline list-nav02">
+          <li><p>Copyright © 2020 - tires on rent Inc. All rights reserved.</p></li>
+        </ul>
+      </div>
+    </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
 
-<p style="font-size:25px;color:#373373;">Legal Compliances</p>
-<hr/style="background-color:#373373;"><p>We reserve the right to disclose information about customers where required in good faith, to do so by law or to exercise our legal rights or defend ourselves against legal claims.
-<br><br>We further reserve the right to share information with law enforcement to investigate or prevent illegal activities being committed over our network.
-<br><br>We reserve our rights to disclose your personal information where you have given us explicit legal written consent to do so.
-<br><br>We reserve the right to monitor user and network traffic for site security purposes and prevent any unauthorized attempts to tamper with our site or cause damage to our property.
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <div id="preloader"></div>
 
-<br><br>We reserve the right to make changes to this privacy policy or update it. Where a major change is made, customers will be informed by e-mail notification or through a notice on our website. Customers and site visitors bear the responsibility to ensure that they have read the changes or updates as the case may be.
-</p>
-<br><br>
-<p style="font-size:25px;color:#373373;">Privacy of Children</p>
-<hr/style="background-color:#373373;"><p>We respect the privacy of children.  We do not knowingly collect names, emails addresses, or any other personally identifiable information from children.  We do not knowingly market to children on our website/app.
-<br><br>Our website/app may include linked 3rd party sites that would be of interest to children.  We are not responsible for the privacy and security practices of these sites.  Parents should review the privacy policies of these sites closely before allowing children to visit these sites and provide any personally identifiable information.  
-</p>
-<br><br>
-<p style="font-size:25px;color:#373373;">Copyright infringement</p>
-<hr/style="background-color:#373373;"><p>All and any data that is published on the website/app cannot be used for any commercial purposes. The customers are allowed to do the following
-<br><br>Using the data only for personal use (downloading pictures etc.).
-<br><br>Non- personal usage of all the content on the website/app is prohibited.
-<br><br>No content published on the website/app can be published unless the permission is given in written by the website/app and/or by the manufacturer, except the provisions mentioned above.
-</p>
-<br><br>
-<p style="font-size:25px;color:#373373;">Governing law</p>
-<hr/style="background-color:#373373;"><p>This privacy policy and all the transactions taking place on the website/app are subject to the laws Ontario, Canada.
-</p>
-<br><br>
-<p style="font-size:25px;color:#373373;">Privacy Updates</p>
+  <!-- Vendor JS Files -->
+  <script src="/media/newdesigns/vendor/jquery/jquery.min.js"></script>
+  <script src="/media/newdesigns/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/media/newdesigns/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="/media/newdesigns/vendor/php-email-form/validate.js"></script>
+  <script src="/media/newdesigns/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="/media/newdesigns/vendor/scrollreveal/scrollreveal.min.js"></script>
 
-<hr/style="background-color:#373373;"><p>New product releases may require changes to our Privacy Policy.  The effective date of our policy will always be clearly displayed. If we make any changes regarding the use or disclosure of your personal information, we will provide you prior notice and the opportunity to opt-out of such disclosure if required by law. 
-</p>
-<br><br>
-<p style="font-size:25px;color:#373373;">Questions</p>
-<hr/style="background-color:#373373;"><p>If you have any questions about our privacy policy or concerns about our privacy practices, please contact us at 
-</p>
-</div>
+  <!-- Template Main JS File -->
+  <script src="/media/newdesigns/js/main.js"></script>
+  <script src="/media/newdesigns/js/jquery-2.1.4.js"></script>
 
-</div>
-</div>
-</div>
-</div>
+  <script src="/media/newdesigns/js/choices.js"></script>
+</body>
 
-
-
-{% endblock %}
-
+</html>

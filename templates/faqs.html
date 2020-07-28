@@ -1,280 +1,349 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
-</br>
-</br>
-</br>
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<div class="page-header" style="background: url(assets/img/banner1.jpg);">
-<div class="container">
-<div class="row">
-<div class="col-md-12">
-<div class="breadcrumb-wrapper">
+  <title>TOR Tires On Rent - Privacy policy</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
 
-<ol class="breadcrumb">
-<li><a href="{% url 'core:home' %}">Home /</a></li>
-<li class="current">FAQ</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-</div>
+   <!-- Favicons -->
+  <link href="/media/newdesigns/img/favicon.png"  rel="icon">
+  <link href="/media/newdesigns/img/apple-touch-icon.png" rel="apple-touch-icon">
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 
-<div class="faq section-padding">
-<div class="container">
-<div class="row">
-<div class="col-md-12">
-<div class="head-faq text-center">
-<h2 class="section-title">Frequently Asked Questions</h2>
-</div>
+  <!-- Vendor CSS Files -->
+  <link href="/media/newdesigns/vendor/bootstrap/css/bootstrap.min.css"  rel="stylesheet">
+  <link href="/media/newdesigns/vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="/media/newdesigns/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="/media/newdesigns/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/media/newdesigns/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-<div class="panel-group" id="accordion">
-<div class="panel panel-default">
-<div class="panel-heading">
-<h4 class="panel-title">
-<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-	What is TOR about?
-</a>
-</h4>
-</div>
-<div id="collapseOne" class="panel-collapse collapse show">
-<div class="panel-body">
-<p>Tires On Rent is a classified ads website where owners can post ads about their extra or unwanted tires and tire seekers can rent or rent to own or buy the tires they need. Once the tire seeker finds his/her tires, they can contact the tire owner for next steps.
- All transactions will happen outside of this website.<br>
+  <!-- Template Main CSS File -->
+  <link href="/media/newdesigns/css/style.css" rel="stylesheet">
+  <link href="/media/newdesigns/css/radio.css" rel="stylesheet">
 
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<h4 class="panel-title">
-<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-Do you have any physical store where I can visit to check the tires available?
-</a>
-</h4>
-</div>
-<div id="collapseTwo" class="panel-collapse collapse">
-<div class="panel-body">
-<p>
-No, we don't have a physical store. However, you can browse all the available tire ads on our website. 
-For your convenience, you can do everything from the comfort of your home.</p>
-<br>
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<h4 class="panel-title">
-<a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-Is there a minimum or maximum period regarding the tenure of my tire rental?
-</a>
-</h4>
-</div>
-<div id="collapseThree" class="panel-collapse collapse">
-<div class="panel-body">
-<p>
-This is something you and the tires owner can discuss with complete liberty and agree upon what 
-tenure works best for both you and the owner. Our website does not restrict on how long you can 
-rent tires for. 
-</p>
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<h4 class="panel-title">
-<a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-How do I pay the owner if I have selected the tire I want?
-</a>
-</h4>
-</div>
-<div id="collapseFour" class="panel-collapse collapse">
-<div class="panel-body">
-<p>
-All payments made for tires to rent, rent to own or buy are done directly to the tire owners by 
-the tire seekers on the agreed payment method. You don't need to worry about the hassles of paying online.
-</p>
-<br>
+  <link href="/media/newdesigns/css/main02.css" rel="stylesheet" />
+  <link href="/media/newdesigns/fonts/fonts.css" rel="stylesheet" />
 
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<h4 class="panel-title">
-<a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
-How does Rent to Own option work?
-</a>
-</h4>
-</div>
-<div id="collapseFive" class="panel-collapse collapse">
-<div class="panel-body">
-<p>
-Generally speaking, renting tires is an option for a shorter duration like for a season or for 6 months. 
-However, under Rent to Own option, tire seeker keeps the tires forever but the tenure could be longer than a season.
- For example, if you rent the tires to own, you can rent them for an year and after one year you don’t have to pay anymore and keep the tires. Price could be little more than what you pay for just renting. Its all between the owner and tire seeker to negotiate the price and tenure
-</p>
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<h4 class="panel-title">
-<a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
-What happens if my newly rented/bought tire goes flat?
-</a>
-</h4>
-</div>
-<div id="collapseSix" class="panel-collapse collapse">
-<div class="panel-body">
-<p>
-In such a case, you will need to contact the vehicle owner to discuss if they had any insurance. 
-Or you can have them fixed if you had owned the tires. The Tires On Rent company will not be held 
-liable if anything happens to the tires you have purchased.
-</p>
-<br>
+  <!-- =======================================================
+  * Template Name: EstateAgency - v2.1.0
+  * Template URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<h4 class="panel-title">
-<a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">
-Do you have any insurance policies which I can purchase?
-</a>
-</h4>
-</div>
-<div id="collapseSeven" class="panel-collapse collapse">
-<div class="panel-body">
-<p>
-No, we do not deal in insurance policies, at least for now.
-</p>
-<br>
+</head>
 
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<h4 class="panel-title">
-<a data-toggle="collapse" data-parent="#accordion" href="#collapseEight">
-What if I want a refund?
-</a>
-</h4>
-</div>
-<div id="collapseEight" class="panel-collapse collapse">
-<div class="panel-body">
-<p>
-Refunds are possible but only in cases where the reasons are valid. This is because the deal was sealed with an agreement and it is not possible to just back off from the agreement anytime. However, in the case of a legit reason, you are allowed to take back your refund e.g. you paid for a month, used the tires for 3 days, you may be refunded by the tire owner for the remaining days of the month that you paid for. Returns and refunds are at the owners discretion.
-</p>
-<br>
+<body>
 
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<h4 class="panel-title">
-<a data-toggle="collapse" data-parent="#accordion" href="#collapseNine">
-Can I buy rims and wheels on your platform?
-</a>
-</h4>
-</div>
-<div id="collapseNine" class="panel-collapse collapse">
-<div class="panel-body">
-<p>
-Yes you can buy them, just search and buy. Contact the owner for the price negotiations and arrange the pickup location and time.
-</p>
-<br>
+  <!-- ======= Header/Navbar ======= -->
+  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand text-brand" href="{% url 'core:home' %}"><img class="img logo" src="/media/newdesigns/img/logo-tor.png" /></a>
+      <!-- <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-expanded="false">
+        <span class="fa fa-search" aria-hidden="true"></span>
+      </button> -->
+      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'core:home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'core:about' %}">About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'core:contact' %}">Contact us</a>
+          </li>
+          {% if request.user.is_authenticated %}
+           <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Welcome, {{ request.user.username }} 
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'users:dashboard' %}">Dashboard</a>
+              <a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a>              
+            </div>
+          {% else %}
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:register' %}">Register</a>
+          </li>
+          {% endif %}
+           
+          
+         {% if request.user.is_authenticated %}
+          <li class="nav-item a-tor-nav">
+            <a class="nav-link" href="{% url 'ads:crate.ad' %}">Post  AD</a>
+          </li>
+          {% else %}
+          <li class="nav-item a-tor-nav">
+            <a class="nav-link" href="{% url 'accounts:login' %}">Post  AD</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+      <!-- Mobile -->
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav><!-- End Header/Navbar -->
 
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<h4 class="panel-title">
-<a data-toggle="collapse" data-parent="#accordion" href="#collapseTen">
-Can I trade my tires with the tires of the vehicle's owner?
-</a>
-</h4>
-</div>
-<div id="collapseTen" class="panel-collapse collapse">
-<div class="panel-body">
-<p>
-Unfortunately, trading is not allowed on our website. We only allow renting, buying and renting-to-own options. 
-</p>
-<br>
+  <main id="main">
 
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<h4 class="panel-title">
-<a data-toggle="collapse" data-parent="#accordion" href="#collapseEleven">
-I've run out of money and I can no longer afford the rent, what do I do?
-</a>
-</h4>
-</div>
-<div id="collapseEleven" class="panel-collapse collapse">
-<div class="panel-body">
-<p>
-Your situation is understandable and such unfortunate events can occur. When such situation arises, you may need to contact the tire owner to redefine terms of your agreement.
-</p>
-<br>
+    <!-- ======= Services Section ======= -->
+    <section class="section-pp section-t8">
+      <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <h2>Frequently Asked Questions</h2>
+              <div class="border-tor"></div>
+            </div>
+          </div>
+          <br>
+          <br>
+          <div class="about-bg">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="div-about-bg">
+                    <!-- accordion -->
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <a href="#" class="heading">
+                                <div class="icon"></div>
+                                <div class="title"><h4>What is TOR about?</h4></div>
+                            </a>
+                    
+                            <div class="content">
+                                <p>
+                                   Tires On Rent is a classified ads website where owners can post ads about their extra or unwanted tires and tire seekers can rent or rent to own or buy the tires they need. Once the tire seeker finds his/her tires, they can contact the tire owner for next steps. All transactions will happen outside of this website.
+                                </p>
+                            </div>
+                        </div>
+                    
+                        <div class="accordion-item">
+                            <a href="#" class="heading">
+                                <div class="icon"></div>
+                                <div class="title"><h4>Do you have any physical store where I can visit to check the tires available?</h4></div>
+                            </a>
+                    
+                            <div class="content">
+                                <p>No, we don't have a physical store. However, you can browse all the available tire ads on our website. For your convenience, you can do everything from the comfort of your home.</p>
+                            </div>
+                        </div>
+                    
+                        <div class="accordion-item">
+                            <a href="#" class="heading">
+                                <div class="icon"></div>
+                                <div class="title"><h4>Is there a minimum or maximum period regarding the tenure of my tire rental?</h4></div>
+                            </a>
+                    
+                            <div class="content">
+                                <p>This is something you and the tires owner can discuss with complete liberty and agree upon what tenure works best for both you and the owner. Our website does not restrict on how long you can rent tires for.</p>
+                            </div>
+                        </div>
+                    
+                        <div class="accordion-item">
+                            <a href="#" class="heading">
+                                <div class="icon"></div>
+                                <div class="title"><h4>How do I pay the owner if I have selected the tire I want?</h4></div>
+                            </a>
+                    
+                            <div class="content">
+                                <p>All payments made for tires to rent, rent to own or buy are done directly to the tire owners by the tire seekers on the agreed payment method. You don't need to worry about the hassles of paying online.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <a href="#" class="heading">
+                                <div class="icon"></div>
+                                <div class="title"><h4>How does Rent to Own option work?</h4></div>
+                            </a>
+                    
+                            <div class="content">
+                                <p>Generally speaking, renting tires is an option for a shorter duration like for a season or for 6 months. However, under Rent to Own option, tire seeker keeps the tires forever but the tenure could be longer than a season. For example, if you rent the tires to own, you can rent them for an year and after one year you don’t have to pay anymore and keep the tires. Price could be little more than what you pay for just renting. Its all between the owner and tire seeker to negotiate the price and tenure</p>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <a href="#" class="heading">
+                                <div class="icon"></div>
+                                <div class="title"><h4>What happens if my newly rented/bought tire goes flat?</h4></div>
+                            </a>
+                    
+                            <div class="content">
+                                <p>In such a case, you will need to contact the vehicle owner to discuss if they had any insurance. Or you can have them fixed if you had owned the tires. The Tires On Rent company will not be held liable if anything happens to the tires you have purchased.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <a href="#" class="heading">
+                                <div class="icon"></div>
+                                <div class="title"><h4>Do you have any insurance policies which I can purchase?</h4></div>
+                            </a>
+                    
+                            <div class="content">
+                                <p>No, we do not deal in insurance policies, at least for now</p>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <a href="#" class="heading">
+                                <div class="icon"></div>
+                                <div class="title"><h4>What if I want a refund?</h4></div>
+                            </a>
+                    
+                            <div class="content">
+                                <p>Refunds are possible but only in cases where the reasons are valid. This is because the deal was sealed with an agreement and it is not possible to just back off from the agreement anytime. However, in the case of a legit reason, you are allowed to take back your refund e.g. you paid for a month, used the tires for 3 days, you may be refunded by the tire owner for the remaining days of the month that you paid for. Returns and refunds are at the owners discretion.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <a href="#" class="heading">
+                                <div class="icon"></div>
+                                <div class="title"><h4>Can I buy rims and wheels on your platform?</h4></div>
+                            </a>
+                    
+                            <div class="content">
+                                <p>Yes you can buy them, just search and buy. Contact the owner for the price negotiations and arrange the pickup location and time.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <a href="#" class="heading">
+                                <div class="icon"></div>
+                                <div class="title"><h4>Can I trade my tires with the tires of the vehicle's owner?</h4></div>
+                            </a>
+                    
+                            <div class="content">
+                                <p>Unfortunately, trading is not allowed on our website. We only allow renting, buying and renting-to-own options.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <a href="#" class="heading">
+                                <div class="icon"></div>
+                                <div class="title"><h4>I've run out of money and I can no longer afford the rent, what do I do?</h4></div>
+                            </a>
+                    
+                            <div class="content">
+                                <p>Your situation is understandable and such unfortunate events can occur. When such situation arises, you may need to contact the tire owner to redefine terms of your agreement.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <a href="#" class="heading">
+                                <div class="icon"></div>
+                                <div class="title"><h4>What if I only want the tires for a few days?</h4></div>
+                            </a>
+                    
+                            <div class="content">
+                                <p>That's definitely possible. There's no minimum or maximum rental tenure on our platform. Such terms can be discussed with your chosen tires' owner and we will finalize it with a rental agreement so the rights of both the parties are secure.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <a href="#" class="heading">
+                                <div class="icon"></div>
+                                <div class="title"><h4>Can I promote my ad to attract more customers?</h4></div>
+                            </a>
+                    
+                            <div class="content">
+                                <p>Absolutely! We have very attractive paid promotion for your ads. If you are a business, then you have subscription option to benefit from. Also you can promote your business with our premium and cost effective banner ads.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- accordion -->
+              </div>
+            </div>
+          </div>
+      </div>
+    </section><!-- End Services Section -->
 
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<h4 class="panel-title">
-<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwelve">
-What if I only want the tires for a few days?
-</a>
-</h4>
-</div>
-<div id="collapseTwelve" class="panel-collapse collapse">
-<div class="panel-body">
-<p>
-That's definitely possible. There's no minimum or maximum rental tenure on our platform. Such terms can be discussed with your chosen tires' owner and we will finalize it with a rental agreement so the rights of both the parties are secure.
-</p>
-<br>
+  </main><!-- End #main -->
 
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<h4 class="panel-title">
-<a data-toggle="collapse" data-parent="#accordion" href="#collapseThirteen">
-Can I promote my ad to attract more customers?
-</a>
-</h4>
-</div>
-<div id="collapseThirteen" class="panel-collapse collapse">
-<div class="panel-body">
-<p>
-Absolutely! We have very attractive paid promotion for your ads. If you are a business, then you have subscription option to benefit from. Also you can promote your business with our premium and cost effective banner ads.
-</p>
-<br>
+  
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-4" id="footer-left">
+          <nav class="nav-footer">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="{% url 'core:about' %}">About Us</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="{% url 'core:faqs' %}">faq’S</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="{% url 'core:contact' %}">Contact US</a>
+              </li>
+            </ul>
+          </nav>
+          <ul class="list-inline list-nav">
+            <li><a href="{% url 'core:privacypolicy' %}">Privacy policy</a></li>
+            <li><a href="{% url 'core:termsofservice' %}">Terms & Conditions</a></li>
+          </ul>
+        </div>
+    
+    <div class="col-sm-12 col-md-3"></div>
+    
+    <div class="col-sm-12 col-md-5">
+      <div class="socials-a">
+        <ul class="list-inline list-nav03">
+          <li class="list-inline-item">
+          <a href="#">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+          </a>
+          </li>
+          <li class="list-inline-item">
+          <a href="#">
+            <i class="fa fa-youtube-play" aria-hidden="true"></i>
+          </a>
+          </li>
+          <li class="list-inline-item">
+          <a href="#">
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+          </a>
+          </li>
+        </ul>
 
-</div>
-</div>
-</div>
+        <ul class="list-inline list-nav02">
+          <li><p>Copyright © 2020 - tires on rent Inc. All rights reserved.</p></li>
+        </ul>
+      </div>
+    </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
 
-</div>
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <div id="preloader"></div>
 
-</div>
-</div>
-</div>
-</div>
+   <!-- Vendor JS Files -->
+  <script src="/media/newdesigns/vendor/jquery/jquery.min.js"></script>
+  <script src="/media/newdesigns/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/media/newdesigns/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="/media/newdesigns/vendor/php-email-form/validate.js"></script>
+  <script src="/media/newdesigns/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="/media/newdesigns/vendor/scrollreveal/scrollreveal.min.js"></script>
 
+  <!-- Template Main JS File -->
+  <script src="/media/newdesigns/js/main.js"></script>
+  <script src="/media/newdesigns/js/jquery-2.1.4.js"></script>
 
+  <script src="/media/newdesigns/js/choices.js"></script>
 
+  
+</body>
 
-{% endblock %}
-
+</html>
