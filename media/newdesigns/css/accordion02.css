@@ -1,0 +1,127 @@
+.accordion {
+  width: 100%;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.accordion-item h4 {
+  color: #fff !important;
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+.accordion-item {
+  position: relative;
+  color: #fff !important;
+  padding: 0px 25px;
+  margin: 5px 0px;
+}
+.accordion-item.active .heading {
+  color: #fff;
+  background: #c91f3d;
+}
+
+/*.accordion-item.active .icon {
+  background: #fefefe;
+} */
+
+.accordion-item.active .icon:before {
+  background: #fff;
+}
+.accordion-item.active .icon:after {
+  width: 0;
+}
+.accordion-item .heading {
+  display: block;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  position: relative;
+  padding: 10px 5px 10px 60px;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  background: #c91f3d;
+}
+@media (min-width: 40rem) {
+  .accordion-item .heading {
+    font-size: 1.2rem;
+  }
+}
+.accordion-item .heading:hover {
+  color: #fff;
+}
+.accordion-item .heading:hover .icon:before, .accordion-item .heading:hover .icon:after {
+  background: #fff;
+}
+.accordion-item .icon {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 3rem;
+  height: 3rem;
+  border: 0px solid #fff;
+  background: #c91f3d;
+  border-radius: 3px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.accordion-item .icon:before, .accordion-item .icon:after {
+  content: '';
+  width: 1.25rem;
+  height: 0.25rem;
+  background: #fff;
+  position: absolute;
+  border-radius: 3px;
+  left: 50%;
+  top: 50%;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.accordion-item .icon:after {
+  -webkit-transform: translate(-50%, -50%) rotate(90deg);
+          transform: translate(-50%, -50%) rotate(90deg);
+  z-index: -1;
+}
+.accordion-item .content {
+  display: none;
+}
+.accordion-item .content p {
+  margin-top: 0;
+}
+@media (min-width: 40rem) {
+  .accordion-item .content {
+    line-height: 1.75;
+  }
+}
+
+.accordion .content {
+  padding: 15px 20px 0 50px;
+}
+
+.accordion-item .heading .title {
+  padding: 5px 0;
+}
+
+@media (max-width: 767px) {
+  .accordion .content {
+    padding: 15px 10px 0 10px;
+  }
+
+  .accordion-item {
+    padding: 0px 5px;
+  }
+
+  .accordion {
+    padding: 0;
+  }
+
+  .accordion-item .heading {
+    padding: 10px 15px 10px 50px;
+  }
+}

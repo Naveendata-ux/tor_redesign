@@ -308,10 +308,6 @@ class AdCreateForm(forms.ModelForm):
     tires_available = forms.IntegerField( min_value=0,widget=forms.NumberInput(attrs={'placeholder': 'Number of Tires','id': 'tires_available',}),error_messages={'invalid': 'Please enter value for Tyres_Available!'})
     Tenure_offered = forms.IntegerField(label='', min_value=0,widget=forms.NumberInput(attrs={'placeholder': 'Tenure Offered','id': 'tires_offered','style': 'display:none;','id': 'business',}),error_messages={'invalid': 'Please enter value for Tenure_offered!'})
     Ad_Type = forms.ChoiceField(choices=Ad_type,widget=forms.Select(attrs={'placeholder': 'Select Ad Type','id': 'purpose',}),error_messages={'invalid': 'Please select valid choice for Ad_Type!'})
-    wheel_type = forms.ChoiceField(required=False,label="Wheel Type",choices=Wheel_type,widget=forms.Select(attrs={'placeholder': 'Select Wheel Type','id':'wheel_type'}),error_messages={'invalid': 'Please select valid choice for Wheel_Type!'})
-    wheel_color = forms.CharField(required=False,widget=forms.TextInput(attrs={'placeholder': 'Wheel Colour','id':'wheel_color'}),error_messages={'invalid': 'Please enter wheel Color!'}) 
-    specials = forms.ChoiceField(required=False,choices=Specials,widget=forms.Select(attrs={'placeholder': 'Select Wheel Type','id': 'specials',}),error_messages={'invalid': 'Please select valid choice for Specials!'})
-    service_type = forms.ChoiceField(required=False,choices=Service_type,widget=forms.Select(attrs={'placeholder': 'Select Wheel Type','id': 'service_type',}),error_messages={'invalid': 'Please select valid choice for Service_Type!'})
     
     class Meta:
         model = Ad
